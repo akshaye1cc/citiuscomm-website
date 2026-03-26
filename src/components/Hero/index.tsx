@@ -244,6 +244,7 @@ const Hero = () => {
             <div className="w-full px-4">
               <div className="mx-auto max-w-[900px] text-center">
 
+
                 {/* Main Headline */}
                 <h1
                   className={`mb-6 text-4xl font-bold leading-tight text-black dark:text-white sm:text-5xl md:text-6xl md:leading-tight lg:text-7xl ${
@@ -302,7 +303,26 @@ const Hero = () => {
                     </svg>
                   </Link>
 
-                  
+                  {/* Secondary CTA Button */}
+                  <Link
+                    href="/solutions"
+                    className="button-glow group relative inline-flex items-center gap-2 rounded-lg border-2 border-primary bg-white px-8 py-4 text-base font-bold text-primary transition-all duration-300 ease-in-out hover:bg-primary hover:text-white hover:shadow-xl hover:shadow-primary/20 dark:bg-gray-800 dark:text-primary dark:hover:bg-primary md:px-10 md:py-5 md:text-lg"
+                  >
+                    <span>Learn More</span>
+                    <svg
+                      className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M13 7l5 5m0 0l-5 5m5-5H6"
+                      />
+                    </svg>
+                  </Link>
                 </div>
 
                 {/* Stats Row */}
