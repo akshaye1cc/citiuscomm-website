@@ -17,7 +17,7 @@ const Footer = () => {
                 >
                   <span className="relative isolate inline-flex ">
                     <Image
-                      src="/images/logo/logo2.png"
+                      src="/images/logo/Logo.svg"
                       alt="Citius Communications"
                       width={400}
                       height={52}
