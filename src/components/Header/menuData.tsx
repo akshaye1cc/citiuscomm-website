@@ -21,7 +21,8 @@ const menuData: Menu[] = [
       {
         id: 22,
         title: "Leadership",
-        path: "/about#leadership",
+        path: "/leadership",
+        //path: "/about#leadership",
         newTab: false,
       },
       {
