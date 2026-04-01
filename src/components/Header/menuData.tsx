@@ -7,78 +7,74 @@ const menuData: Menu[] = [
     path: "/",
     newTab: false,
   },
-  {
+ {
     id: 2,
-    title: "About",
-    path: "/about",
-    newTab: false,
-  },
-  {
-    id: 33,
-    title: "Blog",
-    path: "/blog",
-    newTab: false,
-  },
-  {
-    id: 3,
-    title: "Support",
-    path: "/contact",
-    newTab: false,
-  },
-  {
-    id: 4,
-    title: "Pages",
+    title: "About Us",
     newTab: false,
     submenu: [
       {
-        id: 41,
-        title: "About Page",
-        path: "/about",
+        id: 21,
+        title: "Who We Are",
+        path: "/about#who-we-are",
         newTab: false,
       },
       {
-        id: 42,
-        title: "Contact Page",
-        path: "/contact",
+        id: 22,
+        title: "Leadership",
+        path: "/about#leadership",
         newTab: false,
       },
       {
-        id: 43,
-        title: "Blog Grid Page",
-        path: "/blog",
-        newTab: false,
-      },
-      {
-        id: 44,
-        title: "Blog Sidebar Page",
-        path: "/blog-sidebar",
-        newTab: false,
-      },
-      {
-        id: 45,
-        title: "Blog Details Page",
-        path: "/blog-details",
-        newTab: false,
-      },
-      {
-        id: 46,
-        title: "Sign In Page",
-        path: "/signin",
-        newTab: false,
-      },
-      {
-        id: 47,
-        title: "Sign Up Page",
-        path: "/signup",
-        newTab: false,
-      },
-      {
-        id: 48,
-        title: "Error Page",
-        path: "/error",
+        id: 23,
+        title: "Work With Us",
+        path: "/about#work-with-us",
         newTab: false,
       },
     ],
+  },
+  {
+    id: 33,
+    title: "Solutions",
+    newTab: false,
+    submenu: [
+      {
+        id: 331,
+        title: "Services",
+        path: "/solutions/services",
+        newTab: false,
+      },
+      {
+        id: 332,
+        title: "Industries",
+        path: "/solutions/industries",
+        newTab: false,
+      },
+    ],
+  },
+  {
+    id: 3,
+    title: "Clientele",
+    newTab: false,
+    submenu: [
+      {
+        id: 31,
+        title: "Clients",
+        path: "/clientele#clients",
+        newTab: false,
+      },
+      {
+        id: 32,
+        title: "Partners",
+        path: "/clientele#partners",
+        newTab: false,
+      },
+    ],
+  },
+  {
+    id: 4,
+    title: "Contact Us",
+    path: "/contact",
+    newTab: false,
   },
 ];
 export default menuData;
