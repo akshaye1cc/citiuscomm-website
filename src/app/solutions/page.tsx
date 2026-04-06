@@ -5,32 +5,26 @@ import Link from "next/link";
 const Solutions = () => {
   const services = [
     {
-      icon: "🚀",
       title: "Digital Transformation",
       description: "Transform your business with cutting-edge digital solutions and strategies."
     },
     {
-      icon: "📊",
       title: "Business Analytics",
       description: "Data-driven insights to optimize your business operations and decision making."
     },
     {
-      icon: "☁️",
       title: "Cloud Solutions",
       description: "Scalable cloud infrastructure and migration services for modern enterprises."
     },
     {
-      icon: "🔒",
       title: "Cybersecurity",
       description: "Comprehensive security solutions to protect your digital assets and data."
     },
     {
-      icon: "💻",
       title: "Software Development",
       description: "Custom software solutions tailored to your specific business needs."
     },
     {
-      icon: "🤖",
       title: "AI & Automation",
       description: "Intelligent automation to streamline processes and improve efficiency."
     }
@@ -96,7 +90,6 @@ const Solutions = () => {
                   key={index}
                   className="group rounded-xl border border-gray-200 bg-white p-8 transition-all duration-300 hover:border-primary hover:shadow-xl dark:border-gray-700 dark:bg-gray-900"
                 >
-                  <div className="mb-4 text-4xl">{service.icon}</div>
                   <h3 className="mb-3 text-xl font-bold text-text dark:text-white">
                     {service.title}
                   </h3>
