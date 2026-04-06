@@ -23,8 +23,12 @@ const Header = () => {
     }
   };
   useEffect(() => {
-    window.addEventListener("scroll", handleStickyNavbar);
-  });
+  window.addEventListener("scroll", handleStickyNavbar);
+
+  return () => {
+    window.removeEventListener("scroll", handleStickyNavbar);
+  };
+}, []);
 
   // submenu handler
   const [openIndex, setOpenIndex] = useState(-1);
@@ -40,13 +44,13 @@ const Header = () => {
 
   return (
     <>
-      <header
-        className={`header top-0 left-0 z-40 flex w-full items-center ${
-          sticky
-            ? "dark:bg-gray-dark dark:shadow-sticky-dark shadow-sticky fixed z-9999 bg-white/80 backdrop-blur-xs transition"
-            : "absolute bg-transparent"
-        }`}
-      >
+          <header
+        className={`header fixed top-0 left-0 z-50 flex w-full items-center transition-all duration-300 ${
+      sticky
+          ? "bg-white/90 dark:bg-gray-dark backdrop-blur-md shadow-md"
+        : "bg-transparent"
+     }`}
+>
         <div className="container">
           <div className="relative -mx-4 flex items-center justify-between">
             <div className="w-60 max-w-full px-4 xl:mr-12">
