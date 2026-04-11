@@ -1,5 +1,4 @@
 import Image from "next/image";
-import SectionTitle from "../Common/SectionTitle";
 
 const AboutSectionOne = () => {
   return (
@@ -7,77 +6,150 @@ const AboutSectionOne = () => {
       <div className="container">
         <div className="border-b border-body-color/[.15] pb-16 dark:border-white/[.15] md:pb-20 lg:pb-28">
 
-          {/* Only Title Center */}
-          <h2 className="text-black dark:text-white mb-4 text-center text-3xl font-bold sm:text-4xl md:text-[40px]">
+          {/* Page Title */}
+          <h2 className="text-black dark:text-white mb-16 text-center text-3xl font-bold sm:text-4xl md:text-[40px]">
             Who We Are
           </h2>
 
-          <div className="-mx-4 flex flex-wrap items-center">
-            <div className="w-full px-4 lg:w-1/2">
-              {/* Paragraph Left */}
-              <p className="text-body-color mb-11 text-base leading-relaxed">
-                CITIUSCOMM, a Multi-National Company, offers carrier-grade solutions for the dynamically developing Communications and Networking Industry. We provide E2E bespoke turnkey solutions including Product, Service Delivery, NOC Operations, and Project Management — delivering cost-effective and high-quality solutions efficiently and consistently.
-              </p>
-            </div>
+          {/* Row 1: Vision & Mission */}
+          <div className="grid grid-cols-1 gap-10 md:grid-cols-2 mb-10">
 
-            <div className="w-full px-4 lg:w-1/2">
-              <div className="relative mx-auto aspect-25/24 max-w-[500px] lg:mr-0">
+            {/* Vision Card */}
+            <div className="rounded-2xl bg-primary/5 dark:bg-white/5 overflow-hidden flex flex-col shadow-sm">
+              <div className="relative w-full h-64 sm:h-72">
                 <Image
-                  src="/images/about/company-profile.webp"
-                  alt="about-image"
+                  src="/images/about/visimage.jpg"
+                  alt="Vision - Future Goals"
                   fill
-                  className="mx-auto max-w-full drop-shadow-three dark:hidden dark:drop-shadow-none lg:mr-0"
-                />
-                <Image
-                  src="/images/about/company-profile.webp"
-                  alt="about-image"
-                  fill
-                  className="mx-auto hidden max-w-full drop-shadow-three dark:block dark:drop-shadow-none lg:mr-0"
+                  className="object-cover"
                 />
               </div>
-            </div>
-          </div>
-
-          {/* Vision & Mission - Naya Section */}
-          <div className="-mx-4 flex flex-wrap mt-16">
-
-            {/* Vision */}
-            <div className="w-full px-4 md:w-1/2">
-              <div className="mb-10 rounded-lg bg-primary/5 p-8 dark:bg-white/5">
-                <h3 className="text-black dark:text-white mb-4 text-2xl font-bold">
+              <div className="p-10 flex flex-col flex-1">
+                <h3 className="text-black dark:text-white mb-6 text-3xl font-bold">
                   Vision
                 </h3>
-                <ul className="text-body-color space-y-3 text-base leading-relaxed">
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-1">✦</span>
-                    We realize the dreams of our clients through long-term relationships.
+                <ul className="text-body-color space-y-6 text-lg leading-relaxed">
+                  <li className="flex items-start gap-4">
+                    <span className="text-primary mt-1 text-xl">✦</span>
+                    To be the world's most trusted technology partner — delivering bespoke, end-to-end solutions that transform businesses and build lasting client relationships across global markets.
                   </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-1">✦</span>
-                    We enhance our creativity by balancing Innovation and Reliability.
+                  <li className="flex items-start gap-4">
+                    <span className="text-primary mt-1 text-xl">✦</span>
+                    To lead digital transformation by bridging the gap between cutting-edge innovation and real-world reliability — making advanced ICT, 5G, and Cybersecurity solutions accessible to every enterprise.
                   </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-1">✦</span>
-                    We want to be the most preferred and admired brand in Technology Aggregation.
+                  <li className="flex items-start gap-4">
+                    <span className="text-primary mt-1 text-xl">✦</span>
+                    To be the most preferred and admired brand in Technology Aggregation — building a world-class ecosystem that empowers organizations to grow sustainably in a connected, intelligent future.
                   </li>
                 </ul>
               </div>
             </div>
 
-            {/* Mission */}
-            <div className="w-full px-4 md:w-1/2">
-              <div className="mb-10 rounded-lg bg-primary/5 p-8 dark:bg-white/5">
-                <h3 className="text-black dark:text-white mb-4 text-2xl font-bold">
+            {/* Mission Card */}
+            <div className="rounded-2xl bg-primary/5 dark:bg-white/5 overflow-hidden flex flex-col shadow-sm">
+              <div className="relative w-full h-64 sm:h-72">
+                <Image
+                  src="/images/about/missionimg.jpg"
+                  alt="Mission - Teamwork and Strategy"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-10 flex flex-col flex-1">
+                <h3 className="text-black dark:text-white mb-6 text-3xl font-bold">
                   Mission
                 </h3>
+                <ul className="text-body-color space-y-6 text-lg leading-relaxed">
+                  <li className="flex items-start gap-4">
+                    <span className="text-primary mt-1 text-xl">✦</span>
+                    To expand our global coverage and competency by delivering cost-effective, high-quality E2E solutions across Data Center, ICT Infrastructure, Telecom OSS/BSS, Cybersecurity, and 5G — consistently and efficiently.
+                  </li>
+                  <li className="flex items-start gap-4">
+                    <span className="text-primary mt-1 text-xl">✦</span>
+                    To invest in world-class talent, strategic partnerships, and cutting-edge technology — ensuring seamless NOC Operations and expert Project Management that keeps our clients ahead of market demands.
+                  </li>
+                  <li className="flex items-start gap-4">
+                    <span className="text-primary mt-1 text-xl">✦</span>
+                    To contribute to a more harmonious and connected digital society — by being the trusted Solution Provider that meets every Technological Requirement with integrity, innovation, and unparalleled expertise.
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Row 2: Expertise + Innovation */}
+          <div className="grid grid-cols-1 gap-10 md:grid-cols-2 mb-10">
+
+            {/* Expertise Card */}
+            <div className="rounded-2xl bg-[#eef0f8] dark:bg-white/5 overflow-hidden flex flex-col shadow-sm">
+              <div className="relative w-full h-52 sm:h-60">
+                <Image
+                  src="/images/about/expertise.jpg"
+                  alt="Expertise - Data Center and ICT Infrastructure"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-8 flex flex-col flex-1">
+                <h3 className="text-black dark:text-white mb-4 text-xl font-bold">
+                  Expertise
+                </h3>
                 <p className="text-body-color text-base leading-relaxed">
-                  Increase our Coverage and Competency to be the main Solution Provider 
-                  that meets all Technological Requirements and contributes to a more 
-                  harmonious society.
+                  "CITIUSCOMM" pioneers bespoke, end-to-end turnkey solutions encompassing Data Center,
+                  ICT Infrastructure, Telecom OSS/BSS, Cybersecurity, 5G coupled with comprehensive
+                  Service Delivery, NOC Operations and expert Project Management.
                 </p>
               </div>
             </div>
 
+            {/* Innovation Card */}
+            <div className="rounded-2xl bg-[#eef0f8] dark:bg-white/5 overflow-hidden flex flex-col shadow-sm">
+              <div className="relative w-full h-52 sm:h-60">
+                <Image
+                  src="/images/about/innovation.jpg"
+                  alt="Innovation - Cutting-edge Technologies"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-8 flex flex-col flex-1">
+                <h3 className="text-black dark:text-white mb-4 text-xl font-bold">
+                  Innovation
+                </h3>
+                <p className="text-body-color text-base leading-relaxed">
+                  We embrace cutting-edge technologies and methodologies to deliver innovative
+                  solutions that drive results.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Row 3: Customer Focus - Full Width */}
+          <div className="rounded-2xl bg-[#eef0f8] dark:bg-white/5 overflow-hidden shadow-sm">
+            <div className="flex flex-col md:flex-row">
+              <div className="relative w-full md:w-2/5 h-60 md:h-auto min-h-[240px]">
+                <Image
+                  src="/images/about/customer-focus.jpg"
+                  alt="Customer Focus - Strategic Partnerships"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-10 md:p-12 flex flex-col justify-center md:w-3/5">
+                <h3 className="text-black dark:text-white mb-4 text-xl font-bold">
+                  Customer Focus
+                </h3>
+                <p className="text-body-color text-base leading-relaxed">
+                  "CITIUSCOMM" distinguishes itself by consistently delivering cost-effective,
+                  high-quality solutions with unparalleled efficiency. Our extensive network of
+                  strategic partnerships, coupled with years of experience and deep industry
+                  knowledge, positions us uniquely to orchestrate seamless end-to-end deployments
+                  and system integrations for our valued Customers.
+                </p>
+              </div>
+            </div>
           </div>
 
         </div>
