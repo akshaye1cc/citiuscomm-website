@@ -24,7 +24,7 @@ layer(base);
   --color-primary: #156EB0;           /* Main brand blue */
   --color-secondary: #0A2540;         /* Dark background */
   --color-accent: #FF7A00;            /* Orange CTA */
-  --color-light-bg: #F8FAFC;          /* Light background */
+  --color-light-bg: #156EB0;        /* Light background */
   --color-text: #111827;              /* Text color */
   
   /* Keep existing colors for compatibility */
