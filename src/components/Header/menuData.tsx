@@ -55,22 +55,10 @@ const menuData: Menu[] = [
   },
   {
     id: 3,
-    title: "Clientele",
+    title: "Partners",
+    path: "/Partners",
     newTab: false,
-    submenu: [
-      {
-        id: 31,
-        title: "Clients",
-        path: "/clientele#clients",
-        newTab: false,
-      },
-      {
-        id: 32,
-        title: "Partners",
-        path: "/clientele#partners",
-        newTab: false,
-      },
-    ],
+    
   },
   {
     id: 4,
