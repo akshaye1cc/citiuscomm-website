@@ -1,5 +1,4 @@
 import AboutSectionOne from "@/components/About/AboutSectionOne";
-import AboutSectionTwo from "@/components/About/AboutSectionTwo";
 import Clients from "@/components/Clients-Marquee";
 import ScrollUp from "@/components/Common/ScrollUp";
 import Features from "@/components/Features";
@@ -14,7 +13,6 @@ export default function Home() {
       <Features />
       <Clients />
       <AboutSectionOne />
-      <AboutSectionTwo />
       <Testimonials />
     </>
   );

@@ -64,6 +64,48 @@ const Hero = () => {
           }
         }
 
+        @keyframes gradient-shift {
+          0%, 100% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+        }
+
+        @keyframes slide-in-left {
+          from {
+            opacity: 0;
+            transform: translateX(-30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        @keyframes slide-in-right {
+          from {
+            opacity: 0;
+            transform: translateX(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        @keyframes particle-float {
+          0%, 100% {
+            transform: translateY(0px) translateX(0px);
+            opacity: 0.3;
+          }
+          50% {
+            transform: translateY(-15px) translateX(10px);
+            opacity: 0.6;
+          }
+        }
+
         .animate-float {
           animation: float 3s ease-in-out infinite;
         }
@@ -84,6 +126,14 @@ const Hero = () => {
           animation: rotate-slow 20s linear infinite;
         }
 
+        .animate-slide-in-left {
+          animation: slide-in-left 0.8s ease-out forwards;
+        }
+
+        .animate-slide-in-right {
+          animation: slide-in-right 0.8s ease-out forwards;
+        }
+
         .hero-blob-1 {
           animation: float 4s ease-in-out infinite;
           animation-delay: 0s;
@@ -99,8 +149,21 @@ const Hero = () => {
           animation-delay: 2s;
         }
 
+        .particle {
+          animation: particle-float 4s ease-in-out infinite;
+        }
+
         .gradient-text {
-          background: linear-gradient(135deg, #156EB0 0%, #0A2540 50%, #156EB0 100%);
+          background: linear-gradient(135deg, #156EB0 0%, #FF7A00 50%, #156EB0 100%);
+          background-size: 200% 200%;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          animation: gradient-shift 4s ease infinite;
+        }
+
+        .gradient-text-static {
+          background: linear-gradient(135deg, #156EB0 0%, #0A2540 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -151,54 +214,65 @@ const Hero = () => {
         .button-glow:hover::before {
           opacity: 1;
         }
+
+        .badge-glow {
+          box-shadow: 0 0 20px rgba(21, 110, 176, 0.3);
+        }
+
+        .stat-card {
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stat-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 30px rgba(21, 110, 176, 0.2);
+        }
+
+        .tech-particle-1 {
+          animation: particle-float 3s ease-in-out infinite;
+          animation-delay: 0s;
+        }
+
+        .tech-particle-2 {
+          animation: particle-float 4s ease-in-out infinite;
+          animation-delay: 1s;
+        }
+
+        .tech-particle-3 {
+          animation: particle-float 5s ease-in-out infinite;
+          animation-delay: 2s;
+        }
       `}</style>
 
       <section
         id="home"
-        className="relative z-10 overflow-hidden bg-gradient-to-b from-white to-gray-50 pb-16 pt-[120px] dark:from-secondary dark:to-gray-900 md:pb-[120px] md:pt-[150px] xl:pb-[160px] xl:pt-[180px] 2xl:pb-[200px] 2xl:pt-[210px]"
+        className="relative z-10 overflow-hidden bg-gradient-to-b from-white via-blue-50/30 to-gray-50 pb-16 pt-[120px] dark:from-secondary dark:via-gray-900 dark:to-gray-900 md:pb-[120px] md:pt-[150px] xl:pb-[160px] xl:pt-[180px] 2xl:pb-[200px] 2xl:pt-[210px]"
       >
-        {/* Background animated blobs */}
+        {/* Enhanced Background Elements */}
         <div className="absolute right-0 top-0 z-0 opacity-40 lg:opacity-60">
           <div className="hero-blob-1">
             <svg
-              width="450"
-              height="450"
-              viewBox="0 0 450 450"
+              width="500"
+              height="500"
+              viewBox="0 0 500 500"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <circle
-                cx="225"
-                cy="225"
-                r="200"
-                fill="url(#gradient1)"
-                opacity="0.6"
-              />
-              <circle
-                cx="225"
-                cy="225"
-                r="150"
-                fill="url(#gradient2)"
-                opacity="0.4"
-              />
+              <circle cx="250" cy="250" r="220" fill="url(#gradient1)" opacity="0.6" />
+              <circle cx="250" cy="250" r="170" fill="url(#gradient2)" opacity="0.4" />
+              <circle cx="250" cy="250" r="120" fill="url(#gradient4)" opacity="0.3" />
               <defs>
-                <radialGradient
-                  id="gradient1"
-                  cx="50%"
-                  cy="50%"
-                  r="50%"
-                >
+                <radialGradient id="gradient1" cx="50%" cy="50%" r="50%">
                   <stop offset="0%" stopColor="#156EB0" />
                   <stop offset="100%" stopColor="#0A2540" stopOpacity="0" />
                 </radialGradient>
-                <radialGradient
-                  id="gradient2"
-                  cx="50%"
-                  cy="50%"
-                  r="50%"
-                >
+                <radialGradient id="gradient2" cx="50%" cy="50%" r="50%">
                   <stop offset="0%" stopColor="#FF7A00" />
                   <stop offset="100%" stopColor="#156EB0" stopOpacity="0" />
+                </radialGradient>
+                <radialGradient id="gradient4" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stopColor="#156EB0" />
+                  <stop offset="100%" stopColor="#FF7A00" stopOpacity="0" />
                 </radialGradient>
               </defs>
             </svg>
@@ -208,31 +282,37 @@ const Hero = () => {
         <div className="absolute -left-20 bottom-0 z-0 opacity-30 lg:opacity-50">
           <div className="hero-blob-2">
             <svg
-              width="400"
-              height="400"
-              viewBox="0 0 400 400"
+              width="450"
+              height="450"
+              viewBox="0 0 450 450"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <circle
-                cx="200"
-                cy="200"
-                r="180"
-                fill="url(#gradient3)"
-                opacity="0.5"
-              />
+              <circle cx="225" cy="225" r="200" fill="url(#gradient3)" opacity="0.5" />
               <defs>
-                <radialGradient
-                  id="gradient3"
-                  cx="50%"
-                  cy="50%"
-                  r="50%"
-                >
+                <radialGradient id="gradient3" cx="50%" cy="50%" r="50%">
                   <stop offset="0%" stopColor="#0A2540" />
                   <stop offset="100%" stopColor="#156EB0" stopOpacity="0" />
                 </radialGradient>
               </defs>
             </svg>
+          </div>
+        </div>
+
+        {/* Floating tech particles */}
+        <div className="absolute left-1/4 top-1/4 z-0 opacity-20">
+          <div className="tech-particle-1">
+            <div className="h-3 w-3 rounded-full bg-primary"></div>
+          </div>
+        </div>
+        <div className="absolute right-1/3 top-1/2 z-0 opacity-20">
+          <div className="tech-particle-2">
+            <div className="h-2 w-2 rounded-full bg-accent"></div>
+          </div>
+        </div>
+        <div className="absolute left-1/2 bottom-1/3 z-0 opacity-20">
+          <div className="tech-particle-3">
+            <div className="h-4 w-4 rounded-full bg-primary"></div>
           </div>
         </div>
 
@@ -242,35 +322,65 @@ const Hero = () => {
         <div className="container relative z-10">
           <div className="-mx-4 flex flex-wrap items-center justify-center">
             <div className="w-full px-4">
-              <div className="mx-auto max-w-[900px] text-center">
+              <div className="mx-auto max-w-[950px] text-center">
 
+                {/* Badge */}
+                <div
+                  className={`mb-6 flex justify-center ${
+                    isLoaded ? "animate-fade-in-scale" : "opacity-0"
+                  }`}
+                  style={{
+                    animationDelay: isLoaded ? "0.1s" : "0s",
+                  }}
+                >
+                  <div className="badge-glow inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-6 py-2.5 backdrop-blur-sm dark:bg-primary/10">
+                    <span className="relative flex h-2 w-2">
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"></span>
+                      <span className="relative inline-flex h-2 w-2 rounded-full bg-primary"></span>
+                    </span>
+                    <span className="text-sm font-semibold text-primary dark:text-primary">
+                      30 Years of Engineering Excellence
+                    </span>
+                  </div>
+                </div>
 
                 {/* Main Headline */}
                 <h1
-                  className={`mb-6 text-4xl font-bold leading-tight text-black dark:text-white sm:text-5xl md:text-6xl md:leading-tight lg:text-7xl ${
+                  className={`mb-6 text-4xl font-bold leading-tight sm:text-5xl md:text-6xl md:leading-tight lg:text-7xl ${
                     isLoaded ? "animate-slide-up" : "opacity-0"
                   }`}
                   style={{
                     animationDelay: isLoaded ? "0.2s" : "0s",
                   }}
                 >
-                  Digital{" "}
-                  <span className="gradient-text">Solutions</span>
-                  <br />
-                  for Modern Business
+                  <span className="gradient-text">
+                    Connecting You, Every Step of the Way.
+                  </span>
                 </h1>
 
                 {/* Subheading */}
                 <p
-                  className={`mb-8 text-lg leading-relaxed text-gray-600 dark:text-gray-300 sm:text-xl md:text-2xl ${
+                  className={`mb-4 text-lg leading-relaxed text-gray-600 dark:text-gray-300 sm:text-xl md:text-2xl ${
                     isLoaded ? "animate-slide-up" : "opacity-0"
                   }`}
                   style={{
                     animationDelay: isLoaded ? "0.4s" : "0s",
                   }}
                 >
-                  Innovative solutions across multiple industries. Transform your business
-                  with CITIUSCOMM's expertise and cutting-edge technology.
+                  Delivering cutting-edge, carrier-grade solutions that fuel the rapid evolution
+                  of Communications and Networking Industry
+                </p>
+
+                {/* Key Value Proposition */}
+                <p
+                  className={`mb-10 text-base font-medium text-primary dark:text-primary sm:text-lg ${
+                    isLoaded ? "animate-slide-up" : "opacity-0"
+                  }`}
+                  style={{
+                    animationDelay: isLoaded ? "0.5s" : "0s",
+                  }}
+                >
+                  Data Center • ICT Infrastructure • Cybersecurity • 5G Networks • Cloud Engineering
                 </p>
 
                 {/* CTA Buttons */}
@@ -282,14 +392,15 @@ const Hero = () => {
                     animationDelay: isLoaded ? "0.6s" : "0s",
                   }}
                 >
-                  {/* Primary CTA Button */}
+
+                  {/*CTA Button */}
                   <Link
                     href="/contact"
-                    className="button-glow group relative inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-4 text-base font-bold text-white transition-all duration-300 ease-in-out hover:bg-secondary hover:shadow-xl hover:shadow-primary/30 md:px-10 md:py-5 md:text-lg"
+                    className="group inline-flex items-center gap-2 rounded-lg border-2 border-primary bg-transparent px-8 py-4 text-base font-bold text-primary transition-all duration-300 ease-in-out hover:bg-primary hover:text-white md:px-10 md:py-5 md:text-lg"
                   >
-                    <span>Get Started</span>
+                    <span>Connect with us</span>
                     <svg
-                      className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
+                      className="h-5 w-5 transition-transform duration-300 group-hover:scale-110"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -298,44 +409,103 @@ const Hero = () => {
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         strokeWidth={2}
-                        d="M13 7l5 5m0 0l-5 5m5-5H6"
+                        d="M9 5l7 7-7 7"
                       />
                     </svg>
                   </Link>
                 </div>
 
-                {/* Stats Row */}
+                {/* Enhanced Stats Row with Hover Effects */}
                 <div
-                  className={`mt-16 grid grid-cols-3 gap-4 rounded-2xl bg-white p-6 shadow-lg dark:bg-gray-800 sm:gap-8 sm:p-8 md:mt-20 ${
+                  className={`mt-16 grid grid-cols-1 gap-6 sm:grid-cols-3 md:mt-20 ${
                     isLoaded ? "animate-slide-up" : "opacity-0"
                   }`}
                   style={{
                     animationDelay: isLoaded ? "0.8s" : "0s",
                   }}
                 >
-                  <div className="flex flex-col items-center">
-                    <h3 className="text-2xl font-bold text-primary sm:text-3xl md:text-4xl">
-                      500+
-                    </h3>
-                    <p className="mt-2 text-xs text-gray-600 dark:text-gray-400 sm:text-sm">
-                      Happy Clients
-                    </p>
+                  {/* Stat 1 */}
+                  <div className="stat-card group relative overflow-hidden rounded-2xl bg-white p-6 shadow-lg dark:bg-gray-800 sm:p-8">
+                    <div className="absolute right-0 top-0 h-full w-1 bg-gradient-to-b from-primary to-accent"></div>
+                    <div className="flex flex-col items-center">
+                      <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-full border-2 border-accent/30 bg-transparent text-accent">
+                        <svg className="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                      </div>
+                      <h3 className="text-3xl font-bold text-primary sm:text-4xl md:text-5xl">
+                        100K+
+                      </h3>
+                      <p className="mt-2 text-sm font-medium text-gray-600 dark:text-gray-400 sm:text-base">
+                        Network Sites Deployed
+                      </p>
+                      <p className="mt-1 text-xs text-gray-500 dark:text-gray-500">
+                        Supporting 100M+ subscribers
+                      </p>
+                    </div>
                   </div>
-                  <div className="flex flex-col items-center border-l border-r border-gray-200 dark:border-gray-700">
-                    <h3 className="text-2xl font-bold text-primary sm:text-3xl md:text-4xl">
-                      15+
-                    </h3>
-                    <p className="mt-2 text-xs text-gray-600 dark:text-gray-400 sm:text-sm">
-                      Industries
-                    </p>
+
+                  {/* Stat 2 */}
+                  <div className="stat-card group relative overflow-hidden rounded-2xl bg-white p-6 shadow-lg dark:bg-gray-800 sm:p-8">
+                    <div className="absolute right-0 top-0 h-full w-1 bg-gradient-to-b from-accent to-primary"></div>
+                    <div className="flex flex-col items-center">
+                      <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-full border-2 border-accent/30 bg-transparent text-accent">
+                        <svg className="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                      </div>
+                      <h3 className="text-3xl font-bold text-primary sm:text-4xl md:text-5xl">
+                        13K+
+                      </h3>
+                      <p className="mt-2 text-sm font-medium text-gray-600 dark:text-gray-400 sm:text-base">
+                        Nodes Managed
+                      </p>
+                      <p className="mt-1 text-xs text-gray-500 dark:text-gray-500">
+                        Multi-generation networks (2G-5G)
+                      </p>
+                    </div>
                   </div>
-                  <div className="flex flex-col items-center">
-                    <h3 className="text-2xl font-bold text-primary sm:text-3xl md:text-4xl">
-                      10y+
-                    </h3>
-                    <p className="mt-2 text-xs text-gray-600 dark:text-gray-400 sm:text-sm">
-                      Experience
-                    </p>
+
+                  {/* Stat 3 */}
+                  <div className="stat-card group relative overflow-hidden rounded-2xl bg-white p-6 shadow-lg dark:bg-gray-800 sm:p-8">
+                    <div className="absolute right-0 top-0 h-full w-1 bg-gradient-to-b from-primary to-secondary"></div>
+                    <div className="flex flex-col items-center">
+                      <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-full border-2 border-accent/30 bg-transparent text-accent">
+                        <svg className="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      </div>
+                      <h3 className="text-3xl font-bold text-primary sm:text-4xl md:text-5xl">
+                        30+
+                      </h3>
+                      <p className="mt-2 text-sm font-medium text-gray-600 dark:text-gray-400 sm:text-base">
+                        Years Experience
+                      </p>
+                      <p className="mt-1 text-xs text-gray-500 dark:text-gray-500">
+                        Ericsson, Siemens, ZTE heritage
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Trust Badges / Partner Logos Preview */}
+                <div
+                  className={`mt-12 flex flex-col items-center ${
+                    isLoaded ? "animate-fade-in-scale" : "opacity-0"
+                  }`}
+                  style={{
+                    animationDelay: isLoaded ? "1s" : "0s",
+                  }}
+                >
+                  <p className="mb-4 text-sm font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                    Trusted by Industry Leaders
+                  </p>
+                  <div className="flex flex-wrap items-center justify-center gap-6 opacity-60 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0">
+                    <div className="text-xl font-bold text-gray-700 dark:text-gray-300">HPE</div>
+                    <div className="text-xl font-bold text-gray-700 dark:text-gray-300">Cisco</div>
+                    <div className="text-xl font-bold text-gray-700 dark:text-gray-300">Palo Alto</div>
+                    <div className="text-xl font-bold text-gray-700 dark:text-gray-300">Oracle</div>
+                    <div className="text-xl font-bold text-gray-700 dark:text-gray-300">Juniper</div>
                   </div>
                 </div>
               </div>
