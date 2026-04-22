@@ -324,26 +324,6 @@ const Hero = () => {
             <div className="w-full px-4">
               <div className="mx-auto max-w-[950px] text-center">
 
-                {/* Badge */}
-                <div
-                  className={`mb-6 flex justify-center ${
-                    isLoaded ? "animate-fade-in-scale" : "opacity-0"
-                  }`}
-                  style={{
-                    animationDelay: isLoaded ? "0.1s" : "0s",
-                  }}
-                >
-                  <div className="badge-glow inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-6 py-2.5 backdrop-blur-sm dark:bg-primary/10">
-                    <span className="relative flex h-2 w-2">
-                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"></span>
-                      <span className="relative inline-flex h-2 w-2 rounded-full bg-primary"></span>
-                    </span>
-                    <span className="text-sm font-semibold text-primary dark:text-primary">
-                      30 Years of Engineering Excellence
-                    </span>
-                  </div>
-                </div>
-
                 {/* Main Headline */}
                 <h1
                   className={`mb-6 text-4xl font-bold leading-tight sm:text-5xl md:text-6xl md:leading-tight lg:text-7xl ${
@@ -398,7 +378,7 @@ const Hero = () => {
                     href="/contact"
                     className="group inline-flex items-center gap-2 rounded-lg border-2 border-primary bg-transparent px-8 py-4 text-base font-bold text-primary transition-all duration-300 ease-in-out hover:bg-primary hover:text-white md:px-10 md:py-5 md:text-lg"
                   >
-                    <span>Connect with us</span>
+                    <span>Explore Solutions</span>
                     <svg
                       className="h-5 w-5 transition-transform duration-300 group-hover:scale-110"
                       fill="none"
@@ -417,73 +397,54 @@ const Hero = () => {
 
                 {/* Enhanced Stats Row with Hover Effects */}
                 <div
-                  className={`mt-16 grid grid-cols-1 gap-6 sm:grid-cols-3 md:mt-20 ${
+                  className={`mx-auto mt-16 flex max-w-3xl justify-center md:mt-20 ${
                     isLoaded ? "animate-slide-up" : "opacity-0"
                   }`}
                   style={{
                     animationDelay: isLoaded ? "0.8s" : "0s",
                   }}
                 >
-                  {/* Stat 1 */}
-                  <div className="stat-card group relative overflow-hidden rounded-2xl bg-white p-6 shadow-lg dark:bg-gray-800 sm:p-8">
-                    <div className="absolute right-0 top-0 h-full w-1 bg-gradient-to-b from-primary to-accent"></div>
-                    <div className="flex flex-col items-center">
-                      <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-full border-2 border-accent/30 bg-transparent text-accent">
-                        <svg className="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                        </svg>
+                  <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                    {/* Stat 1 */}
+                    <div className="stat-card group relative overflow-hidden rounded-2xl bg-white p-6 shadow-lg dark:bg-gray-800 sm:p-8">
+                      <div className="absolute right-0 top-0 h-full w-1 bg-gradient-to-b from-primary to-accent"></div>
+                      <div className="flex flex-col items-center">
+                        <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-full border-2 border-accent/30 bg-transparent text-accent">
+                          <svg className="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                          </svg>
+                        </div>
+                        <h3 className="text-3xl font-bold text-primary sm:text-4xl md:text-5xl">
+                          100K+
+                        </h3>
+                        <p className="mt-2 text-sm font-medium text-gray-600 dark:text-gray-400 sm:text-base">
+                          Network Sites Deployed
+                        </p>
+                        <p className="mt-1 text-xs text-gray-500 dark:text-gray-500">
+                          Supporting 100M+ subscribers
+                        </p>
                       </div>
-                      <h3 className="text-3xl font-bold text-primary sm:text-4xl md:text-5xl">
-                        100K+
-                      </h3>
-                      <p className="mt-2 text-sm font-medium text-gray-600 dark:text-gray-400 sm:text-base">
-                        Network Sites Deployed
-                      </p>
-                      <p className="mt-1 text-xs text-gray-500 dark:text-gray-500">
-                        Supporting 100M+ subscribers
-                      </p>
                     </div>
-                  </div>
 
-                  {/* Stat 2 */}
-                  <div className="stat-card group relative overflow-hidden rounded-2xl bg-white p-6 shadow-lg dark:bg-gray-800 sm:p-8">
-                    <div className="absolute right-0 top-0 h-full w-1 bg-gradient-to-b from-accent to-primary"></div>
-                    <div className="flex flex-col items-center">
-                      <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-full border-2 border-accent/30 bg-transparent text-accent">
-                        <svg className="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                        </svg>
+                    {/* Stat 2 */}
+                    <div className="stat-card group relative overflow-hidden rounded-2xl bg-white p-6 shadow-lg dark:bg-gray-800 sm:p-8">
+                      <div className="absolute right-0 top-0 h-full w-1 bg-gradient-to-b from-accent to-primary"></div>
+                      <div className="flex flex-col items-center">
+                        <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-full border-2 border-accent/30 bg-transparent text-accent">
+                          <svg className="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                          </svg>
+                        </div>
+                        <h3 className="text-3xl font-bold text-primary sm:text-4xl md:text-5xl">
+                          13K+
+                        </h3>
+                        <p className="mt-2 text-sm font-medium text-gray-600 dark:text-gray-400 sm:text-base">
+                          Nodes Managed
+                        </p>
+                        <p className="mt-1 text-xs text-gray-500 dark:text-gray-500">
+                          Multi-generation networks (2G-5G)
+                        </p>
                       </div>
-                      <h3 className="text-3xl font-bold text-primary sm:text-4xl md:text-5xl">
-                        13K+
-                      </h3>
-                      <p className="mt-2 text-sm font-medium text-gray-600 dark:text-gray-400 sm:text-base">
-                        Nodes Managed
-                      </p>
-                      <p className="mt-1 text-xs text-gray-500 dark:text-gray-500">
-                        Multi-generation networks (2G-5G)
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Stat 3 */}
-                  <div className="stat-card group relative overflow-hidden rounded-2xl bg-white p-6 shadow-lg dark:bg-gray-800 sm:p-8">
-                    <div className="absolute right-0 top-0 h-full w-1 bg-gradient-to-b from-primary to-secondary"></div>
-                    <div className="flex flex-col items-center">
-                      <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-full border-2 border-accent/30 bg-transparent text-accent">
-                        <svg className="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                      </div>
-                      <h3 className="text-3xl font-bold text-primary sm:text-4xl md:text-5xl">
-                        30+
-                      </h3>
-                      <p className="mt-2 text-sm font-medium text-gray-600 dark:text-gray-400 sm:text-base">
-                        Years Experience
-                      </p>
-                      <p className="mt-1 text-xs text-gray-500 dark:text-gray-500">
-                        Ericsson, Siemens, ZTE heritage
-                      </p>
                     </div>
                   </div>
                 </div>
@@ -500,12 +461,12 @@ const Hero = () => {
                   <p className="mb-4 text-sm font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
                     Trusted by Industry Leaders
                   </p>
-                  <div className="flex flex-wrap items-center justify-center gap-6 opacity-60 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0">
-                    <div className="text-xl font-bold text-gray-700 dark:text-gray-300">HPE</div>
-                    <div className="text-xl font-bold text-gray-700 dark:text-gray-300">Cisco</div>
-                    <div className="text-xl font-bold text-gray-700 dark:text-gray-300">Palo Alto</div>
-                    <div className="text-xl font-bold text-gray-700 dark:text-gray-300">Oracle</div>
-                    <div className="text-xl font-bold text-gray-700 dark:text-gray-300">Juniper</div>
+                  <div className="flex flex-wrap items-center justify-center gap-6">
+                    <div className="cursor-pointer text-xl font-bold text-gray-700 opacity-60 grayscale transition-all duration-300 hover:text-accent hover:opacity-100 hover:grayscale-0 dark:text-gray-300 dark:hover:text-accent">HPE</div>
+                    <div className="cursor-pointer text-xl font-bold text-gray-700 opacity-60 grayscale transition-all duration-300 hover:text-accent hover:opacity-100 hover:grayscale-0 dark:text-gray-300 dark:hover:text-accent">Cisco</div>
+                    <div className="cursor-pointer text-xl font-bold text-gray-700 opacity-60 grayscale transition-all duration-300 hover:text-accent hover:opacity-100 hover:grayscale-0 dark:text-gray-300 dark:hover:text-accent">Palo Alto</div>
+                    <div className="cursor-pointer text-xl font-bold text-gray-700 opacity-60 grayscale transition-all duration-300 hover:text-accent hover:opacity-100 hover:grayscale-0 dark:text-gray-300 dark:hover:text-accent">Oracle</div>
+                    <div className="cursor-pointer text-xl font-bold text-gray-700 opacity-60 grayscale transition-all duration-300 hover:text-accent hover:opacity-100 hover:grayscale-0 dark:text-gray-300 dark:hover:text-accent">Juniper</div>
                   </div>
                 </div>
               </div>

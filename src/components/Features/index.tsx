@@ -15,7 +15,7 @@ const Features = () => {
         <div className="container">
           <SectionTitle
             title="Why Choose Citiuscomm"
-            paragraph="Leveraging 30 years of telecommunications expertise, we deliver comprehensive solutions that transform connectivity challenges into competitive advantages."
+            paragraph="Leveraging years of telecommunications expertise, we deliver comprehensive solutions that transform connectivity challenges into competitive advantages."
             center
           />
 
