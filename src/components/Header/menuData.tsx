@@ -28,7 +28,7 @@ const menuData: Menu[] = [
       {
         id: 23,
         title: "Work With Us",
-        path: "/about#work-with-us",
+        path: "/WorkWithUs",
         newTab: false,
       },
     ],
