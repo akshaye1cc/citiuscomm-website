@@ -3,6 +3,7 @@
 "use client";
 
 import { useTheme } from "next-themes";
+import ContactForm from "@/components/Contact/ContactForm";
 
 /* ─── Office Data ─────────────────────────────────────────── */
 const headquarters = {
@@ -96,6 +97,12 @@ const ExternalIcon = () => (
       strokeLinecap="round"
       strokeLinejoin="round"
     />
+  </svg>
+);
+
+const LinkedInIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="text-primary">
+    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.722-2.004 1.419-.103.249-.129.597-.129.946v5.44h-3.554s.05-8.807 0-9.726h3.554v1.375c.427-.659 1.191-1.595 2.897-1.595 2.117 0 3.704 1.385 3.704 4.362v5.584zM5.337 8.855c-1.144 0-1.915-.762-1.915-1.715 0-.957.77-1.715 1.958-1.715 1.187 0 1.914.758 1.939 1.715 0 .953-.752 1.715-1.982 1.715zm1.946 11.597H3.392v-9.726h3.891v9.726zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z" />
   </svg>
 );
 
@@ -220,6 +227,69 @@ export default function Contact() {
   const decorColor = theme === "light" ? "#4A6CF7" : "#ffffff";
 
   return (
+    <>
+    {/* ── Contact Form ── */}
+    <section className="relative py-16 md:py-20 bg-white dark:bg-gray-950 border-b border-gray-200 dark:border-gray-800">
+      <div className="container">
+        <div className="mb-12 text-center">
+          <span className="bg-primary/10 text-primary mb-4 inline-block rounded-full px-5 py-1.5 text-sm font-semibold tracking-wide">
+            Contact Us
+          </span>
+          <h2 className="mb-4 text-3xl font-bold text-black dark:text-white sm:text-4xl">
+            Send Us a Message
+          </h2>
+          <p className="text-body-color mx-auto max-w-xl text-base dark:text-white/70">
+            Tell us about your project and we'll get back to you within 24 hours.
+          </p>
+        </div>
+
+        <div className="grid gap-12 lg:grid-cols-5">
+          {/* Form — wider */}
+          <div className="lg:col-span-3">
+            <ContactForm />
+          </div>
+
+          {/* Quick contact info */}
+          <div className="lg:col-span-2 flex flex-col gap-6">
+            <div>
+              <h3 className="mb-4 text-lg font-bold text-black dark:text-white">
+                Or reach us directly
+              </h3>
+              <div className="space-y-4">
+                <a
+                  href="mailto:sales@citiuscomm.com"
+                  className="flex items-center gap-3 rounded-xl border border-gray-200 bg-gray-50 px-5 py-4 text-sm text-black transition-colors hover:border-primary dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+                >
+                  <MailIcon />
+                  sales@citiuscomm.com
+                </a>
+                <a
+                  href="tel:+912262362154"
+                  className="flex items-center gap-3 rounded-xl border border-gray-200 bg-gray-50 px-5 py-4 text-sm text-black transition-colors hover:border-primary dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+                >
+                  <PhoneIcon />
+                  022 62362154 (Mumbai HQ)
+                </a>
+                <a
+                  href="https://www.linkedin.com/company/citiuscommunications/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 rounded-xl border border-gray-200 bg-gray-50 px-5 py-4 text-sm text-black transition-colors hover:border-primary dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+                >
+                  <LinkedInIcon />
+                  LinkedIn
+                </a>
+              </div>
+            </div>
+            <div className="rounded-xl border border-primary/20 bg-primary/5 px-5 py-4 text-sm text-body-color dark:bg-primary/10">
+              <strong className="text-black dark:text-white">Response time:</strong> We typically reply within one business day.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ── Offices ── */}
     <section className="relative py-16 md:py-20 lg:py-28">
       <div className="container">
 
@@ -340,5 +410,6 @@ export default function Contact() {
 
       </div>
     </section>
+    </>
   );
 }

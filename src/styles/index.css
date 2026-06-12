@@ -24,7 +24,7 @@ layer(base);
   --color-primary: #156EB0;           /* Main brand blue */
   --color-secondary: #0A2540;         /* Dark background */
   --color-accent: #FF7A00;            /* Orange CTA */
-  --color-light-bg: #156EB0;        /* Light background */
+  --color-light-bg: #f8fafc;        /* Light background */
   --color-text: #111827;              /* Text color */
   
   /* Keep existing colors for compatibility */
@@ -135,7 +135,6 @@ layer(base);
   body {
     font-family: "Inter", sans-serif;
     color: var(--color-text);
-    background-color: var(--color-light-bg);
   }
 
   h1, h2, h3, h4, h5, h6 {

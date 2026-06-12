@@ -1,15 +1,7 @@
 import WhoWeAre from "@/components/About/WhoWeAre";
 
-
-
 const AboutPage = () => {
-  return (
-    <>
-      <WhoWeAre />        
-      
-      
-    </>
-  );
+  return <WhoWeAre />;
 };
 
 export default AboutPage;

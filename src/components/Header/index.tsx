@@ -111,7 +111,7 @@ const Header = () => {
                   <li key={index} className="group relative">
 
                     {/* Top menu item */}
-                    {menuItem.path ? (
+                    {menuItem.path && !menuItem.submenu ? (
                       <Link
                         href={menuItem.path}
                         className={`flex items-center justify-between py-2 text-base lg:inline-flex lg:px-0 lg:py-6 ${
@@ -121,20 +121,38 @@ const Header = () => {
                         }`}
                       >
                         {menuItem.title}
-
-                        {menuItem.submenu && (
+                      </Link>
+                    ) : menuItem.path && menuItem.submenu ? (
+                      <>
+                        {/* Desktop: navigates + hover dropdown */}
+                        <Link
+                          href={menuItem.path}
+                          className={`hidden items-center justify-between py-2 text-base lg:inline-flex lg:px-0 lg:py-6 ${
+                            pathname.startsWith(menuItem.path)
+                              ? "text-primary dark:text-white"
+                              : "text-dark hover:text-primary dark:text-white/70 dark:hover:text-white"
+                          }`}
+                        >
+                          {menuItem.title}
                           <span className="pl-2">
                             <svg width="20" height="20" viewBox="0 0 25 24">
-                              <path
-                                fillRule="evenodd"
-                                clipRule="evenodd"
-                                d="M6.29289 8.8427L12 13.1356L16.2929 8.8427"
-                                fill="currentColor"
-                              />
+                              <path fillRule="evenodd" clipRule="evenodd" d="M6.29289 8.8427L12 13.1356L16.2929 8.8427" fill="currentColor" />
                             </svg>
                           </span>
-                        )}
-                      </Link>
+                        </Link>
+                        {/* Mobile: toggles submenu only */}
+                        <p
+                          onClick={() => handleSubmenu(index)}
+                          className="text-dark group-hover:text-primary flex cursor-pointer items-center justify-between py-2 text-base lg:hidden dark:text-white/70 dark:group-hover:text-white"
+                        >
+                          {menuItem.title}
+                          <span className="pl-2">
+                            <svg width="20" height="20" viewBox="0 0 25 24">
+                              <path fillRule="evenodd" clipRule="evenodd" d="M6.29289 8.8427L12 13.1356L16.2929 8.8427" fill="currentColor" />
+                            </svg>
+                          </span>
+                        </p>
+                      </>
                     ) : (
                       <p
                         onClick={() => handleSubmenu(index)}

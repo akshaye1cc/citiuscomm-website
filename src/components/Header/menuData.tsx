@@ -7,7 +7,7 @@ const menuData: Menu[] = [
     path: "/",
     newTab: false,
   },
- {
+  {
     id: 2,
     title: "About Us",
     newTab: false,
@@ -15,38 +15,31 @@ const menuData: Menu[] = [
       {
         id: 21,
         title: "Who We Are",
-        path: "/about#who-we-are",
+        path: "/about",
         newTab: false,
       },
       {
         id: 22,
         title: "Leadership",
         path: "/leadership",
-        //path: "/about#leadership",
-        newTab: false,
-      },
-      {
-        id: 23,
-        title: "Work With Us",
-        path: "/about#work-with-us",
         newTab: false,
       },
     ],
   },
   {
-    id: 33,
+    id: 3,
     title: "Solutions",
-    path: "/solutions",   // ADD THIS LINE
+    path: "/solutions",
     newTab: false,
     submenu: [
       {
-        id: 331,
+        id: 31,
         title: "Services",
         path: "/solutions/services",
         newTab: false,
       },
       {
-        id: 332,
+        id: 32,
         title: "Industries",
         path: "/solutions/industries",
         newTab: false,
@@ -54,17 +47,17 @@ const menuData: Menu[] = [
     ],
   },
   {
-    id: 3,
+    id: 4,
     title: "Partners",
-    path: "/Partners",
+    path: "/partners",
     newTab: false,
-    
   },
   {
-    id: 4,
+    id: 5,
     title: "Contact Us",
     path: "/contact",
     newTab: false,
   },
 ];
+
 export default menuData;
