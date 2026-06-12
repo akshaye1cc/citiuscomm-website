@@ -2,50 +2,42 @@
 
 import partners from '@/data/partners';
 
-const Partners = () => {
-  return (
-    <section className="relative py-16 md:py-20 overflow-hidden bg-white dark:bg-gray-900">
+const Partners = () => (
+  <section className="relative py-16 md:py-20 lg:py-28 bg-canvas">
+    <div className="container">
 
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 dark:from-gray-900 dark:via-secondary/20 dark:to-gray-800" />
-      <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 dark:bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/10 dark:bg-accent/5 rounded-full blur-3xl" />
-
-      <div className="relative z-10">
-        <div className="container mx-auto px-4 py-11 mb-14 text-center max-w-2xl">
-          <p className="text-sm font-semibold tracking-widest text-primary uppercase mb-3">
-            Our Ecosystem
-          </p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-secondary dark:text-white mb-4 py-2">
-            Built with best-in-class partners
-          </h2>
-          <p className="text-base md:text-lg text-body-color dark:text-body-color-dark">
-            We collaborate with technology, services, and solutions partners across the globe.
-          </p>
-        </div>
-
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 md:gap-8">
-            {partners.map((partner) => (
-              <a
-                key={partner.name}
-                href={partner.url}
-                target={partner.url !== '#' ? '_blank' : '_self'}
-                rel={partner.url !== '#' ? 'noopener noreferrer' : ''}
-                className="group flex items-center justify-center h-36 md:h-40 rounded-3xl bg-white dark:bg-gray-800 border border-stroke-stroke dark:border-stroke-dark p-8 transition-all duration-300 hover:shadow-two hover:shadow-primary/20 hover:-translate-y-2 hover:border-primary dark:hover:border-primary"
-              >
-                <img
-                  src={partner.logo}
-                  alt={partner.name}
-                  className="max-h-20 md:max-h-24 w-auto object-contain transition-all duration-300 group-hover:scale-105"
-                />
-              </a>
-            ))}
-          </div>
-        </div>
+      <div className="mx-auto mb-14 max-w-2xl text-center">
+        <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-primary">
+          Our Ecosystem
+        </p>
+        <h1 className="mb-4 text-3xl font-bold text-fg md:text-4xl lg:text-5xl">
+          Built with best-in-class partners
+        </h1>
+        <p className="text-base text-muted md:text-lg">
+          We collaborate with technology, services, and solutions partners across the globe.
+        </p>
       </div>
 
-    </section>
-  );
-};
+      <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 md:gap-8 lg:grid-cols-5">
+        {partners.map((partner) => (
+          <a
+            key={partner.name}
+            href={partner.url}
+            target={partner.url !== '#' ? '_blank' : '_self'}
+            rel={partner.url !== '#' ? 'noopener noreferrer' : ''}
+            className="group flex h-36 items-center justify-center rounded-2xl border border-edge bg-surface p-8 transition-colors duration-200 hover:border-primary/40 md:h-40"
+          >
+            <img
+              src={partner.logo}
+              alt={partner.name}
+              className="max-h-16 w-auto object-contain transition-transform duration-200 group-hover:scale-105 md:max-h-20"
+            />
+          </a>
+        ))}
+      </div>
+
+    </div>
+  </section>
+);
 
 export default Partners;

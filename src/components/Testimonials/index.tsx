@@ -24,37 +24,40 @@ const metrics = [
 ];
 
 const Testimonials = () => (
-  <section className="relative py-16 md:py-20 lg:py-28 bg-gray-50 dark:bg-gray-900">
+  <section className="relative py-16 md:py-20 lg:py-28 bg-canvas-subtle">
     <div className="container">
 
-      <div className="mb-14 text-center max-w-2xl mx-auto">
-        <h2 className="text-3xl font-bold text-black dark:text-white md:text-4xl mb-4">
+      <div className="mx-auto mb-14 max-w-2xl text-center">
+        <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-primary">
           Delivering at Scale
+        </p>
+        <h2 className="mb-4 text-3xl font-bold text-fg md:text-4xl">
+          Trusted by carriers and enterprises worldwide
         </h2>
-        <p className="text-body-color text-lg">
+        <p className="text-lg text-muted">
           Numbers that reflect decades of execution in the world's most demanding
           telecom environments.
         </p>
       </div>
 
-      <div className="grid grid-cols-2 gap-6 lg:grid-cols-4 mb-16">
+      <div className="mb-16 grid grid-cols-2 gap-6 lg:grid-cols-4">
         {metrics.map(({ number, label, context }) => (
           <div
             key={label}
-            className="rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-8 text-center"
+            className="rounded-2xl border border-edge bg-surface p-8 text-center"
           >
-            <div className="text-4xl font-bold text-primary mb-2">{number}</div>
-            <div className="font-semibold text-black dark:text-white mb-1 text-sm">{label}</div>
-            <div className="text-xs text-body-color">{context}</div>
+            <div className="mb-2 text-4xl font-bold tabular-nums text-primary">{number}</div>
+            <div className="mb-1 text-sm font-semibold text-fg">{label}</div>
+            <div className="text-xs text-muted">{context}</div>
           </div>
         ))}
       </div>
 
       <div className="text-center">
-        <p className="text-xs font-semibold uppercase tracking-[0.15em] text-gray-400 mb-8">
+        <p className="mb-8 text-xs font-semibold uppercase tracking-widest text-faint">
           A selection of our clients
         </p>
-        <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-6">
+        <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
           {clients.map((client) => (
             <img
               key={client.id}

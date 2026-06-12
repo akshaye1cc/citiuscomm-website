@@ -1,0 +1,73 @@
+/*
+  CITIUSCOMM DESIGN SYSTEM — TOKENS v1
+  Brand: Carrier-grade ICT Infrastructure & Telecom Solutions
+  Palette anchors: #156EB0 (blue) · #0A2540 (navy) · #FF7A00 (orange)
+*/
+
+:root {
+  /* ---- Canvas (page backgrounds) ---- */
+  --ds-canvas:        #ffffff;
+  --ds-canvas-subtle: #f8fafc;
+  --ds-canvas-muted:  #f1f5f9;
+
+  /* ---- Surface (cards, panels) ---- */
+  --ds-surface:   #ffffff;
+  --ds-surface-2: #f8fafc;
+
+  /* ---- Borders ---- */
+  --ds-edge:   #e2e8f0;
+  --ds-edge-2: #cbd5e1;
+
+  /* ---- Text ---- */
+  --ds-fg:    #071b2f;   /* deep navy — primary text */
+  --ds-muted: #4a6785;   /* secondary text */
+  --ds-faint: #8ca9c4;   /* tertiary / placeholder */
+
+  /* ---- Brand (light-mode values) ---- */
+  --ds-brand:       #156eb0;
+  --ds-brand-hover: #0d5a94;
+  --ds-brand-muted: #ebf4fb;
+  --ds-navy:        #0a2540;
+  --ds-cta:         #ff7a00;
+  --ds-cta-hover:   #e66f00;
+  --ds-cta-muted:   #fff3e8;
+
+  /* ---- Semantic feedback ---- */
+  --ds-success: #16a34a;
+  --ds-error:   #dc2626;
+  --ds-warning: #d97706;
+}
+
+.dark {
+  /* ---- Canvas ---- */
+  --ds-canvas:        #071b2f;   /* deepest navy — page bg */
+  --ds-canvas-subtle: #0a2540;   /* brand navy — alternate sections */
+  --ds-canvas-muted:  #0f2d4a;
+
+  /* ---- Surface ---- */
+  --ds-surface:   #0f2d4a;   /* card background */
+  --ds-surface-2: #163a5f;   /* elevated cards */
+
+  /* ---- Borders ---- */
+  --ds-edge:   #1e3d5c;
+  --ds-edge-2: #2d5280;
+
+  /* ---- Text ---- */
+  --ds-fg:    #eef4fa;   /* near-white, slight blue tint */
+  --ds-muted: #8ca9c4;
+  --ds-faint: #4a7a9b;
+
+  /* ---- Brand (dark-mode values) ---- */
+  --ds-brand:       #2b8fd0;   /* lightened for contrast on navy */
+  --ds-brand-hover: #3da0e0;
+  --ds-brand-muted: rgba(43, 143, 208, 0.12);
+  --ds-navy:        #0a2540;
+  --ds-cta:         #ff7a00;
+  --ds-cta-hover:   #ff8f1a;
+  --ds-cta-muted:   rgba(255, 122, 0, 0.12);
+
+  /* ---- Semantic feedback ---- */
+  --ds-success: #22c55e;
+  --ds-error:   #f87171;
+  --ds-warning: #fbbf24;
+}

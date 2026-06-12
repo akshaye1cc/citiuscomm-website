@@ -1,7 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap')
-layer(base);
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 @import 'tailwindcss';
+
+@import './tokens.css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -19,67 +20,77 @@ layer(base);
   --color-white: #ffffff;
   --color-black: #121723;
   --color-dark: #1d2430;
-  
-  /* CITIUSCOMM Branding Colors */
-  --color-primary: #156EB0;           /* Main brand blue */
-  --color-secondary: #0A2540;         /* Dark background */
-  --color-accent: #FF7A00;            /* Orange CTA */
-  --color-light-bg: #f8fafc;        /* Light background */
-  --color-text: #111827;              /* Text color */
-  
-  /* Keep existing colors for compatibility */
-  --color-yellow: #fbb040;
-  --color-bg-color-dark: #171c28;
 
-  --color-body-color: #788293;
-  --color-body-color-dark: #959cb1;
+  /* ---- Citiuscomm brand (static — same in light and dark) ---- */
+  --color-primary:   #156EB0;
+  --color-secondary: #0A2540;
+  --color-accent:    #FF7A00;
 
-  --color-stroke-stroke: #e3e8ef;
-  --color-stroke-dark: #353943;
+  /* ---- Design-system semantic tokens (auto-switch with dark mode) ---- */
+  --color-canvas:        var(--ds-canvas);
+  --color-canvas-subtle: var(--ds-canvas-subtle);
+  --color-canvas-muted:  var(--ds-canvas-muted);
+  --color-surface:       var(--ds-surface);
+  --color-surface-2:     var(--ds-surface-2);
+  --color-edge:          var(--ds-edge);
+  --color-edge-2:        var(--ds-edge-2);
+  --color-fg:            var(--ds-fg);
+  --color-muted:         var(--ds-muted);
+  --color-faint:         var(--ds-faint);
+  --color-brand:         var(--ds-brand);
+  --color-brand-muted:   var(--ds-brand-muted);
+  --color-cta:           var(--ds-cta);
+  --color-cta-muted:     var(--ds-cta-muted);
+  --color-ds-success:    var(--ds-success);
+  --color-ds-error:      var(--ds-error);
 
-  --color-gray-50: #f9fafb;
-  --color-gray-100: #f3f4f6;
-  --color-gray-200: #e5e7eb;
-  --color-gray-300: #d1d5db;
-  --color-gray-400: #9ca3af;
-  --color-gray-500: #6b7280;
-  --color-gray-600: #4b5563;
-  --color-gray-700: #374151;
-  --color-gray-800: #1f2937;
-  --color-gray-900: #111827;
-  --color-gray-950: #030712;
-  --color-gray-dark: #1e232e;
+  /* ---- Legacy compatibility ---- */
+  --color-light-bg:         #f8fafc;
+  --color-text:             #111827;
+  --color-yellow:           #fbb040;
+  --color-bg-color-dark:    #171c28;
+  --color-body-color:       #788293;
+  --color-body-color-dark:  #959cb1;
+  --color-stroke-stroke:    #e3e8ef;
+  --color-stroke-dark:      #353943;
+
+  --color-gray-50:    #f9fafb;
+  --color-gray-100:   #f3f4f6;
+  --color-gray-200:   #e5e7eb;
+  --color-gray-300:   #d1d5db;
+  --color-gray-400:   #9ca3af;
+  --color-gray-500:   #6b7280;
+  --color-gray-600:   #4b5563;
+  --color-gray-700:   #374151;
+  --color-gray-800:   #1f2937;
+  --color-gray-900:   #111827;
+  --color-gray-950:   #030712;
+  --color-gray-dark:  #1e232e;
   --color-gray-light: #f0f2f9;
 
-  --shadow-sign-up: 0px 5px 10px rgba(4, 10, 34, 0.2);
-  --shadow-one: 0px 2px 3px rgba(7, 7, 77, 0.05);
-  --shadow-two: 0px 5px 10px rgba(6, 8, 15, 0.1);
-  --shadow-three: 0px 5px 15px rgba(6, 8, 15, 0.05);
-  --shadow-sticky: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
+  --shadow-sign-up:     0px 5px 10px rgba(4, 10, 34, 0.2);
+  --shadow-one:         0px 2px 3px rgba(7, 7, 77, 0.05);
+  --shadow-two:         0px 5px 10px rgba(6, 8, 15, 0.1);
+  --shadow-three:       0px 5px 15px rgba(6, 8, 15, 0.05);
+  --shadow-sticky:      inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
   --shadow-sticky-dark: inset 0 -1px 0 0 rgba(255, 255, 255, 0.1);
-  --shadow-feature-2: 0px 10px 40px rgba(48, 86, 211, 0.12);
-  --shadow-submit: 0px 5px 20px rgba(4, 10, 34, 0.1);
+  --shadow-feature-2:   0px 10px 40px rgba(48, 86, 211, 0.12);
+  --shadow-submit:      0px 5px 20px rgba(4, 10, 34, 0.1);
   --shadow-submit-dark: 0px 5px 20px rgba(4, 10, 34, 0.1);
-  --shadow-btn: 0px 1px 2px rgba(4, 10, 34, 0.15);
-  --shadow-btn-hover: 0px 1px 2px rgba(0, 0, 0, 0.15);
-  --shadow-btn-light: 0px 1px 2px rgba(0, 0, 0, 0.1);
-
-  --drop-shadow-three: 0px 5px 15px rgba(6, 8, 15, 0.05);
+  --shadow-btn:         0px 1px 2px rgba(4, 10, 34, 0.15);
+  --shadow-btn-hover:   0px 1px 2px rgba(0, 0, 0, 0.15);
+  --shadow-btn-light:   0px 1px 2px rgba(0, 0, 0, 0.1);
+  --drop-shadow-three:  0px 5px 15px rgba(6, 8, 15, 0.05);
 }
 
+/* ---- Container ---- */
 @utility container {
   margin-inline: auto;
   padding-inline: 1rem;
+  max-width: 1200px;
 }
 
-/*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
+/* ---- Tailwind v4 border-color compatibility ---- */
 @layer base {
   *,
   ::after,
@@ -90,11 +101,11 @@ layer(base);
   }
 }
 
+/* ---- Header utilities ---- */
 @utility sticky {
   & .header-logo {
     @apply py-5 lg:py-2;
   }
-
   & .menu-scroll.active {
     @apply opacity-70;
   }
@@ -130,139 +141,54 @@ layer(base);
   }
 }
 
+/* ---- Base typography ---- */
 @layer base {
-  /* CITIUSCOMM Typography */
   body {
     font-family: "Inter", sans-serif;
-    color: var(--color-text);
+    color: var(--ds-fg);
+    background-color: var(--ds-canvas);
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
-    color: var(--color-text);
+    color: var(--ds-fg);
   }
 
-  h1 {
-    font-size: 3rem;
-    font-weight: 800;
-  }
-
-  h2 {
-    font-size: 2.25rem;
-    font-weight: 700;
-  }
-
-  h3 {
-    font-size: 1.875rem;
-    font-weight: 700;
-  }
-
-  /* Links */
-  a {
-    color: var(--color-primary);
-    transition: color 0.3s ease;
-  }
-
-  a:hover {
-    color: var(--color-secondary);
-  }
-
-  /* Primary Buttons */
-  button, .btn, .button {
-    background-color: var(--color-primary);
-    color: var(--color-white);
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-weight: 600;
-  }
-
-  button:hover, .btn:hover, .button:hover {
-    background-color: var(--color-secondary);
-  }
-
-  /* Accent/CTA Buttons */
-  .btn-accent, .button-accent, button.accent {
-    background-color: var(--color-accent);
-    color: var(--color-white);
-  }
-
-  .btn-accent:hover, .button-accent:hover, button.accent:hover {
-    background-color: #E66F00;
-  }
-
-  /* Secondary Buttons */
-  .btn-secondary, .button-secondary, button.secondary {
-    background-color: var(--color-secondary);
-    color: var(--color-white);
-  }
-
-  .btn-secondary:hover, .button-secondary:hover, button.secondary:hover {
-    opacity: 0.9;
-  }
-
-  /* Form Elements */
-  input, textarea, select {
-    border: 1px solid var(--color-gray-200);
-    padding: 0.5rem;
-    border-radius: 0.375rem;
-    font-family: "Inter", sans-serif;
-    transition: border-color 0.3s ease;
-  }
-
-  input:focus, textarea:focus, select:focus {
+  input:focus,
+  textarea:focus,
+  select:focus {
     outline: none;
     border-color: var(--color-primary);
     box-shadow: 0 0 0 3px rgba(21, 110, 176, 0.1);
   }
+}
 
-  /* Section Backgrounds */
-  .bg-primary {
-    background-color: var(--color-primary);
+/* ---- Scroll-reveal animation ---- */
+@keyframes ds-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
   }
-
-  .bg-secondary {
-    background-color: var(--color-secondary);
-  }
-
-  .bg-accent {
-    background-color: var(--color-accent);
-  }
-
-  .bg-light {
-    background-color: var(--color-light-bg);
-  }
-
-  /* Text Colors */
-  .text-primary {
-    color: var(--color-primary);
-  }
-
-  .text-secondary {
-    color: var(--color-secondary);
-  }
-
-  .text-accent {
-    color: var(--color-accent);
-  }
-
-  /* Card Styling */
-  .card {
-    background-color: var(--color-white);
-    border: 1px solid var(--color-gray-200);
-    border-radius: 0.5rem;
-    padding: 1.5rem;
-    transition: all 0.3s ease;
-    box-shadow: var(--shadow-one);
-  }
-
-  .card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-two);
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
+@keyframes ds-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.ds-reveal {
+  opacity: 0;
+}
+.ds-reveal.ds-visible {
+  animation: ds-fade-up 0.45s ease-out both;
+}
+
+/* ---- Checkbox ---- */
 @layer components {
   input[type="checkbox"]:checked ~ label span svg {
     @apply inline-flex;
