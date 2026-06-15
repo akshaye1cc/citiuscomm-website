@@ -1,5 +1,8 @@
 import Button from "@/components/ui/Button";
 import Badge from "@/components/ui/Badge";
+import Counter from "@/components/ui/Counter";
+import SectionPattern from "@/components/ui/SectionPattern";
+import NetworkVisual from "@/components/ui/NetworkVisual";
 
 const stats = [
   { num: "100K+", label: "Network Sites" },
@@ -11,8 +14,10 @@ const stats = [
 const Hero = () => (
   <section
     id="home"
-    className="relative overflow-hidden bg-canvas pb-16 pt-[120px] md:pb-[120px] md:pt-[150px] xl:pb-[160px] xl:pt-[180px]"
+    className="relative overflow-hidden bg-canvas pb-16 pt-[120px] md:pb-20 md:pt-[150px] xl:pt-[180px]"
   >
+    <SectionPattern />
+
     <div className="container relative z-10">
       <div className="mx-auto max-w-[820px] text-center">
 
@@ -46,18 +51,24 @@ const Hero = () => (
             Explore Solutions
           </Button>
         </div>
+      </div>
 
-        <div className="mx-auto mt-16 border-t border-edge pt-10">
-          <dl className="flex flex-wrap justify-center gap-x-10 gap-y-6">
-            {stats.map(({ num, label }) => (
-              <div key={label} className="text-center">
-                <dt className="text-2xl font-bold tabular-nums text-fg sm:text-3xl">{num}</dt>
-                <dd className="mt-0.5 text-sm text-muted">{label}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
+      {/* Signature visual: the network we build, end to end */}
+      <div className="mt-14 flex justify-center overflow-hidden md:mt-20">
+        <NetworkVisual className="w-full min-w-[760px] max-w-[1180px]" />
+      </div>
 
+      <div className="mx-auto mt-12 max-w-[820px] border-t border-edge pt-10 md:mt-16">
+        <dl className="flex flex-wrap justify-center gap-x-10 gap-y-6">
+          {stats.map(({ num, label }) => (
+            <div key={label} className="text-center">
+              <dt className="text-2xl font-bold text-fg sm:text-3xl">
+                <Counter value={num} />
+              </dt>
+              <dd className="mt-0.5 text-sm text-muted">{label}</dd>
+            </div>
+          ))}
+        </dl>
       </div>
     </div>
   </section>

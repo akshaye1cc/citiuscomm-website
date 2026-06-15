@@ -1,4 +1,5 @@
-import clients from "@/data/clients";
+import Counter from "@/components/ui/Counter";
+import Reveal from "@/components/ui/Reveal";
 
 const metrics = [
   {
@@ -24,7 +25,7 @@ const metrics = [
 ];
 
 const Testimonials = () => (
-  <section className="relative py-16 md:py-20 lg:py-28 bg-canvas-subtle">
+  <section className="relative bg-canvas-subtle py-16 md:py-20 lg:py-28">
     <div className="container">
 
       <div className="mx-auto mb-14 max-w-2xl text-center">
@@ -35,38 +36,23 @@ const Testimonials = () => (
           Trusted by carriers and enterprises worldwide
         </h2>
         <p className="text-lg text-muted">
-          Numbers that reflect decades of execution in the world's most demanding
+          Numbers that reflect decades of execution in the world&apos;s most demanding
           telecom environments.
         </p>
       </div>
 
-      <div className="mb-16 grid grid-cols-2 gap-6 lg:grid-cols-4">
-        {metrics.map(({ number, label, context }) => (
-          <div
-            key={label}
-            className="rounded-2xl border border-edge bg-surface p-8 text-center"
-          >
-            <div className="mb-2 text-4xl font-bold tabular-nums text-primary">{number}</div>
-            <div className="mb-1 text-sm font-semibold text-fg">{label}</div>
-            <div className="text-xs text-muted">{context}</div>
-          </div>
+      <div className="grid grid-cols-2 gap-6 lg:grid-cols-4">
+        {metrics.map(({ number, label, context }, i) => (
+          <Reveal key={label} delay={i * 0.08}>
+            <div className="ds-sheen relative h-full overflow-hidden rounded-2xl border border-edge bg-surface p-8 text-center transition-colors duration-200 hover:border-primary/40">
+              <div className="mb-2 text-4xl font-bold text-primary">
+                <Counter value={number} />
+              </div>
+              <div className="mb-1 text-sm font-semibold text-fg">{label}</div>
+              <div className="text-xs text-muted">{context}</div>
+            </div>
+          </Reveal>
         ))}
-      </div>
-
-      <div className="text-center">
-        <p className="mb-8 text-xs font-semibold uppercase tracking-widest text-faint">
-          A selection of our clients
-        </p>
-        <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
-          {clients.map((client) => (
-            <img
-              key={client.id}
-              src={client.logo}
-              alt={client.title}
-              className="h-8 w-auto object-contain opacity-50 grayscale transition-all duration-300 hover:opacity-80 hover:grayscale-0"
-            />
-          ))}
-        </div>
       </div>
 
     </div>

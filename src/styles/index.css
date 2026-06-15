@@ -164,28 +164,188 @@
   }
 }
 
-/* ---- Scroll-reveal animation ---- */
-@keyframes ds-fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+/* ================================================================
+   Motion system
+   - .ds-reveal[-left|-right|-scale] + .ds-visible → scroll reveals
+   - .ds-flow      → light pulse traveling along an SVG path
+                     (path needs pathLength={100})
+   - .ds-ping      → expanding ring on SVG network nodes
+   - .ds-draw      → icons draw their strokes when revealed
+                     (shapes need pathLength={100})
+   - .ds-marquee-track → infinite logo scroll
+   - .ds-dots      → dot-grid section background (color via text-*)
+   - .ds-sheen     → gradient sweep across a card on hover
+   ================================================================ */
 
+@keyframes ds-fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes ds-fade-left {
+  from { opacity: 0; transform: translateX(-28px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes ds-fade-right {
+  from { opacity: 0; transform: translateX(28px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes ds-scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
 @keyframes ds-fade-in {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
 
-.ds-reveal {
+.ds-reveal,
+.ds-reveal-left,
+.ds-reveal-right,
+.ds-reveal-scale {
   opacity: 0;
 }
 .ds-reveal.ds-visible {
-  animation: ds-fade-up 0.45s ease-out both;
+  animation: ds-fade-up 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.ds-reveal-left.ds-visible {
+  animation: ds-fade-left 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.ds-reveal-right.ds-visible {
+  animation: ds-fade-right 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.ds-reveal-scale.ds-visible {
+  animation: ds-scale-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Light pulse traveling along an SVG path (pathLength=100) */
+@keyframes ds-flow {
+  from { stroke-dashoffset: 100; }
+  to   { stroke-dashoffset: 0; }
+}
+.ds-flow {
+  stroke-dasharray: 16 84;
+  stroke-dashoffset: 100;
+  animation: ds-flow 3.6s linear infinite;
+}
+
+/* Expanding ping ring on network nodes */
+@keyframes ds-ping {
+  0%   { transform: scale(0.6); opacity: 0.55; }
+  80%  { transform: scale(2);   opacity: 0; }
+  100% { transform: scale(2);   opacity: 0; }
+}
+.ds-ping {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: ds-ping 2.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Gentle float for decorative elements */
+@keyframes ds-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+.ds-float {
+  animation: ds-float 6s ease-in-out infinite;
+}
+
+/* Stroke draw-on for line icons (shapes need pathLength=100) */
+@keyframes ds-draw {
+  to { stroke-dashoffset: 0; }
+}
+.ds-draw :is(path, circle, rect, line, polyline, ellipse) {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  fill: none;
+}
+.ds-draw.ds-visible :is(path, circle, rect, line, polyline, ellipse),
+.ds-visible .ds-draw :is(path, circle, rect, line, polyline, ellipse) {
+  animation: ds-draw 1.2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+/* Logo marquee */
+@keyframes ds-marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+.ds-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: ds-marquee 36s linear infinite;
+  will-change: transform;
+}
+.ds-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* Dot-grid background — color/opacity via text utilities */
+.ds-dots {
+  background-image: radial-gradient(circle, currentColor 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+.ds-dots-fade {
+  -webkit-mask-image: radial-gradient(ellipse 70% 65% at 50% 35%, black 30%, transparent 100%);
+  mask-image: radial-gradient(ellipse 70% 65% at 50% 35%, black 30%, transparent 100%);
+}
+
+/* Gradient sheen sweep on hover (parent needs relative + overflow-hidden) */
+.ds-sheen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(21, 110, 176, 0.07) 50%,
+    transparent 60%
+  );
+  transform: translateX(-150%);
+  transition: transform 0.8s ease;
+  pointer-events: none;
+}
+.dark .ds-sheen::before {
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(140, 197, 235, 0.06) 50%,
+    transparent 60%
+  );
+}
+.ds-sheen:hover::before {
+  transform: translateX(150%);
+}
+
+/* Reduced motion: show everything, animate nothing */
+@media (prefers-reduced-motion: reduce) {
+  .ds-reveal,
+  .ds-reveal-left,
+  .ds-reveal-right,
+  .ds-reveal-scale {
+    opacity: 1;
+  }
+  .ds-reveal.ds-visible,
+  .ds-reveal-left.ds-visible,
+  .ds-reveal-right.ds-visible,
+  .ds-reveal-scale.ds-visible,
+  .ds-flow,
+  .ds-ping,
+  .ds-float,
+  .ds-marquee-track {
+    animation: none;
+  }
+  .ds-flow {
+    stroke-dasharray: none;
+    stroke-dashoffset: 0;
+    opacity: 0.5;
+  }
+  .ds-draw :is(path, circle, rect, line, polyline, ellipse) {
+    stroke-dasharray: none;
+    stroke-dashoffset: 0;
+    animation: none;
+  }
+  .ds-sheen::before {
+    display: none;
+  }
 }
 
 /* ---- Checkbox ---- */

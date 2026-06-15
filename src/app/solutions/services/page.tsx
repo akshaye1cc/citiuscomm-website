@@ -1,216 +1,90 @@
-'use client';
-
-import Link from "next/link";
 import PageHero from "@/components/PageHero";
+import CtaBand from "@/components/CtaBand";
+import Reveal from "@/components/ui/Reveal";
+import { CheckIcon } from "@/components/ui/icons";
+import { pillars } from "@/data/solutions";
+import ServicesNav from "./ServicesNav";
 
-const Services = () => {
-  const servicesDetail = [
-    {
-      id: 1,
-      title: "Digital Transformation",
-      shortDesc: "Transform your business with cutting-edge digital solutions",
-      fullDesc: "Our digital transformation services help organizations modernize operations, improve customer experiences, and unlock new revenue streams. We provide end-to-end solutions from strategy to implementation, ensuring smooth transitions and measurable results.",
-      benefits: [
-        "Process optimization and automation",
-        "Enhanced customer engagement",
-        "Improved operational efficiency",
-        "Cost reduction and ROI improvement",
-        "Scalable technology infrastructure"
-      ]
-    },
-    {
-      id: 2,
-      title: "Business Analytics",
-      shortDesc: "Data-driven insights for smarter decisions",
-      fullDesc: "Transform raw data into actionable insights with our advanced analytics solutions. We help businesses understand trends, predict outcomes, and make informed decisions that drive growth and competitive advantage.",
-      benefits: [
-        "Real-time data visualization",
-        "Predictive analytics and forecasting",
-        "Custom dashboard development",
-        "Data quality and governance",
-        "Business intelligence strategy"
-      ]
-    },
-    {
-      id: 3,
-      title: "Cloud Solutions",
-      shortDesc: "Scalable infrastructure for modern enterprises",
-      fullDesc: "Migrate, deploy, and manage your applications on secure, scalable cloud platforms. We provide comprehensive cloud services including infrastructure design, migration, optimization, and ongoing management.",
-      benefits: [
-        "Multi-cloud strategy and management",
-        "Application migration services",
-        "Cloud security and compliance",
-        "Cost optimization",
-        "24/7 monitoring and support"
-      ]
-    },
-    {
-      id: 4,
-      title: "Cybersecurity",
-      shortDesc: "Protect your digital assets from threats",
-      fullDesc: "Comprehensive cybersecurity solutions to protect your organization from evolving threats. From security assessments to incident response, we ensure your data and systems remain secure and compliant.",
-      benefits: [
-        "Vulnerability assessments",
-        "Security architecture design",
-        "Compliance management",
-        "Incident response planning",
-        "Security awareness training"
-      ]
-    },
-    {
-      id: 5,
-      title: "Software Development",
-      shortDesc: "Custom solutions built for your needs",
-      fullDesc: "Our experienced development team builds robust, scalable, and innovative software solutions. Whether you need web, mobile, or enterprise applications, we deliver quality software that drives business value.",
-      benefits: [
-        "Full-stack web development",
-        "Mobile app development",
-        "Enterprise software solutions",
-        "API development and integration",
-        "Legacy system modernization"
-      ]
-    },
-    {
-      id: 6,
-      title: "AI & Automation",
-      shortDesc: "Intelligent solutions for efficiency",
-      fullDesc: "Leverage artificial intelligence and automation to optimize operations, enhance customer experiences, and unlock new insights. Our AI solutions are tailored to your specific business challenges.",
-      benefits: [
-        "Machine learning model development",
-        "Process automation",
-        "Natural language processing",
-        "Computer vision solutions",
-        "RPA implementation"
-      ]
-    }
-  ];
-
-  return (
-  <main>
-  {/* Hero Section */}
-<PageHero
-  title="Our"
-  highlight="Services"
-  description="Comprehensive solutions tailored to meet your business challenges and drive sustainable growth through technology, strategy, and innovation."
-/>
-      {/* Services Detail Section */}
-      <section className="relative z-10 bg-white px-4 py-16 dark:bg-gray-800 md:py-20 lg:py-28">
-        <div className="container">
-          <div className="mx-auto max-w-6xl">
-            <div className="space-y-16">
-              {servicesDetail.map((service, index) => (
-                <div
-                  key={service.id}
-                  className="rounded-2xl border border-gray-200 bg-gray-50 p-8 dark:border-gray-700 dark:bg-gray-900 md:p-12"
-                >
-                  {/* Header */}
-                  <div className="flex items-start gap-0 md:gap-0">
-                    <div className="flex-shrink-0 text-5xl md:text-6xl"></div>
-                    <div className="flex-1">
-                      <h2 className="mb-2 text-3xl font-bold text-text dark:text-white md:text-4xl">
-                        {service.title}
-                      </h2>
-                      <p className="text-lg text-gray-600 dark:text-gray-400">
-                        {service.shortDesc}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Description */}
-                  <div className="mt-8 space-y-6">
-                    <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-                      {service.fullDesc}
-                    </p>
-
-                    {/* Benefits */}
-                    <div>
-                      <h3 className="mb-4 text-xl font-bold text-text dark:text-white">
-                        Key Benefits
-                      </h3>
-                      <div className="grid gap-3 md:grid-cols-2">
-                        {service.benefits.map((benefit, bIndex) => (
-                          <div
-                            key={bIndex}
-                            className="flex items-start gap-3"
-                          >
-                            <div className="flex-shrink-0 pt-1">
-                              <svg className="h-5 w-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
-                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                              </svg>
-                            </div>
-                            <span className="text-gray-700 dark:text-gray-300">
-                              {benefit}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Bottom CTA */}
-            <div className="mt-16 rounded-2xl bg-gradient-to-r from-primary to-secondary px-8 py-12 text-center dark:from-primary dark:to-secondary md:px-12">
-              <h3 className="mb-4 text-2xl font-bold text-white md:text-3xl">
-                Need a Custom Solution?
-              </h3>
-              <p className="mb-8 text-gray-100">
-                Our team can design a tailored service package that matches your unique requirements
-              </p>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 rounded-lg bg-white px-8 py-4 text-base font-bold text-primary transition-all hover:bg-gray-100 hover:shadow-lg"
-              >
-                Contact Our Experts
-                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Related Links */}
-      <section className="relative z-10 bg-light-bg px-4 py-16 dark:bg-gray-900 md:py-20">
-        <div className="container">
-          <div className="mx-auto max-w-5xl">
-            <h2 className="mb-8 text-center text-3xl font-bold text-text dark:text-white md:text-4xl">
-              Explore More
-            </h2>
-            <div className="grid gap-6 md:grid-cols-2">
-              <Link
-                href="/solutions/industries"
-                className="rounded-xl border-2 border-primary p-8 transition-all hover:bg-primary hover:text-white"
-              >
-                <h3 className="mb-2 text-2xl font-bold">Industries We Serve</h3>
-                <p className="mb-4">
-                  Discover how we've helped businesses across 15+ industries achieve their goals
-                </p>
-                <span className="inline-flex items-center gap-2 text-primary transition-colors group-hover:text-white">
-                  Learn more →
-                </span>
-              </Link>
-
-              <Link
-                href="/about"
-                className="rounded-xl border-2 border-primary p-8 transition-all hover:bg-primary hover:text-white"
-              >
-                <h3 className="mb-2 text-2xl font-bold">About CITIUSCOMM</h3>
-                <p className="mb-4">
-                  Meet our team and learn about our 10+ years of experience and success
-                </p>
-                <span className="inline-flex items-center gap-2 text-primary transition-colors group-hover:text-white">
-                  Learn more →
-                </span>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-  );
+export const metadata = {
+  title: "Services | Citiuscomm",
+  description:
+    "Detailed capabilities across data center, ICT infrastructure, cybersecurity, 5G networks, cloud engineering, and NOC operations.",
 };
 
-export default Services;
+const ServicesPage = () => (
+  <main>
+    <PageHero
+      eyebrow="Our Services"
+      title="Six Practices."
+      highlight="One Accountable Partner."
+      description="Every practice is delivered turnkey — design, sourcing, deployment, integration, and operations — so there is always a single throat to choke and a single team to call."
+    />
+
+    <section className="relative bg-canvas py-16 md:py-20 lg:py-24">
+      <div className="container">
+        <div className="grid gap-12 lg:grid-cols-[240px_minmax(0,1fr)]">
+
+          {/* Sticky scrollspy nav (desktop) */}
+          <aside className="hidden lg:block">
+            <div className="sticky top-28">
+              <ServicesNav items={pillars.map(({ slug, title }) => ({ slug, title }))} />
+            </div>
+          </aside>
+
+          {/* Service detail sections */}
+          <div className="space-y-10">
+            {pillars.map((pillar, i) => (
+              <Reveal key={pillar.slug} delay={i === 0 ? 0 : 0.05}>
+                <article
+                  id={pillar.slug}
+                  className="ds-sheen relative scroll-mt-28 overflow-hidden rounded-2xl border border-edge bg-surface p-8 transition-colors duration-200 hover:border-primary/30 md:p-10"
+                >
+                  <header className="mb-6 flex flex-col gap-5 sm:flex-row sm:items-center">
+                    <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-brand-muted text-primary">
+                      {pillar.icon}
+                    </div>
+                    <div>
+                      <h2 className="mb-1 text-2xl font-bold text-fg md:text-3xl">
+                        {pillar.title}
+                      </h2>
+                      <p className="text-sm font-medium text-primary">{pillar.tagline}</p>
+                    </div>
+                  </header>
+
+                  <p className="mb-8 max-w-3xl text-base leading-relaxed text-muted md:text-lg">
+                    {pillar.description}
+                  </p>
+
+                  <div className="border-t border-edge pt-6">
+                    <h3 className="mb-4 text-xs font-semibold uppercase tracking-widest text-faint">
+                      What&apos;s included
+                    </h3>
+                    <ul className="grid grid-cols-1 gap-x-8 gap-y-3 sm:grid-cols-2">
+                      {pillar.points.map((point) => (
+                        <li key={point} className="flex items-start gap-3 text-base text-muted">
+                          <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-brand-muted text-primary">
+                            <CheckIcon size={14} strokeWidth={2.4} />
+                          </span>
+                          {point}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <CtaBand
+      title="Need a capability you don't see here?"
+      description="Our OEM ecosystem and engineering bench go deep — if it connects, computes, or secures, we can likely deliver it."
+      primaryLabel="Ask Us Directly"
+    />
+  </main>
+);
+
+export default ServicesPage;

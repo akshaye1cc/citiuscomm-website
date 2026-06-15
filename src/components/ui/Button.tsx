@@ -6,6 +6,8 @@ const variants = {
   cta:     "bg-accent text-white hover:bg-[#e66f00]",
   ghost:   "border border-edge bg-transparent text-fg hover:border-primary hover:text-primary",
   outline: "border border-primary bg-transparent text-primary hover:bg-primary hover:text-white",
+  /* for use on dark navy sections regardless of theme */
+  inverse: "border border-white/30 bg-transparent text-white hover:border-white hover:bg-white/10",
 } as const;
 
 const sizes = {

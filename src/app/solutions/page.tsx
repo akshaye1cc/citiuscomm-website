@@ -1,194 +1,112 @@
-'use client';
-
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
+import CtaBand from "@/components/CtaBand";
+import SectionTitle from "@/components/Common/SectionTitle";
+import Reveal from "@/components/ui/Reveal";
+import Button from "@/components/ui/Button";
+import { pillars } from "@/data/solutions";
+import { industries } from "@/data/industries";
 
-const Solutions = () => {
-  const services = [
-    {
-      title: "Digital Transformation",
-      description: "Transform your business with cutting-edge digital solutions and strategies."
-    },
-    {
-      title: "Business Analytics",
-      description: "Data-driven insights to optimize your business operations and decision making."
-    },
-    {
-      title: "Cloud Solutions",
-      description: "Scalable cloud infrastructure and migration services for modern enterprises."
-    },
-    {
-      title: "Cybersecurity",
-      description: "Comprehensive security solutions to protect your digital assets and data."
-    },
-    {
-      title: "Software Development",
-      description: "Custom software solutions tailored to your specific business needs."
-    },
-    {
-      title: "AI & Automation",
-      description: "Intelligent automation to streamline processes and improve efficiency."
-    }
-  ];
-
-  const industries = [
-    "Finance & Banking",
-    "Healthcare",
-    "Retail & E-commerce",
-    "Manufacturing",
-    "Telecommunications",
-    "Education",
-    "Government",
-    "Insurance",
-    "Media & Entertainment",
-    "Real Estate",
-    "Energy & Utilities",
-    "Hospitality",
-    "Logistics & Transportation",
-    "Automotive",
-    "Pharmaceuticals"
-  ];
-
-  return (
-    <main>
-      {/* Hero Section */}
-      <PageHero
-  title="Our"
-  highlight="Solutions"
-  description="Comprehensive services designed to drive innovation and transform your business across every industry."
-/>
-
-      {/* Services Section */}
-      <section className="relative z-10 bg-white px-4 py-16 dark:bg-gray-800 md:py-20 lg:py-28">
-        <div className="container">
-          <div className="mx-auto max-w-5xl">
-            {/* Section Header */}
-            <div className="mb-16 text-center">
-              <h2 className="mb-4 text-3xl font-bold text-text dark:text-white md:text-4xl">
-                Core Services
-              </h2>
-              <p className="text-lg text-gray-600 dark:text-gray-400">
-                Explore our comprehensive suite of solutions designed for modern enterprises
-              </p>
-            </div>
-
-            {/* Services Grid */}
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {services.map((service, index) => (
-                <div
-                  key={index}
-                  className="group rounded-xl border border-gray-200 bg-white p-8 transition-all duration-300 hover:border-primary hover:shadow-xl dark:border-gray-700 dark:bg-gray-900"
-                >
-                  <h3 className="mb-3 text-xl font-bold text-text dark:text-white">
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-400">
-                    {service.description}
-                  </p>
-                  <div className="mt-6 inline-block">
-                    <Link
-                      href="/solutions/services"
-                      className="text-sm font-semibold text-primary transition-colors hover:text-secondary"
-                    >
-                      Learn more →
-                    </Link>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* CTA Button */}
-            <div className="mt-12 text-center">
-              <Link
-                href="/solutions/services"
-                className="inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-4 text-base font-bold text-white transition-all hover:bg-secondary hover:shadow-lg"
-              >
-                Explore All Services
-                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Industries Section */}
-      <section className="relative z-10 bg-light-bg px-4 py-16 dark:bg-gray-900 md:py-20 lg:py-28">
-        <div className="container">
-          <div className="mx-auto max-w-5xl">
-            {/* Section Header */}
-            <div className="mb-16 text-center">
-              <h2 className="mb-4 text-3xl font-bold text-text dark:text-white md:text-4xl">
-                Industries We Serve
-              </h2>
-              <p className="text-lg text-gray-600 dark:text-gray-400">
-                With 10+ years of experience, we've successfully served clients across diverse sectors
-              </p>
-            </div>
-
-            {/* Industries Grid */}
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {industries.map((industry, index) => (
-                <div
-                  key={index}
-                  className="group flex items-center rounded-lg border border-gray-200 bg-white px-6 py-4 transition-all duration-300 hover:border-primary hover:bg-primary hover:text-white dark:border-gray-700 dark:bg-gray-800"
-                >
-                  <div className="mr-4 flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-white transition-all group-hover:bg-white group-hover:text-primary dark:bg-gray-700 dark:group-hover:bg-primary">
-                    <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
-                  </div>
-                  <span className="text-lg font-semibold">{industry}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* CTA Button */}
-            <div className="mt-12 text-center">
-              <Link
-                href="/solutions/industries"
-                className="inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-4 text-base font-bold text-white transition-all hover:bg-secondary hover:shadow-lg"
-              >
-                Learn More About Industries
-                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Call to Action */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-primary to-secondary px-4 py-16 dark:from-primary dark:to-secondary md:py-20 lg:py-24">
-        <div className="container relative z-10">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="mb-4 text-3xl font-bold text-white md:text-4xl">
-              Ready to Transform Your Business?
-            </h2>
-            <p className="mb-8 text-lg text-gray-100">
-              Connect with our experts to discover how CITIUSCOMM can drive growth and innovation for your organization.
-            </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 rounded-lg bg-white px-8 py-4 text-base font-bold text-primary transition-all hover:bg-gray-100 hover:shadow-lg"
-            >
-              Start Your Journey
-              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </Link>
-          </div>
-        </div>
-
-        {/* Decorative Background */}
-        <div className="absolute left-0 top-1/2 z-0 -translate-y-1/2 opacity-10">
-          <div className="h-96 w-96 rounded-full bg-white blur-3xl"></div>
-        </div>
-      </section>
-    </main>
-  );
+export const metadata = {
+  title: "Solutions | Citiuscomm",
+  description:
+    "Data center, ICT infrastructure, cybersecurity, 5G networks, cloud engineering, and NOC operations — carrier-grade solutions delivered end to end.",
 };
 
-export default Solutions;
+const SolutionsPage = () => (
+  <main>
+    <PageHero
+      eyebrow="What We Do"
+      title="Solutions Built for"
+      highlight="Carrier-Grade Scale"
+      description="From the data center to the radio edge — six practices that design, deploy, and operate the infrastructure connectivity runs on."
+    />
+
+    {/* Core practices */}
+    <section className="relative bg-canvas py-16 md:py-20 lg:py-28">
+      <div className="container">
+        <SectionTitle
+          eyebrow="Core Practices"
+          title="One Partner, Six Disciplines"
+          paragraph="Every engagement is delivered turnkey — sourcing, deployment, integration, and operations under a single point of accountability."
+          center
+          width="640px"
+        />
+
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+          {pillars.map((pillar, i) => (
+            <Reveal key={pillar.slug} delay={i * 0.07}>
+              <Link
+                href={`/solutions/services#${pillar.slug}`}
+                className="ds-sheen group relative flex h-full flex-col overflow-hidden rounded-2xl border border-edge bg-surface p-8 transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5"
+              >
+                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-brand-muted text-primary">
+                  {pillar.icon}
+                </div>
+                <h3 className="mb-2 text-xl font-bold text-fg">{pillar.title}</h3>
+                <p className="mb-6 flex-1 text-base leading-relaxed text-muted">
+                  {pillar.tagline}
+                </p>
+                <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
+                  Learn more
+                  <svg
+                    className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                    viewBox="0 0 24 24"
+                    aria-hidden
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 5l7 7-7 7M4 12h16" />
+                  </svg>
+                </span>
+              </Link>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* Industries strip */}
+    <section className="relative bg-canvas-subtle py-16 md:py-20 lg:py-28">
+      <div className="container">
+        <SectionTitle
+          eyebrow="Industries"
+          title="One Backbone, Every Sector"
+          paragraph="The same carrier-grade delivery model, applied to the sectors where connectivity is mission-critical."
+          center
+          width="620px"
+        />
+
+        <div className="mx-auto grid max-w-5xl grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+          {industries.map(({ title, icon }, i) => (
+            <Reveal key={title} delay={i * 0.04}>
+              <div className="flex h-full items-center gap-3 rounded-xl border border-edge bg-surface px-4 py-3.5 transition-colors duration-200 hover:border-primary/40">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-muted text-primary">
+                  {icon}
+                </span>
+                <span className="text-sm font-semibold leading-snug text-fg">{title}</span>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+
+        <div className="mt-12 text-center">
+          <Button variant="outline" size="md" href="/solutions/industries">
+            See How We Serve Each Sector
+          </Button>
+        </div>
+      </div>
+    </section>
+
+    <CtaBand
+      title="Not sure where to start?"
+      description="Tell us what you're building — our engineers will map the right architecture, OEM platforms, and delivery plan."
+      primaryLabel="Talk to an Engineer"
+      secondaryLabel="See All Services"
+      secondaryHref="/solutions/services"
+    />
+  </main>
+);
+
+export default SolutionsPage;

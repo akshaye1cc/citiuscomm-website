@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Button from "@/components/ui/Button";
 
 const services = [
   "Networking Infrastructure",
@@ -15,7 +16,7 @@ const services = [
 type FormState = "idle" | "submitting" | "success" | "error";
 
 const inputClass =
-  "w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm text-black placeholder-gray-400 transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/10 dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:placeholder-gray-500 dark:focus:border-primary";
+  "w-full rounded-lg border border-edge bg-surface px-4 py-3 text-sm text-fg placeholder:text-faint transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/10";
 
 const ContactForm = () => {
   const [form, setForm] = useState({
@@ -51,15 +52,15 @@ const ContactForm = () => {
 
   if (status === "success") {
     return (
-      <div className="flex flex-col items-center justify-center rounded-2xl border border-green-200 bg-green-50 px-8 py-16 text-center dark:border-green-900 dark:bg-green-950/30">
-        <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/40">
-          <svg className="h-7 w-7 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div className="flex flex-col items-center justify-center rounded-2xl border border-ds-success/30 bg-ds-success/5 px-8 py-16 text-center">
+        <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-ds-success/10">
+          <svg className="h-7 w-7 text-ds-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h3 className="mb-2 text-xl font-bold text-black dark:text-white">Message sent</h3>
-        <p className="text-body-color">
-          Thanks for reaching out. We'll get back to you within 24 hours.
+        <h3 className="mb-2 text-xl font-bold text-fg">Message sent</h3>
+        <p className="text-muted">
+          Thanks for reaching out. We&apos;ll get back to you within 24 hours.
         </p>
         <button
           onClick={() => setStatus("idle")}
@@ -75,8 +76,8 @@ const ContactForm = () => {
     <form onSubmit={handleSubmit} noValidate className="space-y-5">
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
-          <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-black dark:text-white">
-            Name <span className="text-red-500">*</span>
+          <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-fg">
+            Name <span className="text-ds-error">*</span>
           </label>
           <input
             id="name"
@@ -90,8 +91,8 @@ const ContactForm = () => {
           />
         </div>
         <div>
-          <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-black dark:text-white">
-            Email <span className="text-red-500">*</span>
+          <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-fg">
+            Email <span className="text-ds-error">*</span>
           </label>
           <input
             id="email"
@@ -108,7 +109,7 @@ const ContactForm = () => {
 
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
-          <label htmlFor="company" className="mb-1.5 block text-sm font-medium text-black dark:text-white">
+          <label htmlFor="company" className="mb-1.5 block text-sm font-medium text-fg">
             Company
           </label>
           <input
@@ -122,7 +123,7 @@ const ContactForm = () => {
           />
         </div>
         <div>
-          <label htmlFor="service" className="mb-1.5 block text-sm font-medium text-black dark:text-white">
+          <label htmlFor="service" className="mb-1.5 block text-sm font-medium text-fg">
             Service Interest
           </label>
           <select
@@ -141,8 +142,8 @@ const ContactForm = () => {
       </div>
 
       <div>
-        <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-black dark:text-white">
-          Message <span className="text-red-500">*</span>
+        <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-fg">
+          Message <span className="text-ds-error">*</span>
         </label>
         <textarea
           id="message"
@@ -157,28 +158,20 @@ const ContactForm = () => {
       </div>
 
       {status === "error" && (
-        <p className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600 dark:border-red-900 dark:bg-red-950/30 dark:text-red-400">
+        <p className="rounded-lg border border-ds-error/30 bg-ds-error/5 px-4 py-3 text-sm text-ds-error">
           {errorMsg}
         </p>
       )}
 
-      <button
+      <Button
         type="submit"
-        disabled={status === "submitting"}
-        className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-8 py-4 text-base font-semibold text-white transition-colors hover:bg-secondary disabled:opacity-60 sm:w-auto"
+        variant="cta"
+        size="lg"
+        loading={status === "submitting"}
+        className="w-full sm:w-auto"
       >
-        {status === "submitting" ? (
-          <>
-            <svg className="h-4 w-4 animate-spin" fill="none" viewBox="0 0 24 24">
-              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
-            </svg>
-            Sending…
-          </>
-        ) : (
-          "Send Message"
-        )}
-      </button>
+        {status === "submitting" ? "Sending…" : "Send Message"}
+      </Button>
     </form>
   );
 };

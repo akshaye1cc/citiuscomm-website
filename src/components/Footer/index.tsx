@@ -46,9 +46,6 @@ const Footer = () => (
               className="hidden w-auto dark:block"
             />
           </Link>
-          <p className="mb-6 text-sm leading-relaxed text-muted">
-            Carrier-grade ICT infrastructure solutions for telecom operators and enterprises worldwide.
-          </p>
           <a
             href="https://www.linkedin.com/company/citiuscommunications/"
             target="_blank"

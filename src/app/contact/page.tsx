@@ -1,11 +1,15 @@
-
-
-"use client";
-
-import { useTheme } from "next-themes";
 import ContactForm from "@/components/Contact/ContactForm";
+import ContactGlobe from "@/components/Contact/ContactGlobe";
+import Reveal from "@/components/ui/Reveal";
+import Badge from "@/components/ui/Badge";
 
-/* ─── Office Data ─────────────────────────────────────────── */
+export const metadata = {
+  title: "Contact | Citiuscomm",
+  description:
+    "Reach Citiuscomm — offices in Mumbai, Kolkata, Delhi, Singapore, and Dubai. We typically reply within one business day.",
+};
+
+/* ─── Office data ─────────────────────────────────────────── */
 const headquarters = {
   city: "Mumbai",
   label: "Headquarters",
@@ -60,150 +64,69 @@ const branches = [
 
 /* ─── Icons ───────────────────────────────────────────────── */
 const PinIcon = ({ size = 20 }: { size?: number }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
-    <path
-      d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"
-      fill="#4A6CF7"
-    />
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+    <path d="M12 21s-7-5.5-7-11.5a7 7 0 0 1 14 0C19 15.5 12 21 12 21z" />
+    <circle cx="12" cy="9.5" r="2.5" />
   </svg>
 );
 
 const PhoneIcon = () => (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-    <path
-      d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"
-      fill="currentColor"
-      opacity="0.7"
-    />
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+    <path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" />
   </svg>
 );
 
 const MailIcon = () => (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-    <path
-      d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
-      fill="currentColor"
-      opacity="0.7"
-    />
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+    <rect x="3" y="5" width="18" height="14" rx="2" />
+    <path d="M3 7l9 6 9-6" />
   </svg>
 );
 
 const ExternalIcon = () => (
-  <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
-    <path
-      d="M10 2L2 10M10 2H5M10 2V7"
-      stroke="white"
-      strokeWidth="1.6"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
+  <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden>
+    <path d="M10 2L2 10M10 2H5M10 2V7" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
 const LinkedInIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="text-primary">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
     <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.722-2.004 1.419-.103.249-.129.597-.129.946v5.44h-3.554s.05-8.807 0-9.726h3.554v1.375c.427-.659 1.191-1.595 2.897-1.595 2.117 0 3.704 1.385 3.704 4.362v5.584zM5.337 8.855c-1.144 0-1.915-.762-1.915-1.715 0-.957.77-1.715 1.958-1.715 1.187 0 1.914.758 1.939 1.715 0 .953-.752 1.715-1.982 1.715zm1.946 11.597H3.392v-9.726h3.891v9.726zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z" />
   </svg>
 );
 
-/* ─── Decorative SVG shapes ───────────────────────────────── */
-const DecorWave = ({ id, color }: { id: string; color: string }) => (
-  <span className="absolute top-0 right-0 z-[-1] pointer-events-none">
-    <svg width="140" height="80" viewBox="0 0 162 91" fill="none">
-      <g opacity="0.25">
-        <path
-          opacity="0.5"
-          d="M1 89.9999C8 77.3332 27.7 50.7999 50.5 45.9999C79 39.9999 95 41.9999 106 30.4999C117 18.9999 126 -3.50014 149 -3.50014C172 -3.50014 187 4.99986 200.5 -8.50014C214 -22.0001 210.5 -46.0001 244 -37.5001C270.8 -30.7001 307.167 -45 322 -53"
-          stroke={`url(#${id}a)`}
-        />
-        <path
-          opacity="0.5"
-          d="M43 64.9999C50 52.3332 69.7 25.7999 92.5 20.9999C121 14.9999 137 16.9999 148 5.49986C159 -6.00014 168 -28.5001 191 -28.5001C214 -28.5001 229 -20.0001 242.5 -33.5001"
-          stroke={`url(#${id}b)`}
-        />
-      </g>
-      <defs>
-        <linearGradient id={`${id}a`} x1="291" y1="12" x2="179" y2="237" gradientUnits="userSpaceOnUse">
-          <stop offset="0.33" stopColor={color} />
-          <stop offset="1" stopColor={color} stopOpacity="0" />
-        </linearGradient>
-        <linearGradient id={`${id}b`} x1="333" y1="-13" x2="221" y2="212" gradientUnits="userSpaceOnUse">
-          <stop offset="0.33" stopColor={color} />
-          <stop offset="1" stopColor={color} stopOpacity="0" />
-        </linearGradient>
-      </defs>
-    </svg>
-  </span>
-);
-
-const DecorTriangle = ({ id, color }: { id: string; color: string }) => (
-  <span className="absolute bottom-3 left-2 z-[-1] pointer-events-none">
-    <svg width="38" height="44" viewBox="0 0 57 65" fill="none">
-      <path
-        opacity="0.4"
-        d="M0.407629 15.9573L39.1541 64.0714L56.4489 0.160793L0.407629 15.9573Z"
-        fill={`url(#${id})`}
-      />
-      <defs>
-        <linearGradient id={id} x1="-18" y1="55" x2="37" y2="15" gradientUnits="userSpaceOnUse">
-          <stop stopColor={color} stopOpacity="0.62" />
-          <stop offset="1" stopColor={color} stopOpacity="0" />
-        </linearGradient>
-      </defs>
-    </svg>
-  </span>
-);
-
-/* ─── Branch Card (compact 2×2) ───────────────────────────── */
-const BranchCard = ({
-  office,
-  idx,
-  decorColor,
-}: {
-  office: (typeof branches)[0];
-  idx: number;
-  decorColor: string;
-}) => (
-  <div className="shadow-three dark:bg-gray-dark relative z-10 overflow-hidden rounded-sm bg-white p-6 flex flex-col gap-3">
-    <DecorWave id={`bw${idx}`} color={decorColor} />
-    <DecorTriangle id={`bt${idx}`} color={decorColor} />
-
-    {/* Icon + City */}
-    <div className="flex items-center gap-2">
-      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#E8EFFE] dark:bg-white/10">
+/* ─── Branch card ─────────────────────────────────────────── */
+const BranchCard = ({ office }: { office: (typeof branches)[0] }) => (
+  <div className="flex h-full flex-col gap-3 rounded-2xl border border-edge bg-surface p-6 transition-colors duration-200 hover:border-primary/40">
+    <div className="flex items-center gap-2.5">
+      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-muted text-primary">
         <PinIcon size={18} />
       </div>
-      <h3 className="text-lg font-bold text-black dark:text-white leading-tight">
-        {office.city}
-      </h3>
+      <h3 className="text-lg font-bold leading-tight text-fg">{office.city}</h3>
     </div>
 
-    {/* Address */}
-    <p className="border-body-color/20 text-body-color whitespace-pre-line border-b pb-3 text-xs leading-relaxed dark:border-white/20 dark:text-white/65">
+    <p className="whitespace-pre-line border-b border-edge pb-3 text-xs leading-relaxed text-muted">
       {office.address}
     </p>
 
-    {/* Phone */}
-    <div className="flex items-center gap-2 text-xs text-body-color dark:text-white/65">
+    <div className="flex items-center gap-2 text-xs text-muted">
       <PhoneIcon />
       <span>{office.phone}</span>
     </div>
 
-    {/* Email */}
-    <div className="flex items-center gap-2 text-xs">
+    <div className="flex items-center gap-2 text-xs text-muted">
       <MailIcon />
-      <a href={`mailto:${office.email}`} className="text-primary hover:underline truncate">
+      <a href={`mailto:${office.email}`} className="truncate text-primary hover:underline">
         {office.email}
       </a>
     </div>
 
-    {/* Map */}
-    <div className="relative mt-1 overflow-hidden rounded-sm">
+    <div className="relative mt-1 overflow-hidden rounded-lg border border-edge">
       <a
         href={office.mapLink}
         target="_blank"
         rel="noopener noreferrer"
-        className="bg-primary hover:bg-primary/90 absolute top-2 left-2 z-10 flex items-center gap-1 rounded-sm px-2.5 py-1 text-[11px] font-medium text-white shadow transition"
+        className="absolute left-2 top-2 z-10 flex items-center gap-1 rounded-md bg-primary px-2.5 py-1 text-[11px] font-medium text-white shadow transition-colors hover:bg-secondary"
       >
         Open in Maps <ExternalIcon />
       </a>
@@ -221,195 +144,198 @@ const BranchCard = ({
   </div>
 );
 
-/* ─── Main Export ─────────────────────────────────────────── */
+/* ─── Page ────────────────────────────────────────────────── */
+const DOT_FADE =
+  "linear-gradient(to bottom, transparent 0, black 160px, black calc(100% - 160px), transparent 100%)";
+
 export default function Contact() {
-  const { theme } = useTheme();
-  const decorColor = theme === "light" ? "#4A6CF7" : "#ffffff";
-
   return (
-    <>
-    {/* ── Contact Form ── */}
-    <section className="relative py-16 md:py-20 bg-white dark:bg-gray-950 border-b border-gray-200 dark:border-gray-800">
-      <div className="container">
-        <div className="mb-12 text-center">
-          <span className="bg-primary/10 text-primary mb-4 inline-block rounded-full px-5 py-1.5 text-sm font-semibold tracking-wide">
-            Contact Us
-          </span>
-          <h2 className="mb-4 text-3xl font-bold text-black dark:text-white sm:text-4xl">
-            Send Us a Message
-          </h2>
-          <p className="text-body-color mx-auto max-w-xl text-base dark:text-white/70">
-            Tell us about your project and we'll get back to you within 24 hours.
-          </p>
-        </div>
+    <main className="relative bg-canvas">
+      {/* Page-wide dotted texture — fades in at the top and out at the bottom */}
+      <div
+        aria-hidden
+        className="ds-dots pointer-events-none absolute inset-0 z-0 text-edge-2/50"
+        style={{ maskImage: DOT_FADE, WebkitMaskImage: DOT_FADE }}
+      />
 
-        <div className="grid gap-12 lg:grid-cols-5">
-          {/* Form — wider */}
-          <div className="lg:col-span-3">
-            <ContactForm />
-          </div>
-
-          {/* Quick contact info */}
-          <div className="lg:col-span-2 flex flex-col gap-6">
-            <div>
-              <h3 className="mb-4 text-lg font-bold text-black dark:text-white">
-                Or reach us directly
-              </h3>
-              <div className="space-y-4">
-                <a
-                  href="mailto:sales@citiuscomm.com"
-                  className="flex items-center gap-3 rounded-xl border border-gray-200 bg-gray-50 px-5 py-4 text-sm text-black transition-colors hover:border-primary dark:border-gray-700 dark:bg-gray-800 dark:text-white"
-                >
-                  <MailIcon />
-                  sales@citiuscomm.com
-                </a>
-                <a
-                  href="tel:+912262362154"
-                  className="flex items-center gap-3 rounded-xl border border-gray-200 bg-gray-50 px-5 py-4 text-sm text-black transition-colors hover:border-primary dark:border-gray-700 dark:bg-gray-800 dark:text-white"
-                >
-                  <PhoneIcon />
-                  022 62362154 (Mumbai HQ)
-                </a>
-                <a
-                  href="https://www.linkedin.com/company/citiuscommunications/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 rounded-xl border border-gray-200 bg-gray-50 px-5 py-4 text-sm text-black transition-colors hover:border-primary dark:border-gray-700 dark:bg-gray-800 dark:text-white"
-                >
-                  <LinkedInIcon />
-                  LinkedIn
-                </a>
+      {/* Hero — globe + intro */}
+      <section className="relative z-10 overflow-hidden pb-16 pt-[100px] md:pb-24 md:pt-[120px]">
+        <div className="container">
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-8">
+            <Reveal variant="left" className="text-center lg:text-left">
+              <div className="mb-6">
+                <Badge variant="brand" dot>Contact</Badge>
               </div>
-            </div>
-            <div className="rounded-xl border border-primary/20 bg-primary/5 px-5 py-4 text-sm text-body-color dark:bg-primary/10">
-              <strong className="text-black dark:text-white">Response time:</strong> We typically reply within one business day.
-            </div>
+              <h1 className="mb-6 text-4xl font-bold leading-tight text-fg sm:text-5xl md:text-6xl">
+                Let&apos;s Build <span className="text-accent">Together</span>
+              </h1>
+              <p className="mx-auto mb-8 max-w-xl text-lg leading-relaxed text-muted lg:mx-0">
+                From multiple cities across three continents, we keep you connected to the
+                people and partners that move your business forward.
+              </p>
+              <ul className="flex flex-wrap justify-center gap-2.5 lg:justify-start">
+                {["Mumbai", "Kolkata", "Delhi", "Singapore", "Dubai"].map((city) => (
+                  <li
+                    key={city}
+                    className="rounded-full border border-primary/20 bg-brand-muted px-4 py-1.5 text-sm font-medium text-primary"
+                  >
+                    {city}
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+
+            <Reveal variant="scale">
+              <ContactGlobe />
+            </Reveal>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    {/* ── Offices ── */}
-    <section className="relative py-16 md:py-20 lg:py-28">
-      <div className="container">
-
-        {/* ── Section Header ── */}
-        <div className="mb-14 text-center">
-          <span className="bg-primary/10 text-primary mb-4 inline-block rounded-full px-5 py-1.5 text-sm font-semibold tracking-wide">
-            Get In Touch
-          </span>
-          <h2 className="mb-4 text-3xl font-bold text-black dark:text-white sm:text-4xl">
-            Our Global Offices
-          </h2>
-          <p className="text-body-color mx-auto max-w-2xl text-base leading-relaxed dark:text-white/70">
-            With a strong presence across India and growing international operations,
-            Citiuscomm is always close to where you need us most.
-          </p>
-        </div>
-
-        {/* ── Main Layout: HQ left | 2×2 grid right ── */}
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-
-          {/* ── LEFT: Headquarters Card ── */}
-          <div className="shadow-three dark:bg-gray-dark relative z-10 overflow-hidden rounded-sm bg-white p-8 flex flex-col">
-            <DecorWave id="hqwave" color={decorColor} />
-            <DecorTriangle id="hqtri" color={decorColor} />
-
-            {/* HQ Badge + Title */}
-            <div className="mb-6 flex items-center gap-3">
-              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#E8EFFE] dark:bg-white/10">
-                <PinIcon size={26} />
-              </div>
-              <div>
-                <span className="bg-primary mb-1 inline-block rounded-full px-3 py-0.5 text-xs font-bold uppercase tracking-widest text-white">
-                  Headquarters
-                </span>
-                <h3 className="text-2xl font-bold text-black dark:text-white">
-                  {headquarters.city}
-                </h3>
-              </div>
+      {/* Offices */}
+      <section className="relative z-10 py-16 md:py-24">
+        <div className="container">
+          <div className="mb-12 text-center">
+            <div className="mb-4">
+              <Badge variant="brand" dot>Global Offices</Badge>
             </div>
-
-            {/* Address */}
-            <p className="border-body-color/25 text-body-color mb-5 whitespace-pre-line border-b pb-5 text-base leading-relaxed dark:border-white/25 dark:text-white/70">
-              {headquarters.address}
+            <h2 className="mb-4 text-3xl font-bold text-fg sm:text-4xl">
+              Always Close to Where You Need Us
+            </h2>
+            <p className="mx-auto max-w-2xl text-base leading-relaxed text-muted">
+              A strong presence across India with growing international operations in
+              Singapore and Dubai.
             </p>
-
-            {/* Contact details */}
-            <div className="mb-6 flex flex-col gap-3">
-              <div className="flex items-center gap-3 text-sm text-body-color dark:text-white/70">
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#E8EFFE] dark:bg-white/10">
-                  <PhoneIcon />
-                </div>
-                <span>{headquarters.phone}</span>
-              </div>
-              <div className="flex items-center gap-3 text-sm">
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#E8EFFE] dark:bg-white/10">
-                  <MailIcon />
-                </div>
-                <a href={`mailto:${headquarters.email}`} className="text-primary hover:underline">
-                  {headquarters.email}
-                </a>
-              </div>
-            </div>
-
-            {/* Map — fills remaining height */}
-            <div className="relative flex-1 min-h-[220px] overflow-hidden rounded-sm">
-              <a
-                href={headquarters.mapLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-primary hover:bg-primary/90 absolute top-3 left-3 z-10 flex items-center gap-1.5 rounded-sm px-3 py-1.5 text-xs font-medium text-white shadow transition"
-              >
-                Open in Maps <ExternalIcon />
-              </a>
-              <iframe
-                src={headquarters.mapSrc}
-                width="100%"
-                height="100%"
-                style={{ border: 0, minHeight: "220px" }}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Mumbai HQ"
-                className="w-full h-full"
-              />
-            </div>
           </div>
 
-          {/* ── RIGHT: 2×2 Branch Grid ── */}
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-            {branches.map((office, idx) => (
-              <BranchCard
-                key={office.city}
-                office={office}
-                idx={idx}
-                decorColor={decorColor}
-              />
-            ))}
+          <div className="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-2">
+            {/* Headquarters */}
+            <Reveal variant="left">
+              <div className="flex h-full flex-col rounded-2xl border border-edge bg-surface p-8">
+                <div className="mb-6 flex items-center gap-4">
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-brand-muted text-primary">
+                    <PinIcon size={26} />
+                  </div>
+                  <div>
+                    <span className="mb-1 inline-block rounded-full bg-primary px-3 py-0.5 text-xs font-bold uppercase tracking-widest text-white">
+                      Headquarters
+                    </span>
+                    <h3 className="text-2xl font-bold text-fg">{headquarters.city}</h3>
+                  </div>
+                </div>
+
+                <p className="mb-5 whitespace-pre-line border-b border-edge pb-5 text-base leading-relaxed text-muted">
+                  {headquarters.address}
+                </p>
+
+                <div className="mb-6 flex flex-col gap-3">
+                  <div className="flex items-center gap-3 text-sm text-muted">
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-brand-muted text-primary">
+                      <PhoneIcon />
+                    </div>
+                    <span>{headquarters.phone}</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-sm">
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-brand-muted text-primary">
+                      <MailIcon />
+                    </div>
+                    <a href={`mailto:${headquarters.email}`} className="text-primary hover:underline">
+                      {headquarters.email}
+                    </a>
+                  </div>
+                </div>
+
+                <div className="relative min-h-[220px] flex-1 overflow-hidden rounded-lg border border-edge">
+                  <a
+                    href={headquarters.mapLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="absolute left-3 top-3 z-10 flex items-center gap-1.5 rounded-md bg-primary px-3 py-1.5 text-xs font-medium text-white shadow transition-colors hover:bg-secondary"
+                  >
+                    Open in Maps <ExternalIcon />
+                  </a>
+                  <iframe
+                    src={headquarters.mapSrc}
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0, minHeight: "220px" }}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Mumbai HQ"
+                    className="h-full w-full"
+                  />
+                </div>
+              </div>
+            </Reveal>
+
+            {/* Branches 2×2 */}
+            <div className="grid h-full grid-cols-1 gap-6 sm:auto-rows-fr sm:grid-cols-2">
+              {branches.map((office, i) => (
+                <Reveal key={office.city} variant="right" delay={i * 0.08} className="h-full">
+                  <BranchCard office={office} />
+                </Reveal>
+              ))}
+            </div>
           </div>
         </div>
+      </section>
 
-        {/* ── Bottom CTA strip ── */}
-        <div className="shadow-three dark:bg-gray-dark relative z-10 mt-14 overflow-hidden rounded-sm bg-white px-8 py-10 text-center">
-          <DecorWave id="ctawave" color={decorColor} />
-          <DecorTriangle id="ctatri" color={decorColor} />
-          <h3 className="mb-3 text-2xl font-bold text-black dark:text-white">
-            Want to reach us directly?
-          </h3>
-          <p className="text-body-color mb-6 text-base dark:text-white/70">
-            Drop us an email and our team will get back to you within 24 hours.
-          </p>
-          <a
-            href="mailto:sales@citiuscomm.com"
-            className="bg-primary shadow-submit hover:bg-primary/90 dark:shadow-submit-dark inline-flex items-center gap-2 rounded-sm px-8 py-3.5 text-base font-medium text-white duration-300"
-          >
-            <MailIcon />
-            sales@citiuscomm.com
-          </a>
+      {/* Contact form */}
+      <section className="relative z-10 py-16 md:py-24">
+        <div className="container">
+          <div className="mb-12 text-center">
+            <div className="mb-4">
+              <Badge variant="brand" dot>Get in Touch</Badge>
+            </div>
+            <h2 className="mb-4 text-3xl font-bold text-fg sm:text-4xl">Send us a message</h2>
+            <p className="mx-auto max-w-2xl text-base leading-relaxed text-muted">
+              Tell us about your project or requirement, and the right person on our team
+              will get back to you.
+            </p>
+          </div>
+
+          <div className="grid items-stretch gap-8 lg:grid-cols-5">
+            <Reveal variant="left" className="lg:col-span-3">
+              <ContactForm />
+            </Reveal>
+
+            <Reveal variant="right" className="flex h-full flex-col justify-between gap-6 lg:col-span-2">
+              <div>
+                <h3 className="mb-4 text-lg font-bold text-fg">Or reach us directly</h3>
+                <div className="space-y-4">
+                  <a
+                    href="mailto:sales@citiuscomm.com"
+                    className="flex items-center gap-3 rounded-xl border border-edge bg-surface px-5 py-4 text-sm text-fg transition-colors hover:border-primary/40"
+                  >
+                    <span className="text-primary"><MailIcon /></span>
+                    sales@citiuscomm.com
+                  </a>
+                  <a
+                    href="tel:+912262362154"
+                    className="flex items-center gap-3 rounded-xl border border-edge bg-surface px-5 py-4 text-sm text-fg transition-colors hover:border-primary/40"
+                  >
+                    <span className="text-primary"><PhoneIcon /></span>
+                    022 62362154 (Mumbai HQ)
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/company/citiuscommunications/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 rounded-xl border border-edge bg-surface px-5 py-4 text-sm text-fg transition-colors hover:border-primary/40"
+                  >
+                    <span className="text-primary"><LinkedInIcon /></span>
+                    LinkedIn
+                  </a>
+                </div>
+              </div>
+              <div className="rounded-xl border border-primary/20 bg-brand-muted px-5 py-4 text-sm text-muted">
+                <strong className="text-fg">Response time:</strong> We typically reply within
+                one business day.
+              </div>
+            </Reveal>
+          </div>
         </div>
-
-      </div>
-    </section>
-    </>
+      </section>
+    </main>
   );
 }
