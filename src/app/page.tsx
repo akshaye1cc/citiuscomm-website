@@ -1,10 +1,7 @@
 import AboutSectionOne from "@/components/About/AboutSectionOne";
-import Clients from "@/components/Clients-Marquee";
 import ScrollUp from "@/components/Common/ScrollUp";
-import CtaBand from "@/components/CtaBand";
 import Features from "@/components/Features";
 import Hero from "@/components/Hero";
-import Testimonials from "@/components/Testimonials";
 
 export default function Home() {
   return (
@@ -12,10 +9,7 @@ export default function Home() {
       <ScrollUp />
       <Hero />
       <Features />
-      <Clients />
       <AboutSectionOne />
-      <Testimonials />
-      <CtaBand />
     </>
   );
 }

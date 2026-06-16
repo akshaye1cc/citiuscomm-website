@@ -28,10 +28,9 @@ const values = [
 ];
 
 const AboutSectionOne = () => (
-  <section id="about" className="bg-canvas pt-16 md:pt-20 lg:pt-28">
+  <section id="about" className="bg-canvas py-16 md:py-24">
     <div className="container">
-      <div className="border-b border-edge pb-16 md:pb-20 lg:pb-28">
-        <div className="-mx-4 flex flex-wrap items-center">
+      <div className="-mx-4 flex flex-wrap items-center">
 
           {/* Left: copy */}
           <div className="w-full px-4 lg:w-1/2">
@@ -92,7 +91,6 @@ const AboutSectionOne = () => (
 
         </div>
       </div>
-    </div>
   </section>
 );
 

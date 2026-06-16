@@ -1,9 +1,9 @@
 'use client';
 
 import { useEffect, useRef, useState } from "react";
-import SectionTitle from "../Common/SectionTitle";
 import SingleFeature from "./SingleFeature";
 import featuresData from "./featuresData";
+import NetworkVisual from "@/components/ui/NetworkVisual";
 
 const Features = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -21,15 +21,12 @@ const Features = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="features" className="relative py-16 md:py-20 lg:py-28">
+    <section ref={sectionRef} id="features" className="relative py-16 md:py-24">
       <div className="container">
-        <SectionTitle
-          eyebrow="Why Citiuscomm"
-          title="Built for Carrier-Grade Demands"
-          paragraph="Leveraging decades of telecommunications expertise, we deliver comprehensive solutions that transform connectivity challenges into competitive advantages."
-          center
-          width="660px"
-        />
+        {/* Signature network animation, paired with the capability cards */}
+        <div className="mb-14 flex justify-center overflow-hidden md:mb-20">
+          <NetworkVisual className="w-full min-w-[760px] max-w-[1180px]" />
+        </div>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
           {featuresData.map((feature, index) => (

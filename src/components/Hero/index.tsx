@@ -1,8 +1,7 @@
 import Button from "@/components/ui/Button";
 import Badge from "@/components/ui/Badge";
 import Counter from "@/components/ui/Counter";
-import SectionPattern from "@/components/ui/SectionPattern";
-import NetworkVisual from "@/components/ui/NetworkVisual";
+import AuroraBackground from "@/components/ui/AuroraBackground";
 
 const stats = [
   { num: "100K+", label: "Network Sites" },
@@ -12,12 +11,10 @@ const stats = [
 ];
 
 const Hero = () => (
-  <section
+  <AuroraBackground
     id="home"
-    className="relative overflow-hidden bg-canvas pb-16 pt-[120px] md:pb-20 md:pt-[150px] xl:pt-[180px]"
+    className="overflow-hidden pb-14 pt-[120px] md:pb-20 md:pt-[150px] xl:pt-[170px]"
   >
-    <SectionPattern />
-
     <div className="container relative z-10">
       <div className="mx-auto max-w-[820px] text-center">
 
@@ -53,12 +50,7 @@ const Hero = () => (
         </div>
       </div>
 
-      {/* Signature visual: the network we build, end to end */}
-      <div className="mt-14 flex justify-center overflow-hidden md:mt-20">
-        <NetworkVisual className="w-full min-w-[760px] max-w-[1180px]" />
-      </div>
-
-      <div className="mx-auto mt-12 max-w-[820px] border-t border-edge pt-10 md:mt-16">
+      <div className="mx-auto mt-14 max-w-[820px] md:mt-20">
         <dl className="flex flex-wrap justify-center gap-x-10 gap-y-6">
           {stats.map(({ num, label }) => (
             <div key={label} className="text-center">
@@ -71,7 +63,7 @@ const Hero = () => (
         </dl>
       </div>
     </div>
-  </section>
+  </AuroraBackground>
 );
 
 export default Hero;
