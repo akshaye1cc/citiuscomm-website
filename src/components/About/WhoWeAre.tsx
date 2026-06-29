@@ -158,7 +158,7 @@ const WhoWeAre = () => (
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-secondary/70 via-secondary/30 to-transparent dark:from-secondary/60 dark:via-secondary/20" />
+              <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/10 to-transparent dark:from-secondary/60 dark:via-secondary/20" />
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 dark:from-primary/10 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover/card:opacity-100" />
             </div>
             <div className="relative flex flex-col justify-center p-8 md:p-10">
