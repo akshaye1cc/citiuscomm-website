@@ -28,8 +28,17 @@ const values = [
 ];
 
 const AboutSectionOne = () => (
-  <section id="about" className="bg-canvas py-16 md:py-24">
-    <div className="container">
+  <section id="about" className="relative bg-canvas py-20 md:py-28 lg:py-32">
+    <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+      <div
+        className="ds-dots absolute inset-0 text-primary/[0.08] dark:text-brand/[0.1]"
+        style={{
+          maskImage: "linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)",
+          WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)",
+        }}
+      />
+    </div>
+    <div className="container relative z-10">
       <div className="-mx-4 flex flex-wrap items-center">
 
           {/* Left: copy */}
@@ -66,9 +75,12 @@ const AboutSectionOne = () => (
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
                 {values.map(({ title, text }, i) => (
                   <Reveal key={title} delay={0.2 + i * 0.08}>
-                    <div className="h-full rounded-xl border border-edge bg-surface p-4 transition-colors duration-200 hover:border-primary/40">
-                      <h4 className="mb-1 text-sm font-bold text-fg">{title}</h4>
-                      <p className="text-xs leading-relaxed text-muted">{text}</p>
+                    <div className="ds-sheen group relative h-full overflow-hidden rounded-2xl border border-edge/60 bg-gradient-to-br from-surface to-surface/80 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5">
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                      <div className="relative">
+                        <h4 className="mb-2 text-base font-bold text-fg">{title}</h4>
+                        <p className="text-sm leading-relaxed text-muted">{text}</p>
+                      </div>
                     </div>
                   </Reveal>
                 ))}

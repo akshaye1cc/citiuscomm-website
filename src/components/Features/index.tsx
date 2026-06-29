@@ -21,8 +21,17 @@ const Features = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="features" className="relative py-16 md:py-24">
-      <div className="container">
+    <section ref={sectionRef} id="features" className="relative bg-canvas py-20 md:py-28 lg:py-32">
+      <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div
+          className="ds-dots absolute inset-0 text-primary/[0.08] dark:text-brand/[0.1]"
+          style={{
+            maskImage: "linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%)",
+          }}
+        />
+      </div>
+      <div className="container relative z-10">
         {/* Signature network animation, paired with the capability cards */}
         <div className="mb-14 flex justify-center overflow-hidden md:mb-20">
           <NetworkVisual className="w-full min-w-[760px] max-w-[1180px]" />

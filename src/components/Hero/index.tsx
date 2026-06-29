@@ -1,6 +1,7 @@
 import Button from "@/components/ui/Button";
 import Badge from "@/components/ui/Badge";
 import Counter from "@/components/ui/Counter";
+import TypingText from "@/components/ui/TypingText";
 import AuroraBackground from "@/components/ui/AuroraBackground";
 
 const stats = [
@@ -13,7 +14,7 @@ const stats = [
 const Hero = () => (
   <AuroraBackground
     id="home"
-    className="overflow-hidden pb-14 pt-[120px] md:pb-20 md:pt-[150px] xl:pt-[170px]"
+    className="overflow-hidden pb-0 pt-[120px] md:pt-[150px] xl:pt-[170px]"
   >
     <div className="container relative z-10">
       <div className="mx-auto max-w-[820px] text-center">
@@ -23,9 +24,15 @@ const Hero = () => (
         </div>
 
         <h1 className="mb-6 text-5xl font-bold leading-tight text-fg sm:text-6xl md:text-7xl">
-          Connecting You,{" "}
-          <br className="hidden sm:block" />
-          Every Step of the Way.
+          <TypingText
+            phrases={[
+              "Connecting You, Every Step of the Way.",
+              "Building Infrastructure, Creating Impact.",
+              "Powering Networks, Enabling Growth.",
+            ]}
+            speed={40}
+            delayBetweenPhrases={2500}
+          />
         </h1>
 
         <p className="mx-auto mb-4 max-w-[620px] text-lg leading-relaxed text-muted sm:text-xl">
