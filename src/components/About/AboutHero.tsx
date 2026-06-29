@@ -41,14 +41,14 @@ const NetworkPulse = () => (
 
     {/* Network nodes and connections */}
     {[
-      { x: 80, y: 80, angle: 0 },
-      { x: 320, y: 80, angle: 45 },
-      { x: 320, y: 320, angle: 90 },
-      { x: 80, y: 320, angle: 135 },
-      { x: 200, y: 80, angle: 22.5 },
-      { x: 320, y: 200, angle: 67.5 },
-      { x: 200, y: 320, angle: 112.5 },
-      { x: 80, y: 200, angle: 157.5 },
+      { x: 80, y: 80 },
+      { x: 320, y: 80 },
+      { x: 320, y: 320 },
+      { x: 80, y: 320 },
+      { x: 200, y: 80 },
+      { x: 320, y: 200 },
+      { x: 200, y: 320 },
+      { x: 80, y: 200 },
     ].map((node, i) => (
       <g key={i}>
         {/* Connection line */}
@@ -63,58 +63,15 @@ const NetworkPulse = () => (
           strokeDasharray="4 4"
         />
 
-        {/* Animated pulse along connection */}
-        <circle
-          cx="200"
-          cy="200"
-          r="4"
-          fill="var(--ds-brand)"
-          opacity="0.6"
-          className="ds-network-pulse"
-          style={{
-            animationDuration: `${2.5 + i * 0.15}s`,
-            animationDelay: `${i * 0.2}s`,
-          }}
-        >
-          <animateMotion
-            dur={`${2.5 + i * 0.15}s`}
-            begin={`${i * 0.2}s`}
-            repeatCount="indefinite"
-          >
-            <mpath href={`#path-${i}`} />
-          </animateMotion>
-        </circle>
-
         {/* Outer node */}
         <circle
           cx={node.x}
           cy={node.y}
           r="6"
           fill="var(--ds-brand)"
-          opacity="0.7"
-          className="group-hover:opacity-100 transition-opacity"
+          opacity="0.8"
         />
       </g>
-    ))}
-
-    {/* Paths for animateMotion */}
-    {[
-      { x: 80, y: 80 },
-      { x: 320, y: 80 },
-      { x: 320, y: 320 },
-      { x: 80, y: 320 },
-      { x: 200, y: 80 },
-      { x: 320, y: 200 },
-      { x: 200, y: 320 },
-      { x: 80, y: 200 },
-    ].map((node, i) => (
-      <path
-        key={`path-${i}`}
-        id={`path-${i}`}
-        d={`M 200 200 L ${node.x} ${node.y}`}
-        fill="none"
-        style={{ display: "none" }}
-      />
     ))}
 
     {/* Animated rings at center */}
