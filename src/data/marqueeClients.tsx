@@ -4,20 +4,27 @@ export type MarqueeClient = {
   url: string;
 };
 
-/**
- * Section 2 marquee — 10 client placeholders.
- *
- * TO ADD REAL LOGOS:
- *   1. Drop logo files in /public/images/Clients/ (SVG or WebP, transparent bg).
- *   2. Replace each `logo` path below and update `name` / `url`.
- * Until then every slot shows /images/placeholders/logo-placeholder.svg.
- */
-const PLACEHOLDER = "/images/placeholders/logo-placeholder.svg";
-
-const marqueeClients: MarqueeClient[] = Array.from({ length: 10 }, (_, i) => ({
-  name: `Client ${String(i + 1).padStart(2, "0")}`,
-  logo: PLACEHOLDER,
-  url: "#",
-}));
+const marqueeClients: MarqueeClient[] = [
+  { name: "Airtel",          logo: "/images/Clients/airtel-logo-icon.webp",                url: "#" },
+  { name: "Vodafone Idea",   logo: "/images/Clients/Vodadone idea.png",                   url: "#" },
+  { name: "ICICI Bank",      logo: "/images/Clients/icici.png",                           url: "#" },
+  { name: "Kotak Mahindra",  logo: "/images/Clients/kotak.png",                           url: "#" },
+  { name: "YES Bank",        logo: "/images/Clients/yes bank.png",                        url: "#" },
+  { name: "TTSL",            logo: "/images/Clients/TTSL.png",                            url: "#" },
+  { name: "HPE",             logo: "/images/Clients/HPE.svg",                             url: "#" },
+  { name: "Efficient IP",    logo: "/images/Clients/efficient ip.svg",                    url: "#" },
+  { name: "TIBCO",           logo: "/images/Clients/tibco.svg",                           url: "#" },
+  { name: "Nepal Telecom",   logo: "/images/Clients/nepal telecom.svg",                   url: "#" },
+  { name: "Metrocast",       logo: "/images/Clients/metrocast.svg",                       url: "#" },
+  { name: "Fastway",         logo: "/images/Clients/fastway.svg",                         url: "#" },
+  { name: "Subisu",          logo: "/images/Clients/subisu.svg",                          url: "#" },
+  { name: "Vianet",          logo: "/images/Clients/vianet.svg",                          url: "#" },
+  { name: "Sony",            logo: "/images/Clients/sony.svg",                            url: "#" },
+  { name: "Discovery",       logo: "/images/Clients/Discovery-Logo-Vector.svg-.png",      url: "#" },
+  { name: "Hathway",         logo: "/images/Clients/HATHWAY.NS_BIG-7c7b81b8.png",         url: "#" },
+  { name: "Siti Digital",    logo: "/images/Clients/siti digital.png",                    url: "#" },
+  { name: "UCN",             logo: "/images/Clients/ucn.png",                             url: "#" },
+  { name: "Rakuten",         logo: "/images/Clients/2000px-Rakuten_Global_Brand_Logo.svg_.png", url: "#" },
+];
 
 export default marqueeClients;

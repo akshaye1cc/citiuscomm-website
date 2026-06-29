@@ -107,7 +107,7 @@ export default function PartnersPage() {
                   <img
                     src={client.logo}
                     alt={client.name}
-                    className="max-h-16 w-auto select-none object-contain opacity-90"
+                    className="w-auto select-none object-contain opacity-90 max-h-16"
                     draggable={false}
                   />
                 </div>
@@ -142,13 +142,17 @@ export default function PartnersPage() {
                   href={partner.url}
                   target={partner.url !== "#" ? "_blank" : "_self"}
                   rel={partner.url !== "#" ? "noopener noreferrer" : undefined}
-                  className="group flex h-full flex-col rounded-2xl border border-edge bg-surface p-5 transition-colors duration-200 hover:border-primary/40"
+                  className={`group flex h-full flex-col rounded-2xl border transition-colors duration-200 ${
+                    partner.featured
+                      ? "border-primary/30 bg-brand-muted/20 p-6 hover:border-primary/50"
+                      : "border-edge bg-surface p-5 hover:border-primary/40"
+                  }`}
                 >
-                  <div className="flex h-10 items-center">
+                  <div className="flex items-center h-16">
                     <img
                       src={partner.logo}
                       alt={partner.name}
-                      className="max-h-9 w-auto object-contain opacity-80 transition-opacity duration-300 group-hover:opacity-100"
+                      className="w-auto object-contain opacity-80 transition-opacity duration-300 group-hover:opacity-100 max-h-12"
                     />
                   </div>
                   <div className="mt-4">
