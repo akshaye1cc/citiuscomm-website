@@ -1,6 +1,5 @@
 import AboutHero from "@/components/About/AboutHero";
 import WhoWeAre from "@/components/About/WhoWeAre";
-import CtaBand from "@/components/CtaBand";
 
 export const metadata = {
   title: "About Us | Citiuscomm",
@@ -26,13 +25,10 @@ const AboutPage = () => (
         eyebrow="About Us"
         title="Who"
         highlight="We Are"
-        description="We build technology ecosystems that scale with ambition — combining innovation, reliability, and deep execution expertise."
+        description="We are a trusted technology solutions aggregator enabling telecom operators, internet service providers, enterprises, and government organizations to build, modernize, and manage secure, scalable, and future-ready digital infrastructure. 
+        By bringing together world-class technologies, strategic partnerships, and deep technical expertise, we deliver end-to-end solutions across networking, cybersecurity, cloud, data centers, collaboration, and managed services—serving as a single partner throughout the entire technology lifecycle."
       />
       <WhoWeAre />
-      <CtaBand
-        title="Three decades of execution. One conversation away."
-        description="See how our experience across carriers, OEMs, and enterprises translates to your next project."
-      />
     </div>
   </main>
 );
