@@ -19,10 +19,6 @@ const Hero = () => (
     <div className="container relative z-10">
       <div className="mx-auto max-w-[820px] text-center">
 
-        <div className="mb-6">
-          <Badge variant="brand" dot>ICT Infrastructure &amp; Telecom Solutions</Badge>
-        </div>
-
         <h1 className="mb-6 text-5xl font-bold leading-tight text-fg sm:text-6xl md:text-7xl">
           <TypingText
             phrases={[
@@ -30,7 +26,7 @@ const Hero = () => (
               "Building Infrastructure, Creating Impact.",
               "Powering Networks, Enabling Growth.",
             ]}
-            speed={40}
+            speed={80}
             delayBetweenPhrases={2500}
           />
         </h1>
@@ -40,24 +36,12 @@ const Hero = () => (
           of Communications and Networking Infrastructure.
         </p>
 
-        <p className="mb-10 text-sm font-medium text-primary/80 dark:text-brand/80">
+        <p className="mb-14 text-sm font-medium text-primary/80 dark:text-brand/80">
           Data Center · ICT Infrastructure · Cybersecurity · 5G Networks · Cloud Engineering
         </p>
-
-        <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <Button variant="cta" size="lg" href="/contact">
-            Get In Touch
-            <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </Button>
-          <Button variant="ghost" size="lg" href="/solutions">
-            Explore Solutions
-          </Button>
-        </div>
       </div>
 
-      <div className="mx-auto mt-14 max-w-[820px] md:mt-20">
+      <div className="mx-auto mt-16 max-w-[820px] md:mt-24 pb-20 md:pb-28 lg:pb-32">
         <dl className="flex flex-wrap justify-center gap-x-10 gap-y-6">
           {stats.map(({ num, label }) => (
             <div key={label} className="text-center">

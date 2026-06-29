@@ -21,7 +21,7 @@ const Features = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="features" className="relative bg-canvas py-20 md:py-28 lg:py-32">
+    <section ref={sectionRef} id="features" className="relative bg-canvas py-0 md:py-0 pb-20 md:pb-28 lg:pb-32">
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
         <div
           className="ds-dots absolute inset-0 text-primary/[0.08] dark:text-brand/[0.1]"
