@@ -6,7 +6,6 @@ export type EcosystemPartner = {
   /** ~2 lines describing what they bring to the ecosystem. */
   description: string;
   url: string;
-  featured?: boolean;
 };
 
 const partnerEcosystem: EcosystemPartner[] = [
@@ -44,7 +43,6 @@ const partnerEcosystem: EcosystemPartner[] = [
     sector: "Telecom",
     description: "Wi-Fi and wired network infrastructure for enterprises and service providers.",
     url: "#",
-    featured: true,
   },
   {
     name: "Dell",
@@ -59,7 +57,6 @@ const partnerEcosystem: EcosystemPartner[] = [
     sector: "Enterprise",
     description: "Enterprise computing and data center infrastructure for mission-critical operations.",
     url: "#",
-    featured: true,
   },
   {
     name: "Hitachi",
@@ -74,7 +71,6 @@ const partnerEcosystem: EcosystemPartner[] = [
     sector: "Cloud",
     description: "Database and cloud infrastructure for enterprise applications and data management.",
     url: "#",
-    featured: true,
   },
   {
     name: "Red Hat",
@@ -82,7 +78,6 @@ const partnerEcosystem: EcosystemPartner[] = [
     sector: "Cloud",
     description: "Open-source cloud and container platforms for hybrid infrastructure.",
     url: "#",
-    featured: true,
   },
   {
     name: "VMware",
@@ -90,7 +85,6 @@ const partnerEcosystem: EcosystemPartner[] = [
     sector: "Cloud",
     description: "Virtualization and cloud management solutions for distributed environments.",
     url: "#",
-    featured: true,
   },
   {
     name: "Arista",
@@ -98,7 +92,6 @@ const partnerEcosystem: EcosystemPartner[] = [
     sector: "Cloud",
     description: "Cloud networking and software-defined infrastructure for data centers.",
     url: "#",
-    featured: true,
   },
   {
     name: "F5",
@@ -106,7 +99,6 @@ const partnerEcosystem: EcosystemPartner[] = [
     sector: "Cloud",
     description: "Application delivery and load balancing for cloud and on-premises infrastructure.",
     url: "#",
-    featured: true,
   },
   {
     name: "Palo Alto Networks",
@@ -128,7 +120,6 @@ const partnerEcosystem: EcosystemPartner[] = [
     sector: "Cybersecurity",
     description: "Encryption and data security solutions for critical infrastructure protection.",
     url: "#",
-    featured: true,
   },
   {
     name: "Trellix",
@@ -136,7 +127,6 @@ const partnerEcosystem: EcosystemPartner[] = [
     sector: "Cybersecurity",
     description: "Advanced threat detection and response for enterprise security teams.",
     url: "#",
-    featured: true,
   },
   {
     name: "Rapid7",
@@ -151,7 +141,6 @@ const partnerEcosystem: EcosystemPartner[] = [
     sector: "Enterprise",
     description: "API testing and quality assurance tools for continuous integration pipelines.",
     url: "#",
-    featured: true,
   },
   {
     name: "Adopt",
