@@ -405,6 +405,64 @@
   .aurora-bg::after { animation: none; }
 }
 
+/* Network pulse animations for About hero */
+@keyframes pulse-center {
+  0%, 100% {
+    r: 12;
+    opacity: 1;
+  }
+  50% {
+    r: 16;
+    opacity: 0.7;
+  }
+}
+
+@keyframes ring-pulse {
+  0% {
+    r: var(--ring-start);
+    opacity: 0.8;
+  }
+  100% {
+    r: var(--ring-end);
+    opacity: 0;
+  }
+}
+
+.ds-pulse-center {
+  animation: pulse-center 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.ds-ring-pulse {
+  animation: ring-pulse 4s ease-out infinite;
+  transform-origin: 200px 200px;
+}
+
+.ds-network-pulse {
+  animation: pulse-fade 2.5s ease-in-out infinite;
+}
+
+@keyframes pulse-fade {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Reduced motion: disable network animations */
+@media (prefers-reduced-motion: reduce) {
+  .ds-pulse-center,
+  .ds-ring-pulse,
+  .ds-network-pulse {
+    animation: none;
+    opacity: 0.5;
+  }
+}
+
 /* ---- Checkbox ---- */
 @layer components {
   input[type="checkbox"]:checked ~ label span svg {

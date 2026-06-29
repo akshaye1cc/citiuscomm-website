@@ -1,5 +1,5 @@
+import AboutHero from "@/components/About/AboutHero";
 import WhoWeAre from "@/components/About/WhoWeAre";
-import PageHero from "@/components/PageHero";
 import CtaBand from "@/components/CtaBand";
 
 export const metadata = {
@@ -9,8 +9,8 @@ export const metadata = {
 };
 
 const AboutPage = () => (
-  <main>
-    <PageHero
+  <main className="bg-canvas">
+    <AboutHero
       eyebrow="About Us"
       title="Who"
       highlight="We Are"
