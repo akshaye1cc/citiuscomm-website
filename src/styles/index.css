@@ -405,59 +405,118 @@
   .aurora-bg::after { animation: none; }
 }
 
-/* Network pulse animations for About hero */
-@keyframes pulse-center {
+/* Tech network visualization animations for About hero */
+
+/* Core node pulsing */
+@keyframes core-pulse {
   0%, 100% {
-    r: 12;
+    r: 16;
     opacity: 1;
   }
   50% {
-    r: 16;
+    r: 18;
+    opacity: 0.8;
+  }
+}
+
+.ds-core-pulse {
+  animation: core-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Expanding ring waves */
+@keyframes ring-expand {
+  0% {
+    r: 50;
+    opacity: 0.4;
+    stroke-width: 1;
+  }
+  100% {
+    r: 120;
+    opacity: 0;
+    stroke-width: 0.5;
+  }
+}
+
+.ds-ring-expand {
+  animation: ring-expand 3s ease-out infinite;
+  transform-origin: 240px 240px;
+}
+
+/* Node rings growing */
+@keyframes node-ring-pulse {
+  0% {
+    r: 18;
+    opacity: 0.5;
+  }
+  100% {
+    r: 28;
+    opacity: 0;
+  }
+}
+
+.ds-node-ring {
+  animation: node-ring-pulse 2.5s ease-out infinite;
+}
+
+/* Individual node pulsing */
+@keyframes node-pulse {
+  0%, 100% {
+    r: 10;
+    opacity: 1;
+  }
+  50% {
+    r: 12;
     opacity: 0.7;
   }
 }
 
-@keyframes ring-pulse {
-  0% {
-    r: var(--ring-start);
-    opacity: 0.8;
-  }
-  100% {
-    r: var(--ring-end);
-    opacity: 0;
-  }
+.ds-node-pulse {
+  animation: node-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-.ds-pulse-center {
-  animation: pulse-center 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-.ds-ring-pulse {
-  animation: ring-pulse 4s ease-out infinite;
-  transform-origin: 200px 200px;
-}
-
-.ds-network-pulse {
-  animation: pulse-fade 2.5s ease-in-out infinite;
-}
-
-@keyframes pulse-fade {
-  0% {
-    opacity: 0;
+/* Core twinkle */
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.2;
   }
   50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
+    opacity: 0.8;
   }
 }
 
-/* Reduced motion: disable network animations */
+.ds-twinkle {
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+/* Connection line glow */
+@keyframes line-glow {
+  0%, 100% {
+    stroke-width: 1.5;
+    opacity: 0.5;
+  }
+  50% {
+    stroke-width: 2;
+    opacity: 0.8;
+  }
+}
+
+.ds-tech-line {
+  animation: line-glow 2.5s ease-in-out infinite;
+}
+
+/* Data packet movement (uses SVG animate, but add styles for fallback) */
+.ds-data-packet {
+  filter: drop-shadow(0 0 3px var(--ds-brand));
+}
+
+/* Reduced motion: disable all network animations */
 @media (prefers-reduced-motion: reduce) {
-  .ds-pulse-center,
-  .ds-ring-pulse,
-  .ds-network-pulse {
+  .ds-core-pulse,
+  .ds-ring-expand,
+  .ds-node-ring,
+  .ds-node-pulse,
+  .ds-twinkle,
+  .ds-tech-line {
     animation: none;
     opacity: 0.5;
   }

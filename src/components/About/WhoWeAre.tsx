@@ -21,7 +21,7 @@ const Point = ({ text }: { text: string }) => (
 );
 
 const WhoWeAre = () => (
-  <section id="about" className="relative bg-canvas py-16 md:py-20 lg:py-28">
+  <section id="about" className="relative bg-canvas py-20 md:py-28 lg:py-32">
     <div className="pointer-events-none absolute inset-0 overflow-hidden">
       <div
         className="ds-dots absolute inset-0 text-primary/[0.08] dark:text-brand/[0.1]"
@@ -45,8 +45,8 @@ const WhoWeAre = () => (
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-secondary/70 via-secondary/30 to-transparent" />
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover/card:opacity-100" />
+              <div className="absolute inset-0 bg-gradient-to-t from-secondary/70 via-secondary/30 to-transparent dark:from-secondary/60 dark:via-secondary/20" />
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 dark:from-primary/10 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover/card:opacity-100" />
             </div>
             <div className="relative p-8">
               <div className="mb-2 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
@@ -72,8 +72,8 @@ const WhoWeAre = () => (
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-secondary/70 via-secondary/30 to-transparent" />
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover/card:opacity-100" />
+              <div className="absolute inset-0 bg-gradient-to-t from-secondary/70 via-secondary/30 to-transparent dark:from-secondary/60 dark:via-secondary/20" />
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 dark:from-primary/10 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover/card:opacity-100" />
             </div>
             <div className="relative p-8">
               <div className="mb-2 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
@@ -102,8 +102,8 @@ const WhoWeAre = () => (
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-secondary/60 via-transparent to-transparent" />
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover/card:opacity-100" />
+              <div className="absolute inset-0 bg-gradient-to-t from-secondary/70 via-secondary/30 to-transparent dark:from-secondary/60 dark:via-secondary/20" />
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 dark:from-primary/10 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover/card:opacity-100" />
             </div>
             <div className="relative p-7">
               <div className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10">
@@ -129,8 +129,8 @@ const WhoWeAre = () => (
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-secondary/60 via-transparent to-transparent" />
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover/card:opacity-100" />
+              <div className="absolute inset-0 bg-gradient-to-t from-secondary/70 via-secondary/30 to-transparent dark:from-secondary/60 dark:via-secondary/20" />
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 dark:from-primary/10 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover/card:opacity-100" />
             </div>
             <div className="relative p-7">
               <div className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10">
@@ -158,8 +158,8 @@ const WhoWeAre = () => (
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-secondary/70 via-secondary/30 to-transparent" />
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover/card:opacity-100" />
+              <div className="absolute inset-0 bg-gradient-to-r from-secondary/70 via-secondary/30 to-transparent dark:from-secondary/60 dark:via-secondary/20" />
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 dark:from-primary/10 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover/card:opacity-100" />
             </div>
             <div className="relative flex flex-col justify-center p-8 md:p-10">
               <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 w-fit">

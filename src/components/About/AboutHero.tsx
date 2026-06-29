@@ -9,102 +9,224 @@ type AboutHeroProps = {
   description: string;
 };
 
-const NetworkPulse = () => (
+const NetworkVisualization = () => (
   <svg
-    viewBox="0 0 400 400"
+    viewBox="0 0 480 480"
     className="mx-auto h-full w-full"
     aria-hidden
   >
-    {/* Grid background */}
     <defs>
-      <pattern id="grid-pattern" width="40" height="40" patternUnits="userSpaceOnUse">
-        <circle cx="0" cy="0" r="1" fill="var(--ds-edge-2)" opacity="0.3" />
-      </pattern>
-      <radialGradient id="pulse-gradient" cx="50%" cy="50%" r="60%">
-        <stop offset="0%" stopColor="var(--ds-brand)" stopOpacity="0.4" />
-        <stop offset="100%" stopColor="var(--ds-brand)" stopOpacity="0" />
-      </radialGradient>
+      {/* Gradients for visual depth */}
+      <linearGradient id="flow-gradient-1" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="var(--ds-brand)" stopOpacity="0.8" />
+        <stop offset="100%" stopColor="var(--ds-primary)" stopOpacity="0.3" />
+      </linearGradient>
+      <linearGradient id="flow-gradient-2" x1="100%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor="var(--ds-primary)" stopOpacity="0.6" />
+        <stop offset="100%" stopColor="var(--ds-brand)" stopOpacity="0.2" />
+      </linearGradient>
+
+      {/* Glow effect for nodes */}
+      <filter id="node-glow">
+        <feGaussianBlur stdDeviation="2" result="coloredBlur" />
+        <feMerge>
+          <feMergeNode in="coloredBlur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
     </defs>
 
-    {/* Background grid */}
-    <rect width="400" height="400" fill="url(#grid-pattern)" />
+    {/* Outer ring structure */}
+    <g opacity="0.2">
+      <circle cx="240" cy="240" r="200" fill="none" stroke="var(--ds-primary)" strokeWidth="0.5" />
+      <circle cx="240" cy="240" r="150" fill="none" stroke="var(--ds-primary)" strokeWidth="0.5" />
+      <circle cx="240" cy="240" r="100" fill="none" stroke="var(--ds-primary)" strokeWidth="0.5" />
+    </g>
 
-    {/* Center node */}
-    <circle
-      cx="200"
-      cy="200"
-      r="12"
-      fill="var(--ds-brand)"
-      className="ds-pulse-center"
-      style={{ animationDuration: "3s" }}
-    />
-
-    {/* Network nodes and connections */}
+    {/* Main node network - 6 outer nodes + center */}
     {[
-      { x: 80, y: 80 },
-      { x: 320, y: 80 },
-      { x: 320, y: 320 },
-      { x: 80, y: 320 },
-      { x: 200, y: 80 },
-      { x: 320, y: 200 },
-      { x: 200, y: 320 },
-      { x: 80, y: 200 },
+      { x: 240, y: 80, label: "Data" },      // Top
+      { x: 400, y: 150, label: "Cloud" },    // Top-right
+      { x: 400, y: 330, label: "Network" },  // Bottom-right
+      { x: 240, y: 400, label: "Infra" },    // Bottom
+      { x: 80, y: 330, label: "Security" },  // Bottom-left
+      { x: 80, y: 150, label: "IoT" },       // Top-left
     ].map((node, i) => (
       <g key={i}>
-        {/* Connection line */}
+        {/* Connection to center */}
         <line
-          x1="200"
-          y1="200"
+          x1="240"
+          y1="240"
           x2={node.x}
           y2={node.y}
-          stroke="var(--ds-primary)"
+          stroke="url(#flow-gradient-1)"
           strokeWidth="1.5"
-          opacity="0.3"
-          strokeDasharray="4 4"
+          opacity="0.5"
+          className="ds-tech-line"
+          style={{ animationDelay: `${i * 0.1}s` }}
         />
 
-        {/* Outer node */}
+        {/* Animated data packet traveling along connection */}
         <circle
-          cx={node.x}
-          cy={node.y}
-          r="6"
+          cx="240"
+          cy="240"
+          r="3"
           fill="var(--ds-brand)"
-          opacity="0.8"
-        />
+          className="ds-data-packet"
+          style={{
+            animationDuration: "3s",
+            animationDelay: `${i * 0.35}s`,
+          }}
+        >
+          <animate
+            attributeName="cx"
+            from="240"
+            to={node.x}
+            dur="3s"
+            begin={`${i * 0.35}s`}
+            repeatCount="indefinite"
+          />
+          <animate
+            attributeName="cy"
+            from="240"
+            to={node.y}
+            dur="3s"
+            begin={`${i * 0.35}s`}
+            repeatCount="indefinite"
+          />
+        </circle>
+
+        {/* Node container */}
+        <g>
+          {/* Outer glow ring */}
+          <circle
+            cx={node.x}
+            cy={node.y}
+            r="18"
+            fill="none"
+            stroke="var(--ds-brand)"
+            strokeWidth="1"
+            opacity="0.3"
+            className="ds-node-ring"
+            style={{ animationDelay: `${i * 0.15}s` }}
+          />
+
+          {/* Main node */}
+          <circle
+            cx={node.x}
+            cy={node.y}
+            r="10"
+            fill="var(--ds-brand)"
+            filter="url(#node-glow)"
+            className="ds-node-pulse"
+            style={{ animationDelay: `${i * 0.15}s` }}
+          />
+
+          {/* Inner highlight */}
+          <circle
+            cx={node.x}
+            cy={node.y}
+            r="6"
+            fill="var(--ds-primary)"
+            opacity="0.6"
+          />
+        </g>
       </g>
     ))}
 
-    {/* Animated rings at center */}
-    <circle
-      cx="200"
-      cy="200"
-      r="30"
-      fill="none"
-      stroke="var(--ds-brand)"
-      strokeWidth="1"
-      opacity="0.4"
-      className="ds-ring-pulse"
-      style={{ animationDuration: "4s" }}
-    />
-    <circle
-      cx="200"
-      cy="200"
-      r="50"
-      fill="none"
-      stroke="var(--ds-brand)"
-      strokeWidth="1"
-      opacity="0.2"
-      className="ds-ring-pulse"
-      style={{
-        animationDuration: "4s",
-        animationDelay: "0.5s",
-      }}
-    />
+    {/* Center hub - the core */}
+    <g>
+      {/* Outer rings */}
+      <circle
+        cx="240"
+        cy="240"
+        r="50"
+        fill="none"
+        stroke="var(--ds-brand)"
+        strokeWidth="1"
+        opacity="0.2"
+        className="ds-ring-expand"
+        style={{ animationDelay: "0s" }}
+      />
+      <circle
+        cx="240"
+        cy="240"
+        r="50"
+        fill="none"
+        stroke="var(--ds-primary)"
+        strokeWidth="1"
+        opacity="0.15"
+        className="ds-ring-expand"
+        style={{ animationDelay: "0.3s" }}
+      />
+      <circle
+        cx="240"
+        cy="240"
+        r="50"
+        fill="none"
+        stroke="var(--ds-brand)"
+        strokeWidth="1"
+        opacity="0.1"
+        className="ds-ring-expand"
+        style={{ animationDelay: "0.6s" }}
+      />
+
+      {/* Core node */}
+      <circle
+        cx="240"
+        cy="240"
+        r="16"
+        fill="url(#flow-gradient-2)"
+        filter="url(#node-glow)"
+        className="ds-core-pulse"
+      />
+
+      {/* Inner core highlight */}
+      <circle
+        cx="240"
+        cy="240"
+        r="10"
+        fill="var(--ds-primary)"
+        opacity="0.8"
+      />
+
+      {/* Core twinkle */}
+      <circle
+        cx="240"
+        cy="240"
+        r="6"
+        fill="white"
+        opacity="0.4"
+        className="ds-twinkle"
+      />
+    </g>
+
+    {/* Cross-connections between outer nodes for complexity */}
+    <g opacity="0.15">
+      <path
+        d="M 240 80 Q 400 150 400 330"
+        fill="none"
+        stroke="var(--ds-primary)"
+        strokeWidth="1"
+      />
+      <path
+        d="M 400 330 Q 240 400 80 330"
+        fill="none"
+        stroke="var(--ds-primary)"
+        strokeWidth="1"
+      />
+      <path
+        d="M 80 330 Q 80 150 240 80"
+        fill="none"
+        stroke="var(--ds-primary)"
+        strokeWidth="1"
+      />
+    </g>
   </svg>
 );
 
 const AboutHero = ({ eyebrow, title, highlight, description }: AboutHeroProps) => (
-  <section className="relative overflow-hidden bg-canvas pb-16 pt-[120px] md:pb-24 md:pt-[150px] xl:pt-[170px]">
+  <section className="relative overflow-hidden bg-canvas pb-0 pt-[120px] md:pt-[150px] xl:pt-[170px]">
     <SectionPattern />
 
     <div className="container relative z-10">
@@ -133,7 +255,7 @@ const AboutHero = ({ eyebrow, title, highlight, description }: AboutHeroProps) =
           <div className="relative mx-auto h-96 w-full max-w-md lg:h-full lg:max-w-none">
             <div className="absolute inset-0 rounded-3xl border border-primary/20 bg-gradient-to-br from-brand-muted/40 to-transparent backdrop-blur-sm" />
             <div className="relative h-full w-full p-8">
-              <NetworkPulse />
+              <NetworkVisualization />
             </div>
           </div>
         </Reveal>
