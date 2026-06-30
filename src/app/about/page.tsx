@@ -23,6 +23,9 @@ const AboutPage = () => (
     <div className="relative z-10">
       <section className="relative overflow-hidden bg-canvas pb-0 pt-[120px] md:pt-[150px] xl:pt-[170px]">
         <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+          <div className="aurora-bg aurora-muted aurora-fade" />
+        </div>
+        <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
           <div
             className="ds-dots absolute inset-0 text-primary/[0.08] dark:text-brand/[0.1]"
             style={{

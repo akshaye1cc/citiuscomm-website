@@ -373,9 +373,12 @@
   background-size: 300%, 200%;
   background-position: 50% 50%, 50% 50%;
   filter: blur(10px) invert(1);
-  opacity: 0.35;
+  opacity: 0.5;
   will-change: transform;
 }
+/* Subtle/muted variant for inner-page heroes */
+.aurora-bg.aurora-muted        { opacity: 0.18; }
+.dark .aurora-bg.aurora-muted  { opacity: 0.25; }
 .aurora-bg::after {
   content: "";
   position: absolute;

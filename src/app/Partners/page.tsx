@@ -31,7 +31,10 @@ export default function PartnersPage() {
       </div>
 
       {/* ─── Section 1 · Why partner with us ───────────────────── */}
-      <section className="relative z-10 pb-16 pt-[120px] md:pb-24 md:pt-[150px] xl:pt-[170px]">
+      <section className="relative z-10 overflow-hidden pb-16 pt-[120px] md:pb-24 md:pt-[150px] xl:pt-[170px]">
+        <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+          <div className="aurora-bg aurora-muted aurora-fade" />
+        </div>
         <div className="container">
           <div className="max-w-2xl">
             <div className="mb-5">
