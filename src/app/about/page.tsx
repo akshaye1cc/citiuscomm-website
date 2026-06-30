@@ -22,6 +22,15 @@ const AboutPage = () => (
 
     <div className="relative z-10">
       <section className="relative overflow-hidden bg-canvas pb-0 pt-[120px] md:pt-[150px] xl:pt-[170px]">
+        <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+          <div
+            className="ds-dots absolute inset-0 text-primary/[0.08] dark:text-brand/[0.1]"
+            style={{
+              maskImage: "linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%)",
+              WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%)",
+            }}
+          />
+        </div>
         <div className="container relative z-10">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             {/* Left: Content */}
