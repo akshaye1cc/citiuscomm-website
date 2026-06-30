@@ -22,7 +22,7 @@ const LeadershipPage = () => (
 
     <div className="relative z-10">
       {/* Creative hero */}
-      <section className="relative overflow-hidden bg-canvas pb-0 pt-[120px] md:pt-[150px] xl:pt-[170px]">
+      <section className="relative overflow-hidden bg-canvas pb-12 pt-[120px] md:pb-16 md:pt-[150px] xl:pb-20 xl:pt-[170px]">
         <div className="container relative z-10">
           <div className="max-w-3xl">
             <div className="mb-6">
