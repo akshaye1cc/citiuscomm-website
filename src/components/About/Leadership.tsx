@@ -115,22 +115,19 @@ const Avatar = ({ member }: { member: Member }) =>
   );
 
 const MemberCard = ({ member }: { member: Member }) => (
-  <div className="ds-sheen group relative flex h-full flex-col overflow-hidden rounded-2xl border border-edge bg-surface p-8 text-center transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5">
-    <Avatar member={member} />
-    <h3 className="mb-1 text-xl font-bold uppercase tracking-wide text-fg">{member.name}</h3>
-    <p className="mb-3 text-sm font-semibold text-primary">{member.role}</p>
-    <p className="text-sm leading-relaxed text-muted">{member.description}</p>
+  <div className="ds-sheen group relative flex h-full flex-col overflow-hidden rounded-2xl border border-edge/60 bg-gradient-to-br from-surface to-surface/80 p-8 text-center transition-all duration-300 hover:scale-105 hover:-translate-y-3 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10">
+    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+    <div className="relative">
+      <Avatar member={member} />
+      <h3 className="mb-1 text-xl font-bold uppercase tracking-wide text-fg">{member.name}</h3>
+      <p className="mb-4 text-sm font-semibold text-primary">{member.role}</p>
+      <p className="text-sm leading-relaxed text-muted transition-opacity duration-300 group-hover:text-muted">{member.description}</p>
+    </div>
   </div>
 );
 
 const Leadership = () => (
-  <section id="leadership" className="relative overflow-hidden bg-canvas py-16 md:py-20 lg:py-28">
-    {/* Decorative dot background */}
-    <div aria-hidden className="pointer-events-none absolute inset-0">
-      <div className="ds-dots absolute inset-0 text-primary/[0.08] dark:text-brand/[0.1]" />
-      <div className="absolute -top-40 right-1/3 h-[400px] w-[400px] rounded-full bg-primary/[0.04] blur-3xl dark:bg-brand/[0.05]" />
-    </div>
-
+  <section id="leadership" className="relative overflow-hidden bg-canvas py-0 pb-20 md:pb-28 lg:pb-32">
     <div className="container relative z-10 space-y-16 lg:space-y-20">
       {teams.map((team) => (
         <div key={team.title}>
