@@ -14,6 +14,23 @@ export const metadata = {
 /* duplicated track so the marquee loops seamlessly */
 const marqueeTrack = [...marqueeClients, ...marqueeClients];
 
+/* sector display order for the ecosystem grid — largest / most central groups first */
+const SECTOR_ORDER = [
+  "Telecom",
+  "Cloud",
+  "Cybersecurity",
+  "Enterprise",
+  "Data Center",
+  "Systems Integration",
+  "Fiber / FTTH",
+  "IoT",
+];
+
+const partnersBySector = SECTOR_ORDER.map((sector) => ({
+  sector,
+  partners: partnerEcosystem.filter((partner) => partner.sector === sector),
+})).filter((group) => group.partners.length > 0);
+
 export default function PartnersPage() {
   return (
     <main className="relative bg-canvas">
@@ -138,28 +155,38 @@ export default function PartnersPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
-            {partnerEcosystem.map((partner, i) => (
-              <Reveal key={partner.name} delay={(i % 5) * 0.05}>
-                <a
-                  href={partner.url}
-                  target={partner.url !== "#" ? "_blank" : "_self"}
-                  rel={partner.url !== "#" ? "noopener noreferrer" : undefined}
-                  className="group flex h-full flex-col rounded-2xl border border-edge bg-surface p-5 transition-colors duration-200 hover:border-primary/40"
-                >
-                  <div className="flex items-center h-16">
-                    <img
-                      src={partner.logo}
-                      alt={partner.name}
-                      className="w-auto object-contain opacity-80 transition-opacity duration-300 group-hover:opacity-100 max-h-12"
-                    />
-                  </div>
-                  <div className="mt-4">
-                    <Badge variant="subtle">{partner.sector}</Badge>
-                  </div>
-                  <p className="mt-3 text-xs leading-relaxed text-muted">{partner.description}</p>
-                </a>
-              </Reveal>
+          <div className="space-y-12">
+            {partnersBySector.map((group) => (
+              <div key={group.sector}>
+                <div className="mb-5 flex items-center gap-4">
+                  <h3 className="whitespace-nowrap text-xs font-semibold uppercase tracking-widest text-faint">
+                    {group.sector}
+                  </h3>
+                  <div className="h-px flex-1 bg-edge" />
+                </div>
+
+                <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+                  {group.partners.map((partner, i) => (
+                    <Reveal key={partner.name} delay={(i % 5) * 0.05}>
+                      <a
+                        href={partner.url}
+                        target={partner.url !== "#" ? "_blank" : "_self"}
+                        rel={partner.url !== "#" ? "noopener noreferrer" : undefined}
+                        className="group flex h-full flex-col rounded-2xl border border-edge bg-surface p-5 transition-colors duration-200 hover:border-primary/40"
+                      >
+                        <div className="flex h-16 items-center justify-center rounded-xl border border-primary/10 bg-white px-4 py-3 dark:border-white/15 dark:bg-white/95">
+                          <img
+                            src={partner.logo}
+                            alt={partner.name}
+                            className="max-h-10 w-auto object-contain opacity-90 transition-opacity duration-300 group-hover:opacity-100"
+                          />
+                        </div>
+                        <p className="mt-4 text-xs leading-relaxed text-muted">{partner.description}</p>
+                      </a>
+                    </Reveal>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
         </div>
