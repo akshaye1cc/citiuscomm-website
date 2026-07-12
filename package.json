@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint ."
   },
   "dependencies": {
     "@react-three/drei": "^10.7.7",
@@ -26,6 +26,7 @@
     "three-globe": "^2.45.2"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.6",
     "@types/node": "^20.8.9",
     "@types/react": "19.1.0",
     "@types/react-dom": "19.1.0",

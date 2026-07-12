@@ -1,6 +1,5 @@
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
-import CtaBand from "@/components/CtaBand";
 import SectionTitle from "@/components/Common/SectionTitle";
 import Reveal from "@/components/ui/Reveal";
 import Button from "@/components/ui/Button";
@@ -98,14 +97,6 @@ const SolutionsPage = () => (
         </div>
       </div>
     </section>
-
-    <CtaBand
-      title="Not sure where to start?"
-      description="Tell us what you're building — our engineers will map the right architecture, OEM platforms, and delivery plan."
-      primaryLabel="Talk to an Engineer"
-      secondaryLabel="See All Services"
-      secondaryHref="/solutions/services"
-    />
   </main>
 );
 

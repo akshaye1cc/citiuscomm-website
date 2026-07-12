@@ -1,5 +1,4 @@
 import PageHero from "@/components/PageHero";
-import CtaBand from "@/components/CtaBand";
 import SectionTitle from "@/components/Common/SectionTitle";
 import Reveal from "@/components/ui/Reveal";
 import { industries } from "@/data/industries";
@@ -54,14 +53,6 @@ const IndustriesPage = () => (
         </div>
       </div>
     </section>
-
-    <CtaBand
-      title="Don't see your sector?"
-      description="If your operation depends on connectivity, we've probably built for it. Tell us what you run — we'll show you what we'd deploy."
-      primaryLabel="Talk to Our Team"
-      secondaryLabel="View All Services"
-      secondaryHref="/solutions/services"
-    />
   </main>
 );
 

@@ -1,5 +1,4 @@
 import PageHero from "@/components/PageHero";
-import CtaBand from "@/components/CtaBand";
 import Reveal from "@/components/ui/Reveal";
 import ServicesBentoGrid from "./ServicesBentoGrid";
 
@@ -25,12 +24,6 @@ const ServicesPage = () => (
         </Reveal>
       </div>
     </section>
-
-    <CtaBand
-      title="Need a capability you don't see here?"
-      description="Our OEM ecosystem and engineering bench go deep — if it connects, computes, or secures, we can likely deliver it."
-      primaryLabel="Ask Us Directly"
-    />
   </main>
 );
 

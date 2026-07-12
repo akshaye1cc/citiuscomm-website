@@ -40,7 +40,7 @@ const LeadershipPage = () => (
             </h1>
 
             <p className="mb-12 text-xl leading-relaxed text-muted">
-              30+ years of operator and enterprise leadership. From Ericsson to Reliance, we've built, managed, and scaled networks that serve 100M+ subscribers worldwide.
+              30+ years of operator and enterprise leadership. From Ericsson to Reliance, we&apos;ve built, managed, and scaled networks that serve 100M+ subscribers worldwide.
             </p>
 
             {/* Stats grid */}
