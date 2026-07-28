@@ -16,6 +16,16 @@ const Hero = () => (
     id="home"
     className="overflow-hidden pb-0 pt-[120px] md:pt-[150px] xl:pt-[170px]"
   >
+    <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+      <div
+        className="ds-dots absolute inset-0 text-edge-2/90 dark:text-edge-2/63"
+        style={{
+          maskImage: "linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%)",
+          WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%)",
+        }}
+      />
+    </div>
+
     <div className="container relative z-10">
       <div className="mx-auto max-w-[820px] text-center">
 

@@ -14,7 +14,7 @@ export default function SectionPattern({ glow = true, fade = true, className = "
   return (
     <div aria-hidden className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`}>
       <div
-        className={`ds-dots absolute inset-0 text-primary/[0.13] dark:text-brand/[0.15]${fade ? " ds-dots-fade" : ""}`}
+        className={`ds-dots absolute inset-0 text-edge-2/90 dark:text-edge-2/63${fade ? " ds-dots-fade" : ""}`}
       />
       {glow && (
         <>

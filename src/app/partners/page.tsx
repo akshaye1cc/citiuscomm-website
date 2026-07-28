@@ -37,7 +37,7 @@ export default function PartnersPage() {
       {/* page-wide dotted backdrop — one layer so every section blends seamlessly */}
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
         <div
-          className="ds-dots absolute inset-0 text-primary/[0.13] dark:text-brand/[0.15]"
+          className="ds-dots absolute inset-0 text-edge-2/90 dark:text-edge-2/63"
           style={{
             maskImage: "linear-gradient(to bottom, transparent 0, black 12%, black 86%, transparent 100%)",
             WebkitMaskImage: "linear-gradient(to bottom, transparent 0, black 12%, black 86%, transparent 100%)",

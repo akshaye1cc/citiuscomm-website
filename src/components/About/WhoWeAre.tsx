@@ -24,7 +24,7 @@ const WhoWeAre = () => (
   <section id="about" className="relative bg-canvas py-20 md:py-28 lg:py-32">
     <div className="pointer-events-none absolute inset-0 overflow-hidden">
       <div
-        className="ds-dots absolute inset-0 text-primary/[0.08] dark:text-brand/[0.1]"
+        className="ds-dots absolute inset-0 text-edge-2/90 dark:text-edge-2/63"
         style={{
           maskImage: "linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%)",
           WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%)",
