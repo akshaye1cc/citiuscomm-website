@@ -1,321 +1,128 @@
-# CITIUSCOMM Website
+# Citiuscomm Website
 
-Professional digital solutions and services across multiple industries.
+The official Citiuscomm marketing website — a Next.js application covering the company's solutions, industries served, partner ecosystem, leadership, and contact channels.
 
----
+## About Citiuscomm
 
-## About CITIUSCOMM
+Citiuscomm is a technology solutions aggregator and systems integrator delivering carrier-grade telecom and ICT infrastructure — data center, networking, cybersecurity, 5G, and cloud engineering — for telecom operators, ISPs, enterprises, banks, and government organizations across India, SAARC, and Southeast Asia.
 
-CITIUSCOMM is a forward-thinking organization providing innovative solutions tailored to meet the unique needs of businesses across various industries. Our expertise spans digital transformation, strategic consulting, and comprehensive service offerings.
+## Tech Stack
 
-**Website:** [Coming Soon]
+- **Framework:** [Next.js 16](https://nextjs.org/) (App Router, Turbopack)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/), driven by CSS custom properties for theming
+- **Theming:** [next-themes](https://github.com/pacocoursey/next-themes) — light/dark, system-aware
+- **3D:** [three.js](https://threejs.org/), [three-globe](https://github.com/vasturiano/three-globe), and [@react-three/fiber](https://docs.pmnd.rs/react-three-fiber) for the contact page's interactive globe
+- **Email delivery:** [Resend](https://resend.com/) for contact form submissions
+- **Deployment:** [Vercel](https://vercel.com/)
 
----
+## Pages
 
-## Project Overview
+| Route | Description |
+|---|---|
+| `/` | Home — hero, capability highlights, company overview |
+| `/about` | Company story, vision, and mission |
+| `/leadership` | Leadership team profiles |
+| `/solutions` | Solution practices overview |
+| `/solutions/services` | Detailed breakdown of each practice |
+| `/solutions/industries` | Industries and sectors served |
+| `/partners` | Why partner with Citiuscomm, client logos, and the OEM/partner ecosystem |
+| `/contact` | Office locations, contact form, and direct contact channels |
 
-This is the official CITIUSCOMM website built with modern web technologies for optimal performance, SEO, and user experience.
+`robots.txt` and `sitemap.xml` are generated at build time from `src/app/robots.ts` and `src/app/sitemap.ts`.
 
-### Key Features:
+## Getting Started
 
--  **Modern Design** - Built with Tailwind CSS v4 for responsive, beautiful UI
--  **High Performance** - Next.js with server-side rendering for fast page loads
--  **SEO Optimized** - Metadata and structured data for search engine visibility
--  **Mobile Responsive** - Perfect on all devices (desktop, tablet, mobile)
--  **Easy Maintenance** - Component-based architecture for scalability
--  **Brand Consistent** - Full CITIUSCOMM branding implementation
+### Prerequisites
 
----
+- Node.js 20 or later
+- npm
 
-##  Tech Stack
+### Installation
 
-- **Framework:** [Next.js 14](https://nextjs.org/) - React framework for production
-- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/) - Utility-first CSS framework
-- **Language:** [TypeScript](https://www.typescriptlang.org/) - Type-safe JavaScript
-- **Package Manager:** [npm](https://www.npmjs.com/)
-- **Deployment:** Ready for Vercel, Netlify, or traditional hosting
+```bash
+git clone https://github.com/akshaye1cc/citiuscomm-website.git
+cd citiuscomm-website
+npm install
+```
 
----
+### Environment Variables
 
-##  Project Structure
+The contact form (`/contact`) sends submissions through Resend. Create a `.env.local` file with:
+
+```bash
+RESEND_API_KEY=your_resend_api_key
+
+# Optional — defaults shown
+CONTACT_TO_EMAIL=sales@citiuscomm.com
+CONTACT_FROM_EMAIL=website@citiuscomm.com
+```
+
+Without `RESEND_API_KEY`, the form returns a clear error asking the visitor to email the sales address directly, rather than falsely reporting success.
+
+### Development
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
+
+### Production Build
+
+```bash
+npm run build
+npm run start
+```
+
+### Lint
+
+```bash
+npm run lint
+```
+
+## Project Structure
 
 ```
 citiuscomm-website/
 ├── src/
-│   ├── app/                    # Next.js app directory (pages & routing)
-│   │   ├── page.tsx            # Homepage
-│   │   ├── about/page.tsx       # About page
-│   │   ├── solutions/page.tsx   # Solutions page
-│   │   ├── opportunities/page.tsx # Careers & opportunities
-│   │   ├── contact/page.tsx     # Contact page
-│   │   └── layout.tsx           # Main layout wrapper
-│   ├── components/             # Reusable React components
-│   │   ├── Header/             # Navigation & header
-│   │   ├── Footer/             # Footer
-│   │   ├── Hero/               # Hero section
-│   │   ├── Features/           # Features/services components
-│   │   └── ...                 # Other components
-│   ├── styles/                 # Global styles & CSS
-│   │   └── index.css           # Main stylesheet with Tailwind config
-│   └── types/                  # TypeScript type definitions
-├── public/                     # Static assets (images, favicon, etc.)
-├── package.json               # Project dependencies
-├── next.config.js             # Next.js configuration
-├── tailwind.config.js         # Tailwind CSS configuration
-├── tsconfig.json              # TypeScript configuration
-└── README.md                  # This file
+│   ├── app/                   Next.js App Router — pages, layout, API routes
+│   │   ├── page.tsx            Home
+│   │   ├── about/
+│   │   ├── leadership/
+│   │   ├── solutions/
+│   │   │   ├── services/
+│   │   │   └── industries/
+│   │   ├── partners/
+│   │   ├── contact/
+│   │   ├── api/contact/        Contact form submission endpoint
+│   │   ├── not-found.tsx       404 page
+│   │   ├── sitemap.ts
+│   │   ├── robots.ts
+│   │   └── layout.tsx          Root layout, metadata, theme provider
+│   ├── components/             Reusable React components
+│   │   ├── Header/, Footer/    Site chrome
+│   │   ├── Hero/, Features/    Home page sections
+│   │   ├── About/               About and leadership page sections
+│   │   ├── Contact/             Contact form and globe visualization
+│   │   ├── CtaBand/, PageHero/  Shared section components
+│   │   └── ui/                  Design-system primitives (Button, Badge, Reveal, etc.)
+│   ├── data/                   Static content (industries, solutions, partners, clients)
+│   └── styles/
+│       ├── index.css            Tailwind entry point and global styles
+│       └── tokens.css           Design tokens (color, in light and dark mode)
+├── public/                     Static assets (images, logos, favicon)
+└── package.json
 ```
 
----
+## Design System
 
-##  Branding Guidelines
+Colors, spacing, and typography are driven by CSS custom properties defined in `src/styles/tokens.css`, with light and dark values scoped under `:root` and `.dark`. Tailwind utility classes (`bg-canvas`, `text-fg`, `text-muted`, `text-brand`, and so on) map to these tokens, so components should reference the semantic utilities rather than hard-coded colors.
 
-### Color Palette
+## Deployment
 
-- **Primary Blue:** `#156EB0` - Main brand color for buttons, links, highlights
-- **Secondary Dark:** `#0A2540` - Dark backgrounds, hero sections
-- **Accent Orange:** `#FF7A00` - Call-to-action buttons, attention-grabbing elements
-- **Light Background:** `#F8FAFC` - Default page background
-- **Text Dark:** `#111827` - Primary text color
+The site is deployed on Vercel and builds automatically from the `main` branch. Set the environment variables listed above in the Vercel project settings for the contact form to function in production.
 
-### Typography
+## License
 
-- **Display Font:** Montserrat (Bold/Semibold) - Headings, titles, subtitles
-- **Body Font:** Inter (Regular) - Paragraphs, body text, content
-
----
-
-##  Getting Started
-
-### Prerequisites
-
-- Node.js 18+ ([Download](https://nodejs.org/))
-- npm or yarn
-- Git
-- VS Code (recommended)
-
-### Installation
-
-1. **Clone the Repository**
-   ```bash
-   git clone git@github.com:akshaye1cc/citiuscomm-website.git
-   cd citiuscomm-website
-   ```
-
-2. **Install Dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Start Development Server**
-   ```bash
-   npm run dev
-   ```
-
-4. **Open in Browser**
-   - Navigate to `http://localhost:3000`
-   - You should see the CITIUSCOMM website!
-
----
-
-##  Available Scripts
-
-### Development
-```bash
-npm run dev
-```
-Starts the development server with hot-reload. Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-### Build for Production
-```bash
-npm run build
-```
-Creates an optimized production build. Output goes to the `dist/` folder.
-
-### Preview Production Build
-```bash
-npm run preview
-```
-Starts a local server with the production build.
-
-### Lint Code
-```bash
-npm run lint
-```
-Checks code for errors and style issues.
-
----
-
-## 📝 Git Workflow & Best Practices
-
-### For Team Members:
-
-#### Before Starting Work
-```bash
-git pull origin main
-npm run dev
-```
-
-#### After Completing A Task
-```bash
-git status                    # See what you changed
-git add .                     # Stage all changes
-git commit -m "Description"   # Save with clear message
-git push origin main          # Send to GitHub
-```
-
-#### Good Commit Messages
-```bash
-git commit -m "Add hero section to homepage"
-git commit -m "Create contact form component"
-git commit -m "Update brand colors in layout"
-git commit -m "Fix responsive styling on mobile"
-```
-
-### Important Rules:
-- ✅ Always `git pull` before starting work
-- ✅ Commit frequently with descriptive messages
-- ✅ Test in browser before committing
-- ✅ Never commit `node_modules/` folder
-- ✅ Don't edit `package.json` unless necessary
-- ✅ Keep `npm run dev` running while developing
-
----
-
-##  Pages Overview
-
-### Home Page (`/`)
-Main landing page with:
-- Hero section with headline and CTA
-- Company overview snapshot
-- Services overview with cards
-- Industries served section
-- Featured clients/partners
-- Call-to-action section
-
-### About Us (`/about`)
-Company information including:
-- Company story and mission
-- Vision statement
-- Leadership team profiles
-- Company values
-- Certifications and achievements
-
-### Solutions (`/solutions`)
-Detailed service offerings:
-- Service cards with descriptions
-- Industry expertise breakdown
-- Client portfolio
-- Testimonials
-
-### Opportunities (`/opportunities`)
-Career and collaboration section:
-- Open job positions
-- Internship opportunities
-- Company culture highlights
-- Events and partnerships
-
-### Contact (`/contact`)
-Lead generation and support:
-- Contact form
-- Office locations and phone
-- Email contact
-- Map integration
-- Social media links
-
----
-
-## 🔧 Customization
-
-### Changing Colors
-
-Edit `/src/styles/index.css` in the `@theme` block:
-
-```css
-@theme {
-  --color-primary: #156EB0;
-  --color-secondary: #0A2540;
-  --color-accent: #FF7A00;
-  /* ... other colors */
-}
-```
-
-### Updating Branding
-
-- **Logo:** Replace files in `/public/images/logo/`
-- **Favicon:** Replace `/public/favicon.ico`
-- **Metadata:** Edit `layout.tsx` metadata export
-- **Fonts:** Update imports in `/src/styles/index.css`
-
-### Adding New Pages
-
-1. Create folder: `/src/app/newpage/`
-2. Create file: `/src/app/newpage/page.tsx`
-3. Add content (follows Next.js routing)
-4. Update navigation in Header component
-
----
-
-## 📚 Component Library
-
-Common components available:
-
-- **Hero** - Large header section with CTA
-- **Card** - Service/feature cards with hover effects
-- **Button** - Primary, secondary, and accent variants
-- **Section** - Container with consistent padding
-- **Grid** - Responsive grid layouts
-- **Form** - Contact and inquiry forms
-
-See `/src/components/` for complete list.
-
----
-
-## 🚢 Deployment
-
-### Vercel (Recommended)
-```bash
-npm install -g vercel
-vercel
-```
-
-### Netlify
-1. Connect GitHub repository
-2. Set build command: `npm run build`
-3. Set publish directory: `out`
-
-### Traditional Hosting
-```bash
-npm run build
-# Upload contents of dist/ folder via FTP
-```
-
----
-
-## 🐛 Troubleshooting
-
-### Port Already In Use
-```bash
-npm run dev -- --port 3001
-```
-
-### Dependencies Not Working
-```bash
-npm install
-npm run dev
-```
-
-### Changes Not Showing
-- Save file (Ctrl+S)
-- Hard refresh browser (Ctrl+Shift+R)
-- Check dev server is running
-
----
-
-## 📄 License
-
-This project is proprietary and confidential. All code and assets are owned by CITIUSCOMM.
-
----
-
-**Built with ❤️ by the CITIUSCOMM Team**
+Proprietary and confidential. All code and assets are owned by Citiuscomm.
