@@ -1,5 +1,6 @@
-import Button from "@/components/ui/Button";
-import Badge from "@/components/ui/Badge";
+"use client";
+
+import { useCallback, useState } from "react";
 import Counter from "@/components/ui/Counter";
 import TypingText from "@/components/ui/TypingText";
 import AuroraBackground from "@/components/ui/AuroraBackground";
@@ -11,60 +12,102 @@ const stats = [
   { num: "30+",   label: "Years Experience" },
 ];
 
-const Hero = () => (
-  <AuroraBackground
-    id="home"
-    className="overflow-hidden pb-0 pt-[120px] md:pt-[150px] xl:pt-[170px]"
-  >
-    <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-      <div
-        className="ds-dots absolute inset-0 text-edge-2/90 dark:text-edge-2/63"
-        style={{
-          maskImage: "linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%)",
-          WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%)",
-        }}
-      />
-    </div>
+/* Module scope keeps the reference stable across Hero re-renders, so toggling
+   the pause control can't restart the typing effect. */
+const headlinePhrases = [
+  "Connecting You, Every Step of the Way.",
+  "Building Infrastructure, Creating Impact.",
+  "Powering Networks, Enabling Growth.",
+];
 
-    <div className="container relative z-10">
-      <div className="mx-auto max-w-[820px] text-center">
-
-        <h1 className="mb-6 text-5xl font-bold leading-tight text-fg sm:text-6xl md:text-7xl">
-          <TypingText
-            phrases={[
-              "Connecting You, Every Step of the Way.",
-              "Building Infrastructure, Creating Impact.",
-              "Powering Networks, Enabling Growth.",
-            ]}
-            speed={80}
-            delayBetweenPhrases={2500}
-          />
-        </h1>
-
-        <p className="mx-auto mb-4 max-w-[620px] text-lg leading-relaxed text-muted sm:text-xl">
-          Delivering cutting-edge, carrier-grade solutions that fuel the rapid evolution
-          of Communications and Networking Infrastructure.
-        </p>
-
-        <p className="mb-14 text-sm font-medium text-primary/80 dark:text-brand/80">
-          Data Center · ICT Infrastructure · Cybersecurity · 5G Networks · Cloud Engineering
-        </p>
-      </div>
-
-      <div className="mx-auto mt-16 max-w-[820px] md:mt-24 pb-20 md:pb-28 lg:pb-32">
-        <dl className="flex flex-wrap justify-center gap-x-10 gap-y-6">
-          {stats.map(({ num, label }) => (
-            <div key={label} className="text-center">
-              <dt className="text-2xl font-bold text-fg sm:text-3xl">
-                <Counter value={num} />
-              </dt>
-              <dd className="mt-0.5 text-sm text-muted">{label}</dd>
-            </div>
-          ))}
-        </dl>
-      </div>
-    </div>
-  </AuroraBackground>
+const PauseIcon = () => (
+  <svg viewBox="0 0 12 12" className="h-3 w-3" fill="currentColor" aria-hidden>
+    <rect x="2" y="1.5" width="3" height="9" rx="1" />
+    <rect x="7" y="1.5" width="3" height="9" rx="1" />
+  </svg>
 );
+
+const PlayIcon = () => (
+  <svg viewBox="0 0 12 12" className="h-3 w-3" fill="currentColor" aria-hidden>
+    <path d="M3 1.8v8.4a.6.6 0 0 0 .92.5l6.5-4.2a.6.6 0 0 0 0-1L3.92 1.3A.6.6 0 0 0 3 1.8Z" />
+  </svg>
+);
+
+const Hero = () => {
+  const [paused, setPaused] = useState(false);
+  const [settled, setSettled] = useState(false);
+  const handleSettled = useCallback(() => setSettled(true), []);
+
+  return (
+    <AuroraBackground
+      id="home"
+      className="overflow-hidden pb-0 pt-[120px] md:pt-[150px] xl:pt-[170px]"
+    >
+      <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div
+          className="ds-dots absolute inset-0 text-edge-2/90 dark:text-edge-2/63"
+          style={{
+            maskImage: "linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%)",
+          }}
+        />
+      </div>
+
+      <div className="container relative z-10">
+        <div className="mx-auto max-w-[820px] text-center">
+
+          <h1 className="mb-3 text-5xl font-bold leading-tight text-fg sm:text-6xl md:text-7xl">
+            <TypingText
+              phrases={headlinePhrases}
+              speed={80}
+              delayBetweenPhrases={2500}
+              paused={paused}
+              onSettled={handleSettled}
+            />
+          </h1>
+
+          {/* Fixed height so the layout stays still once the control retires. */}
+          <div className="mb-4 flex h-8 items-center justify-center">
+            <button
+              type="button"
+              onClick={() => setPaused((prev) => !prev)}
+              aria-label={paused ? "Resume the animated headline" : "Pause the animated headline"}
+              aria-hidden={settled}
+              tabIndex={settled ? -1 : 0}
+              className={`inline-flex items-center gap-1.5 rounded-full border border-edge/70 px-3 py-1.5 text-xs font-medium text-faint transition-all duration-300 hover:border-primary/50 hover:text-fg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
+                settled ? "pointer-events-none opacity-0" : "opacity-100"
+              }`}
+            >
+              {paused ? <PlayIcon /> : <PauseIcon />}
+              {paused ? "Play" : "Pause"}
+            </button>
+          </div>
+
+          <p className="mx-auto mb-4 max-w-[620px] text-lg leading-relaxed text-muted sm:text-xl">
+            Delivering cutting-edge, carrier-grade solutions that fuel the rapid evolution
+            of Communications and Networking Infrastructure.
+          </p>
+
+          <p className="mb-14 text-sm font-medium text-primary/80 dark:text-brand/80">
+            Data Center · ICT Infrastructure · Cybersecurity · 5G Networks · Cloud Engineering
+          </p>
+        </div>
+
+        <div className="mx-auto mt-16 max-w-[820px] md:mt-24 pb-20 md:pb-28 lg:pb-32">
+          <dl className="flex flex-wrap justify-center gap-x-10 gap-y-6">
+            {stats.map(({ num, label }) => (
+              <div key={label} className="text-center">
+                <dt className="text-2xl font-bold text-fg sm:text-3xl">
+                  <Counter value={num} />
+                </dt>
+                <dd className="mt-0.5 text-sm text-muted">{label}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </div>
+    </AuroraBackground>
+  );
+};
 
 export default Hero;

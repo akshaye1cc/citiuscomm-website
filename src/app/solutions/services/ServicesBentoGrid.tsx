@@ -277,6 +277,7 @@ export default function ServicesBentoGrid() {
         return (
           <BentoGridItem
             key={pillar.slug}
+            id={pillar.slug}
             className={colSpans[i]}
             header={<Skeleton />}
             icon={<Icon size={20} className="text-primary shrink-0" />}

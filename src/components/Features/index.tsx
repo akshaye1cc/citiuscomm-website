@@ -33,8 +33,10 @@ const Features = () => {
       </div>
       <div className="container relative z-10">
         {/* Signature network animation, paired with the capability cards */}
-        <div className="mb-14 flex justify-center overflow-hidden md:mb-20">
-          <NetworkVisual className="w-full min-w-[760px] max-w-[1180px]" />
+        {/* Scales down with the viewport rather than being cropped — the node
+            labels drop out below `sm` so the topology stays readable. */}
+        <div className="mb-14 flex justify-center md:mb-20">
+          <NetworkVisual className="w-full max-w-[1180px]" />
         </div>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">

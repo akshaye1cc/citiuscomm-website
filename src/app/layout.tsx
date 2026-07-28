@@ -44,7 +44,7 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning lang="en">
       <head />
-      <body className={`bg-[#FCFCFC] dark:bg-black ${inter.className}`}>
+      <body className={`bg-canvas ${inter.className}`}>
         <Providers>
           <div className="isolate">
             <Header />

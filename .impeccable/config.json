@@ -1,0 +1,44 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "inter",
+        "createdAt": "2026-07-28T08:03:25.462Z",
+        "reason": "User confirmed Inter is intentional (documented body font in README brand guidelines)"
+      },
+      {
+        "rule": "overused-font",
+        "value": "montserrat",
+        "createdAt": "2026-07-28T08:03:58.326Z",
+        "reason": "User confirmed Montserrat is intentional (documented display font in README brand guidelines)"
+      },
+      {
+        "rule": "codex-grid-background",
+        "value": "*",
+        "files": [
+          "src/styles/index.css"
+        ],
+        "createdAt": "2026-07-28T08:04:10.027Z",
+        "reason": "User-directed dot-grid motif (.ds-dots) applied site-wide as a deliberate brand signature; it is a radial-gradient dot field, not a hairline line grid"
+      },
+      {
+        "rule": "overused-font",
+        "value": "google fonts: montserrat",
+        "createdAt": "2026-07-28T08:06:05.148Z",
+        "reason": "Same user-confirmed Montserrat brand font, as declared in the Google Fonts import"
+      },
+      {
+        "rule": "overused-font",
+        "value": "*",
+        "files": [
+          "src/styles/index.css"
+        ],
+        "createdAt": "2026-07-28T08:07:40.067Z",
+        "reason": "Inter + Montserrat are the confirmed brand faces per README brand guidelines; this file holds the only font declarations and Google Fonts import. Rule stays active in every other file."
+      }
+    ]
+  }
+}

@@ -31,7 +31,7 @@ const Header = () => {
     <header
       className={`fixed left-0 top-0 z-50 w-full transition-all duration-300 ${
         sticky
-          ? "border-b border-edge bg-white/95 backdrop-blur-md dark:bg-[#071b2f]/95"
+          ? "border-b border-edge bg-canvas/95 backdrop-blur-md"
           : "bg-transparent"
       }`}
     >
@@ -138,7 +138,7 @@ const Header = () => {
                     {/* Dropdown */}
                     {item.submenu && (
                       <div
-                        className={`rounded-xl border border-edge bg-canvas shadow-lg transition-all duration-200 lg:invisible lg:absolute lg:left-0 lg:top-full lg:w-[220px] lg:p-2 lg:opacity-0 lg:group-hover:visible lg:group-hover:opacity-100 ${
+                        className={`rounded-xl border border-edge bg-canvas shadow-lg transition-all duration-200 lg:invisible lg:absolute lg:left-0 lg:top-full lg:w-[220px] lg:p-2 lg:opacity-0 lg:group-hover:visible lg:group-hover:opacity-100 lg:group-focus-within:visible lg:group-focus-within:opacity-100 ${
                           openIndex === index ? "block" : "hidden lg:block"
                         }`}
                       >

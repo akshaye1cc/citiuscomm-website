@@ -9,12 +9,14 @@ const companyLinks = [
   { label: "Contact Us", href: "/contact" },
 ];
 
+/* Practice links deep-link to their own card on the services page — the
+   fragments match the `slug` values in src/data/solutions.tsx. */
 const solutionLinks = [
   { label: "Services",      href: "/solutions/services" },
   { label: "Industries",    href: "/solutions/industries" },
-  { label: "5G & vRAN",     href: "/solutions/services" },
-  { label: "Cybersecurity", href: "/solutions/services" },
-  { label: "Data Centers",  href: "/solutions/services" },
+  { label: "5G & vRAN",     href: "/solutions/services#telecom-networks" },
+  { label: "Cybersecurity", href: "/solutions/services#cybersecurity" },
+  { label: "Data Centers",  href: "/solutions/services#data-center" },
 ];
 
 const LinkedInIcon = () => (

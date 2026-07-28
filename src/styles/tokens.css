@@ -20,8 +20,8 @@
 
   /* ---- Text ---- */
   --ds-fg:    #071b2f;   /* deep navy — primary text */
-  --ds-muted: #4a6785;   /* secondary text */
-  --ds-faint: #8ca9c4;   /* tertiary / placeholder */
+  --ds-muted: #4a6785;   /* secondary text — 5.9:1 on canvas */
+  --ds-faint: #54718f;   /* tertiary — 5.1:1 on canvas, 4.9:1 on canvas-subtle */
 
   /* ---- Brand (light-mode values) ---- */
   --ds-brand:       #156eb0;
@@ -54,8 +54,8 @@
 
   /* ---- Text ---- */
   --ds-fg:    #eef4fa;   /* near-white, slight blue tint */
-  --ds-muted: #8ca9c4;
-  --ds-faint: #4a7a9b;
+  --ds-muted: #8ca9c4;   /* 7.1:1 on canvas */
+  --ds-faint: #6b9cbf;   /* 5.9:1 on canvas, 4.8:1 on surface */
 
   /* ---- Brand (dark-mode values) ---- */
   --ds-brand:       #2b8fd0;   /* lightened for contrast on navy */

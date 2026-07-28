@@ -17,12 +17,15 @@ export function BentoGrid({
 
 export function BentoGridItem({
   className = "",
+  id,
   title,
   description,
   header,
   icon,
 }: {
   className?: string;
+  /** Anchor target, so deep links can address a single practice. */
+  id?: string;
   title?: string | React.ReactNode;
   description?: string | React.ReactNode;
   header?: React.ReactNode;
@@ -30,7 +33,8 @@ export function BentoGridItem({
 }) {
   return (
     <div
-      className={`group/bento row-span-1 flex flex-col overflow-hidden rounded-2xl border border-edge bg-surface transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 ${className}`}
+      id={id}
+      className={`group/bento row-span-1 flex flex-col overflow-hidden rounded-2xl border border-edge bg-surface transition-all duration-300 scroll-mt-28 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 ${className}`}
     >
       <div className="flex-1 overflow-hidden">{header}</div>
       <div className="p-5 transition-transform duration-200 group-hover/bento:translate-x-1.5">
