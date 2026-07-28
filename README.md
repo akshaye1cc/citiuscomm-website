@@ -4,7 +4,7 @@ Professional digital solutions and services across multiple industries.
 
 ---
 
-## 🚀 About CITIUSCOMM
+## About CITIUSCOMM
 
 CITIUSCOMM is a forward-thinking organization providing innovative solutions tailored to meet the unique needs of businesses across various industries. Our expertise spans digital transformation, strategic consulting, and comprehensive service offerings.
 
@@ -12,22 +12,22 @@ CITIUSCOMM is a forward-thinking organization providing innovative solutions tai
 
 ---
 
-## 📋 Project Overview
+## Project Overview
 
 This is the official CITIUSCOMM website built with modern web technologies for optimal performance, SEO, and user experience.
 
 ### Key Features:
 
-- ✨ **Modern Design** - Built with Tailwind CSS v4 for responsive, beautiful UI
-- ⚡ **High Performance** - Next.js with server-side rendering for fast page loads
-- 🎯 **SEO Optimized** - Metadata and structured data for search engine visibility
-- 📱 **Mobile Responsive** - Perfect on all devices (desktop, tablet, mobile)
-- 🔄 **Easy Maintenance** - Component-based architecture for scalability
-- 🎨 **Brand Consistent** - Full CITIUSCOMM branding implementation
+-  **Modern Design** - Built with Tailwind CSS v4 for responsive, beautiful UI
+-  **High Performance** - Next.js with server-side rendering for fast page loads
+-  **SEO Optimized** - Metadata and structured data for search engine visibility
+-  **Mobile Responsive** - Perfect on all devices (desktop, tablet, mobile)
+-  **Easy Maintenance** - Component-based architecture for scalability
+-  **Brand Consistent** - Full CITIUSCOMM branding implementation
 
 ---
 
-## 🛠 Tech Stack
+##  Tech Stack
 
 - **Framework:** [Next.js 14](https://nextjs.org/) - React framework for production
 - **Styling:** [Tailwind CSS v4](https://tailwindcss.com/) - Utility-first CSS framework
@@ -37,7 +37,7 @@ This is the official CITIUSCOMM website built with modern web technologies for o
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 citiuscomm-website/
@@ -68,7 +68,7 @@ citiuscomm-website/
 
 ---
 
-## 🎨 Branding Guidelines
+##  Branding Guidelines
 
 ### Color Palette
 
@@ -85,7 +85,7 @@ citiuscomm-website/
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 
@@ -118,7 +118,7 @@ citiuscomm-website/
 
 ---
 
-## 📖 Available Scripts
+##  Available Scripts
 
 ### Development
 ```bash
@@ -182,7 +182,7 @@ git commit -m "Fix responsive styling on mobile"
 
 ---
 
-## 🌍 Pages Overview
+##  Pages Overview
 
 ### Home Page (`/`)
 Main landing page with:
