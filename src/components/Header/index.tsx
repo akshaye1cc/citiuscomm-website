@@ -94,7 +94,7 @@ const Header = () => {
                         onClick={() => setNavbarOpen(false)}
                         className={`flex items-center py-2.5 text-sm font-medium transition-colors duration-150 lg:py-7 ${
                           pathname === item.path
-                            ? "text-primary"
+                            ? "text-brand"
                             : "text-muted hover:text-fg dark:hover:text-fg"
                         }`}
                       >
@@ -108,7 +108,7 @@ const Header = () => {
                           href={item.path}
                           className={`hidden items-center gap-1 py-2.5 text-sm font-medium transition-colors duration-150 lg:inline-flex lg:py-7 ${
                             pathname.startsWith(item.path)
-                              ? "text-primary"
+                              ? "text-brand"
                               : "text-muted hover:text-fg dark:hover:text-fg"
                           }`}
                         >

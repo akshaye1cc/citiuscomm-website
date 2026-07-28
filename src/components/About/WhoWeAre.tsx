@@ -13,7 +13,7 @@ const Card = ({ children, className = "" }: { children: React.ReactNode; classNa
 
 const Point = ({ text }: { text: string }) => (
   <li className="flex items-start gap-3 text-base leading-relaxed text-muted">
-    <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-brand-muted text-primary">
+    <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-brand-muted text-brand">
       <CheckIcon size={12} strokeWidth={2.6} />
     </span>
     {text}
@@ -32,6 +32,8 @@ const WhoWeAre = () => (
       />
     </div>
     <div className="container relative z-10">
+      {/* Level-2 anchor for the page outline — the cards below are all h3. */}
+      <h2 className="sr-only">Vision and mission</h2>
 
       {/* Vision + Mission */}
       <div className="mb-10 grid gap-8 md:grid-cols-2">
@@ -40,7 +42,7 @@ const WhoWeAre = () => (
             <div className="relative h-72 overflow-hidden">
               <Image
                 src="/images/about/visimage.jpg"
-                alt="Vision"
+                alt=""
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
@@ -50,7 +52,7 @@ const WhoWeAre = () => (
             </div>
             <div className="relative p-8">
               <div className="mb-2 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-                <CheckIcon size={20} className="text-primary" />
+                <CheckIcon size={20} className="text-brand" />
               </div>
               <h3 className="mb-4 text-2xl font-bold text-fg">Our Vision</h3>
               <ul className="space-y-3">
@@ -67,7 +69,7 @@ const WhoWeAre = () => (
             <div className="relative h-72 overflow-hidden">
               <Image
                 src="/images/about/missionimg.jpg"
-                alt="Mission"
+                alt=""
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
@@ -77,7 +79,7 @@ const WhoWeAre = () => (
             </div>
             <div className="relative p-8">
               <div className="mb-2 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-                <ArrowRightIcon size={20} className="text-primary" />
+                <ArrowRightIcon size={20} className="text-brand" />
               </div>
               <h3 className="mb-4 text-2xl font-bold text-fg">Our Mission</h3>
               <ul className="space-y-3">
@@ -97,7 +99,7 @@ const WhoWeAre = () => (
             <div className="relative h-60 overflow-hidden">
               <Image
                 src="/images/about/expertise.jpg"
-                alt="Expertise"
+                alt=""
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
@@ -107,7 +109,7 @@ const WhoWeAre = () => (
             </div>
             <div className="relative p-7">
               <div className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10">
-                <span className="text-primary font-bold">⚙️</span>
+                <span className="text-brand font-bold">⚙️</span>
               </div>
               <h3 className="mb-3 text-xl font-bold text-fg">Our Expertise</h3>
               <p className="leading-relaxed text-muted">
@@ -124,7 +126,7 @@ const WhoWeAre = () => (
             <div className="relative h-60 overflow-hidden">
               <Image
                 src="/images/about/innovation.jpg"
-                alt="Innovation"
+                alt=""
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
@@ -134,7 +136,7 @@ const WhoWeAre = () => (
             </div>
             <div className="relative p-7">
               <div className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10">
-                <span className="text-primary font-bold">💡</span>
+                <span className="text-brand font-bold">💡</span>
               </div>
               <h3 className="mb-3 text-xl font-bold text-fg">Innovation</h3>
               <p className="leading-relaxed text-muted">
@@ -153,7 +155,7 @@ const WhoWeAre = () => (
             <div className="relative h-72 overflow-hidden md:h-auto">
               <Image
                 src="/images/about/customer-focus.jpg"
-                alt="Customer Focus"
+                alt=""
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
@@ -163,7 +165,7 @@ const WhoWeAre = () => (
             </div>
             <div className="relative flex flex-col justify-center p-8 md:p-10">
               <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 w-fit">
-                <span className="text-primary font-bold">🤝</span>
+                <span className="text-brand font-bold">🤝</span>
               </div>
               <h3 className="mb-4 text-2xl font-bold text-fg">Customer Focus</h3>
               <p className="leading-relaxed text-muted">

@@ -19,10 +19,10 @@ const NetworkVisualization = () => (
       {/* Gradients for visual depth */}
       <linearGradient id="flow-gradient-1" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stopColor="var(--ds-brand)" stopOpacity="0.8" />
-        <stop offset="100%" stopColor="var(--ds-primary)" stopOpacity="0.3" />
+        <stop offset="100%" stopColor="var(--ds-brand)" stopOpacity="0.3" />
       </linearGradient>
       <linearGradient id="flow-gradient-2" x1="100%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stopColor="var(--ds-primary)" stopOpacity="0.6" />
+        <stop offset="0%" stopColor="var(--ds-brand)" stopOpacity="0.6" />
         <stop offset="100%" stopColor="var(--ds-brand)" stopOpacity="0.2" />
       </linearGradient>
 
@@ -38,9 +38,9 @@ const NetworkVisualization = () => (
 
     {/* Outer ring structure */}
     <g opacity="0.2">
-      <circle cx="240" cy="240" r="200" fill="none" stroke="var(--ds-primary)" strokeWidth="0.5" />
-      <circle cx="240" cy="240" r="150" fill="none" stroke="var(--ds-primary)" strokeWidth="0.5" />
-      <circle cx="240" cy="240" r="100" fill="none" stroke="var(--ds-primary)" strokeWidth="0.5" />
+      <circle cx="240" cy="240" r="200" fill="none" stroke="var(--ds-brand)" strokeWidth="0.5" />
+      <circle cx="240" cy="240" r="150" fill="none" stroke="var(--ds-brand)" strokeWidth="0.5" />
+      <circle cx="240" cy="240" r="100" fill="none" stroke="var(--ds-brand)" strokeWidth="0.5" />
     </g>
 
     {/* Main node network - 6 outer nodes + center */}
@@ -127,7 +127,7 @@ const NetworkVisualization = () => (
             cx={node.x}
             cy={node.y}
             r="6"
-            fill="var(--ds-primary)"
+            fill="var(--ds-brand)"
             opacity="0.6"
           />
         </g>
@@ -153,7 +153,7 @@ const NetworkVisualization = () => (
         cy="240"
         r="50"
         fill="none"
-        stroke="var(--ds-primary)"
+        stroke="var(--ds-brand)"
         strokeWidth="1"
         opacity="0.15"
         className="ds-ring-expand"
@@ -186,7 +186,7 @@ const NetworkVisualization = () => (
         cx="240"
         cy="240"
         r="10"
-        fill="var(--ds-primary)"
+        fill="var(--ds-brand)"
         opacity="0.8"
       />
 
@@ -206,19 +206,19 @@ const NetworkVisualization = () => (
       <path
         d="M 240 80 Q 400 150 400 330"
         fill="none"
-        stroke="var(--ds-primary)"
+        stroke="var(--ds-brand)"
         strokeWidth="1"
       />
       <path
         d="M 400 330 Q 240 400 80 330"
         fill="none"
-        stroke="var(--ds-primary)"
+        stroke="var(--ds-brand)"
         strokeWidth="1"
       />
       <path
         d="M 80 330 Q 80 150 240 80"
         fill="none"
-        stroke="var(--ds-primary)"
+        stroke="var(--ds-brand)"
         strokeWidth="1"
       />
     </g>
@@ -242,7 +242,7 @@ const AboutHero = ({ eyebrow, title, highlight, description }: AboutHeroProps) =
           )}
 
           <h1 className="mb-6 text-4xl font-bold leading-tight text-fg sm:text-5xl lg:text-5xl">
-            {title} <span className="text-primary">{highlight}</span>
+            {title} <span className="text-brand">{highlight}</span>
           </h1>
 
           <p className="text-lg leading-relaxed text-muted sm:text-lg">

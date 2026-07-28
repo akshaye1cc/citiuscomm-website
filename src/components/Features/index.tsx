@@ -32,6 +32,10 @@ const Features = () => {
         />
       </div>
       <div className="container relative z-10">
+        {/* The section reads visually from the diagram and cards, but the outline
+            still needs a level-2 heading so h1 doesn't jump straight to h3. */}
+        <h2 className="sr-only">What we do</h2>
+
         {/* Signature network animation, paired with the capability cards */}
         {/* Scales down with the viewport rather than being cropped — the node
             labels drop out below `sm` so the topology stays readable. */}

@@ -68,6 +68,9 @@ export default function PartnersPage() {
             </p>
           </div>
 
+          {/* Level-2 anchor for the page outline — the cards below are all h3. */}
+          <h2 className="sr-only">Why partner with us</h2>
+
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 md:mt-14">
             {whyPartner.map((card, i) => {
               const Icon = card.icon;
@@ -83,7 +86,7 @@ export default function PartnersPage() {
                     <div
                       className={`mb-5 flex h-12 w-12 items-center justify-center rounded-xl ${
                         card.featured
-                          ? "bg-brand-muted text-primary"
+                          ? "bg-brand-muted text-brand"
                           : "bg-canvas-subtle text-fg"
                       }`}
                     >

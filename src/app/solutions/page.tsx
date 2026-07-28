@@ -39,14 +39,14 @@ const SolutionsPage = () => (
                 href={`/solutions/services#${pillar.slug}`}
                 className="ds-sheen group relative flex h-full flex-col overflow-hidden rounded-2xl border border-edge bg-surface p-8 transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5"
               >
-                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-brand-muted text-primary">
+                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-brand-muted text-brand">
                   {pillar.icon}
                 </div>
                 <h3 className="mb-2 text-xl font-bold text-fg">{pillar.title}</h3>
                 <p className="mb-6 flex-1 text-base leading-relaxed text-muted">
                   {pillar.tagline}
                 </p>
-                <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
+                <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand">
                   Learn more
                   <svg
                     className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1"
@@ -81,7 +81,7 @@ const SolutionsPage = () => (
           {industries.map(({ title, icon }, i) => (
             <Reveal key={title} delay={i * 0.04}>
               <div className="flex h-full items-center gap-3 rounded-xl border border-edge bg-surface px-4 py-3.5 transition-colors duration-200 hover:border-primary/40">
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-muted text-primary">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-muted text-brand">
                   {icon}
                 </span>
                 <span className="text-sm font-semibold leading-snug text-fg">{title}</span>

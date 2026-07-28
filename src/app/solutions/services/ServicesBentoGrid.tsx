@@ -116,7 +116,7 @@ const SkeletonCyber = () => (
       transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
     />
     <div className="relative z-10 flex h-14 w-14 items-center justify-center rounded-2xl border border-primary/20 bg-brand-muted">
-      <ShieldIcon size={28} className="text-primary" />
+      <ShieldIcon size={28} className="text-brand" />
     </div>
   </div>
 );
@@ -151,7 +151,7 @@ const SkeletonTelecom = () => (
             key={gen}
             className={`rounded border px-1.5 py-0.5 text-[10px] font-bold ${
               gen === "5G"
-                ? "border-primary/50 bg-brand-muted text-primary"
+                ? "border-primary/50 bg-brand-muted text-brand"
                 : "border-edge text-faint"
             }`}
             animate={gen === "5G" ? { opacity: [0.6, 1, 0.6] } : {}}
@@ -280,7 +280,7 @@ export default function ServicesBentoGrid() {
             id={pillar.slug}
             className={colSpans[i]}
             header={<Skeleton />}
-            icon={<Icon size={20} className="text-primary shrink-0" />}
+            icon={<Icon size={20} className="text-brand shrink-0" />}
             title={pillar.title}
             description={
               <span className="block space-y-3">
@@ -288,7 +288,7 @@ export default function ServicesBentoGrid() {
                 <span className="mt-2 grid grid-cols-1 gap-1.5 sm:grid-cols-2">
                   {pillar.points.slice(0, colSpans[i] === "md:col-span-2" ? 4 : 3).map((pt) => (
                     <span key={pt} className="flex items-start gap-1.5 text-xs text-muted">
-                      <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded bg-brand-muted text-primary">
+                      <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded bg-brand-muted text-brand">
                         <CheckIcon size={10} strokeWidth={2.5} />
                       </span>
                       {pt}

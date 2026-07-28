@@ -40,7 +40,7 @@ export function BentoGridItem({
       <div className="p-5 transition-transform duration-200 group-hover/bento:translate-x-1.5">
         <div className="mb-2 flex items-center gap-3">
           {icon}
-          <div className="text-lg font-bold text-fg leading-tight">{title}</div>
+          <h3 className="text-lg font-bold text-fg leading-tight">{title}</h3>
         </div>
         <div className="text-sm text-muted leading-relaxed">{description}</div>
       </div>

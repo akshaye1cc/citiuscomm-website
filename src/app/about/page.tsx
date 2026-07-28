@@ -1,5 +1,6 @@
 import AboutHero from "@/components/About/AboutHero";
 import WhoWeAre from "@/components/About/WhoWeAre";
+import Badge from "@/components/ui/Badge";
 
 export const metadata = {
   title: "About Us | Citiuscomm",
@@ -39,14 +40,11 @@ const AboutPage = () => (
             {/* Left: Content */}
             <div className="max-w-xl">
               <div className="mb-6">
-                <span className="inline-flex items-center gap-2 rounded-full bg-brand-muted px-4 py-2 text-sm font-semibold text-primary">
-                  <span className="h-2 w-2 rounded-full bg-primary" />
-                  About Us
-                </span>
+                <Badge variant="brand" dot>About Us</Badge>
               </div>
 
               <h1 className="mb-8 text-4xl font-bold leading-tight text-fg sm:text-5xl lg:text-5xl">
-                Who <span className="text-primary">We Are</span>
+                Who <span className="text-brand">We Are</span>
               </h1>
 
               <div className="space-y-5 text-lg leading-relaxed text-muted">
@@ -71,10 +69,10 @@ const AboutPage = () => (
                     <defs>
                       <linearGradient id="flow-gradient-1" x1="0%" y1="0%" x2="100%" y2="100%">
                         <stop offset="0%" stopColor="var(--ds-brand)" stopOpacity="0.8" />
-                        <stop offset="100%" stopColor="var(--ds-primary)" stopOpacity="0.3" />
+                        <stop offset="100%" stopColor="var(--ds-brand)" stopOpacity="0.3" />
                       </linearGradient>
                       <linearGradient id="flow-gradient-2" x1="100%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stopColor="var(--ds-primary)" stopOpacity="0.6" />
+                        <stop offset="0%" stopColor="var(--ds-brand)" stopOpacity="0.6" />
                         <stop offset="100%" stopColor="var(--ds-brand)" stopOpacity="0.2" />
                       </linearGradient>
                       <filter id="node-glow">
@@ -87,9 +85,9 @@ const AboutPage = () => (
                     </defs>
 
                     <g opacity="0.2">
-                      <circle cx="240" cy="240" r="200" fill="none" stroke="var(--ds-primary)" strokeWidth="0.5" />
-                      <circle cx="240" cy="240" r="150" fill="none" stroke="var(--ds-primary)" strokeWidth="0.5" />
-                      <circle cx="240" cy="240" r="100" fill="none" stroke="var(--ds-primary)" strokeWidth="0.5" />
+                      <circle cx="240" cy="240" r="200" fill="none" stroke="var(--ds-brand)" strokeWidth="0.5" />
+                      <circle cx="240" cy="240" r="150" fill="none" stroke="var(--ds-brand)" strokeWidth="0.5" />
+                      <circle cx="240" cy="240" r="100" fill="none" stroke="var(--ds-brand)" strokeWidth="0.5" />
                     </g>
 
                     {[
@@ -104,23 +102,23 @@ const AboutPage = () => (
                         <line x1="240" y1="240" x2={node.x} y2={node.y} stroke="url(#flow-gradient-1)" strokeWidth="1.5" opacity="0.5" className="ds-tech-line" style={{ animationDelay: `${i * 0.1}s` }} />
                         <circle cx={node.x} cy={node.y} r="18" fill="none" stroke="var(--ds-brand)" strokeWidth="1" opacity="0.3" className="ds-node-ring" style={{ animationDelay: `${i * 0.15}s` }} />
                         <circle cx={node.x} cy={node.y} r="10" fill="var(--ds-brand)" filter="url(#node-glow)" className="ds-node-pulse" style={{ animationDelay: `${i * 0.15}s` }} />
-                        <circle cx={node.x} cy={node.y} r="6" fill="var(--ds-primary)" opacity="0.6" />
+                        <circle cx={node.x} cy={node.y} r="6" fill="var(--ds-brand)" opacity="0.6" />
                       </g>
                     ))}
 
                     <g>
                       <circle cx="240" cy="240" r="50" fill="none" stroke="var(--ds-brand)" strokeWidth="1" opacity="0.2" className="ds-ring-expand" style={{ animationDelay: "0s" }} />
-                      <circle cx="240" cy="240" r="50" fill="none" stroke="var(--ds-primary)" strokeWidth="1" opacity="0.15" className="ds-ring-expand" style={{ animationDelay: "0.3s" }} />
+                      <circle cx="240" cy="240" r="50" fill="none" stroke="var(--ds-brand)" strokeWidth="1" opacity="0.15" className="ds-ring-expand" style={{ animationDelay: "0.3s" }} />
                       <circle cx="240" cy="240" r="50" fill="none" stroke="var(--ds-brand)" strokeWidth="1" opacity="0.1" className="ds-ring-expand" style={{ animationDelay: "0.6s" }} />
                       <circle cx="240" cy="240" r="16" fill="url(#flow-gradient-2)" filter="url(#node-glow)" className="ds-core-pulse" />
-                      <circle cx="240" cy="240" r="10" fill="var(--ds-primary)" opacity="0.8" />
+                      <circle cx="240" cy="240" r="10" fill="var(--ds-brand)" opacity="0.8" />
                       <circle cx="240" cy="240" r="6" fill="white" opacity="0.4" className="ds-twinkle" />
                     </g>
 
                     <g opacity="0.15">
-                      <path d="M 240 80 Q 400 150 400 330" fill="none" stroke="var(--ds-primary)" strokeWidth="1" />
-                      <path d="M 400 330 Q 240 400 80 330" fill="none" stroke="var(--ds-primary)" strokeWidth="1" />
-                      <path d="M 80 330 Q 80 150 240 80" fill="none" stroke="var(--ds-primary)" strokeWidth="1" />
+                      <path d="M 240 80 Q 400 150 400 330" fill="none" stroke="var(--ds-brand)" strokeWidth="1" />
+                      <path d="M 400 330 Q 240 400 80 330" fill="none" stroke="var(--ds-brand)" strokeWidth="1" />
+                      <path d="M 80 330 Q 80 150 240 80" fill="none" stroke="var(--ds-brand)" strokeWidth="1" />
                     </g>
                   </svg>
                 </div>

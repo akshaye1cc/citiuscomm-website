@@ -108,7 +108,7 @@ const Avatar = ({ member }: { member: Member }) =>
   ) : (
     <div
       aria-hidden
-      className="mx-auto mb-6 flex h-[160px] w-[160px] items-center justify-center rounded-full border-4 border-brand-muted bg-brand-muted text-3xl font-bold tracking-wide text-primary transition-transform duration-500 group-hover:scale-105"
+      className="mx-auto mb-6 flex h-[160px] w-[160px] items-center justify-center rounded-full border-4 border-brand-muted bg-brand-muted text-3xl font-bold tracking-wide text-brand transition-transform duration-500 group-hover:scale-105"
     >
       {initials(member.name)}
     </div>
@@ -120,8 +120,8 @@ const MemberCard = ({ member }: { member: Member }) => (
     <div className="relative">
       <Avatar member={member} />
       <h3 className="mb-1 text-xl font-bold uppercase tracking-wide text-fg">{member.name}</h3>
-      <p className="mb-4 text-sm font-semibold text-primary">{member.role}</p>
-      <p className="text-sm leading-relaxed text-muted transition-opacity duration-300 group-hover:text-muted">{member.description}</p>
+      <p className="mb-4 text-sm font-semibold text-brand">{member.role}</p>
+      <p className="text-sm leading-relaxed text-muted">{member.description}</p>
     </div>
   </div>
 );

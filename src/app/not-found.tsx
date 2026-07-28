@@ -7,13 +7,14 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <section className="relative flex min-h-[70vh] items-center justify-center overflow-hidden bg-canvas py-20">
+    <main className="relative flex min-h-[70vh] items-center justify-center overflow-hidden bg-canvas py-20">
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <div className="ds-dots ds-dots-fade absolute inset-0 text-edge-2/90 dark:text-edge-2/63" />
       </div>
 
       <div className="container relative z-10 text-center">
-        <p className="select-none text-[10rem] font-bold leading-none text-canvas-muted">
+        {/* Decorative watermark — the heading below carries the actual message. */}
+        <p aria-hidden className="select-none text-[7rem] font-bold leading-none text-canvas-muted sm:text-[9rem]">
           404
         </p>
         <div className="relative z-10 -mt-8">
@@ -34,6 +35,6 @@ export default function NotFound() {
           </div>
         </div>
       </div>
-    </section>
+    </main>
   );
 }

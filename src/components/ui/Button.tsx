@@ -3,9 +3,11 @@ import { ButtonHTMLAttributes } from "react";
 
 const variants = {
   primary: "bg-primary text-white hover:bg-secondary",
-  cta:     "bg-accent text-white hover:bg-[#e66f00]",
-  ghost:   "border border-edge bg-transparent text-fg hover:border-primary hover:text-primary",
-  outline: "border border-primary bg-transparent text-primary hover:bg-primary hover:text-white",
+  /* Navy on brand orange, not white: white on #FF7A00 is 2.6:1 and fails even
+     the large-text floor, while navy keeps the brand orange exactly and clears AA. */
+  cta:     "bg-cta text-secondary hover:bg-cta-hover",
+  ghost:   "border border-edge bg-transparent text-fg hover:border-primary hover:text-brand",
+  outline: "border border-primary bg-transparent text-brand hover:bg-primary hover:text-white",
   /* for use on dark navy sections regardless of theme */
   inverse: "border border-white/30 bg-transparent text-white hover:border-white hover:bg-white/10",
 } as const;

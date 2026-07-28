@@ -54,7 +54,7 @@ const PageHero = ({ title, highlight, description, eyebrow }: PageHeroProps) => 
         )}
 
         <h1 className="mb-6 text-4xl font-bold leading-tight text-fg sm:text-5xl md:text-6xl">
-          {title} {highlight && <span className="text-primary">{highlight}</span>}
+          {title} {highlight && <span className="text-brand">{highlight}</span>}
         </h1>
 
         <p className="mx-auto max-w-2xl text-lg leading-relaxed text-muted sm:text-xl">

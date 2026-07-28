@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Button from "@/components/ui/Button";
 
 const services = [
@@ -24,6 +24,13 @@ const ContactForm = () => {
   });
   const [status, setStatus] = useState<FormState>("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const successRef = useRef<HTMLHeadingElement>(null);
+
+  // Swapping the form out for a confirmation moves nothing for a screen reader
+  // or keyboard user, so send focus to the confirmation heading.
+  useEffect(() => {
+    if (status === "success") successRef.current?.focus();
+  }, [status]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -52,19 +59,25 @@ const ContactForm = () => {
 
   if (status === "success") {
     return (
-      <div className="flex flex-col items-center justify-center rounded-2xl border border-ds-success/30 bg-ds-success/5 px-8 py-16 text-center">
+      <div
+        role="status"
+        aria-live="polite"
+        className="flex flex-col items-center justify-center rounded-2xl border border-ds-success/30 bg-ds-success/5 px-8 py-16 text-center"
+      >
         <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-ds-success/10">
-          <svg className="h-7 w-7 text-ds-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="h-7 w-7 text-ds-success" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h3 className="mb-2 text-xl font-bold text-fg">Message sent</h3>
+        <h3 ref={successRef} tabIndex={-1} className="mb-2 text-xl font-bold text-fg focus:outline-none">
+          Message sent
+        </h3>
         <p className="text-muted">
           Thanks for reaching out. We&apos;ll get back to you within 24 hours.
         </p>
         <button
           onClick={() => setStatus("idle")}
-          className="mt-6 text-sm font-semibold text-primary hover:underline"
+          className="mt-6 text-sm font-semibold text-brand hover:underline"
         >
           Send another message
         </button>
@@ -157,11 +170,14 @@ const ContactForm = () => {
         />
       </div>
 
-      {status === "error" && (
-        <p className="rounded-lg border border-ds-error/30 bg-ds-error/5 px-4 py-3 text-sm text-ds-error">
-          {errorMsg}
-        </p>
-      )}
+      {/* Always mounted so assistive tech is watching before the message lands. */}
+      <div role="alert" aria-live="assertive">
+        {status === "error" && (
+          <p className="rounded-lg border border-ds-error/30 bg-ds-error/5 px-4 py-3 text-sm text-ds-error">
+            {errorMsg}
+          </p>
+        )}
+      </div>
 
       <Button
         type="submit"

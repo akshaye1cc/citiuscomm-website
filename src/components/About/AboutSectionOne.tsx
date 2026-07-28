@@ -63,7 +63,7 @@ const AboutSectionOne = () => (
                 {differentiators.map((text, i) => (
                   <Reveal as="li" key={text} delay={0.12 + i * 0.06}>
                     <span className="flex items-start gap-3 text-base font-medium text-muted">
-                      <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-brand-muted text-primary">
+                      <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-brand-muted text-brand">
                         <CheckIcon size={14} strokeWidth={2.4} />
                       </span>
                       {text}

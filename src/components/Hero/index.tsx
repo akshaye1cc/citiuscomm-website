@@ -88,7 +88,7 @@ const Hero = () => {
             of Communications and Networking Infrastructure.
           </p>
 
-          <p className="mb-14 text-sm font-medium text-primary/80 dark:text-brand/80">
+          <p className="mb-14 text-sm font-medium text-brand/80">
             Data Center · ICT Infrastructure · Cybersecurity · 5G Networks · Cloud Engineering
           </p>
         </div>

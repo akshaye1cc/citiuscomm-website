@@ -53,7 +53,7 @@ const Footer = () => (
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Citiuscomm on LinkedIn"
-            className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-edge text-muted transition-colors hover:border-primary hover:text-primary"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-edge text-muted transition-colors hover:border-primary hover:text-brand"
           >
             <LinkedInIcon />
           </a>
@@ -61,15 +61,15 @@ const Footer = () => (
 
         {/* Col 2: Company */}
         <div>
-          <h4 className="mb-5 text-xs font-semibold uppercase tracking-widest text-fg">
+          <h2 className="mb-5 text-xs font-semibold uppercase tracking-widest text-fg">
             Company
-          </h4>
+          </h2>
           <ul className="space-y-3">
             {companyLinks.map(({ label, href }) => (
               <li key={label}>
                 <Link
                   href={href}
-                  className="text-sm text-muted transition-colors hover:text-primary"
+                  className="text-sm text-muted transition-colors hover:text-brand"
                 >
                   {label}
                 </Link>
@@ -80,15 +80,15 @@ const Footer = () => (
 
         {/* Col 3: Solutions */}
         <div>
-          <h4 className="mb-5 text-xs font-semibold uppercase tracking-widest text-fg">
+          <h2 className="mb-5 text-xs font-semibold uppercase tracking-widest text-fg">
             Solutions
-          </h4>
+          </h2>
           <ul className="space-y-3">
             {solutionLinks.map(({ label, href }) => (
               <li key={label}>
                 <Link
                   href={href}
-                  className="text-sm text-muted transition-colors hover:text-primary"
+                  className="text-sm text-muted transition-colors hover:text-brand"
                 >
                   {label}
                 </Link>
@@ -99,17 +99,17 @@ const Footer = () => (
 
         {/* Col 4: Contact */}
         <div>
-          <h4 className="mb-5 text-xs font-semibold uppercase tracking-widest text-fg">
+          <h2 className="mb-5 text-xs font-semibold uppercase tracking-widest text-fg">
             Contact
-          </h4>
+          </h2>
           <ul className="space-y-3 text-sm text-muted">
             <li>
-              <a href="mailto:sales@citiuscomm.com" className="transition-colors hover:text-primary">
+              <a href="mailto:sales@citiuscomm.com" className="transition-colors hover:text-brand">
                 sales@citiuscomm.com
               </a>
             </li>
             <li>
-              <a href="tel:+912262362154" className="transition-colors hover:text-primary">
+              <a href="tel:+912262362154" className="transition-colors hover:text-brand">
                 022 62362154
               </a>
             </li>

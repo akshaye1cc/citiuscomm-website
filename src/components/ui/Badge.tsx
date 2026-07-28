@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 
 const variants = {
-  brand:  "border border-primary/20 bg-brand-muted text-primary",
+  brand:  "border border-primary/20 bg-brand-muted text-brand",
   subtle: "border border-edge bg-canvas-subtle text-muted",
   white:  "border border-white/20 bg-white/10 text-white",
 } as const;

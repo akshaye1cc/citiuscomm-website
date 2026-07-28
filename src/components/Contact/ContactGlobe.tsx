@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { GlobeConfig } from "@/components/ui/globe";
 
 // three.js / WebGL is client-only and heavy — load it lazily, never on the server.
@@ -100,11 +100,27 @@ export default function ContactGlobe() {
   // Memoize so the arc array identity is stable across re-renders.
   const data = useMemo(() => arcData, []);
 
+  // The globe spins for as long as the page is open, so hold it still for
+  // anyone who has asked for reduced motion.
+  const [reduceMotion, setReduceMotion] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const sync = () => setReduceMotion(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+
+  const config = useMemo(
+    () => ({ ...globeConfig, autoRotate: !reduceMotion }),
+    [reduceMotion],
+  );
+
   return (
     <div className="relative mx-auto aspect-square w-full max-w-[600px]">
       {/* subtle brand halo — kept small/faint so it doesn't tint the globe itself */}
       <div className="pointer-events-none absolute inset-[18%] -z-10 rounded-full bg-primary/10 blur-2xl" />
-      <World globeConfig={globeConfig} data={data} />
+      <World globeConfig={config} data={data} />
     </div>
   );
 }

@@ -58,8 +58,10 @@
   --ds-faint: #6b9cbf;   /* 5.9:1 on canvas, 4.8:1 on surface */
 
   /* ---- Brand (dark-mode values) ---- */
-  --ds-brand:       #2b8fd0;   /* lightened for contrast on navy */
-  --ds-brand-hover: #3da0e0;
+  /* Lightened until it clears 4.5:1 on cards (#0f2d4a) as well as the page
+     canvas — the card surface is the tightest of the three dark backgrounds. */
+  --ds-brand:       #3da0e0;   /* 4.9:1 on surface, 6.1:1 on canvas */
+  --ds-brand-hover: #5cb3f0;
   --ds-brand-muted: rgba(43, 143, 208, 0.12);
   --ds-navy:        #0a2540;
   --ds-cta:         #ff7a00;

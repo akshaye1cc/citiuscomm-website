@@ -8,7 +8,7 @@ const SingleFeature = ({ feature }: { feature: Feature }) => {
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
       <div className="relative">
-        <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-xl bg-gradient-to-br from-brand-muted to-brand-muted/60 text-primary transition-transform duration-300 group-hover:scale-110">
+        <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-xl bg-gradient-to-br from-brand-muted to-brand-muted/60 text-brand transition-transform duration-300 group-hover:scale-110">
           {icon}
         </div>
         <h3 className="mb-3 text-xl font-bold text-fg">

@@ -40,6 +40,7 @@
   --color-brand:         var(--ds-brand);
   --color-brand-muted:   var(--ds-brand-muted);
   --color-cta:           var(--ds-cta);
+  --color-cta-hover:     var(--ds-cta-hover);
   --color-cta-muted:     var(--ds-cta-muted);
   --color-ds-success:    var(--ds-success);
   --color-ds-error:      var(--ds-error);

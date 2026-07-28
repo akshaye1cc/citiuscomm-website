@@ -19,6 +19,8 @@ const ServicesPage = () => (
 
     <section className="bg-canvas py-16 md:py-20 lg:py-24">
       <div className="container">
+        {/* Level-2 anchor for the outline — each practice card below is an h3. */}
+        <h2 className="sr-only">Our practices</h2>
         <Reveal>
           <ServicesBentoGrid />
         </Reveal>

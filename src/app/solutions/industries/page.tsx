@@ -32,7 +32,7 @@ const IndustriesPage = () => (
           {industries.map(({ title, description, solutions, icon }, i) => (
             <Reveal key={title} delay={(i % 3) * 0.07}>
               <div className="ds-sheen group relative flex h-full flex-col overflow-hidden rounded-2xl border border-edge bg-surface p-7 transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5">
-                <div className="mb-5 flex h-13 w-13 items-center justify-center rounded-xl bg-brand-muted p-3 text-primary">
+                <div className="mb-5 flex h-13 w-13 items-center justify-center rounded-xl bg-brand-muted p-3 text-brand">
                   {icon}
                 </div>
                 <h3 className="mb-2 text-lg font-bold text-fg">{title}</h3>

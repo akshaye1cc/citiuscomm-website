@@ -99,7 +99,7 @@ const LinkedInIcon = () => (
 const BranchCard = ({ office }: { office: (typeof branches)[0] }) => (
   <div className="flex h-full flex-col gap-3 rounded-2xl border border-edge bg-surface p-6 transition-colors duration-200 hover:border-primary/40">
     <div className="flex items-center gap-2.5">
-      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-muted text-primary">
+      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-muted text-brand">
         <PinIcon size={18} />
       </div>
       <h3 className="text-lg font-bold leading-tight text-fg">{office.city}</h3>
@@ -116,7 +116,7 @@ const BranchCard = ({ office }: { office: (typeof branches)[0] }) => (
 
     <div className="flex items-center gap-2 text-xs text-muted">
       <MailIcon />
-      <a href={`mailto:${office.email}`} className="truncate text-primary hover:underline">
+      <a href={`mailto:${office.email}`} className="truncate text-brand hover:underline">
         {office.email}
       </a>
     </div>
@@ -180,7 +180,7 @@ export default function Contact() {
                 {["Mumbai", "Kolkata", "Delhi", "Singapore", "Dubai"].map((city) => (
                   <li
                     key={city}
-                    className="rounded-full border border-primary/20 bg-brand-muted px-4 py-1.5 text-sm font-medium text-primary"
+                    className="rounded-full border border-primary/20 bg-brand-muted px-4 py-1.5 text-sm font-medium text-brand"
                   >
                     {city}
                   </li>
@@ -216,7 +216,7 @@ export default function Contact() {
             <Reveal variant="left">
               <div className="flex h-full flex-col rounded-2xl border border-edge bg-surface p-8">
                 <div className="mb-6 flex items-center gap-4">
-                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-brand-muted text-primary">
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-brand-muted text-brand">
                     <PinIcon size={26} />
                   </div>
                   <div>
@@ -233,16 +233,16 @@ export default function Contact() {
 
                 <div className="mb-6 flex flex-col gap-3">
                   <div className="flex items-center gap-3 text-sm text-muted">
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-brand-muted text-primary">
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-brand-muted text-brand">
                       <PhoneIcon />
                     </div>
                     <span>{headquarters.phone}</span>
                   </div>
                   <div className="flex items-center gap-3 text-sm">
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-brand-muted text-primary">
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-brand-muted text-brand">
                       <MailIcon />
                     </div>
-                    <a href={`mailto:${headquarters.email}`} className="text-primary hover:underline">
+                    <a href={`mailto:${headquarters.email}`} className="text-brand hover:underline">
                       {headquarters.email}
                     </a>
                   </div>
@@ -310,14 +310,14 @@ export default function Contact() {
                     href="mailto:sales@citiuscomm.com"
                     className="flex items-center gap-3 rounded-xl border border-edge bg-surface px-5 py-4 text-sm text-fg transition-colors hover:border-primary/40"
                   >
-                    <span className="text-primary"><MailIcon /></span>
+                    <span className="text-brand"><MailIcon /></span>
                     sales@citiuscomm.com
                   </a>
                   <a
                     href="tel:+912262362154"
                     className="flex items-center gap-3 rounded-xl border border-edge bg-surface px-5 py-4 text-sm text-fg transition-colors hover:border-primary/40"
                   >
-                    <span className="text-primary"><PhoneIcon /></span>
+                    <span className="text-brand"><PhoneIcon /></span>
                     022 62362154 (Mumbai HQ)
                   </a>
                   <a
@@ -326,7 +326,7 @@ export default function Contact() {
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 rounded-xl border border-edge bg-surface px-5 py-4 text-sm text-fg transition-colors hover:border-primary/40"
                   >
-                    <span className="text-primary"><LinkedInIcon /></span>
+                    <span className="text-brand"><LinkedInIcon /></span>
                     LinkedIn
                   </a>
                 </div>
