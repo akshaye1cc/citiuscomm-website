@@ -75,7 +75,7 @@ const AboutSectionOne = () => (
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
                 {values.map(({ title, text }, i) => (
                   <Reveal key={title} delay={0.2 + i * 0.08}>
-                    <div className="ds-sheen group relative h-full overflow-hidden rounded-2xl border border-edge/60 bg-gradient-to-br from-surface to-surface/80 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5">
+                    <div className="ds-card ds-sheen group relative h-full overflow-hidden p-6">
                       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                       <div className="relative">
                         <h4 className="mb-2 text-base font-bold text-fg">{title}</h4>

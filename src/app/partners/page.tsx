@@ -122,7 +122,7 @@ export default function PartnersPage() {
                 <div
                   key={i}
                   aria-label={client.name}
-                  className="mx-3 flex h-32 w-64 shrink-0 items-center justify-center rounded-2xl border border-edge bg-surface px-8 py-6"
+                  className="ds-panel mx-3 flex h-32 w-64 shrink-0 items-center justify-center px-8 py-6"
                 >
                   <img
                     src={client.logo}
@@ -172,7 +172,7 @@ export default function PartnersPage() {
                         href={partner.url}
                         target={partner.url !== "#" ? "_blank" : "_self"}
                         rel={partner.url !== "#" ? "noopener noreferrer" : undefined}
-                        className="group flex h-full flex-col rounded-2xl border border-edge bg-surface p-5 transition-colors duration-200 hover:border-primary/40"
+                        className="ds-card group flex h-full flex-col p-5"
                       >
                         <div className="flex h-16 items-center justify-center rounded-xl border border-primary/10 bg-white px-4 py-3">
                           <img

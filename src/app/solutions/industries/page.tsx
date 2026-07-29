@@ -18,7 +18,7 @@ const IndustriesPage = () => (
       description="Wherever connectivity is mission-critical, the same carrier-grade delivery model applies — designed, deployed, and operated end to end."
     />
 
-    <section className="relative bg-canvas py-16 md:py-20 lg:py-28">
+    <section className="relative bg-canvas-subtle py-16 md:py-20 lg:py-28">
       <div className="container">
         <SectionTitle
           eyebrow="Who We Serve"
@@ -31,7 +31,7 @@ const IndustriesPage = () => (
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {industries.map(({ title, description, solutions, icon }, i) => (
             <Reveal key={title} delay={(i % 3) * 0.07}>
-              <div className="ds-sheen group relative flex h-full flex-col overflow-hidden rounded-2xl border border-edge bg-surface p-7 transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5">
+              <div className="ds-card ds-sheen group relative flex h-full flex-col overflow-hidden p-7">
                 <div className="mb-5 flex h-13 w-13 items-center justify-center rounded-xl bg-brand-muted p-3 text-brand">
                   {icon}
                 </div>

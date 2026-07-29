@@ -37,7 +37,7 @@ const SolutionsPage = () => (
             <Reveal key={pillar.slug} delay={i * 0.07}>
               <Link
                 href={`/solutions/services#${pillar.slug}`}
-                className="ds-sheen group relative flex h-full flex-col overflow-hidden rounded-2xl border border-edge bg-surface p-8 transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5"
+                className="ds-card ds-sheen group relative flex h-full flex-col overflow-hidden p-8"
               >
                 <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-brand-muted text-brand">
                   {pillar.icon}

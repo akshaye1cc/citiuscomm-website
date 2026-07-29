@@ -115,8 +115,7 @@ const Avatar = ({ member }: { member: Member }) =>
   );
 
 const MemberCard = ({ member }: { member: Member }) => (
-  <div className="ds-sheen group relative flex h-full flex-col overflow-hidden rounded-2xl border border-edge/60 bg-gradient-to-br from-surface to-surface/80 p-8 text-center transition-all duration-300 hover:scale-105 hover:-translate-y-3 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10">
-    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+  <div className="ds-card ds-sheen group relative flex h-full flex-col overflow-hidden p-8 text-center">
     <div className="relative">
       <Avatar member={member} />
       <h3 className="mb-1 text-xl font-bold uppercase tracking-wide text-fg">{member.name}</h3>

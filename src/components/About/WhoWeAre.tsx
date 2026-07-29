@@ -4,9 +4,8 @@ import { CheckIcon, ArrowRightIcon } from "@/components/ui/icons";
 
 const Card = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
   <div
-    className={`ds-sheen group relative overflow-hidden rounded-3xl border border-edge/60 bg-gradient-to-br from-surface to-surface/80 transition-all duration-300 hover:-translate-y-2 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10 ${className}`}
+    className={`ds-card ds-sheen group relative overflow-hidden ${className}`}
   >
-    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
     {children}
   </div>
 );
@@ -21,7 +20,7 @@ const Point = ({ text }: { text: string }) => (
 );
 
 const WhoWeAre = () => (
-  <section id="about" className="relative bg-canvas py-20 md:py-28 lg:py-32">
+  <section id="about" className="relative bg-canvas-subtle py-20 md:py-28 lg:py-32">
     <div className="pointer-events-none absolute inset-0 overflow-hidden">
       <div
         className="ds-dots absolute inset-0 text-edge-2/90"
@@ -51,7 +50,7 @@ const WhoWeAre = () => (
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover/card:opacity-100" />
             </div>
             <div className="relative p-8">
-              <div className="mb-2 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
+              <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-muted text-brand">
                 <CheckIcon size={20} className="text-brand" />
               </div>
               <h3 className="mb-4 text-2xl font-bold text-fg">Our Vision</h3>
@@ -78,7 +77,7 @@ const WhoWeAre = () => (
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover/card:opacity-100" />
             </div>
             <div className="relative p-8">
-              <div className="mb-2 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
+              <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-muted text-brand">
                 <ArrowRightIcon size={20} className="text-brand" />
               </div>
               <h3 className="mb-4 text-2xl font-bold text-fg">Our Mission</h3>
@@ -108,7 +107,7 @@ const WhoWeAre = () => (
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover/card:opacity-100" />
             </div>
             <div className="relative p-7">
-              <div className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10">
+              <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-muted text-brand">
                 <span className="text-brand font-bold">⚙️</span>
               </div>
               <h3 className="mb-3 text-xl font-bold text-fg">Our Expertise</h3>
@@ -135,7 +134,7 @@ const WhoWeAre = () => (
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover/card:opacity-100" />
             </div>
             <div className="relative p-7">
-              <div className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10">
+              <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-muted text-brand">
                 <span className="text-brand font-bold">💡</span>
               </div>
               <h3 className="mb-3 text-xl font-bold text-fg">Innovation</h3>

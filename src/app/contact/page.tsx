@@ -97,7 +97,7 @@ const LinkedInIcon = () => (
 
 /* ─── Branch card ─────────────────────────────────────────── */
 const BranchCard = ({ office }: { office: (typeof branches)[0] }) => (
-  <div className="flex h-full flex-col gap-3 rounded-2xl border border-edge bg-surface p-6 transition-colors duration-200 hover:border-primary/40">
+  <div className="ds-card flex h-full flex-col gap-3 p-6">
     <div className="flex items-center gap-2.5">
       <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-muted text-brand">
         <PinIcon size={18} />
@@ -211,7 +211,7 @@ export default function Contact() {
           <div className="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-2">
             {/* Headquarters */}
             <Reveal variant="left">
-              <div className="flex h-full flex-col rounded-2xl border border-edge bg-surface p-8">
+              <div className="ds-panel flex h-full flex-col p-8">
                 <div className="mb-6 flex items-center gap-4">
                   <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-brand-muted text-brand">
                     <PinIcon size={26} />
@@ -305,14 +305,14 @@ export default function Contact() {
                 <div className="space-y-4">
                   <a
                     href="mailto:sales@citiuscomm.com"
-                    className="flex items-center gap-3 rounded-xl border border-edge bg-surface px-5 py-4 text-sm text-fg transition-colors hover:border-primary/40"
+                    className="ds-card flex items-center gap-3 rounded-xl px-5 py-4 text-sm text-fg"
                   >
                     <span className="text-brand"><MailIcon /></span>
                     sales@citiuscomm.com
                   </a>
                   <a
                     href="tel:+912262362154"
-                    className="flex items-center gap-3 rounded-xl border border-edge bg-surface px-5 py-4 text-sm text-fg transition-colors hover:border-primary/40"
+                    className="ds-card flex items-center gap-3 rounded-xl px-5 py-4 text-sm text-fg"
                   >
                     <span className="text-brand"><PhoneIcon /></span>
                     022 62362154 (Mumbai HQ)
@@ -321,7 +321,7 @@ export default function Contact() {
                     href="https://www.linkedin.com/company/citiuscommunications/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 rounded-xl border border-edge bg-surface px-5 py-4 text-sm text-fg transition-colors hover:border-primary/40"
+                    className="ds-card flex items-center gap-3 rounded-xl px-5 py-4 text-sm text-fg"
                   >
                     <span className="text-brand"><LinkedInIcon /></span>
                     LinkedIn

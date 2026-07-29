@@ -67,6 +67,14 @@
   --color-gray-dark:  #1e232e;
   --color-gray-light: #f0f2f9;
 
+  /* ---- Elevation ladder ----
+     Navy-tinted and layered rather than neutral grey, so cards read as
+     lifted off the near-white canvas instead of outlined on it.
+       e1 resting card · e2 hover / raised · e3 popovers and feature panels */
+  --shadow-e1: 0 1px 2px rgba(10, 37, 64, 0.04), 0 1px 3px rgba(10, 37, 64, 0.06);
+  --shadow-e2: 0 2px 4px rgba(10, 37, 64, 0.04), 0 4px 12px rgba(10, 37, 64, 0.08);
+  --shadow-e3: 0 8px 24px rgba(10, 37, 64, 0.10), 0 2px 6px rgba(10, 37, 64, 0.06);
+
   --shadow-sign-up:     0px 5px 10px rgba(4, 10, 34, 0.2);
   --shadow-one:         0px 2px 3px rgba(7, 7, 77, 0.05);
   --shadow-two:         0px 5px 10px rgba(6, 8, 15, 0.1);
@@ -87,6 +95,33 @@
   margin-inline: auto;
   padding-inline: 1rem;
   max-width: 1200px;
+}
+
+/* ---- Card ----
+   The one card recipe for the whole site. Canvas and surface are both
+   near-white, so a card can't rely on fill alone to separate from the page —
+   the hairline border plus e1 does the separating, and the lift to e2 on
+   hover is what signals interactivity. Components add their own padding. */
+@utility ds-card {
+  border-radius: 1rem;
+  border: 1px solid var(--color-edge);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-e1);
+  transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-e2);
+    border-color: color-mix(in oklab, var(--color-brand) 30%, transparent);
+  }
+}
+
+/* Static panel: same surface treatment, no hover affordance. */
+@utility ds-panel {
+  border-radius: 1rem;
+  border: 1px solid var(--color-edge);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-e1);
 }
 
 /* ---- Tailwind v4 border-color compatibility ---- */
@@ -336,6 +371,13 @@
   }
   .ds-sheen::before {
     display: none;
+  }
+  /* Keep the elevation change as the hover cue; drop only the movement. */
+  .ds-card {
+    transition: box-shadow 200ms ease, border-color 200ms ease;
+  }
+  .ds-card:hover {
+    transform: none;
   }
 }
 
