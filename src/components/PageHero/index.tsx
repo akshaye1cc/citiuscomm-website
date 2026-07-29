@@ -15,10 +15,6 @@ type PageHeroProps = {
 const PageHero = ({ title, highlight, description, eyebrow }: PageHeroProps) => (
   <section className="relative z-10 overflow-hidden bg-canvas pb-16 pt-[120px] md:pb-20 md:pt-[150px] xl:pt-[170px]">
     <SectionPattern />
-    <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-      <div className="aurora-bg aurora-muted aurora-fade" />
-    </div>
-
     {/* network arc accent along the bottom edge */}
     <svg
       viewBox="0 0 1440 120"

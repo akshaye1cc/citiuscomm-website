@@ -3,7 +3,6 @@
 import { useCallback, useState } from "react";
 import Counter from "@/components/ui/Counter";
 import TypingText from "@/components/ui/TypingText";
-import AuroraBackground from "@/components/ui/AuroraBackground";
 
 const stats = [
   { num: "100K+", label: "Network Sites" },
@@ -39,9 +38,9 @@ const Hero = () => {
   const handleSettled = useCallback(() => setSettled(true), []);
 
   return (
-    <AuroraBackground
+    <section
       id="home"
-      className="overflow-hidden pb-0 pt-[120px] md:pt-[150px] xl:pt-[170px]"
+      className="relative flex flex-col overflow-hidden bg-canvas text-fg pb-0 pt-[120px] md:pt-[150px] xl:pt-[170px]"
     >
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
         <div
@@ -106,7 +105,7 @@ const Hero = () => {
           </dl>
         </div>
       </div>
-    </AuroraBackground>
+    </section>
   );
 };
 

@@ -160,9 +160,6 @@ export default function Contact() {
 
       {/* Hero — globe + intro */}
       <section className="relative z-10 overflow-hidden pb-16 pt-[100px] md:pb-24 md:pt-[120px]">
-        <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="aurora-bg aurora-muted aurora-fade" />
-        </div>
         <div className="container">
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-8">
             <Reveal variant="left" className="text-center lg:text-left">
