@@ -154,7 +154,7 @@ export default function Contact() {
       {/* Page-wide dotted texture — fades in at the top and out at the bottom */}
       <div
         aria-hidden
-        className="ds-dots pointer-events-none absolute inset-0 z-0 text-edge-2/90 dark:text-edge-2/63"
+        className="ds-dots pointer-events-none absolute inset-0 z-0 text-edge-2/90"
         style={{ maskImage: DOT_FADE, WebkitMaskImage: DOT_FADE }}
       />
 

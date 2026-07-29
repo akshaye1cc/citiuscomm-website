@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import ThemeToggler from "./ThemeToggler";
 import menuData from "./menuData";
 
 const ChevronDown = () => (
@@ -49,21 +48,14 @@ const Header = () => {
                 alt="Citiuscomm"
                 width={130}
                 height={30}
-                className="w-auto dark:hidden"
-                priority
-              />
-              <Image
-                src="/images/logo/Logo-dbg.svg"
-                alt="Citiuscomm"
-                width={130}
-                height={30}
-                className="hidden w-auto dark:block"
+                className="w-auto"
                 priority
               />
             </Link>
           </div>
 
-          <div className="flex w-full items-center justify-between px-4">
+          {/* Nav sits right; the toggle that used to anchor this edge is gone. */}
+          <div className="flex w-full items-center justify-end px-4">
 
             {/* Mobile hamburger */}
             <button
@@ -95,7 +87,7 @@ const Header = () => {
                         className={`flex items-center py-2.5 text-sm font-medium transition-colors duration-150 lg:py-7 ${
                           pathname === item.path
                             ? "text-brand"
-                            : "text-muted hover:text-fg dark:hover:text-fg"
+                            : "text-muted hover:text-fg"
                         }`}
                       >
                         {item.title}
@@ -109,7 +101,7 @@ const Header = () => {
                           className={`hidden items-center gap-1 py-2.5 text-sm font-medium transition-colors duration-150 lg:inline-flex lg:py-7 ${
                             pathname.startsWith(item.path)
                               ? "text-brand"
-                              : "text-muted hover:text-fg dark:hover:text-fg"
+                              : "text-muted hover:text-fg"
                           }`}
                         >
                           {item.title}
@@ -118,7 +110,7 @@ const Header = () => {
                         {/* Mobile: toggle only */}
                         <button
                           onClick={() => handleSubmenu(index)}
-                          className="flex w-full items-center justify-between py-2.5 text-sm font-medium text-muted hover:text-fg lg:hidden dark:hover:text-fg"
+                          className="flex w-full items-center justify-between py-2.5 text-sm font-medium text-muted hover:text-fg lg:hidden"
                         >
                           {item.title}
                           <ChevronDown />
@@ -128,7 +120,7 @@ const Header = () => {
                     ) : (
                       <button
                         onClick={() => handleSubmenu(index)}
-                        className="flex w-full items-center justify-between py-2.5 text-sm font-medium text-muted hover:text-fg transition-colors duration-150 lg:inline-flex lg:w-auto lg:gap-1 lg:py-7 dark:hover:text-fg"
+                        className="flex w-full items-center justify-between py-2.5 text-sm font-medium text-muted hover:text-fg transition-colors duration-150 lg:inline-flex lg:w-auto lg:gap-1 lg:py-7"
                       >
                         {item.title}
                         <ChevronDown />
@@ -159,12 +151,6 @@ const Header = () => {
                 ))}
               </ul>
             </nav>
-
-            {/* Theme toggle */}
-            <div className="flex items-center justify-end pr-16 lg:pr-0">
-              <ThemeToggler />
-            </div>
-
           </div>
         </div>
       </div>

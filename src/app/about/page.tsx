@@ -13,7 +13,7 @@ const AboutPage = () => (
     {/* Page-wide dotted backdrop for seamless flow */}
     <div aria-hidden className="pointer-events-none fixed inset-0 overflow-hidden z-0">
       <div
-        className="ds-dots absolute inset-0 text-edge-2/90 dark:text-edge-2/63"
+        className="ds-dots absolute inset-0 text-edge-2/90"
         style={{
           maskImage: "linear-gradient(to bottom, transparent 0, black 12%, black 88%, transparent 100%)",
           WebkitMaskImage: "linear-gradient(to bottom, transparent 0, black 12%, black 88%, transparent 100%)",
@@ -28,7 +28,7 @@ const AboutPage = () => (
         </div>
         <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
           <div
-            className="ds-dots absolute inset-0 text-edge-2/90 dark:text-edge-2/63"
+            className="ds-dots absolute inset-0 text-edge-2/90"
             style={{
               maskImage: "linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%)",
               WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%)",

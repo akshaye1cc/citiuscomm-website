@@ -9,7 +9,7 @@ export default function NotFound() {
   return (
     <main className="relative flex min-h-[70vh] items-center justify-center overflow-hidden bg-canvas py-20">
       <div aria-hidden className="pointer-events-none absolute inset-0">
-        <div className="ds-dots ds-dots-fade absolute inset-0 text-edge-2/90 dark:text-edge-2/63" />
+        <div className="ds-dots ds-dots-fade absolute inset-0 text-edge-2/90" />
       </div>
 
       <div className="container relative z-10 text-center">

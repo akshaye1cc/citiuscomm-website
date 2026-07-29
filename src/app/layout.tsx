@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import ScrollToTop from "@/components/ScrollToTop";
-import { Providers } from "./providers";
 import "../styles/index.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -42,17 +41,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html suppressHydrationWarning lang="en">
+    <html lang="en">
       <head />
       <body className={`bg-canvas ${inter.className}`}>
-        <Providers>
-          <div className="isolate">
-            <Header />
-            {children}
-            <Footer />
-          </div>
-          <ScrollToTop />
-        </Providers>
+        <div className="isolate">
+          <Header />
+          {children}
+          <Footer />
+        </div>
+        <ScrollToTop />
       </body>
     </html>
   );

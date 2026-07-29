@@ -31,7 +31,7 @@ const AboutSectionOne = () => (
   <section id="about" className="relative bg-canvas py-0 md:py-0 pb-20 md:pb-28 lg:pb-32">
     <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
       <div
-        className="ds-dots absolute inset-0 text-edge-2/90 dark:text-edge-2/63"
+        className="ds-dots absolute inset-0 text-edge-2/90"
         style={{
           maskImage: "linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)",
           WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)",

@@ -37,14 +37,14 @@ export default function PartnersPage() {
       {/* page-wide dotted backdrop — one layer so every section blends seamlessly */}
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
         <div
-          className="ds-dots absolute inset-0 text-edge-2/90 dark:text-edge-2/63"
+          className="ds-dots absolute inset-0 text-edge-2/90"
           style={{
             maskImage: "linear-gradient(to bottom, transparent 0, black 12%, black 86%, transparent 100%)",
             WebkitMaskImage: "linear-gradient(to bottom, transparent 0, black 12%, black 86%, transparent 100%)",
           }}
         />
-        <div className="absolute -top-24 left-1/2 h-[480px] w-[760px] -translate-x-1/2 rounded-full bg-primary/[0.05] blur-3xl dark:bg-brand/[0.07]" />
-        <div className="absolute top-[38%] right-[-12%] h-[360px] w-[480px] rounded-full bg-cta/[0.04] blur-3xl dark:bg-cta/[0.05]" />
+        <div className="absolute -top-24 left-1/2 h-[480px] w-[760px] -translate-x-1/2 rounded-full bg-primary/[0.05] blur-3xl" />
+        <div className="absolute top-[38%] right-[-12%] h-[360px] w-[480px] rounded-full bg-cta/[0.04] blur-3xl" />
       </div>
 
       {/* ─── Section 1 · Why partner with us ───────────────────── */}
@@ -177,7 +177,7 @@ export default function PartnersPage() {
                         rel={partner.url !== "#" ? "noopener noreferrer" : undefined}
                         className="group flex h-full flex-col rounded-2xl border border-edge bg-surface p-5 transition-colors duration-200 hover:border-primary/40"
                       >
-                        <div className="flex h-16 items-center justify-center rounded-xl border border-primary/10 bg-white px-4 py-3 dark:border-white/15 dark:bg-white/95">
+                        <div className="flex h-16 items-center justify-center rounded-xl border border-primary/10 bg-white px-4 py-3">
                           <img
                             src={partner.logo}
                             alt={partner.name}

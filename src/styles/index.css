@@ -4,8 +4,6 @@
 
 @import './tokens.css';
 
-@custom-variant dark (&:is(.dark *));
-
 @theme {
   --breakpoint-*: initial;
   --breakpoint-xs: 450px;
@@ -303,14 +301,6 @@
   transform: translateX(-150%);
   transition: transform 0.8s ease;
   pointer-events: none;
-}
-.dark .ds-sheen::before {
-  background: linear-gradient(
-    105deg,
-    transparent 40%,
-    rgba(140, 197, 235, 0.06) 50%,
-    transparent 60%
-  );
 }
 .ds-sheen:hover::before {
   transform: translateX(150%);

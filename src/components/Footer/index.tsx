@@ -38,14 +38,14 @@ const Footer = () => (
               alt="Citiuscomm"
               width={140}
               height={35}
-              className="w-auto dark:hidden"
+              className="w-auto"
             />
             <Image
               src="/images/logo/Logo-dbg.svg"
               alt="Citiuscomm"
               width={140}
               height={35}
-              className="hidden w-auto dark:block"
+              className="hidden w-auto"
             />
           </Link>
           <a
