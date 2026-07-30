@@ -21,55 +21,54 @@ const teams: TeamGroup[] = [
   {
     title: "Leadership Team",
     members: [
-      {
-        id: 1,
-        name: "Surendra Sancheti",
-        role: "Co-founder & Managing Partner",
-        description:
-          "Two decades of leadership across telecom and enterprise technology, steering Citiuscomm's vision and execution.",
-        image: "/images/about/Surendra-Sancheti.webp",
-      },
-      {
-        id: 2,
-        name: "Pramod Yadav",
-        role: "Co-founder & Director",
-        description:
-          "Senior roles at Mavenir, Mitel, and Reliance Jio — deep expertise in network products and go-to-market.",
-        image: "/images/about/pramod_yadav.webp",
-      },
-      {
-        id: 3,
-        name: "Siba Dash",
-        role: "Chief Delivery Officer",
-        description:
-          "Leads delivery excellence and operational execution across all Citiuscomm initiatives, ensuring world-class service delivery.",
-      },
-    ],
-  },
-  {
-    title: "Business Development",
-    members: [
-      {
-        id: 4,
-        name: "Vishal Patil",
-        role: "VP Enterprise Sales",
-        description:
-          "Drives enterprise sales strategy and client partnerships, bringing deep market expertise and relationship-building excellence.",
-      },
-      {
-        id: 5,
-        name: "Pravin Redekar",
-        role: "VP Sales",
-        description:
-          "Leads sales execution and market expansion, building strong client relationships across key market segments.",
-      },
-      {
-        id: 6,
-        name: "Avnish Rana",
-        role: "VP Business Strategy",
-        description:
-          "Shapes strategic direction and market positioning, driving growth initiatives and competitive advantage.",
-      },
+{
+  id: 1,
+  name: "Surendra Sancheti",
+  role: "Co-founder & Managing Partner",
+  description:
+    "Two decades of leadership across telecom and enterprise technology, steering Citiuscomm's vision and execution.",
+  image: "/images/Leadership/surendra-sancheti.png",
+},
+{
+  id: 2,
+  name: "Pramod Yadav",
+  role: "Co-founder & Director",
+  description:
+    "Senior roles at Mavenir, Mitel, and Reliance Jio — deep expertise in network products and go-to-market.",
+  image: "/images/Leadership/pramod-yadav.png",
+},
+{
+  id: 3,
+  name: "Siba Dash",
+  role: "Chief Delivery Officer",
+  description:
+    "Leads delivery excellence and operational execution across all Citiuscomm initiatives, ensuring world-class service delivery.",
+  image: "/images/Leadership/siba-dash.png",
+},
+{
+  id: 4,
+  name: "Vishal Patil",
+  role: "VP Enterprise Sales",
+  description:
+    "Drives enterprise sales strategy and client partnerships, bringing deep market expertise and relationship-building excellence.",
+  image: "/images/Leadership/vishal-patil.png",
+},
+{
+  id: 5,
+  name: "Pravin Redekar",
+  role: "VP Sales",
+  description:
+    "Leads sales execution and market expansion, building strong client relationships across key market segments.",
+  image: "/images/Leadership/pravin-redekar.png",
+},
+{
+  id: 6,
+  name: "Avnish Rana",
+  role: "VP Business Strategy",
+  description:
+    "Shapes strategic direction and market positioning, driving growth initiatives and competitive advantage.",
+  image: "/images/Leadership/avnish-rana.png",
+},
     ],
   },
   {
@@ -115,7 +114,8 @@ const Avatar = ({ member }: { member: Member }) =>
   );
 
 const MemberCard = ({ member }: { member: Member }) => (
-  <div className="ds-card ds-sheen group relative flex h-full flex-col overflow-hidden p-8 text-center">
+  <div className="ds-sheen group relative flex h-full flex-col overflow-hidden rounded-2xl border border-edge/60 bg-gradient-to-br from-surface to-surface/80 p-8 text-center transition-all duration-300 hover:scale-105 hover:-translate-y-3 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10">
+    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
     <div className="relative">
       <Avatar member={member} />
       <h3 className="mb-1 text-xl font-bold uppercase tracking-wide text-fg">{member.name}</h3>

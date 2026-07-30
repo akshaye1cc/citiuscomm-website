@@ -1,4 +1,3 @@
-import AboutHero from "@/components/About/AboutHero";
 import WhoWeAre from "@/components/About/WhoWeAre";
 import Badge from "@/components/ui/Badge";
 
