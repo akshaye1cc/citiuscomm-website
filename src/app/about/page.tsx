@@ -1,5 +1,6 @@
 import WhoWeAre from "@/components/About/WhoWeAre";
 import Badge from "@/components/ui/Badge";
+import PageBackdrop from "@/components/ui/PageBackdrop";
 
 export const metadata = {
   title: "About Us | Citiuscomm",
@@ -9,28 +10,11 @@ export const metadata = {
 
 const AboutPage = () => (
   <main className="relative bg-canvas">
-    {/* Page-wide dotted backdrop for seamless flow */}
-    <div aria-hidden className="pointer-events-none fixed inset-0 overflow-hidden z-0">
-      <div
-        className="ds-dots absolute inset-0 text-edge-2/90"
-        style={{
-          maskImage: "linear-gradient(to bottom, transparent 0, black 12%, black 88%, transparent 100%)",
-          WebkitMaskImage: "linear-gradient(to bottom, transparent 0, black 12%, black 88%, transparent 100%)",
-        }}
-      />
-    </div>
+    {/* One dot grid for the whole page — see PageBackdrop for why it is not fixed. */}
+    <PageBackdrop />
 
     <div className="relative z-10">
-      <section className="relative overflow-hidden bg-canvas pb-0 pt-[120px] md:pt-[150px] xl:pt-[170px]">
-        <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div
-            className="ds-dots absolute inset-0 text-edge-2/90"
-            style={{
-              maskImage: "linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%)",
-              WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%)",
-            }}
-          />
-        </div>
+      <section className="relative overflow-hidden bg-transparent pb-0 pt-[120px] md:pt-[150px] xl:pt-[170px]">
         <div className="container relative z-10">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             {/* Left: Content */}

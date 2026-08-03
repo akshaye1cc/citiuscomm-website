@@ -120,7 +120,11 @@ const Header = () => {
                     ) : (
                       <button
                         onClick={() => handleSubmenu(index)}
-                        className="flex w-full items-center justify-between py-2.5 text-sm font-medium text-muted hover:text-fg transition-colors duration-150 lg:inline-flex lg:w-auto lg:gap-1 lg:py-7"
+                        className={`flex w-full items-center justify-between py-2.5 text-sm font-medium transition-colors duration-150 lg:inline-flex lg:w-auto lg:gap-1 lg:py-7 ${
+                          item.activeMatch && pathname.startsWith(item.activeMatch)
+                            ? "text-brand"
+                            : "text-muted hover:text-fg"
+                        }`}
                       >
                         {item.title}
                         <ChevronDown />

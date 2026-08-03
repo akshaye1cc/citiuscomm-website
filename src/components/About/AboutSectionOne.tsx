@@ -27,17 +27,10 @@ const values = [
   },
 ];
 
+// Transparent by design: the page-level PageBackdrop supplies the dot grid, and an
+// opaque fill here would add a colour step at the section boundary.
 const AboutSectionOne = () => (
-  <section id="about" className="relative bg-canvas py-0 md:py-0 pb-20 md:pb-28 lg:pb-32">
-    <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-      <div
-        className="ds-dots absolute inset-0 text-edge-2/90"
-        style={{
-          maskImage: "linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)",
-          WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)",
-        }}
-      />
-    </div>
+  <section id="about" className="relative bg-transparent py-0 md:py-0 pb-20 md:pb-28 lg:pb-32">
     <div className="container relative z-10">
       <div className="-mx-4 flex flex-wrap items-center">
 

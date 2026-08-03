@@ -1,27 +1,35 @@
 "use client";
 import React from "react";
 import { motion } from "motion/react";
-import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
-import { CheckIcon, DataCenterIcon, NetworkIcon, ShieldIcon, AntennaIcon, CloudIcon, OpsIcon } from "@/components/ui/icons";
-import { pillars } from "@/data/solutions";
+import { ShieldIcon } from "@/components/ui/icons";
+
+/**
+ * Animated media panels for the six service pillars.
+ *
+ * Each one fills its parent box (`h-full w-full`) — the card owns the aspect
+ * ratio, so all six render at an identical height. Colours come from the
+ * tokens in tokens.css rather than inline hex.
+ */
 
 /* ─── Skeleton: Data Center ─── */
 const SkeletonDataCenter = () => (
   <motion.div
     initial="initial"
     whileHover="hover"
-    className="relative flex h-full min-h-[10rem] w-full items-center justify-center gap-3 overflow-hidden bg-canvas-muted p-5"
+    // A real grid: the explicit gridColumn/gridRow below place the rack units
+    // column-major, which the previous flex parent silently ignored.
+    className="relative grid h-full w-full grid-cols-3 grid-rows-4 items-center gap-2 overflow-hidden bg-canvas-muted p-5"
   >
     {[0, 1, 2].map((col) =>
       [0, 1, 2, 3].map((row) => (
         <motion.div
           key={`${col}-${row}`}
-          className="flex h-5 w-24 items-center gap-1.5 rounded border border-edge bg-surface px-2"
+          className="flex h-5 w-full items-center gap-1.5 rounded border border-edge bg-surface px-2"
           style={{ gridColumn: col + 1, gridRow: row + 1 }}
         >
           <motion.span
             className="h-2 w-2 shrink-0 rounded-full"
-            style={{ backgroundColor: "#2b8fd0" }}
+            style={{ backgroundColor: "var(--ds-brand)" }}
             animate={{ opacity: [1, 0.1, 1] }}
             transition={{ duration: 1.8, repeat: Infinity, delay: (col * 4 + row) * 0.25 }}
           />
@@ -52,14 +60,14 @@ const nodes = [
 const edges: [number, number][] = [[0, 1], [0, 2], [1, 3], [2, 4], [3, 4], [1, 2]];
 
 const SkeletonICT = () => (
-  <div className="flex h-full min-h-[10rem] w-full items-center justify-center bg-canvas-muted p-4">
-    <svg viewBox="0 0 100 100" className="h-auto w-full max-w-[130px]">
+  <div className="flex h-full w-full items-center justify-center bg-canvas-muted p-4">
+    <svg viewBox="0 0 100 100" className="h-full w-auto max-h-[150px]">
       {edges.map(([a, b], i) => (
         <motion.line
           key={i}
           x1={nodes[a].cx} y1={nodes[a].cy}
           x2={nodes[b].cx} y2={nodes[b].cy}
-          stroke="#156eb0"
+          stroke="var(--ds-brand)"
           strokeWidth="0.8"
           initial={{ pathLength: 0, opacity: 0 }}
           animate={{ pathLength: 1, opacity: 0.35 }}
@@ -71,7 +79,7 @@ const SkeletonICT = () => (
           <motion.circle
             cx={cx} cy={cy}
             r={i === 0 ? 5 : 3.5}
-            fill="#156eb0"
+            fill="var(--ds-brand)"
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: i === 0 ? 0.9 : 0.65 }}
             transition={{ duration: 0.4, delay: i * 0.12 + 0.3 }}
@@ -79,7 +87,7 @@ const SkeletonICT = () => (
           {i === 0 && (
             <motion.circle
               cx={cx} cy={cy} r={5}
-              fill="none" stroke="#156eb0" strokeWidth="0.5"
+              fill="none" stroke="var(--ds-brand)" strokeWidth="0.5"
               animate={{ r: [5, 16], opacity: [0.5, 0] }}
               transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
             />
@@ -87,7 +95,7 @@ const SkeletonICT = () => (
         </React.Fragment>
       ))}
       {/* Traveling packet */}
-      <motion.circle r={1.8} fill="#ff7a00"
+      <motion.circle r={1.8} fill="var(--ds-cta)"
         animate={{
           cx: [nodes[0].cx, nodes[1].cx, nodes[3].cx, nodes[4].cx, nodes[2].cx, nodes[0].cx],
           cy: [nodes[0].cy, nodes[1].cy, nodes[3].cy, nodes[4].cy, nodes[2].cy, nodes[0].cy],
@@ -100,7 +108,7 @@ const SkeletonICT = () => (
 
 /* ─── Skeleton: Cybersecurity ─── */
 const SkeletonCyber = () => (
-  <div className="relative flex h-full min-h-[10rem] w-full items-center justify-center overflow-hidden bg-canvas-muted">
+  <div className="relative flex h-full w-full items-center justify-center overflow-hidden bg-canvas-muted">
     {[56, 96, 136].map((size, i) => (
       <motion.div
         key={size}
@@ -126,19 +134,19 @@ const SkeletonTelecom = () => (
   <motion.div
     initial="initial"
     whileHover="hover"
-    className="flex h-full min-h-[10rem] w-full items-center justify-center overflow-hidden bg-canvas-muted"
+    className="flex h-full w-full items-center justify-center overflow-hidden bg-canvas-muted p-4"
   >
     <div className="flex flex-col items-center gap-3">
       <svg viewBox="0 0 120 90" className="h-auto w-44">
         {/* Tower mast */}
-        <line x1="60" y1="80" x2="60" y2="32" stroke="#156eb0" strokeWidth="2" strokeLinecap="round" />
-        <line x1="52" y1="80" x2="68" y2="80" stroke="#156eb0" strokeWidth="2" strokeLinecap="round" />
+        <line x1="60" y1="80" x2="60" y2="32" stroke="var(--ds-brand)" strokeWidth="2" strokeLinecap="round" />
+        <line x1="52" y1="80" x2="68" y2="80" stroke="var(--ds-brand)" strokeWidth="2" strokeLinecap="round" />
         {/* Signal arcs */}
         {[18, 32, 48].map((r, i) => (
           <motion.path
             key={r}
             d={`M ${60 - r},32 A ${r},${r} 0 0,1 ${60 + r},32`}
-            fill="none" stroke="#156eb0" strokeWidth="1.5" strokeLinecap="round"
+            fill="none" stroke="var(--ds-brand)" strokeWidth="1.5" strokeLinecap="round"
             initial={{ pathLength: 0, opacity: 0 }}
             animate={{ pathLength: [0, 1, 1], opacity: [0, 0.85, 0.2] }}
             transition={{ duration: 1.6, repeat: Infinity, delay: i * 0.45, repeatDelay: 0.4 }}
@@ -167,12 +175,12 @@ const SkeletonTelecom = () => (
 
 /* ─── Skeleton: Cloud Engineering ─── */
 const SkeletonCloud = () => (
-  <div className="relative flex h-full min-h-[10rem] w-full flex-col items-center justify-center gap-3 overflow-hidden bg-canvas-muted p-4">
+  <div className="relative flex h-full w-full flex-col items-center justify-center gap-3 overflow-hidden bg-canvas-muted p-4">
     <div className="relative flex items-center justify-center">
       <svg viewBox="0 0 100 65" className="h-auto w-28">
         <motion.path
           d="M 15,52 A 15,15 0 0,1 15,22 A 12,12 0 0,1 40,14 A 16,16 0 0,1 72,22 A 12,12 0 0,1 85,34 A 15,15 0 0,1 68,52 Z"
-          fill="none" stroke="#156eb0" strokeWidth="1.5" strokeLinejoin="round"
+          fill="none" stroke="var(--ds-brand)" strokeWidth="1.5" strokeLinejoin="round"
           animate={{ strokeOpacity: [0.4, 0.9, 0.4] }}
           transition={{ duration: 2.5, repeat: Infinity }}
         />
@@ -204,7 +212,7 @@ const SkeletonNOC = () => (
   <motion.div
     initial="initial"
     whileHover="hover"
-    className="relative flex h-full min-h-[10rem] w-full flex-col items-center justify-center gap-3 overflow-hidden bg-canvas-muted p-5"
+    className="relative flex h-full w-full flex-col items-center justify-center gap-3 overflow-hidden bg-canvas-muted p-5"
   >
     {/* Node status bar */}
     <div className="flex w-full max-w-xs items-center gap-1.5">
@@ -214,7 +222,7 @@ const SkeletonNOC = () => (
           <motion.div
             key={i}
             className="h-3 flex-1 rounded-sm"
-            style={{ backgroundColor: i < 8 ? "#22c55e" : "#f59e0b" }}
+            style={{ backgroundColor: i < 8 ? "var(--ds-success)" : "var(--ds-warning)" }}
             animate={{ opacity: [0.7, 1, 0.7] }}
             transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.14 }}
           />
@@ -225,7 +233,7 @@ const SkeletonNOC = () => (
     <svg viewBox="0 0 100 60" className="h-10 w-full max-w-xs">
       <motion.path
         d={nocPath}
-        fill="none" stroke="#156eb0" strokeWidth="2"
+        fill="none" stroke="var(--ds-brand)" strokeWidth="2"
         strokeLinecap="round" strokeLinejoin="round"
         initial={{ pathLength: 0 }}
         animate={{ pathLength: 1 }}
@@ -235,7 +243,7 @@ const SkeletonNOC = () => (
     {/* Active badge */}
     <div className="flex items-center gap-2">
       <motion.div
-        className="h-2 w-2 rounded-full bg-green-500"
+        className="h-2 w-2 rounded-full bg-ds-success"
         animate={{ opacity: [1, 0.2, 1] }}
         transition={{ duration: 0.9, repeat: Infinity }}
       />
@@ -246,8 +254,8 @@ const SkeletonNOC = () => (
   </motion.div>
 );
 
-/* ─── Layout config ─── */
-const skeletons = [
+/** Ordered to match `pillars` in src/data/solutions.tsx. */
+export const serviceSkeletons = [
   SkeletonDataCenter,
   SkeletonICT,
   SkeletonCyber,
@@ -255,51 +263,3 @@ const skeletons = [
   SkeletonCloud,
   SkeletonNOC,
 ];
-
-const icons = [DataCenterIcon, NetworkIcon, ShieldIcon, AntennaIcon, CloudIcon, OpsIcon];
-
-const colSpans = [
-  "md:col-span-2", // Data Center
-  "md:col-span-1", // ICT
-  "md:col-span-1", // Cybersecurity
-  "md:col-span-2", // 5G Telecom
-  "md:col-span-1", // Cloud
-  "md:col-span-2", // NOC
-];
-
-/* ─── Main export ─── */
-export default function ServicesBentoGrid() {
-  return (
-    <BentoGrid>
-      {pillars.map((pillar, i) => {
-        const Skeleton = skeletons[i];
-        const Icon = icons[i];
-        return (
-          <BentoGridItem
-            key={pillar.slug}
-            id={pillar.slug}
-            className={colSpans[i]}
-            header={<Skeleton />}
-            icon={<Icon size={20} className="text-brand shrink-0" />}
-            title={pillar.title}
-            description={
-              <span className="block space-y-3">
-                <span className="block">{pillar.tagline}</span>
-                <span className="mt-2 grid grid-cols-1 gap-1.5 sm:grid-cols-2">
-                  {pillar.points.slice(0, colSpans[i] === "md:col-span-2" ? 4 : 3).map((pt) => (
-                    <span key={pt} className="flex items-start gap-1.5 text-xs text-muted">
-                      <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded bg-brand-muted text-brand">
-                        <CheckIcon size={10} strokeWidth={2.5} />
-                      </span>
-                      {pt}
-                    </span>
-                  ))}
-                </span>
-              </span>
-            }
-          />
-        );
-      })}
-    </BentoGrid>
-  );
-}

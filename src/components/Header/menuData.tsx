@@ -29,8 +29,8 @@ const menuData: Menu[] = [
   {
     id: 3,
     title: "Solutions",
-    path: "/solutions",
     newTab: false,
+    activeMatch: "/solutions",
     submenu: [
       {
         id: 31,

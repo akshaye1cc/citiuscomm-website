@@ -6,15 +6,26 @@ type PageHeroProps = {
   highlight?: string;
   description: string;
   eyebrow?: string;
+  /**
+   * Render the hero's own dot-grid + glows. Set false on pages that render a
+   * page-level <PageBackdrop />: the hero then drops both its pattern and its
+   * opaque canvas fill, so the single page-wide grid runs through it unbroken
+   * instead of two grids stacking out of phase.
+   */
+  pattern?: boolean;
 };
 
 /**
  * Inner-page hero. Brand dot-grid + a single network arc with a traveling
  * pulse — consistent with the homepage's signature visual.
  */
-const PageHero = ({ title, highlight, description, eyebrow }: PageHeroProps) => (
-  <section className="relative z-10 overflow-hidden bg-canvas pb-16 pt-[120px] md:pb-20 md:pt-[150px] xl:pt-[170px]">
-    <SectionPattern />
+const PageHero = ({ title, highlight, description, eyebrow, pattern = true }: PageHeroProps) => (
+  <section
+    className={`relative z-10 overflow-hidden pb-16 pt-[120px] md:pb-20 md:pt-[150px] xl:pt-[170px] ${
+      pattern ? "bg-canvas" : "bg-transparent"
+    }`}
+  >
+    {pattern && <SectionPattern />}
     {/* network arc accent along the bottom edge */}
     <svg
       viewBox="0 0 1440 120"

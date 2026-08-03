@@ -22,44 +22,16 @@ const headquarters = {
     "https://maps.google.com?q=503+Filix+Tower+LBS+Marg+Bhandup+West+Mumbai+400078",
 };
 
+/**
+ * Regional offices. City, country, and the shared sales address only —
+ * per-office phone numbers and street addresses are deliberately absent
+ * because only the Mumbai HQ details are verified.
+ */
 const branches = [
-  {
-    city: "Kolkata",
-    address: "2, Canal Street, 1st floor,\nFlat#1B, near Entally\nPolice Station, Kolkata – 700014.",
-    phone: "+91 11 4010 7947",
-    email: "sales@citiuscomm.com",
-    mapSrc:
-      "https://maps.google.com/maps?q=2+Canal+Street+Entally+Kolkata+700014&z=15&output=embed",
-    mapLink: "https://maps.google.com?q=2+Canal+Street+Entally+Kolkata+700014",
-  },
-  {
-    city: "Delhi",
-    address: "B25, Ground Floor,\nOkhla Industrial Area,\nPhase-II, New Delhi – 110020.",
-    phone: "+91 11 4010 7947",
-    email: "sales@citiuscomm.com",
-    mapSrc:
-      "https://maps.google.com/maps?q=B25+Okhla+Industrial+Area+Phase+II+New+Delhi+110020&z=15&output=embed",
-    mapLink:
-      "https://maps.google.com?q=B25+Okhla+Industrial+Area+Phase+II+New+Delhi+110020",
-  },
-  {
-    city: "Singapore",
-    address: "10 Anson Road,\n#10-11 International Plaza,\nSingapore – 079903.",
-    phone: "+65 6000 0000",
-    email: "sales@citiuscomm.com",
-    mapSrc:
-      "https://maps.google.com/maps?q=10+Anson+Road+Singapore+079903&z=15&output=embed",
-    mapLink: "https://maps.google.com?q=10+Anson+Road+Singapore+079903",
-  },
-  {
-    city: "Dubai",
-    address: "Office 2109, Aspect Tower,\nBusiness Bay,\nDubai – UAE.",
-    phone: "+971 4 000 0000",
-    email: "sales@citiuscomm.com",
-    mapSrc:
-      "https://maps.google.com/maps?q=Aspect+Tower+Business+Bay+Dubai&z=15&output=embed",
-    mapLink: "https://maps.google.com?q=Aspect+Tower+Business+Bay+Dubai",
-  },
+  { city: "Kolkata", country: "India", email: "sales@citiuscomm.com" },
+  { city: "Delhi", country: "India", email: "sales@citiuscomm.com" },
+  { city: "Singapore", country: "Singapore", email: "sales@citiuscomm.com" },
+  { city: "Dubai", country: "United Arab Emirates", email: "sales@citiuscomm.com" },
 ];
 
 /* ─── Icons ───────────────────────────────────────────────── */
@@ -97,50 +69,16 @@ const LinkedInIcon = () => (
 
 /* ─── Branch card ─────────────────────────────────────────── */
 const BranchCard = ({ office }: { office: (typeof branches)[0] }) => (
-  <div className="ds-card flex h-full flex-col gap-3 p-6">
-    <div className="flex items-center gap-2.5">
-      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-muted text-brand">
-        <PinIcon size={18} />
-      </div>
-      <h3 className="text-lg font-bold leading-tight text-fg">{office.city}</h3>
-    </div>
-
-    <p className="whitespace-pre-line border-b border-edge pb-3 text-xs leading-relaxed text-muted">
-      {office.address}
-    </p>
-
-    <div className="flex items-center gap-2 text-xs text-muted">
-      <PhoneIcon />
-      <span>{office.phone}</span>
-    </div>
-
-    <div className="flex items-center gap-2 text-xs text-muted">
+  <div className="ds-card flex h-full flex-col justify-center gap-1 p-6">
+    <h3 className="text-lg font-bold leading-tight text-fg">{office.city}</h3>
+    <p className="text-xs font-medium uppercase tracking-wider text-faint">{office.country}</p>
+    <a
+      href={`mailto:${office.email}`}
+      className="mt-3 flex items-center gap-2 text-xs text-brand hover:underline"
+    >
       <MailIcon />
-      <a href={`mailto:${office.email}`} className="truncate text-brand hover:underline">
-        {office.email}
-      </a>
-    </div>
-
-    <div className="relative mt-1 overflow-hidden rounded-lg border border-edge">
-      <a
-        href={office.mapLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="absolute left-2 top-2 z-10 flex items-center gap-1 rounded-md bg-primary px-2.5 py-1 text-[11px] font-medium text-white shadow transition-colors hover:bg-secondary"
-      >
-        Open in Maps <ExternalIcon />
-      </a>
-      <iframe
-        src={office.mapSrc}
-        width="100%"
-        height="140"
-        style={{ border: 0 }}
-        loading="lazy"
-        referrerPolicy="no-referrer-when-downgrade"
-        title={office.city}
-        className="w-full"
-      />
-    </div>
+      <span className="truncate">{office.email}</span>
+    </a>
   </div>
 );
 
@@ -208,44 +146,46 @@ export default function Contact() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-2">
-            {/* Headquarters */}
-            <Reveal variant="left">
-              <div className="ds-panel flex h-full flex-col p-8">
-                <div className="mb-6 flex items-center gap-4">
-                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-brand-muted text-brand">
-                    <PinIcon size={26} />
+          {/* Tier 1 — the one verified office, given the full width */}
+          <Reveal variant="left">
+            <div className="ds-panel p-8">
+              <div className="grid items-stretch gap-8 lg:grid-cols-2">
+                <div className="flex flex-col">
+                  <div className="mb-6 flex items-center gap-4">
+                    <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-brand-muted text-brand">
+                      <PinIcon size={26} />
+                    </div>
+                    <div>
+                      <span className="mb-1 inline-block rounded-full bg-primary px-3 py-0.5 text-xs font-bold uppercase tracking-widest text-white">
+                        Headquarters
+                      </span>
+                      <h3 className="text-2xl font-bold text-fg">{headquarters.city}</h3>
+                    </div>
                   </div>
-                  <div>
-                    <span className="mb-1 inline-block rounded-full bg-primary px-3 py-0.5 text-xs font-bold uppercase tracking-widest text-white">
-                      Headquarters
-                    </span>
-                    <h3 className="text-2xl font-bold text-fg">{headquarters.city}</h3>
+
+                  <p className="mb-5 whitespace-pre-line border-b border-edge pb-5 text-base leading-relaxed text-muted">
+                    {headquarters.address}
+                  </p>
+
+                  <div className="flex flex-col gap-3">
+                    <div className="flex items-center gap-3 text-sm text-muted">
+                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-brand-muted text-brand">
+                        <PhoneIcon />
+                      </div>
+                      <span>{headquarters.phone}</span>
+                    </div>
+                    <div className="flex items-center gap-3 text-sm">
+                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-brand-muted text-brand">
+                        <MailIcon />
+                      </div>
+                      <a href={`mailto:${headquarters.email}`} className="text-brand hover:underline">
+                        {headquarters.email}
+                      </a>
+                    </div>
                   </div>
                 </div>
 
-                <p className="mb-5 whitespace-pre-line border-b border-edge pb-5 text-base leading-relaxed text-muted">
-                  {headquarters.address}
-                </p>
-
-                <div className="mb-6 flex flex-col gap-3">
-                  <div className="flex items-center gap-3 text-sm text-muted">
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-brand-muted text-brand">
-                      <PhoneIcon />
-                    </div>
-                    <span>{headquarters.phone}</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-sm">
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-brand-muted text-brand">
-                      <MailIcon />
-                    </div>
-                    <a href={`mailto:${headquarters.email}`} className="text-brand hover:underline">
-                      {headquarters.email}
-                    </a>
-                  </div>
-                </div>
-
-                <div className="relative min-h-[220px] flex-1 overflow-hidden rounded-lg border border-edge">
+                <div className="relative min-h-[240px] overflow-hidden rounded-lg border border-edge">
                   <a
                     href={headquarters.mapLink}
                     target="_blank"
@@ -258,7 +198,7 @@ export default function Contact() {
                     src={headquarters.mapSrc}
                     width="100%"
                     height="100%"
-                    style={{ border: 0, minHeight: "220px" }}
+                    style={{ border: 0, minHeight: "240px" }}
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
                     title="Mumbai HQ"
@@ -266,16 +206,16 @@ export default function Contact() {
                   />
                 </div>
               </div>
-            </Reveal>
-
-            {/* Branches 2×2 */}
-            <div className="grid h-full grid-cols-1 gap-6 sm:auto-rows-fr sm:grid-cols-2">
-              {branches.map((office, i) => (
-                <Reveal key={office.city} variant="right" delay={i * 0.08} className="h-full">
-                  <BranchCard office={office} />
-                </Reveal>
-              ))}
             </div>
+          </Reveal>
+
+          {/* Tier 2 — regional offices, city + country + shared sales address only */}
+          <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {branches.map((office, i) => (
+              <Reveal key={office.city} variant="right" delay={i * 0.08} className="h-full">
+                <BranchCard office={office} />
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>

@@ -6,6 +6,15 @@ export type EcosystemPartner = {
   /** ~2 lines describing what they bring to the ecosystem. */
   description: string;
   url: string;
+  /**
+   * Multiplier on the logo's rendered max-height (1 = the default 2.5rem).
+   *
+   * Only for genuinely square marks, which lose height against wordmarks even
+   * when the asset is cropped tight. It is NOT a workaround for a file with
+   * transparent padding baked in — fix the asset instead, or the padding scales
+   * up along with the mark.
+   */
+  logoScale?: number;
 };
 
 const partnerEcosystem: EcosystemPartner[] = [
@@ -57,6 +66,9 @@ const partnerEcosystem: EcosystemPartner[] = [
     sector: "Enterprise",
     description: "Enterprise computing and data center infrastructure for mission-critical operations.",
     url: "#",
+    // Square circular mark in a square viewBox — already renders full height, but
+    // reads small beside wordmarks. Cropping cannot help a shape that is square.
+    logoScale: 1.25,
   },
   {
     name: "Hitachi",

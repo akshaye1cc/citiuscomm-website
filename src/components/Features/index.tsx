@@ -20,16 +20,9 @@ const Features = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="features" className="relative bg-canvas-subtle py-0 md:py-0 pb-20 md:pb-28 lg:pb-32">
-      <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div
-          className="ds-dots absolute inset-0 text-edge-2/90"
-          style={{
-            maskImage: "linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%)",
-            WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%)",
-          }}
-        />
-      </div>
+    // Transparent by design: the page-level PageBackdrop supplies the dot grid, and an
+    // opaque fill here would add a colour step at the section boundary.
+    <section ref={sectionRef} id="features" className="relative bg-transparent py-0 md:py-0 pb-20 md:pb-28 lg:pb-32">
       <div className="container relative z-10">
         {/* The section reads visually from the cards, but the outline still needs
             a level-2 heading so h1 doesn't jump straight to h3. */}

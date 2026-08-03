@@ -178,7 +178,8 @@ export default function PartnersPage() {
                           <img
                             src={partner.logo}
                             alt={partner.name}
-                            className="max-h-10 w-auto object-contain opacity-90 transition-opacity duration-300 group-hover:opacity-100"
+                            style={{ maxHeight: `${2.5 * (partner.logoScale ?? 1)}rem` }}
+                            className="w-auto object-contain opacity-90 transition-opacity duration-300 group-hover:opacity-100"
                           />
                         </div>
                         <p className="mt-4 text-xs leading-relaxed text-muted">{partner.description}</p>

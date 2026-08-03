@@ -19,17 +19,10 @@ const Point = ({ text }: { text: string }) => (
   </li>
 );
 
+// Transparent by design: the page-level PageBackdrop supplies the dot grid, and any
+// opaque fill here would re-introduce the horizontal seam under the hero.
 const WhoWeAre = () => (
-  <section id="about" className="relative bg-canvas-subtle py-20 md:py-28 lg:py-32">
-    <div className="pointer-events-none absolute inset-0 overflow-hidden">
-      <div
-        className="ds-dots absolute inset-0 text-edge-2/90"
-        style={{
-          maskImage: "linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%)",
-          WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%)",
-        }}
-      />
-    </div>
+  <section id="about" className="relative bg-transparent py-20 md:py-28 lg:py-32">
     <div className="container relative z-10">
       {/* Level-2 anchor for the page outline — the cards below are all h3. */}
       <h2 className="sr-only">Vision and mission</h2>

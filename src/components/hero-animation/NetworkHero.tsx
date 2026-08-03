@@ -51,11 +51,8 @@ const DEFAULTS = {
   credibility: 'Built to execute mission-critical infrastructure at national scale.',
   proof: ['30+ years of combined leadership', '100M+ subscribers managed'],
   primaryCta: { label: 'Start a conversation', href: '/contact' },
-  secondaryCta: { label: 'See what we deliver', href: '/solutions' },
+  secondaryCta: { label: 'See what we deliver', href: '/solutions/services' },
 };
-
-const DOT_MASK =
-  'linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)';
 
 export function NetworkHero({
   eyebrow = DEFAULTS.eyebrow,
@@ -121,14 +118,11 @@ export function NetworkHero({
   return (
     <section
       id="home"
-      className="relative overflow-hidden bg-canvas pb-20 pt-[120px] md:pb-28 md:pt-[150px] xl:pt-[170px]"
+      className="relative overflow-hidden bg-transparent pb-20 pt-[120px] md:pb-28 md:pt-[150px] xl:pt-[170px]"
     >
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-        {/* Same dot grid the rest of the site uses, so the hero stays on-system. */}
-        <div
-          className="ds-dots absolute inset-0 text-edge-2/80"
-          style={{ maskImage: DOT_MASK, WebkitMaskImage: DOT_MASK }}
-        />
+        {/* The dot grid lives on the page-level <PageBackdrop />, not here — a
+            per-section layer restarts the 26px grid at this section's top edge. */}
 
         {/* The band keeps its own 2:1 ratio and is never cropped horizontally,
             so viewBox x percentages map exactly to viewport percentages at every

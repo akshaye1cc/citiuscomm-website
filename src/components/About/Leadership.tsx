@@ -125,8 +125,10 @@ const MemberCard = ({ member }: { member: Member }) => (
   </div>
 );
 
+// Transparent by design: the page-level PageBackdrop supplies the dot grid, which an
+// opaque fill here used to paint straight over.
 const Leadership = () => (
-  <section id="leadership" className="relative overflow-hidden bg-canvas py-0 pb-20 md:pb-28 lg:pb-32">
+  <section id="leadership" className="relative overflow-hidden bg-transparent py-0 pb-20 md:pb-28 lg:pb-32">
     <div className="container relative z-10 space-y-16 lg:space-y-20">
       {teams.map((team) => (
         <div key={team.title}>

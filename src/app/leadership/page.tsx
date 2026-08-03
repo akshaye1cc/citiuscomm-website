@@ -1,6 +1,7 @@
 import Leadership from "@/components/About/Leadership";
 import CtaBand from "@/components/CtaBand";
 import Badge from "@/components/ui/Badge";
+import PageBackdrop from "@/components/ui/PageBackdrop";
 
 export const metadata = {
   title: "Leadership | Citiuscomm",
@@ -10,20 +11,12 @@ export const metadata = {
 
 const LeadershipPage = () => (
   <main className="relative bg-canvas">
-    {/* Page-wide dotted backdrop */}
-    <div aria-hidden className="pointer-events-none fixed inset-0 overflow-hidden z-0">
-      <div
-        className="ds-dots absolute inset-0 text-edge-2/90"
-        style={{
-          maskImage: "linear-gradient(to bottom, transparent 0, black 10%, black 90%, transparent 100%)",
-          WebkitMaskImage: "linear-gradient(to bottom, transparent 0, black 10%, black 90%, transparent 100%)",
-        }}
-      />
-    </div>
+    {/* One dot grid for the whole page — see PageBackdrop for why it is not fixed. */}
+    <PageBackdrop />
 
     <div className="relative z-10">
       {/* Creative hero */}
-      <section className="relative overflow-hidden bg-canvas pb-12 pt-[120px] md:pb-16 md:pt-[150px] xl:pb-20 xl:pt-[170px]">
+      <section className="relative overflow-hidden bg-transparent pb-12 pt-[120px] md:pb-16 md:pt-[150px] xl:pb-20 xl:pt-[170px]">
         <div className="container relative z-10">
           <div className="max-w-3xl">
             <div className="mb-6">
