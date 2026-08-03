@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import SingleFeature from "./SingleFeature";
 import featuresData from "./featuresData";
-import NetworkVisual from "@/components/ui/NetworkVisual";
 
 const Features = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -32,16 +31,9 @@ const Features = () => {
         />
       </div>
       <div className="container relative z-10">
-        {/* The section reads visually from the diagram and cards, but the outline
-            still needs a level-2 heading so h1 doesn't jump straight to h3. */}
+        {/* The section reads visually from the cards, but the outline still needs
+            a level-2 heading so h1 doesn't jump straight to h3. */}
         <h2 className="sr-only">What we do</h2>
-
-        {/* Signature network animation, paired with the capability cards */}
-        {/* Scales down with the viewport rather than being cropped — the node
-            labels drop out below `sm` so the topology stays readable. */}
-        <div className="mb-14 flex justify-center md:mb-20">
-          <NetworkVisual className="w-full max-w-[1180px]" />
-        </div>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
           {featuresData.map((feature, index) => (

@@ -1,6 +1,6 @@
 import SectionTitle from "../Common/SectionTitle";
 import Reveal from "@/components/ui/Reveal";
-import { MiniTopology } from "@/components/ui/NetworkVisual";
+import CapabilityCluster from "@/components/About/CapabilityCluster";
 import { CheckIcon } from "@/components/ui/icons";
 
 const differentiators = [
@@ -91,12 +91,16 @@ const AboutSectionOne = () => (
           {/* Right: network visual + heritage */}
           <div className="w-full px-4 lg:w-1/2">
             <Reveal variant="right" className="relative mx-auto max-w-[500px] lg:mr-0">
-              <MiniTopology />
-              <div className="mt-2 rounded-xl border border-edge bg-canvas-subtle p-4 text-center">
-                <p className="text-sm font-semibold text-fg">Trusted Heritage</p>
-                <p className="mt-1 text-xs text-muted">
-                  Leadership backgrounds from Ericsson, Siemens, and ZTE
-                </p>
+              {/* Diagram and heritage share one panel so the block reads as a
+                  single object rather than a visual plus a floating caption. */}
+              <div className="ds-panel overflow-hidden">
+                <CapabilityCluster />
+                <div className="border-t border-edge bg-canvas-subtle p-4 text-center">
+                  <p className="text-sm font-semibold text-fg">Trusted Heritage</p>
+                  <p className="mt-1 text-xs text-muted">
+                    Leadership backgrounds from Ericsson, Siemens, and ZTE
+                  </p>
+                </div>
               </div>
             </Reveal>
           </div>
