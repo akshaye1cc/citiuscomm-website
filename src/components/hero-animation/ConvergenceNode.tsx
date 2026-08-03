@@ -35,8 +35,8 @@ function ConvergenceNodeBase({ reduceMotion }: ConvergenceNodeProps) {
       <defs>
         <radialGradient id="nh-node-halo">
           <stop offset="0" stopColor={COLORS.white} stopOpacity="0.95" />
-          <stop offset="0.35" stopColor="#DBEAFE" stopOpacity="0.5" />
-          <stop offset="1" stopColor="#BFDBFE" stopOpacity="0" />
+          <stop offset="0.35" stopColor="#EBF4FB" stopOpacity="0.5" />
+          <stop offset="1" stopColor="#CFE4F5" stopOpacity="0" />
         </radialGradient>
         <radialGradient id="nh-node-flare-grad">
           <stop offset="0" stopColor={COLORS.orange} stopOpacity="0.7" />
