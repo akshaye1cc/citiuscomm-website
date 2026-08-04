@@ -15,7 +15,7 @@ interface CtaBandProps {
  */
 const CtaBand = ({
   title = "Ready to build your next-generation network?",
-  description = "Talk to our engineers about data center, ICT, 5G, and cloud infrastructure — from design to deployment and operations.",
+  description = "Talk to our engineers about data center, ICT, 5G, and cloud infrastructure, from design to deployment and operations.",
   primaryLabel = "Start the Conversation",
   primaryHref = "/contact",
   secondaryLabel = "Explore Solutions",

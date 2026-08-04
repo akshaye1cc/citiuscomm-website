@@ -106,7 +106,7 @@ const WhoWeAre = () => (
               <h3 className="mb-3 text-xl font-bold text-fg">Our Expertise</h3>
               <p className="leading-relaxed text-muted">
                 We design and deliver end-to-end solutions across Data Centers, ICT Infrastructure,
-                Telecom OSS/BSS, Cybersecurity, and 5G — backed by strong execution in NOC operations
+                Telecom OSS/BSS, Cybersecurity, and 5G, backed by strong execution in NOC operations
                 and project management.
               </p>
             </div>
@@ -133,7 +133,7 @@ const WhoWeAre = () => (
               <h3 className="mb-3 text-xl font-bold text-fg">Innovation</h3>
               <p className="leading-relaxed text-muted">
                 We constantly adopt new technologies and smarter methodologies to create solutions
-                that are not just advanced — but practical, scalable, and impactful.
+                that are not just advanced, but practical, scalable, and impactful.
               </p>
             </div>
           </Card>

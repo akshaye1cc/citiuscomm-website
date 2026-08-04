@@ -31,7 +31,7 @@ const whyPartner: WhyPartnerCard[] = [
     tag: "Solution",
     title: "OSS / BSS Telecom Ecosystem",
     description:
-      "Carrier-grade operational and business support systems — billing, provisioning, mediation, and service assurance across the full telecom stack.",
+      "Carrier-grade operational and business support systems: billing, provisioning, mediation, and service assurance across the full telecom stack.",
     icon: RouteIcon,
     featured: true,
   },
@@ -39,7 +39,7 @@ const whyPartner: WhyPartnerCard[] = [
     tag: "Solution",
     title: "Applied AI & RedX Platform",
     description:
-      "Production-ready AI and automation through the RedX platform — turning operational data into faster, smarter decisions.",
+      "Production-ready AI and automation through the RedX platform, turning operational data into faster, smarter decisions.",
     icon: BoltIcon,
     featured: true,
   },
@@ -55,7 +55,7 @@ const whyPartner: WhyPartnerCard[] = [
     tag: "Why us",
     title: "End-to-end ownership",
     description:
-      "We design, build, and operate — one accountable partner across the entire infrastructure lifecycle.",
+      "We design, build, and operate as one accountable partner across the entire infrastructure lifecycle.",
     icon: OpsIcon,
   },
   {

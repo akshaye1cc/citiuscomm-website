@@ -18,7 +18,7 @@ const ServicesPage = () => (
         eyebrow="Our Services"
         title="Six Practices."
         highlight="One Accountable Partner."
-        description="Every practice is delivered turnkey — design, sourcing, deployment, integration, and operations — so there is always a single throat to choke and a single team to call."
+        description="Every practice is delivered turnkey: design, sourcing, deployment, integration, and operations, so there is always a single throat to choke and a single team to call."
         pattern={false}
       />
 

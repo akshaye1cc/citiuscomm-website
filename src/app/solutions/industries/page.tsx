@@ -21,7 +21,7 @@ const IndustriesPage = () => (
         eyebrow="Industries"
         title="Critical Infrastructure for"
         highlight="Every Sector"
-        description="Wherever connectivity is mission-critical, the same carrier-grade delivery model applies — designed, deployed, and operated end to end."
+        description="Wherever connectivity is mission-critical, the same carrier-grade delivery model applies: designed, deployed, and operated end to end."
         pattern={false}
       />
 
@@ -30,15 +30,17 @@ const IndustriesPage = () => (
           <SectionTitle
             eyebrow="Who We Serve"
             title="Built for Demanding Environments"
-            paragraph="From live carrier networks to plant floors and trading floors — sectors where downtime isn't an option."
+            paragraph="From live carrier networks to plant floors and trading floors, sectors where downtime isn't an option."
             center
             width="640px"
           />
 
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {industries.map(({ title, description, solutions, icon }, i) => (
-              <Reveal key={title} delay={(i % 3) * 0.07} className="h-full">
-                <IndustryCard title={title} description={description} solutions={solutions} icon={icon} />
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {industries.map((industry, i) => (
+              // Per-index stagger rather than a modulo tied to one column count,
+              // capped so the last row does not lag behind the scroll.
+              <Reveal key={industry.slug} delay={Math.min(i, 7) * 0.05} className="h-full">
+                <IndustryCard {...industry} />
               </Reveal>
             ))}
           </div>

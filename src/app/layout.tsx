@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     template: "%s | Citiuscomm",
   },
   description:
-    "Citiuscomm delivers carrier-grade telecom and ICT infrastructure solutions — networking, cloud, cybersecurity, and 5G — across India, SAARC, Singapore, and Dubai.",
+    "Citiuscomm delivers carrier-grade telecom and ICT infrastructure solutions across India, SAARC, Singapore, and Dubai: networking, cloud, cybersecurity, and 5G.",
   keywords: [
     "telecom infrastructure",
     "ICT solutions",

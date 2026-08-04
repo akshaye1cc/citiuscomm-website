@@ -8,7 +8,7 @@ import partnerEcosystem from "@/data/partnerEcosystem";
 export const metadata = {
   title: "Partners | Citiuscomm",
   description:
-    "Why partner with Citiuscomm — our OSS/BSS, applied AI, and IoT solutions, the clients who trust us, and the ecosystem of brands we build with.",
+    "Why partner with Citiuscomm: our OSS/BSS, applied AI, and IoT solutions, the clients who trust us, and the ecosystem of brands we build with.",
 };
 
 /* duplicated track so the marquee loops seamlessly */
@@ -150,7 +150,7 @@ export default function PartnersPage() {
               The brands we build with
             </h2>
             <p className="text-base leading-relaxed text-muted">
-              A network of technology, service, and solution partners across sectors — together we
+              A network of technology, service, and solution partners across sectors. Together we
               design, build, and operate world-class infrastructure.
             </p>
           </div>

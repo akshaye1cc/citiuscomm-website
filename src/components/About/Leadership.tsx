@@ -34,7 +34,7 @@ const teams: TeamGroup[] = [
   name: "Pramod Yadav",
   role: "Co-founder & Director",
   description:
-    "Senior roles at Mavenir, Mitel, and Reliance Jio — deep expertise in network products and go-to-market.",
+    "Senior roles at Mavenir, Mitel, and Reliance Jio, with deep expertise in network products and go-to-market.",
   image: "/images/Leadership/pramod-yadav.png",
 },
 {

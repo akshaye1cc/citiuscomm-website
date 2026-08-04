@@ -27,7 +27,7 @@ export const pillars: SolutionPillar[] = [
     title: "Data Center Solutions",
     tagline: "Compute, storage, and networking engineered for uptime",
     description:
-      "We design, build, and modernize data center infrastructure for carriers and enterprises — from rack and power planning to compute, storage, and network fabric — sourced through our OEM partnerships and delivered turnkey.",
+      "We design, build, and modernize data center infrastructure for carriers and enterprises, from rack and power planning to compute, storage, and network fabric, sourced through our OEM partnerships and delivered turnkey.",
     points: [
       "Data center design and build",
       "Compute, storage, and network fabric",
@@ -42,7 +42,7 @@ export const pillars: SolutionPillar[] = [
     title: "ICT Infrastructure",
     tagline: "Enterprise and carrier networks, end to end",
     description:
-      "Routing, switching, transmission, and unified communications — designed, deployed, and supported across multi-vendor environments with partners like Cisco, HPE, and Juniper.",
+      "Routing, switching, transmission, and unified communications, designed, deployed, and supported across multi-vendor environments with partners like Cisco, HPE, and Juniper.",
     points: [
       "Enterprise routing and switching",
       "Transmission and backhaul",
@@ -57,7 +57,7 @@ export const pillars: SolutionPillar[] = [
     title: "Cybersecurity",
     tagline: "Carrier-grade protection for critical infrastructure",
     description:
-      "Perimeter, network, and endpoint security built on proven platforms — including Palo Alto — to keep carrier and enterprise infrastructure resilient against evolving threats.",
+      "Perimeter, network, and endpoint security built on proven platforms, including Palo Alto, to keep carrier and enterprise infrastructure resilient against evolving threats.",
     points: [
       "Network and perimeter security",
       "Next-generation firewalls",
@@ -72,7 +72,7 @@ export const pillars: SolutionPillar[] = [
     title: "5G & Telecom Networks",
     tagline: "Multi-generation rollout at carrier scale",
     description:
-      "From 2G to 5G and vRAN, we deliver radio and core network rollout, transmission, and RF engineering — backed by experience across 100K+ network sites.",
+      "From 2G to 5G and vRAN, we deliver radio and core network rollout, transmission, and RF engineering, backed by experience across 100K+ network sites.",
     points: [
       "2G–5G network rollout",
       "vRAN and Open RAN readiness",
@@ -85,7 +85,7 @@ export const pillars: SolutionPillar[] = [
   {
     slug: "cloud-engineering",
     title: "Cloud Engineering",
-    tagline: "Private, public, and hybrid — built for telco-grade workloads",
+    tagline: "Private, public, and hybrid, built for telco-grade workloads",
     description:
       "Cloud design, virtualization, and migration services that move enterprise and telco workloads onto scalable, cost-efficient platforms without disrupting operations.",
     points: [
@@ -102,7 +102,7 @@ export const pillars: SolutionPillar[] = [
     title: "OSS/BSS & NOC Operations",
     tagline: "13,000+ nodes managed around the clock",
     description:
-      "Round-the-clock network operations, monitoring, and OSS/BSS integration — the operational backbone behind networks serving 100M+ subscribers.",
+      "Round-the-clock network operations, monitoring, and OSS/BSS integration, the operational backbone behind networks serving 100M+ subscribers.",
     points: [
       "24×7 NOC operations",
       "Network monitoring and fault management",

@@ -1,98 +1,100 @@
-import type { ReactNode } from "react";
-import {
-  AntennaIcon,
-  BankIcon,
-  BoltIcon,
-  BuildingIcon,
-  DataCenterIcon,
-  EducationIcon,
-  FactoryIcon,
-  GovIcon,
-  HealthIcon,
-  MediaIcon,
-  RetailIcon,
-  RouteIcon,
-} from "@/components/ui/icons";
-
 export interface Industry {
+  /** Matches the image basename in public/images/industries. */
+  slug: string;
+  /** Short uppercase label above the title. */
+  tag: string;
   title: string;
   description: string;
-  solutions: string[];
-  icon: ReactNode;
+  /** Describes the photograph itself, not the sector. */
+  alt: string;
+  /** Optional sector figure, rendered in orange beneath the line. */
+  proof?: string;
 }
 
-/** Sectors we serve — used by /solutions (chips) and /solutions/industries (cards). */
+/** Sectors we serve, rendered as full-bleed scrim cards on /solutions/industries. */
 export const industries: Industry[] = [
   {
+    slug: "telecom",
+    tag: "TELECOM",
     title: "Telecom Carriers & ISPs",
-    description: "Rollout, operations, and modernization for mobile and fixed-line operators.",
-    solutions: ["5G Rollout", "NOC Operations", "Transmission", "OSS/BSS"],
-    icon: <AntennaIcon size={34} className="ds-draw" />,
+    description: "2G through 5G, planned, rolled out, and run.",
+    alt: "Lattice cell tower carrying panel antennas and microwave dishes, lit against a night sky above an industrial site.",
   },
   {
+    slug: "data-center",
+    tag: "DATA CENTER",
     title: "Data Centers & Cloud",
-    description: "Build-outs, fabric, and interconnect for colocation and cloud providers.",
-    solutions: ["DC Build", "Network Fabric", "Migration", "Security"],
-    icon: <DataCenterIcon size={34} className="ds-draw" />,
+    description: "White space to live fabric, one contractor.",
+    alt: "Rear of a server rack, cooling fans and bundled blue patch cables running between chassis.",
   },
   {
+    slug: "banking",
+    tag: "BANKING",
     title: "Banking & Financial Services",
-    description: "Secure, always-on infrastructure for banks, insurers, and fintech.",
-    solutions: ["Network Security", "DC & DR", "Connectivity", "Compliance"],
-    icon: <BankIcon size={34} className="ds-draw" />,
+    description: "Networks that cannot be down when markets open.",
+    alt: "Stone facade of the Reserve Bank of India, its engraved nameplate mounted behind iron railings.",
   },
   {
+    slug: "government",
+    tag: "GOVERNMENT",
     title: "Government & Public Sector",
-    description: "Secure networks for public programs and smart infrastructure.",
-    solutions: ["Secure Networks", "Data Centers", "Surveillance", "Connectivity"],
-    icon: <GovIcon size={34} className="ds-draw" />,
+    description: "National-scale networks, built to tender.",
+    alt: "Red sandstone dome of the Supreme Court of India with the national flag flying in front of it.",
   },
   {
+    slug: "healthcare",
+    tag: "HEALTHCARE",
     title: "Healthcare",
-    description: "Reliable connectivity and secure data infrastructure for care delivery.",
-    solutions: ["Hospital Networks", "Data Security", "Cloud", "Wi-Fi"],
-    icon: <HealthIcon size={34} className="ds-draw" />,
+    description: "Connectivity that holds when the ward depends on it.",
+    alt: "Hospital entrance canopy lit at night beneath an illuminated HOSPITAL sign.",
   },
   {
+    slug: "energy",
+    tag: "ENERGY",
     title: "Energy & Utilities",
-    description: "Industrial-grade communications for generation, transmission, and distribution.",
-    solutions: ["SCADA Networks", "Field Connectivity", "Security", "IoT"],
-    icon: <BoltIcon size={34} className="ds-draw" />,
+    description: "SCADA and field comms across the grid.",
+    alt: "Refinery distillation columns and pipework picked out by floodlights after dark.",
   },
   {
+    slug: "manufacturing",
+    tag: "MANUFACTURING",
     title: "Manufacturing",
-    description: "Plant-floor connectivity and IT/OT convergence for modern manufacturing.",
-    solutions: ["Industrial Networks", "IoT", "Private 5G", "Security"],
-    icon: <FactoryIcon size={34} className="ds-draw" />,
+    description: "Private 5G and IT/OT convergence on the plant floor.",
+    alt: "Robotic arms stacking cartons onto pallets along a factory packing line.",
   },
   {
+    slug: "education",
+    tag: "EDUCATION",
     title: "Education",
-    description: "Campus-wide networks and digital learning infrastructure.",
-    solutions: ["Campus Wi-Fi", "Networking", "Cloud", "Security"],
-    icon: <EducationIcon size={34} className="ds-draw" />,
+    description: "Campus-wide coverage for tens of thousands of devices.",
+    alt: "Empty classroom with rows of desks facing a whiteboard, daylight coming through window blinds.",
   },
   {
+    slug: "logistics",
+    tag: "LOGISTICS",
     title: "Transportation & Logistics",
-    description: "Connectivity across hubs, fleets, and transport corridors.",
-    solutions: ["Hub Networks", "Tracking Infrastructure", "Connectivity", "Security"],
-    icon: <RouteIcon size={34} className="ds-draw" />,
+    description: "Ports, corridors, and fleets, kept in contact.",
+    alt: "Container ship berthed beneath gantry cranes, freight containers stacked along the quay.",
   },
   {
+    slug: "broadcast",
+    tag: "BROADCAST",
     title: "Media & Broadcasting",
-    description: "High-throughput networks for content production and distribution.",
-    solutions: ["Broadcast Networks", "Edge & CDN", "Cloud", "Connectivity"],
-    icon: <MediaIcon size={34} className="ds-draw" />,
+    description: "Throughput for live production and distribution.",
+    alt: "Television news studio with an anchor desk facing a wall of screens reading BREAKING NEWS.",
   },
   {
+    slug: "retail",
+    tag: "RETAIL",
     title: "Retail & E-commerce",
-    description: "Store and fulfillment connectivity at chain scale.",
-    solutions: ["Store Networks", "SD-WAN", "Cloud", "Security"],
-    icon: <RetailIcon size={34} className="ds-draw" />,
+    description: "Hundreds of stores on one managed network.",
+    alt: "Long warehouse aisle running between tall racks of stock, a single worker at the far end.",
   },
   {
+    slug: "enterprise",
+    tag: "ENTERPRISE",
     title: "Large Enterprises",
-    description: "Campus and branch infrastructure for corporate environments.",
-    solutions: ["Campus Networks", "Unified Comms", "Security", "Cloud"],
-    icon: <BuildingIcon size={34} className="ds-draw" />,
+    description: "Campus, branch, and everything between.",
+    alt: "Angular glass and steel corporate tower photographed from below at dusk.",
   },
 ];

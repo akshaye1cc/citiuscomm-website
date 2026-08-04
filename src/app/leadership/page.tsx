@@ -6,7 +6,7 @@ import PageBackdrop from "@/components/ui/PageBackdrop";
 export const metadata = {
   title: "Leadership | Citiuscomm",
   description:
-    "The team behind Citiuscomm — decades of leadership experience across telecom, networking, and enterprise technology.",
+    "The team behind Citiuscomm, with decades of leadership experience across telecom, networking, and enterprise technology.",
 };
 
 const LeadershipPage = () => (

@@ -5,7 +5,7 @@ import PageBackdrop from "@/components/ui/PageBackdrop";
 export const metadata = {
   title: "About Us | Citiuscomm",
   description:
-    "Citiuscomm builds technology ecosystems that scale with ambition — combining innovation, reliability, and deep execution expertise.",
+    "Citiuscomm builds technology ecosystems that scale with ambition, combining innovation, reliability, and deep execution expertise.",
 };
 
 const AboutPage = () => (

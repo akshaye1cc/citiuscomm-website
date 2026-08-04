@@ -6,7 +6,7 @@ import Badge from "@/components/ui/Badge";
 export const metadata = {
   title: "Contact | Citiuscomm",
   description:
-    "Reach Citiuscomm — offices in Mumbai, Kolkata, Delhi, Singapore, and Dubai. We typically reply within one business day.",
+    "Reach Citiuscomm at our offices in Mumbai, Kolkata, Delhi, Singapore, and Dubai. We typically reply within one business day.",
 };
 
 /* ─── Office data ─────────────────────────────────────────── */
