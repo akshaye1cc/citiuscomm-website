@@ -241,7 +241,7 @@ const AboutHero = ({ eyebrow, title, highlight, description }: AboutHeroProps) =
             </div>
           )}
 
-          <h1 className="mb-6 text-4xl font-bold leading-tight text-fg sm:text-5xl lg:text-5xl">
+          <h1 className="mb-6 text-4xl font-bold leading-tight text-heading sm:text-5xl lg:text-5xl">
             {title} <span className="text-brand">{highlight}</span>
           </h1>
 

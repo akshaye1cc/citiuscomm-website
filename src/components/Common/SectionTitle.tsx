@@ -26,7 +26,7 @@ const SectionTitle = ({
         <Badge variant="brand" dot>{eyebrow}</Badge>
       </div>
     )}
-    <h2 className="mb-4 text-3xl font-bold leading-tight text-fg sm:text-4xl">
+    <h2 className="mb-4 text-3xl font-bold leading-tight text-heading sm:text-4xl">
       {title}
     </h2>
     {paragraph && (

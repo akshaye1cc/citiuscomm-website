@@ -1,5 +1,4 @@
 import Leadership from "@/components/About/Leadership";
-import CtaBand from "@/components/CtaBand";
 import Badge from "@/components/ui/Badge";
 import PageBackdrop from "@/components/ui/PageBackdrop";
 
@@ -23,7 +22,7 @@ const LeadershipPage = () => (
               <Badge variant="brand" dot>Leadership</Badge>
             </div>
 
-            <h1 className="mb-6 text-5xl font-bold leading-tight text-fg sm:text-6xl md:text-7xl">
+            <h1 className="mb-6 text-5xl font-bold leading-tight text-heading sm:text-6xl md:text-7xl">
               The Team That <span className="text-brand">Scales Networks</span>
             </h1>
 

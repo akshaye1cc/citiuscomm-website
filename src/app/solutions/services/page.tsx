@@ -22,7 +22,9 @@ const ServicesPage = () => (
         pattern={false}
       />
 
-      <section className="bg-transparent py-16 md:py-20 lg:py-24">
+      {/* Bottom padding only: the hero above owns the gap, so adjacent sections
+          never stack their padding into a dead band. */}
+      <section className="bg-transparent pb-16 md:pb-20 lg:pb-24">
         <div className="container">
           {/* Level-2 anchor for the outline — each practice card below is an h3. */}
           <h2 className="sr-only">Our practices</h2>

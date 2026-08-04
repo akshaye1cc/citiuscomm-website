@@ -1,6 +1,12 @@
 import Image from "next/image";
 import Reveal from "@/components/ui/Reveal";
-import { CheckIcon, ArrowRightIcon } from "@/components/ui/icons";
+import {
+  CheckIcon,
+  ArrowRightIcon,
+  CpuIcon,
+  LightbulbIcon,
+  UsersIcon,
+} from "@/components/ui/icons";
 
 const Card = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
   <div
@@ -46,7 +52,7 @@ const WhoWeAre = () => (
               <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-muted text-brand">
                 <CheckIcon size={20} className="text-brand" />
               </div>
-              <h3 className="mb-4 text-2xl font-bold text-fg">Our Vision</h3>
+              <h3 className="mb-4 text-2xl font-bold text-heading">Our Vision</h3>
               <ul className="space-y-3">
                 <Point text="We aim to be a globally trusted technology partner delivering meaningful, long-term impact." />
                 <Point text="We bridge cutting-edge innovation with real-world reliability across ICT, 5G, and cybersecurity." />
@@ -73,7 +79,7 @@ const WhoWeAre = () => (
               <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-muted text-brand">
                 <ArrowRightIcon size={20} className="text-brand" />
               </div>
-              <h3 className="mb-4 text-2xl font-bold text-fg">Our Mission</h3>
+              <h3 className="mb-4 text-2xl font-bold text-heading">Our Mission</h3>
               <ul className="space-y-3">
                 <Point text="We deliver cost-effective, high-quality end-to-end solutions across global markets." />
                 <Point text="We invest in talent, partnerships, and technology to stay ahead of industry demands." />
@@ -101,9 +107,9 @@ const WhoWeAre = () => (
             </div>
             <div className="relative p-7">
               <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-muted text-brand">
-                <span className="text-brand font-bold">⚙️</span>
+                <CpuIcon size={20} className="text-brand" />
               </div>
-              <h3 className="mb-3 text-xl font-bold text-fg">Our Expertise</h3>
+              <h3 className="mb-3 text-xl font-bold text-heading">Our Expertise</h3>
               <p className="leading-relaxed text-muted">
                 We design and deliver end-to-end solutions across Data Centers, ICT Infrastructure,
                 Telecom OSS/BSS, Cybersecurity, and 5G, backed by strong execution in NOC operations
@@ -128,9 +134,9 @@ const WhoWeAre = () => (
             </div>
             <div className="relative p-7">
               <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-muted text-brand">
-                <span className="text-brand font-bold">💡</span>
+                <LightbulbIcon size={20} className="text-brand" />
               </div>
-              <h3 className="mb-3 text-xl font-bold text-fg">Innovation</h3>
+              <h3 className="mb-3 text-xl font-bold text-heading">Innovation</h3>
               <p className="leading-relaxed text-muted">
                 We constantly adopt new technologies and smarter methodologies to create solutions
                 that are not just advanced, but practical, scalable, and impactful.
@@ -156,10 +162,10 @@ const WhoWeAre = () => (
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover/card:opacity-100" />
             </div>
             <div className="relative flex flex-col justify-center p-8 md:p-10">
-              <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 w-fit">
-                <span className="text-brand font-bold">🤝</span>
+              <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-muted text-brand">
+                <UsersIcon size={20} className="text-brand" />
               </div>
-              <h3 className="mb-4 text-2xl font-bold text-fg">Customer Focus</h3>
+              <h3 className="mb-4 text-2xl font-bold text-heading">Customer Focus</h3>
               <p className="leading-relaxed text-muted">
                 We prioritize long-term partnerships over short-term wins. By combining our
                 experience, strategic alliances, and execution strength, we deliver seamless

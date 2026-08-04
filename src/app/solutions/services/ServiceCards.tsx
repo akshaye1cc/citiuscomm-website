@@ -47,7 +47,7 @@ export default function ServiceCards() {
                 <div className="min-w-0 flex-1">
                   <div className="mb-2 flex items-center gap-3">
                     <Icon size={22} className="shrink-0 text-brand" />
-                    <h3 className="text-xl font-bold leading-tight text-fg md:text-2xl">
+                    <h3 className="text-xl font-bold leading-tight text-heading md:text-2xl">
                       {pillar.title}
                     </h3>
                   </div>

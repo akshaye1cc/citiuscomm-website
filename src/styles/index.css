@@ -32,6 +32,7 @@
   --color-edge:          var(--ds-edge);
   --color-edge-2:        var(--ds-edge-2);
   --color-fg:            var(--ds-fg);
+  --color-heading:       var(--ds-heading);
   --color-muted:         var(--ds-muted);
   --color-faint:         var(--ds-faint);
   --color-brand:         var(--ds-brand);

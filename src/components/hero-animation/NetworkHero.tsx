@@ -189,7 +189,7 @@ export function NetworkHero({
 
           <h1 className="mb-5 text-4xl leading-[1.07] tracking-tight sm:text-5xl xl:text-[3.25rem]">
             <span className="block font-semibold text-muted">{headlineLead}</span>
-            <span className="block text-fg">{headlineMain}</span>
+            <span className="block text-heading">{headlineMain}</span>
           </h1>
 
           <p className="mb-3 text-lg leading-relaxed text-muted">{subhead}</p>

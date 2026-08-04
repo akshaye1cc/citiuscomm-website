@@ -60,7 +60,7 @@ const PageHero = ({ title, highlight, description, eyebrow, pattern = true }: Pa
           </div>
         )}
 
-        <h1 className="mb-6 text-4xl font-bold leading-tight text-fg sm:text-5xl md:text-6xl">
+        <h1 className="mb-6 text-4xl font-bold leading-tight text-heading sm:text-5xl md:text-6xl">
           {title} {highlight && <span className="text-brand">{highlight}</span>}
         </h1>
 

@@ -9,7 +9,7 @@ const SingleFeature = ({ feature }: { feature: Feature }) => {
         <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-brand-muted text-brand">
           {icon}
         </div>
-        <h3 className="mb-3 text-xl font-bold text-fg">
+        <h3 className="mb-3 text-xl font-bold text-heading">
           {title}
         </h3>
         <p className="text-base leading-relaxed text-muted">

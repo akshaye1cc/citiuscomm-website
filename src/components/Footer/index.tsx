@@ -61,7 +61,7 @@ const Footer = () => (
 
         {/* Col 2: Company */}
         <div>
-          <h2 className="mb-5 text-xs font-semibold uppercase tracking-widest text-fg">
+          <h2 className="mb-5 text-xs font-semibold uppercase tracking-widest text-heading">
             Company
           </h2>
           <ul className="space-y-3">
@@ -80,7 +80,7 @@ const Footer = () => (
 
         {/* Col 3: Solutions */}
         <div>
-          <h2 className="mb-5 text-xs font-semibold uppercase tracking-widest text-fg">
+          <h2 className="mb-5 text-xs font-semibold uppercase tracking-widest text-heading">
             Solutions
           </h2>
           <ul className="space-y-3">
@@ -99,7 +99,7 @@ const Footer = () => (
 
         {/* Col 4: Contact */}
         <div>
-          <h2 className="mb-5 text-xs font-semibold uppercase tracking-widest text-fg">
+          <h2 className="mb-5 text-xs font-semibold uppercase tracking-widest text-heading">
             Contact
           </h2>
           <ul className="space-y-3 text-sm text-muted">

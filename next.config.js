@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
+    // Next defaults to ["image/webp"], which means it decodes the AVIF source
+    // files under public/images and re-encodes them as WebP. AVIF first so the
+    // format the assets were actually authored in reaches browsers that take it.
+    formats: ["image/avif", "image/webp"],
     remotePatterns: [
       {
         protocol: "https",

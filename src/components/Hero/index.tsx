@@ -55,7 +55,7 @@ const Hero = () => {
       <div className="container relative z-10">
         <div className="mx-auto max-w-[820px] text-center">
 
-          <h1 className="mb-3 text-5xl font-bold leading-tight text-fg sm:text-6xl md:text-7xl">
+          <h1 className="mb-3 text-5xl font-bold leading-tight text-heading sm:text-6xl md:text-7xl">
             <TypingText
               phrases={headlinePhrases}
               speed={80}

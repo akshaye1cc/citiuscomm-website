@@ -56,7 +56,7 @@ export default function PartnersPage() {
                 Why Partner With Us
               </Badge>
             </div>
-            <h1 className="mb-5 text-4xl font-bold leading-tight text-fg sm:text-5xl">
+            <h1 className="mb-5 text-4xl font-bold leading-tight text-heading sm:text-5xl">
               Solutions worth building on
             </h1>
             <p className="text-lg leading-relaxed text-muted">
@@ -92,7 +92,7 @@ export default function PartnersPage() {
                     <p className="mb-2 text-[11px] font-semibold uppercase tracking-widest text-faint">
                       {card.tag}
                     </p>
-                    <h3 className="mb-2 text-lg font-bold text-fg">{card.title}</h3>
+                    <h3 className="mb-2 text-lg font-bold text-heading">{card.title}</h3>
                     <p className="text-sm leading-relaxed text-muted">{card.description}</p>
                   </article>
                 </Reveal>
@@ -103,7 +103,9 @@ export default function PartnersPage() {
       </section>
 
       {/* ─── Section 2 · Client marquee (left → right) ─────────── */}
-      <section className="relative z-10 py-12 md:py-16">
+      {/* Bottom padding only: the section above owns the gap, so adjacent
+          sections never stack their padding into a dead band. */}
+      <section className="relative z-10 pb-12 md:pb-16">
         <div className="container mb-9 text-center">
           <p className="text-xs font-semibold uppercase tracking-widest text-faint">
             Trusted by carriers, broadcasters, and enterprises
@@ -138,7 +140,7 @@ export default function PartnersPage() {
       </section>
 
       {/* ─── Section 3 · Partner ecosystem (5 × 5 grid) ────────── */}
-      <section className="relative z-10 py-16 md:py-24">
+      <section className="relative z-10 pb-16 md:pb-24">
         <div className="container">
           <div className="mb-12 max-w-2xl">
             <div className="mb-5">
@@ -146,7 +148,7 @@ export default function PartnersPage() {
                 The Ecosystem
               </Badge>
             </div>
-            <h2 className="mb-5 text-3xl font-bold leading-tight text-fg sm:text-4xl">
+            <h2 className="mb-5 text-3xl font-bold leading-tight text-heading sm:text-4xl">
               The brands we build with
             </h2>
             <p className="text-base leading-relaxed text-muted">

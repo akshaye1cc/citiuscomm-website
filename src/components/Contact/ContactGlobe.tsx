@@ -117,10 +117,16 @@ export default function ContactGlobe() {
   );
 
   return (
-    <div className="relative mx-auto aspect-square w-full max-w-[600px]">
-      {/* subtle brand halo — kept small/faint so it doesn't tint the globe itself */}
-      <div className="pointer-events-none absolute inset-[18%] -z-10 rounded-full bg-primary/10 blur-2xl" />
-      <World globeConfig={config} data={data} />
+    // The sphere fills ~83% of a square canvas, leaving ~48px of dead space above
+    // and ~50px below. Crop it with an outer box rather than reshaping the canvas:
+    // the canvas stays square, so the globe renders identically and the one-shot
+    // gl.setSize in ui/globe.tsx never has to cope with a changed aspect.
+    <div className="relative mx-auto aspect-[8/7] w-full max-w-[600px] overflow-hidden">
+      <div className="absolute left-0 top-1/2 aspect-square w-full -translate-y-1/2">
+        {/* subtle brand halo — kept small/faint so it doesn't tint the globe itself */}
+        <div className="pointer-events-none absolute inset-[18%] -z-10 rounded-full bg-primary/10 blur-2xl" />
+        <World globeConfig={config} data={data} />
+      </div>
     </div>
   );
 }

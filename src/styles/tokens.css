@@ -19,7 +19,9 @@
   --ds-edge-2: #cbd5e1;
 
   /* ---- Text ---- */
-  --ds-fg:    #071b2f;   /* deep navy — primary text */
+  --ds-fg:      #071b2f; /* deep navy — primary text */
+  --ds-heading: #0d3b66; /* headings — 11.45:1 on canvas, 2.12:1 against brand,
+                            so a `highlight` span in brand blue still separates */
   --ds-muted: #4a6785;   /* secondary text — 5.9:1 on canvas */
   --ds-faint: #54718f;   /* tertiary — 5.1:1 on canvas, 4.9:1 on canvas-subtle */
 

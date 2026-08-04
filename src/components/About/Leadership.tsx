@@ -118,7 +118,7 @@ const MemberCard = ({ member }: { member: Member }) => (
     <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
     <div className="relative">
       <Avatar member={member} />
-      <h3 className="mb-1 text-xl font-bold uppercase tracking-wide text-fg">{member.name}</h3>
+      <h3 className="mb-1 text-xl font-bold uppercase tracking-wide text-heading">{member.name}</h3>
       <p className="mb-4 text-sm font-semibold text-brand">{member.role}</p>
       <p className="text-sm leading-relaxed text-muted">{member.description}</p>
     </div>
@@ -133,7 +133,7 @@ const Leadership = () => (
       {teams.map((team) => (
         <div key={team.title}>
           <Reveal>
-            <h2 className="mb-8 text-2xl font-bold text-fg sm:text-3xl">{team.title}</h2>
+            <h2 className="mb-8 text-2xl font-bold text-heading sm:text-3xl">{team.title}</h2>
           </Reveal>
           <div className="flex flex-wrap justify-center gap-6 lg:gap-8">
             {team.members.map((member, i) => (

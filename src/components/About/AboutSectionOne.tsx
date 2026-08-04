@@ -47,7 +47,7 @@ const AboutSectionOne = () => (
 
             <div className="mb-12 max-w-[570px] lg:mb-0">
               <Reveal delay={0.1}>
-                <h3 className="mb-5 text-xl font-bold text-fg sm:text-2xl">
+                <h3 className="mb-5 text-xl font-bold text-heading sm:text-2xl">
                   Why Choose Citiuscomm
                 </h3>
               </Reveal>

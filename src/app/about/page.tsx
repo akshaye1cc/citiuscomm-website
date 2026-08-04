@@ -23,7 +23,7 @@ const AboutPage = () => (
                 <Badge variant="brand" dot>About Us</Badge>
               </div>
 
-              <h1 className="mb-8 text-4xl font-bold leading-tight text-fg sm:text-5xl lg:text-5xl">
+              <h1 className="mb-8 text-4xl font-bold leading-tight text-heading sm:text-5xl lg:text-5xl">
                 Who <span className="text-brand">We Are</span>
               </h1>
 

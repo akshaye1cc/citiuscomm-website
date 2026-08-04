@@ -1,4 +1,3 @@
-import ContactForm from "@/components/Contact/ContactForm";
 import ContactGlobe from "@/components/Contact/ContactGlobe";
 import Reveal from "@/components/ui/Reveal";
 import Badge from "@/components/ui/Badge";
@@ -42,14 +41,14 @@ const PinIcon = ({ size = 20 }: { size?: number }) => (
   </svg>
 );
 
-const PhoneIcon = () => (
-  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+const PhoneIcon = ({ size = 15 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
     <path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" />
   </svg>
 );
 
-const MailIcon = () => (
-  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+const MailIcon = ({ size = 15 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
     <rect x="3" y="5" width="18" height="14" rx="2" />
     <path d="M3 7l9 6 9-6" />
   </svg>
@@ -61,16 +60,44 @@ const ExternalIcon = () => (
   </svg>
 );
 
-const LinkedInIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+const LinkedInIcon = ({ size = 16 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
     <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.722-2.004 1.419-.103.249-.129.597-.129.946v5.44h-3.554s.05-8.807 0-9.726h3.554v1.375c.427-.659 1.191-1.595 2.897-1.595 2.117 0 3.704 1.385 3.704 4.362v5.584zM5.337 8.855c-1.144 0-1.915-.762-1.915-1.715 0-.957.77-1.715 1.958-1.715 1.187 0 1.914.758 1.939 1.715 0 .953-.752 1.715-1.982 1.715zm1.946 11.597H3.392v-9.726h3.891v9.726zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z" />
   </svg>
 );
 
+/* ─── Direct contact channels ─────────────────────────────────
+   Three peers, not a primary with fallbacks — the section renders them on one
+   row with identical tiles so none of the three reads as the lesser option. */
+const channels = [
+  {
+    label: "Email",
+    value: "sales@citiuscomm.com",
+    note: "Sales and general enquiries",
+    href: "mailto:sales@citiuscomm.com",
+    icon: <MailIcon size={24} />,
+  },
+  {
+    label: "Phone",
+    value: "022 62362154",
+    note: "Mumbai headquarters",
+    href: "tel:+912262362154",
+    icon: <PhoneIcon size={24} />,
+  },
+  {
+    label: "LinkedIn",
+    value: "Citius Communications",
+    note: "Follow our company page",
+    href: "https://www.linkedin.com/company/citiuscommunications/",
+    external: true,
+    icon: <LinkedInIcon size={24} />,
+  },
+];
+
 /* ─── Branch card ─────────────────────────────────────────── */
 const BranchCard = ({ office }: { office: (typeof branches)[0] }) => (
   <div className="ds-card flex h-full flex-col justify-center gap-1 p-6">
-    <h3 className="text-lg font-bold leading-tight text-fg">{office.city}</h3>
+    <h3 className="text-lg font-bold leading-tight text-heading">{office.city}</h3>
     <p className="text-xs font-medium uppercase tracking-wider text-faint">{office.country}</p>
     <a
       href={`mailto:${office.email}`}
@@ -104,7 +131,7 @@ export default function Contact() {
               <div className="mb-6">
                 <Badge variant="brand" dot>Contact</Badge>
               </div>
-              <h1 className="mb-6 text-4xl font-bold leading-tight text-fg sm:text-5xl md:text-6xl">
+              <h1 className="mb-6 text-4xl font-bold leading-tight text-heading sm:text-5xl md:text-6xl">
                 Let&apos;s Build <span className="text-accent">Together</span>
               </h1>
               <p className="mx-auto mb-8 max-w-xl text-lg leading-relaxed text-muted lg:mx-0">
@@ -130,14 +157,15 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Offices */}
-      <section className="relative z-10 py-16 md:py-24">
+      {/* Offices. Bottom padding only: the hero above owns the gap, so adjacent
+          sections never stack their padding into a dead band. */}
+      <section className="relative z-10 pb-16 md:pb-24">
         <div className="container">
           <div className="mb-12 text-center">
             <div className="mb-4">
               <Badge variant="brand" dot>Global Offices</Badge>
             </div>
-            <h2 className="mb-4 text-3xl font-bold text-fg sm:text-4xl">
+            <h2 className="mb-4 text-3xl font-bold text-heading sm:text-4xl">
               Always Close to Where You Need Us
             </h2>
             <p className="mx-auto max-w-2xl text-base leading-relaxed text-muted">
@@ -159,7 +187,7 @@ export default function Contact() {
                       <span className="mb-1 inline-block rounded-full bg-primary px-3 py-0.5 text-xs font-bold uppercase tracking-widest text-white">
                         Headquarters
                       </span>
-                      <h3 className="text-2xl font-bold text-fg">{headquarters.city}</h3>
+                      <h3 className="text-2xl font-bold text-heading">{headquarters.city}</h3>
                     </div>
                   </div>
 
@@ -220,60 +248,48 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Contact form */}
-      <section className="relative z-10 py-16 md:py-24">
+      {/* Direct contact */}
+      <section className="relative z-10 pb-16 md:pb-24">
         <div className="container">
           <div className="mb-12 text-center">
             <div className="mb-4">
               <Badge variant="brand" dot>Get in Touch</Badge>
             </div>
-            <h2 className="mb-4 text-3xl font-bold text-fg sm:text-4xl">Send us a message</h2>
+            <h2 className="mb-4 text-3xl font-bold text-heading sm:text-4xl">Reach Us Directly</h2>
             <p className="mx-auto max-w-2xl text-base leading-relaxed text-muted">
-              Tell us about your project or requirement, and the right person on our team
-              will get back to you.
+              Email the sales team, call the Mumbai office, or follow us on LinkedIn.
+              Whichever route you take, it reaches the right person.
             </p>
           </div>
 
-          <div className="grid items-stretch gap-8 lg:grid-cols-5">
-            <Reveal variant="left" className="lg:col-span-3">
-              <ContactForm />
-            </Reveal>
-
-            <Reveal variant="right" className="flex h-full flex-col justify-between gap-6 lg:col-span-2">
-              <div>
-                <h3 className="mb-4 text-lg font-bold text-fg">Or reach us directly</h3>
-                <div className="space-y-4">
-                  <a
-                    href="mailto:sales@citiuscomm.com"
-                    className="ds-card flex items-center gap-3 rounded-xl px-5 py-4 text-sm text-fg"
-                  >
-                    <span className="text-brand"><MailIcon /></span>
-                    sales@citiuscomm.com
-                  </a>
-                  <a
-                    href="tel:+912262362154"
-                    className="ds-card flex items-center gap-3 rounded-xl px-5 py-4 text-sm text-fg"
-                  >
-                    <span className="text-brand"><PhoneIcon /></span>
-                    022 62362154 (Mumbai HQ)
-                  </a>
-                  <a
-                    href="https://www.linkedin.com/company/citiuscommunications/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="ds-card flex items-center gap-3 rounded-xl px-5 py-4 text-sm text-fg"
-                  >
-                    <span className="text-brand"><LinkedInIcon /></span>
-                    LinkedIn
-                  </a>
-                </div>
-              </div>
-              <div className="rounded-xl border border-primary/20 bg-brand-muted px-5 py-4 text-sm text-muted">
-                <strong className="text-fg">Response time:</strong> We typically reply within
-                one business day.
-              </div>
-            </Reveal>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {channels.map((channel, i) => (
+              <Reveal key={channel.label} delay={i * 0.08} className="h-full">
+                <a
+                  href={channel.href}
+                  {...(channel.external && { target: "_blank", rel: "noopener noreferrer" })}
+                  className="ds-card group flex h-full flex-col items-center gap-3 px-6 py-10 text-center"
+                >
+                  <span className="mb-1 flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-muted text-brand transition-transform duration-300 group-hover:scale-110 motion-reduce:transition-none motion-reduce:group-hover:scale-100">
+                    {channel.icon}
+                  </span>
+                  <span className="text-xs font-semibold uppercase tracking-widest text-faint">
+                    {channel.label}
+                  </span>
+                  <span className="flex items-center gap-1.5 text-lg font-semibold text-heading">
+                    {channel.value}
+                    {channel.external && <span className="text-brand"><ExternalIcon /></span>}
+                  </span>
+                  <span className="text-sm leading-relaxed text-muted">{channel.note}</span>
+                </a>
+              </Reveal>
+            ))}
           </div>
+
+          <p className="mx-auto mt-10 max-w-md rounded-xl border border-primary/20 bg-brand-muted px-5 py-4 text-center text-sm text-muted">
+            <strong className="text-fg">Response time:</strong> We typically reply within
+            one business day.
+          </p>
         </div>
       </section>
     </main>

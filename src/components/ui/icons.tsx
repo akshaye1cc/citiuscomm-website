@@ -196,6 +196,45 @@ export const BuildingIcon = (props: IconProps) => (
   </Icon>
 );
 
+/* ---------- About / values ---------- */
+
+export const CpuIcon = (props: IconProps) => (
+  <Icon {...props}>
+    <rect x="5" y="5" width="14" height="14" rx="2.2" pathLength={100} />
+    <rect x="9.2" y="9.2" width="5.6" height="5.6" rx="1.2" pathLength={100} />
+    <path d="M9.5 2.5V5" pathLength={100} />
+    <path d="M14.5 2.5V5" pathLength={100} />
+    <path d="M9.5 19v2.5" pathLength={100} />
+    <path d="M14.5 19v2.5" pathLength={100} />
+    <path d="M2.5 9.5H5" pathLength={100} />
+    <path d="M2.5 14.5H5" pathLength={100} />
+    <path d="M19 9.5h2.5" pathLength={100} />
+    <path d="M19 14.5h2.5" pathLength={100} />
+  </Icon>
+);
+
+export const LightbulbIcon = (props: IconProps) => (
+  <Icon {...props}>
+    <path
+      d="M8.6 15.2a6.2 6.2 0 1 1 6.8 0c-.8.6-1.3 1.4-1.4 2.3h-4c-.1-.9-.6-1.7-1.4-2.3z"
+      pathLength={100}
+    />
+    <path d="M9.8 19.4h4.4" pathLength={100} />
+    <path d="M10.7 21.6h2.6" pathLength={100} />
+  </Icon>
+);
+
+/* Two figures rather than a handshake: at the 20px the cards render, clasped
+   hands collapse into an unreadable knot, while a pair of people still reads. */
+export const UsersIcon = (props: IconProps) => (
+  <Icon {...props}>
+    <circle cx="8.8" cy="8" r="3.1" pathLength={100} />
+    <circle cx="16.6" cy="9.4" r="2.4" pathLength={100} />
+    <path d="M3.2 19.5a5.6 5.6 0 0 1 11.2 0" pathLength={100} />
+    <path d="M16.4 14.6a4.6 4.6 0 0 1 4.4 4.9" pathLength={100} />
+  </Icon>
+);
+
 /* ---------- Utility ---------- */
 
 export const CheckIcon = (props: IconProps) => (

@@ -1,5 +1,4 @@
 import PageHero from "@/components/PageHero";
-import SectionTitle from "@/components/Common/SectionTitle";
 import PageBackdrop from "@/components/ui/PageBackdrop";
 import Reveal from "@/components/ui/Reveal";
 import { industries } from "@/data/industries";
@@ -21,20 +20,14 @@ const IndustriesPage = () => (
         eyebrow="Industries"
         title="Critical Infrastructure for"
         highlight="Every Sector"
-        description="Wherever connectivity is mission-critical, the same carrier-grade delivery model applies: designed, deployed, and operated end to end."
+        description="From live carrier networks to plant floors and trading floors, sectors where downtime isn't an option."
         pattern={false}
       />
 
-      <section className="relative bg-transparent py-16 md:py-20 lg:py-28">
+      {/* Bottom padding only: the hero above owns the gap, so adjacent sections
+          never stack their padding into a dead band. */}
+      <section className="relative bg-transparent pb-16 md:pb-20 lg:pb-28">
         <div className="container">
-          <SectionTitle
-            eyebrow="Who We Serve"
-            title="Built for Demanding Environments"
-            paragraph="From live carrier networks to plant floors and trading floors, sectors where downtime isn't an option."
-            center
-            width="640px"
-          />
-
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {industries.map((industry, i) => (
               // Per-index stagger rather than a modulo tied to one column count,

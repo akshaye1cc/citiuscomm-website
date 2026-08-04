@@ -208,6 +208,16 @@ export function Globe({ globeConfig, data }: WorldProps) {
 export function WebGLRendererConfig() {
   const { gl, size } = useThree();
 
+  // TODO: this effect has an empty dependency array, so setPixelRatio/setSize run
+  // once on mount and never again. A viewport resize or a DPR change (dragging the
+  // window to a different-density monitor) leaves the drawing buffer at its
+  // original dimensions. react-three-fiber's own resize observer papers over most
+  // of it, which is why nothing looks obviously broken; the manual calls here are
+  // the part that goes stale. Adding [gl, size.width, size.height] is the fix, but
+  // it needs testing against the globe's camera framing before it lands, since the
+  // sphere's apparent size is tied to the canvas dimensions.
+  // See also ContactGlobe.tsx, which deliberately keeps its canvas square and crops
+  // with an outer box so it never depends on this path handling an aspect change.
   useEffect(() => {
     gl.setPixelRatio(window.devicePixelRatio);
     gl.setSize(size.width, size.height);
