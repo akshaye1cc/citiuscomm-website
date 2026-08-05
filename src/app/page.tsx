@@ -2,6 +2,7 @@ import AboutSectionOne from "@/components/About/AboutSectionOne";
 import ScrollUp from "@/components/Common/ScrollUp";
 import Features from "@/components/Features";
 import NetworkHero from "@/components/hero-animation/NetworkHero";
+import PartnerMarquee from "@/components/PartnerMarquee";
 import PageBackdrop from "@/components/ui/PageBackdrop";
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
 
       <div className="relative z-10">
         <NetworkHero />
+        <PartnerMarquee />
         <Features />
         <AboutSectionOne />
       </div>

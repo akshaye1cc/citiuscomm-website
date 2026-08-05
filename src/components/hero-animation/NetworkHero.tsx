@@ -1,30 +1,20 @@
 'use client';
 
-import { useEffect, useMemo, type ReactNode } from 'react';
-import { motion, useAnimate, useReducedMotion } from 'motion/react';
+import { type ReactNode } from 'react';
 import Button from '@/components/ui/Button';
-import { buildNetwork, buildParticles, COLORS, EXIT_X, NODE, VIEW } from './networkGeometry';
-import NetworkPaths from './NetworkPaths';
-import ConvergenceNode from './ConvergenceNode';
-import Packet from './Packet';
+import NodeMesh from './NodeMesh';
 
 /**
  * NetworkHero
  *
- * The hero argues the positioning instead of asserting it: around thirty vendor
- * routes arrive from the left, every one of them resolves into a single node,
- * and one line carries on and points at the headline. That is "one accountable
- * team across the full lifecycle" drawn rather than claimed.
+ * Two columns from lg up: copy left-aligned on the left, a breathing node mesh
+ * on the right. Below lg the two stack, copy first, with the mesh reduced to a
+ * band underneath. Below sm the mesh is dropped rather than shrunk — at that
+ * width the 36px lattice compresses into speckle and stops reading as a mesh
+ * at all, so it earns nothing and still costs a raf loop.
  *
- * Layout is deliberately asymmetric. The dense half of the bundle owns the left
- * of the frame, the copy sits in the right column, and the orange rule above
- * the eyebrow picks up where the outgoing line stops.
- *
- * Motion drives everything stateful: the node, the pulse cycle, brightness gain
- * near the convergence, drifting particles. Packet travel uses native SVG
- * attribute animation, because forty simultaneous path traversals on a JS
- * timeline would be the largest scripting cost on the page. Nothing here runs a
- * per-frame callback.
+ * The fibre-convergence animation that used to sit behind this copy now lives
+ * in FibreConvergence.tsx, unrendered but intact.
  */
 
 export interface NetworkHeroProps {
@@ -36,9 +26,7 @@ export interface NetworkHeroProps {
   proof?: string[];
   primaryCta?: { label: string; href: string };
   secondaryCta?: { label: string; href: string };
-  /** Lower on low-end targets. 30 is the design intent. */
-  routeCount?: number;
-  /** Change to reshape the whole route bundle. */
+  /** Change to reshape the whole mesh. */
   seed?: number;
 }
 
@@ -63,159 +51,76 @@ export function NetworkHero({
   proof = DEFAULTS.proof,
   primaryCta = DEFAULTS.primaryCta,
   secondaryCta = DEFAULTS.secondaryCta,
-  routeCount = 30,
-  seed = 20260730,
+  seed = 20260804,
 }: NetworkHeroProps) {
-  const prefersReduced = useReducedMotion();
-  const reduceMotion = Boolean(prefersReduced);
-
-  const { routes, packets } = useMemo(() => buildNetwork(seed, routeCount), [seed, routeCount]);
-  const particles = useMemo(() => buildParticles(seed + 7), [seed]);
-
-  const [scope, animate] = useAnimate();
-
-  // The pulse cycle: the node charges, a pulse leaves along the outgoing line,
-  // it lands, rings expand, everything settles back to idle.
-  useEffect(() => {
-    if (reduceMotion) return;
-
-    let cancelled = false;
-    const travel = EXIT_X - NODE.x;
-    const wait = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms));
-
-    const run = async () => {
-      await wait(1600);
-      while (!cancelled) {
-        try {
-          await animate([
-            ['#nh-node-core', { scale: [1, 1.5, 1] }, { duration: 1.1, ease: 'easeOut' }],
-            ['#nh-node-flare', { opacity: [0.18, 0.8, 0.18] }, { duration: 1.4, at: 0 }],
-            ['#nh-brighten', { opacity: [0.55, 1, 0.55] }, { duration: 1.6, at: 0, ease: 'easeInOut' }],
-            [
-              '#nh-outgoing-pulse',
-              { x: [0, travel], opacity: [0, 1, 1, 0.9] },
-              { duration: 1.4, at: 0.3, ease: [0.32, 0, 0.24, 1] },
-            ],
-            ['#nh-outgoing-bright', { opacity: [0, 0.7, 0] }, { duration: 1.1, at: 1.05 }],
-            ['#nh-outgoing-pulse', { opacity: 0 }, { duration: 0.25, at: 1.7 }],
-            ['#nh-emit-ring', { scale: [0.5, 3.8], opacity: [0.42, 0] }, { duration: 1.8, at: 1.7, ease: 'easeOut' }],
-            ['#nh-emit-ring-2', { scale: [0.5, 2.4], opacity: [0.3, 0] }, { duration: 1.4, at: 1.85, ease: 'easeOut' }],
-          ]);
-        } catch {
-          return;
-        }
-        if (cancelled) return;
-        await wait(2600 + Math.random() * 2600);
-      }
-    };
-
-    void run();
-    return () => {
-      cancelled = true;
-    };
-  }, [animate, reduceMotion]);
-
   return (
     <section
       id="home"
       className="relative overflow-hidden bg-transparent pb-20 pt-[120px] md:pb-28 md:pt-[150px] xl:pt-[170px]"
     >
-      <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-        {/* The dot grid lives on the page-level <PageBackdrop />, not here — a
-            per-section layer restarts the 26px grid at this section's top edge. */}
+      <div className="relative z-10 mx-auto w-full max-w-[1600px] px-6 md:px-10 xl:px-16">
+        {/* Not a 50/50 split: at lg an even split starves the copy column and
+            wraps the two CTAs onto separate lines. Copy takes the larger share
+            until xl, where there is room for both to breathe. */}
+        <div className="grid items-center gap-14 lg:grid-cols-[1.3fr_1fr] lg:gap-10 xl:grid-cols-[1.1fr_1fr] xl:gap-16">
+          {/* ---- Copy ---- */}
+          <div className="max-w-[620px] text-left">
+            <p className="mb-6 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-faint">
+              <span aria-hidden className="h-px w-8 shrink-0 bg-cta" />
+              {eyebrow}
+            </p>
 
-        {/* The band keeps its own 2:1 ratio and is never cropped horizontally,
-            so viewBox x percentages map exactly to viewport percentages at every
-            width. With "slice" the fan compressed as the hero grew taller and
-            the outgoing line crept rightward into the copy column. */}
-        <svg
-          ref={scope}
-          className="absolute left-0 top-1/2 aspect-[2/1] w-full -translate-y-1/2 opacity-40 xl:opacity-100"
-          viewBox={`0 0 ${VIEW.width} ${VIEW.height}`}
-          preserveAspectRatio="xMidYMid meet"
-          xmlns="http://www.w3.org/2000/svg"
-          focusable="false"
-        >
-          {/* Drifting dust */}
-          <g fill={COLORS.blue}>
-            {particles.map((particle) => (
-              <motion.circle
-                key={particle.id}
-                cx={particle.x}
-                cy={particle.y}
-                r={particle.r}
-                initial={{ opacity: particle.opacity, x: 0, y: 0 }}
-                animate={
-                  reduceMotion
-                    ? { opacity: particle.opacity }
-                    : {
-                        x: [0, particle.drift, 0],
-                        y: [0, particle.rise, 0],
-                        opacity: [particle.opacity * 0.4, particle.opacity, particle.opacity * 0.4],
-                      }
-                }
-                transition={{
-                  duration: particle.duration,
-                  delay: particle.delay,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-              />
-            ))}
-          </g>
+            <h1 className="mb-5 text-4xl leading-[1.07] tracking-tight sm:text-5xl xl:text-[3.25rem]">
+              <span className="block font-semibold text-muted">{headlineLead}</span>
+              <span className="block text-heading">{headlineMain}</span>
+            </h1>
 
-          <NetworkPaths routes={routes} reduceMotion={reduceMotion} />
+            <p className="mb-3 text-lg leading-relaxed text-muted">{subhead}</p>
+            <p className="mb-9 text-base leading-relaxed text-faint">{credibility}</p>
 
-          {!reduceMotion && (
-            <g mask="url(#nh-edge-fade)" fill="none">
-              {packets.map((packet) => (
-                <Packet key={packet.id} packet={packet} />
+            <div className="mb-10 flex flex-col gap-3 sm:flex-row">
+              <Button variant="cta" size="lg" href={primaryCta.href}>
+                {primaryCta.label}
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Button>
+              <Button variant="ghost" size="lg" href={secondaryCta.href}>
+                {secondaryCta.label}
+              </Button>
+            </div>
+
+            {/* Proof as one quiet line, not a panel of counters. */}
+            <ul className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-faint">
+              {/* Separator trails its own item rather than leading the next, so
+                  a wrap leaves the rule at the end of a line instead of
+                  orphaning it at the start of the one below. */}
+              {proof.map((item, index) => (
+                <li key={item} className="flex items-center gap-4">
+                  <span>{item}</span>
+                  {index < proof.length - 1 && (
+                    <span aria-hidden className="h-3 w-px bg-edge-2" />
+                  )}
+                </li>
               ))}
-            </g>
-          )}
-
-          <ConvergenceNode reduceMotion={reduceMotion} />
-        </svg>
-      </div>
-
-      <div className="relative z-10 mx-auto flex min-h-[500px] w-full max-w-[1600px] items-center px-6 md:min-h-[560px] md:px-10 xl:px-16">
-        <div className="w-full xl:ml-auto xl:w-[42%] xl:max-w-[560px]">
-
-          {/* The rule picks up where the outgoing line stops. */}
-          <p className="mb-6 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-faint">
-            <span aria-hidden className="h-px w-8 shrink-0 bg-cta" />
-            {eyebrow}
-          </p>
-
-          <h1 className="mb-5 text-4xl leading-[1.07] tracking-tight sm:text-5xl xl:text-[3.25rem]">
-            <span className="block font-semibold text-muted">{headlineLead}</span>
-            <span className="block text-heading">{headlineMain}</span>
-          </h1>
-
-          <p className="mb-3 text-lg leading-relaxed text-muted">{subhead}</p>
-          <p className="mb-9 text-base leading-relaxed text-faint">{credibility}</p>
-
-          <div className="mb-10 flex flex-col gap-3 sm:flex-row">
-            <Button variant="cta" size="lg" href={primaryCta.href}>
-              {primaryCta.label}
-              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Button>
-            <Button variant="ghost" size="lg" href={secondaryCta.href}>
-              {secondaryCta.label}
-            </Button>
+            </ul>
           </div>
 
-          {/* Proof as one quiet line, not a panel of counters. */}
-          <ul className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-faint">
-            {proof.map((item, index) => (
-              <li key={item} className="flex items-center gap-4">
-                {index > 0 && <span aria-hidden className="h-3 w-px bg-edge-2" />}
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
+          {/* ---- Mesh ----
+              The page-wide dot grid runs at a 26px step and the mesh sits on a
+              36px lattice; two regular point fields that close together can
+              moiré. The scrim knocks the grid back behind the mesh only, so the
+              texture still reads across the rest of the page. */}
+          <div className="relative hidden sm:block">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute -inset-6 bg-canvas/70 [mask-image:radial-gradient(ellipse_72%_66%_at_50%_50%,black_35%,transparent_100%)]"
+            />
+            <NodeMesh
+              seed={seed}
+              className="relative h-[260px] w-full md:h-[320px] lg:aspect-[9/7] lg:h-auto"
+            />
+          </div>
         </div>
       </div>
     </section>
