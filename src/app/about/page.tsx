@@ -1,4 +1,5 @@
 import WhoWeAre from "@/components/About/WhoWeAre";
+import CtaBand from "@/components/CtaBand";
 import Badge from "@/components/ui/Badge";
 import PageBackdrop from "@/components/ui/PageBackdrop";
 
@@ -108,6 +109,7 @@ const AboutPage = () => (
         </div>
       </section>
       <WhoWeAre />
+      <CtaBand />
     </div>
   </main>
 );

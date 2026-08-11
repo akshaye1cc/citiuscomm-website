@@ -85,7 +85,10 @@ export function NetworkHero({
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </Button>
-              <Button variant="ghost" size="lg" href={secondaryCta.href}>
+              {/* Both hero CTAs are the same size. The lg/md hierarchy pattern
+                  used in CtaBand is deliberately not applied here — side by side
+                  at the top of the page these read as a matched pair. */}
+              <Button variant="cta" size="lg" href={secondaryCta.href}>
                 {secondaryCta.label}
               </Button>
             </div>

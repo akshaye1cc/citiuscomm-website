@@ -1,4 +1,5 @@
 import Leadership from "@/components/About/Leadership";
+import CtaBand from "@/components/CtaBand";
 import Badge from "@/components/ui/Badge";
 import PageBackdrop from "@/components/ui/PageBackdrop";
 
@@ -50,6 +51,7 @@ const LeadershipPage = () => (
       </section>
 
       <Leadership />
+      <CtaBand />
     </div>
   </main>
 );

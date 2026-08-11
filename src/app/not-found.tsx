@@ -23,13 +23,13 @@ export default function NotFound() {
             The page you&apos;re looking for doesn&apos;t exist or has been moved.
           </p>
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button variant="primary" size="md" href="/">
+            <Button variant="cta" size="lg" href="/">
               <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
               Back to Home
             </Button>
-            <Button variant="ghost" size="md" href="/contact">
+            <Button variant="cta" size="md" href="/contact">
               Contact Us
             </Button>
           </div>

@@ -196,6 +196,22 @@ export const BuildingIcon = (props: IconProps) => (
   </Icon>
 );
 
+/**
+ * EV charge point — a kerbside charger with a bolt on its face. Distinct from
+ * BoltIcon on purpose: a bare bolt already reads as "energy/utilities" in the
+ * industries set, and reusing it for electric mobility would make the two
+ * indistinguishable at icon size.
+ */
+export const EvChargerIcon = (props: IconProps) => (
+  <Icon {...props}>
+    <rect x="4" y="2.5" width="11" height="19" rx="2" pathLength={100} />
+    <path d="M4 21.5h11" pathLength={100} />
+    <path d="M10.5 6.5L8 10.5h3l-2.5 4" pathLength={100} />
+    <path d="M15 9h2.5a2 2 0 0 1 2 2v6a1.5 1.5 0 0 0 1.5 1.5" pathLength={100} />
+    <path d="M17.5 5.5v3" pathLength={100} />
+  </Icon>
+);
+
 /* ---------- About / values ---------- */
 
 export const CpuIcon = (props: IconProps) => (

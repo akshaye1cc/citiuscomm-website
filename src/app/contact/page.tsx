@@ -1,4 +1,5 @@
 import ContactGlobe from "@/components/Contact/ContactGlobe";
+import CtaBand from "@/components/CtaBand";
 import Reveal from "@/components/ui/Reveal";
 import Badge from "@/components/ui/Badge";
 
@@ -292,6 +293,17 @@ export default function Contact() {
           </p>
         </div>
       </section>
+
+      {/* Defaults point at /contact — retargeted here so the band does not
+          offer the page you are already on. */}
+      <CtaBand
+        title="Not sure who to ask for?"
+        description="Tell us what you are building and we will put the right engineers on the call."
+        primaryLabel="Email Our Team"
+        primaryHref="mailto:sales@citiuscomm.com"
+        secondaryLabel="Explore Solutions"
+        secondaryHref="/solutions/services"
+      />
     </main>
   );
 }

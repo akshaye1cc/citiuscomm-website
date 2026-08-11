@@ -1,3 +1,4 @@
+import CtaBand from "@/components/CtaBand";
 import PageHero from "@/components/PageHero";
 import PageBackdrop from "@/components/ui/PageBackdrop";
 import Reveal from "@/components/ui/Reveal";
@@ -39,6 +40,8 @@ const IndustriesPage = () => (
           </div>
         </div>
       </section>
+
+      <CtaBand />
     </div>
   </main>
 );

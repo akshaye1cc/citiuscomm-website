@@ -27,6 +27,8 @@
   --color-canvas:        var(--ds-canvas);
   --color-canvas-subtle: var(--ds-canvas-subtle);
   --color-canvas-muted:  var(--ds-canvas-muted);
+  --color-canvas-tint:      var(--ds-canvas-tint);
+  --color-canvas-tint-flat: var(--ds-canvas-tint-flat);
   --color-surface:       var(--ds-surface);
   --color-surface-2:     var(--ds-surface-2);
   --color-edge:          var(--ds-edge);
@@ -37,6 +39,11 @@
   --color-faint:         var(--ds-faint);
   --color-brand:         var(--ds-brand);
   --color-brand-muted:   var(--ds-brand-muted);
+  --color-navy:          var(--ds-navy);
+  --color-navy-2:        var(--ds-navy-2);
+  --color-on-dark:       var(--ds-on-dark);
+  --color-on-dark-muted: var(--ds-on-dark-muted);
+  --color-dots-inverted: var(--ds-dots-inverted);
   --color-cta:           var(--ds-cta);
   --color-cta-hover:     var(--ds-cta-hover);
   --color-cta-muted:     var(--ds-cta-muted);
@@ -310,6 +317,13 @@
 .ds-dots {
   background-image: radial-gradient(circle, currentColor 1px, transparent 1px);
   background-size: 26px 26px;
+}
+/* Density-shift accent: exactly half the step, so where a dense patch abuts the
+   base grid every base dot still lands on a dense-grid position and the two
+   read as one grid at two densities rather than two grids out of phase. */
+.ds-dots-dense {
+  background-image: radial-gradient(circle, currentColor 1px, transparent 1px);
+  background-size: 13px 13px;
 }
 .ds-dots-fade {
   -webkit-mask-image: radial-gradient(ellipse 70% 65% at 50% 35%, black 30%, transparent 100%);

@@ -3,9 +3,14 @@ import { ButtonHTMLAttributes } from "react";
 
 const variants = {
   primary: "bg-primary text-white hover:bg-secondary",
-  /* Navy on brand orange, not white: white on #FF7A00 is 2.6:1 and fails even
-     the large-text floor, while navy keeps the brand orange exactly and clears AA. */
-  cta:     "bg-cta text-secondary hover:bg-cta-hover",
+  /* ACCESSIBILITY EXCEPTION — white on #FF7A00 is 2.61:1. That is below the
+     4.5:1 WCAG AA floor for normal text and below the 3:1 large-text floor too,
+     so every CTA on the site fails AA on contrast. This was specified and
+     accepted deliberately; do not "fix" it back to navy without asking.
+     Navy (#0a2540) was the previous value at 5.94:1. The only way to keep white
+     text and pass AA is to darken the orange to roughly #b85700, which is a
+     visibly different colour from the brand orange. */
+  cta:     "bg-cta text-white hover:bg-cta-hover",
   ghost:   "border border-edge bg-transparent text-fg hover:border-primary hover:text-brand",
   outline: "border border-primary bg-transparent text-brand hover:bg-primary hover:text-white",
   /* for use on dark navy sections regardless of theme */

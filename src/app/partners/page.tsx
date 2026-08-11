@@ -1,3 +1,4 @@
+import CtaBand from "@/components/CtaBand";
 import Badge from "@/components/ui/Badge";
 import Reveal from "@/components/ui/Reveal";
 import { ArrowRightIcon } from "@/components/ui/icons";
@@ -194,6 +195,8 @@ export default function PartnersPage() {
           </div>
         </div>
       </section>
+
+      <CtaBand />
     </main>
   );
 }

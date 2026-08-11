@@ -1,3 +1,4 @@
+import CtaBand from "@/components/CtaBand";
 import PageHero from "@/components/PageHero";
 import PageBackdrop from "@/components/ui/PageBackdrop";
 import ServiceCards from "./ServiceCards";
@@ -31,6 +32,9 @@ const ServicesPage = () => (
           <ServiceCards />
         </div>
       </section>
+
+      {/* Secondary defaults to this page — sent to industries instead. */}
+      <CtaBand secondaryLabel="See the Industries We Serve" secondaryHref="/solutions/industries" />
     </div>
   </main>
 );

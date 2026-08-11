@@ -1,7 +1,13 @@
+import SectionShell from "@/components/ui/SectionShell";
 import homePartners from "@/data/homePartners";
 
 /**
- * PartnerMarquee — the vendor logo scroll under the homepage hero.
+ * PartnerMarquee — the OEM/vendor logo scroll, on a tint band.
+ *
+ * NOT CURRENTLY RENDERED ANYWHERE. It was removed from the homepage: this is
+ * the "who we build with" claim, and it does not belong between the services
+ * row and the case studies. Kept for /partners, where it does belong. Do not
+ * confuse it with Home/ClientMarquee, which is the "who we serve" list.
  *
  * Same tile treatment as the client marquee on /partners, but the track is
  * repeated four times rather than twice. The .ds-marquee-track keyframe
@@ -24,9 +30,7 @@ const track = Array.from({ length: COPIES }, (_, copy) =>
 
 export default function PartnerMarquee() {
   return (
-    // Bottom padding only: the hero above owns the gap, so adjacent sections
-    // never stack their padding into a dead band.
-    <section className="relative z-10 pb-12 md:pb-16">
+    <SectionShell tone="tint" size="compact">
       <div className="container mb-9 text-center">
         <p className="text-xs font-semibold uppercase tracking-widest text-faint">
           Built with the industry&apos;s leading infrastructure platforms
@@ -34,9 +38,13 @@ export default function PartnerMarquee() {
       </div>
 
       <div className="relative">
-        {/* edge fades — fade to page background so it merges seamlessly */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-canvas to-transparent md:w-48" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-canvas to-transparent md:w-48" />
+        {/* Edge fades run to canvas-tint-FLAT, not canvas and not canvas-tint.
+            The band itself is a 70% tint, so fading to the tint token would
+            stack a second pass of it over the band and leave a darker column at
+            each edge; fading to canvas leaves the white seam this replaced.
+            The flat token is that same tint already composited over canvas. */}
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-canvas-tint-flat to-transparent md:w-48" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-canvas-tint-flat to-transparent md:w-48" />
 
         <div className="overflow-hidden">
           <div className="ds-marquee-track" style={{ animationDuration: "38s" }}>
@@ -47,7 +55,9 @@ export default function PartnerMarquee() {
                 // same nine logos again and would just repeat themselves.
                 aria-label={partner.copy === 0 ? partner.name : undefined}
                 aria-hidden={partner.copy > 0}
-                className="ds-panel mx-3 flex h-32 w-64 shrink-0 items-center justify-center px-8 py-6"
+                // Bordered tile on a tinted band: white fill plus the hairline
+                // is what separates each logo from the wash behind it.
+                className="mx-3 flex h-32 w-64 shrink-0 items-center justify-center rounded-2xl border border-edge bg-surface px-8 py-6 shadow-e1"
               >
                 <img
                   src={partner.logo}
@@ -65,6 +75,6 @@ export default function PartnerMarquee() {
           </div>
         </div>
       </div>
-    </section>
+    </SectionShell>
   );
 }

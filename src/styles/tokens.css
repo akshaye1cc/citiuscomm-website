@@ -10,6 +10,14 @@
   --ds-canvas-subtle: #f8fafc;
   --ds-canvas-muted:  #f1f5f9;
 
+  /* Section tint — cool, brand-leaning, deliberately deeper than canvas-muted.
+     Applied at 70% so the page dot grid still reads through the band. */
+  --ds-canvas-tint:   #e8f0f8;
+  /* The same tint flattened over white canvas. For anything that has to match
+     the composited band exactly — marquee edge fades, which would otherwise
+     stack a second pass of tint over the band and leave a visible seam. */
+  --ds-canvas-tint-flat: #eff4fa;
+
   /* ---- Surface (cards, panels) ---- */
   --ds-surface:   #ffffff;
   --ds-surface-2: #f8fafc;
@@ -30,9 +38,23 @@
   --ds-brand-hover: #0d5a94;
   --ds-brand-muted: #ebf4fb;
   --ds-navy:        #0a2540;
+  /* Lighter navy — the far end of the dark-band gradient, so a navy section
+     has depth instead of reading as one flat rectangle. */
+  --ds-navy-2:      #10395e;
   --ds-cta:         #ff7a00;
   --ds-cta-hover:   #e66f00;
   --ds-cta-muted:   #fff3e8;
+
+  /* ---- On dark bands (navy and brand sections) ----
+     fg/muted/faint are tuned for dark-on-canvas and are unreadable on navy.
+     These are the light-on-dark counterparts.
+       on-dark        16.5:1 on navy · 11.2:1 on navy-2 · 4.9:1 on brand
+       on-dark-muted   8.7:1 on navy ·  6.6:1 on navy-2 */
+  --ds-on-dark:       #f4f8fc;
+  --ds-on-dark-muted: #a9c6e2;
+
+  /* Dot grid over a dark band — the inverse of the page grid's edge-2 dots. */
+  --ds-dots-inverted: rgba(255, 255, 255, 0.07);
 
   /* ---- Semantic feedback ---- */
   --ds-success: #16a34a;
