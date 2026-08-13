@@ -31,8 +31,6 @@ type Direction = {
   image: string;
   /** Describes the photograph, not the idea. */
   alt: string;
-  /** Brand fill instead of navy. */
-  featured?: boolean;
 };
 
 const directions: Direction[] = [
@@ -60,7 +58,6 @@ const directions: Direction[] = [
     icon: GlobeIcon,
     image: "/images/about/visimage.jpg",
     alt: "Fibre optic strands lit end-on, fanning out against a dark background.",
-    featured: true,
   },
   {
     tag: "Mission",
@@ -129,15 +126,17 @@ const SCRIM_TO_BOTTOM = "bg-gradient-to-t from-black/45 to-transparent";
 
 /**
  * Two sections, same card language as "Why partner with us" on /partners:
- * dark filled panels on the light page, brand fill for the card that leads,
- * an oversized index watermark cropped by the corner, and the icon in a
- * brand-muted well. Photography is carried inside the cards rather than
- * dropped — it is half of what each card is saying.
+ * dark filled panels on the light page, an oversized index watermark cropped by
+ * the corner, and the icon in a brand-muted well. Photography is carried inside
+ * the cards rather than dropped — it is half of what each card is saying.
  *
- * Body copy is deliberately NOT on-dark-muted on the featured cards: that token
- * is measured against navy (8.7:1) and falls to 3.09:1 on brand blue, under the
- * AA floor. on-dark is 4.9:1 on brand and passes. Do not unify these two back
- * into one class — the same note is on the /partners implementation.
+ * Every card on this page is navy. Vision previously took the brand fill to
+ * lead the pair, which meant its body copy needed its own text token: the
+ * on-dark-muted used everywhere else is measured against navy (8.7:1) and falls
+ * to 3.09:1 on brand blue, under the AA floor. One fill means one text colour
+ * and no exception to remember. If a brand-filled card is ever reintroduced
+ * here, its body copy has to move to on-dark (4.9:1 on brand) — see the
+ * /partners implementation, which still carries that split.
  *
  * Transparent sections by design: the page-level PageBackdrop supplies the dot
  * grid, and any opaque fill here would re-introduce the seam under the hero.
@@ -155,10 +154,11 @@ const WhoWeAre = () => (
             </Badge>
           </div>
           <h2 className="mb-5 text-3xl font-bold leading-tight text-heading sm:text-4xl">
-            Where we are going, and how we get there
+            Defining our future. Delivering our purpose.
           </h2>
           <p className="text-base leading-relaxed text-muted">
-            One is the destination and the other is the method. Both are written to be held to.
+            Our vision sets our long-term direction. Our mission guides the actions and principles
+            that move us forward.
           </p>
         </div>
 
@@ -172,11 +172,7 @@ const WhoWeAre = () => (
 
             return (
               <Reveal key={item.title} variant={mirrored ? "right" : "left"}>
-                <article
-                  className={`relative overflow-hidden rounded-2xl border border-white/10 ${
-                    item.featured ? "bg-brand" : "bg-navy"
-                  }`}
-                >
+                <article className="relative overflow-hidden rounded-2xl border border-white/10 bg-navy">
                   <div className="grid md:grid-cols-2">
                     <div
                       className={`relative min-h-[260px] md:min-h-[380px] ${
@@ -206,19 +202,11 @@ const WhoWeAre = () => (
                         <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-brand-muted text-brand">
                           <Icon size={32} />
                         </div>
-                        <p
-                          className={`mb-2 text-[11px] font-semibold uppercase tracking-widest ${
-                            item.featured ? "text-on-dark" : "text-on-dark-muted"
-                          }`}
-                        >
+                        <p className="mb-2 text-[11px] font-semibold uppercase tracking-widest text-on-dark-muted">
                           {item.tag}
                         </p>
                         <h3 className="mb-3 text-2xl font-bold text-white">{item.title}</h3>
-                        <p
-                          className={`mb-6 text-base leading-relaxed ${
-                            item.featured ? "text-on-dark" : "text-on-dark-muted"
-                          }`}
-                        >
+                        <p className="mb-6 text-base leading-relaxed text-on-dark-muted">
                           {item.lead}
                         </p>
 
@@ -226,11 +214,7 @@ const WhoWeAre = () => (
                           {item.points.map((point) => (
                             <li key={point.label}>
                               <p className="text-sm font-semibold text-white">{point.label}</p>
-                              <p
-                                className={`mt-1 text-sm leading-relaxed ${
-                                  item.featured ? "text-on-dark" : "text-on-dark-muted"
-                                }`}
-                              >
+                              <p className="mt-1 text-sm leading-relaxed text-on-dark-muted">
                                 {point.detail}
                               </p>
                             </li>
@@ -254,15 +238,20 @@ const WhoWeAre = () => (
           <SectionAccent className="mb-6" />
           <div className="mb-5">
             <Badge variant="brand" dot>
-              How We Work
+              Our Approach
             </Badge>
           </div>
-          <h2 className="mb-5 text-3xl font-bold leading-tight text-heading sm:text-4xl">
-            Our operating pillars
+          <h2 className="mb-4 text-3xl font-bold leading-tight text-heading sm:text-4xl">
+            Our Operating Pillars
           </h2>
+          {/* Subheading sits between the h2 and the body copy: heavier and
+              darker than the paragraph, lighter than the heading. */}
+          <p className="mb-4 text-lg font-semibold leading-snug text-heading">
+            The principles that guide how we work.
+          </p>
           <p className="text-base leading-relaxed text-muted">
-            The three things that stay constant across every practice, every sector, and every
-            deployment we take on.
+            These pillars shape our approach across every practice, sector, and deployment. They
+            provide a consistent foundation for how we create value and deliver outcomes.
           </p>
         </div>
 
