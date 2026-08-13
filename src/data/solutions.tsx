@@ -100,9 +100,9 @@ export const pillars: SolutionPillar[] = [
   {
     slug: "noc-operations",
     title: "OSS/BSS & NOC Operations",
-    tagline: "13,000+ nodes managed around the clock",
+    tagline: "Network operations managed around the clock",
     description:
-      "Round-the-clock network operations, monitoring, and OSS/BSS integration, the operational backbone behind networks serving 100M+ subscribers.",
+      "Round-the-clock network operations, monitoring, and OSS/BSS integration, the operational backbone behind carrier and enterprise networks.",
     points: [
       "24×7 NOC operations",
       "Network monitoring and fault management",

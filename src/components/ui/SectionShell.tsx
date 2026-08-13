@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
 /**
- * The four bands a page is allowed to alternate between.
+ * The bands a page is allowed to alternate between.
  *
  *  light — no fill at all. The page-level PageBackdrop shows through, which is
  *          what keeps its 26px grid phase-continuous across section boundaries.
@@ -10,25 +10,50 @@ import type { ReactNode } from "react";
  *          laid on top of it.
  *  navy  — opaque. Cuts the page: the backdrop cannot show through, so the band
  *          carries its own inverted grid to keep the texture unbroken.
- *  brand — opaque, same deal. Reserved for the closing CTA.
+ *  navy-flat — the same navy, no gradient, and no dot grid. For bands that bring
+ *          their own texture; see DOTTED below.
+ *  brand — opaque, same deal.
  *
  * Orange is never a band. It is the CTA colour and nothing else.
  */
-type Tone = "light" | "tint" | "navy" | "brand";
+type Tone = "light" | "tint" | "navy" | "navy-flat" | "brand";
 
 const tones: Record<Tone, string> = {
   light: "bg-transparent",
   tint: "bg-canvas-tint/70",
   navy: "bg-gradient-to-b from-navy to-navy-2",
+  "navy-flat": "bg-navy",
   brand: "bg-brand",
 };
 
-/** Opaque tones hide PageBackdrop, so they supply their own dot layer. */
-const OPAQUE: Tone[] = ["navy", "brand"];
+/**
+ * Tones that hide PageBackdrop and so supply their own dot layer.
+ *
+ * navy-flat is opaque but deliberately absent from this list: it exists for
+ * sections that carry their own texture instead, and the dot grid would fight
+ * it rather than fill in for the backdrop. The CTA band's node mesh is the case
+ * this was added for — a 26px dot grid under a 36px mesh lattice moirés, the
+ * same clash NetworkHero puts a scrim behind its mesh to avoid.
+ */
+const DOTTED: Tone[] = ["navy", "brand"];
 
+/**
+ * Top padding only — sections do not carry their own bottom padding.
+ *
+ * A section that pads both edges doubles the gap at every boundary: the
+ * previous section's bottom padding plus this one's top padding stack into a
+ * visibly larger gap than either was designed to be. Since the page stacks
+ * sections directly against one another with no divider or tone change to
+ * absorb the difference, that doubled gap read as a stray empty band between
+ * every pair of sections. One edge of padding per boundary is enough — the
+ * section below supplies it, and the section above ends where its content
+ * ends. The final section before the footer relies on the footer's own
+ * top border and padding for closing space, which is already independent of
+ * this component.
+ */
 const sizes = {
-  default: "py-20 md:py-24 lg:py-28",
-  compact: "py-12 md:py-16",
+  default: "pt-20 md:pt-24 lg:pt-28",
+  compact: "pt-12 md:pt-16",
 } as const;
 
 interface SectionShellProps {
@@ -47,6 +72,13 @@ interface SectionShellProps {
    * pair with `className="overflow-hidden"` if any of them can overflow.
    */
   decoration?: ReactNode;
+  /**
+   * Hairline across the top of the band. For the one place two light sections
+   * sit next to each other: they need separating, and a tone change is the
+   * expensive way to do it — it costs a stripe in the page's vertical rhythm.
+   * A rule plus the shared padding does the same job for nothing.
+   */
+  divider?: boolean;
   "aria-labelledby"?: string;
 }
 
@@ -63,15 +95,16 @@ export default function SectionShell({
   id,
   className = "",
   decoration,
+  divider = false,
   ...rest
 }: SectionShellProps) {
   return (
     <section
       id={id}
-      className={`relative ${sizes[size]} ${tones[tone]} ${className}`}
+      className={`relative ${sizes[size]} ${tones[tone]}${divider ? " border-t border-edge" : ""} ${className}`}
       {...rest}
     >
-      {OPAQUE.includes(tone) && (
+      {DOTTED.includes(tone) && (
         <div aria-hidden className="ds-dots pointer-events-none absolute inset-0 text-dots-inverted" />
       )}
       {decoration}

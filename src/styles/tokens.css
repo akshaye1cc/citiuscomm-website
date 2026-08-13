@@ -21,10 +21,20 @@
   /* ---- Surface (cards, panels) ---- */
   --ds-surface:   #ffffff;
   --ds-surface-2: #f8fafc;
+  /* Translucent tile fill, for a tile sitting ON a dark band. Currently unused:
+     the homepage puts solid filled cards on a white page instead (ds-tile-dark,
+     ds-tile-brand). Kept for pages that still band. */
+  --ds-surface-inverted: rgba(255, 255, 255, 0.06);
 
   /* ---- Borders ---- */
   --ds-edge:   #e2e8f0;
   --ds-edge-2: #cbd5e1;
+  --ds-edge-inverted: rgba(255, 255, 255, 0.12);
+
+  /* ---- Geometry ----
+     One corner radius for every tile on the site. Buttons keep their own,
+     smaller scale — they are not surfaces. */
+  --ds-radius: 1rem;
 
   /* ---- Text ---- */
   --ds-fg:      #071b2f; /* deep navy — primary text */
@@ -53,8 +63,18 @@
   --ds-on-dark:       #f4f8fc;
   --ds-on-dark-muted: #a9c6e2;
 
-  /* Dot grid over a dark band — the inverse of the page grid's edge-2 dots. */
-  --ds-dots-inverted: rgba(255, 255, 255, 0.07);
+  /* ---- Dot grid ----
+     One grid, two backgrounds, matched by measured contrast rather than by
+     eye. Both land at ~1.6:1 against their own band, which is present enough
+     to read as texture and far below the 4.5:1 that text occupies:
+       --ds-dots           #c3cdda on #ffffff            → 1.61:1
+       --ds-dots-inverted  white @15% on navy            → 1.59:1
+                           white @15% on navy-2          → 1.56:1
+     0.10 was the first guess for the inverted value but it undershoots badly:
+     it lands at ~1.35:1, visibly fainter than the light grid. Move the two
+     together if either changes. */
+  --ds-dots:          #c3cdda;
+  --ds-dots-inverted: rgba(255, 255, 255, 0.15);
 
   /* ---- Semantic feedback ---- */
   --ds-success: #16a34a;

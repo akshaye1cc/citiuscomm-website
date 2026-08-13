@@ -24,7 +24,7 @@ export default function PageBackdrop({ glow = false, className = "" }: PageBackd
       aria-hidden
       className={`pointer-events-none absolute inset-0 z-0 overflow-hidden ${className}`}
     >
-      <div className="ds-dots absolute inset-0 text-edge-2/90" />
+      <div className="ds-dots absolute inset-0 text-dots" />
       {glow && (
         <>
           <div className="absolute -top-32 left-1/2 h-[480px] w-[720px] -translate-x-1/2 rounded-full bg-primary/[0.05] blur-3xl" />

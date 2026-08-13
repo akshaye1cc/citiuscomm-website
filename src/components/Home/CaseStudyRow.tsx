@@ -1,13 +1,15 @@
 import Image from "next/image";
-import Link from "next/link";
 import SectionTitle from "@/components/Common/SectionTitle";
 import Reveal from "@/components/ui/Reveal";
 import SectionShell from "@/components/ui/SectionShell";
-import { ArrowRightIcon } from "@/components/ui/icons";
+import { CheckIcon } from "@/components/ui/icons";
 import { caseStudies } from "@/data/caseStudies";
 
-/** Same scrim treatment as /solutions/industries. */
-const SCRIM = "bg-gradient-to-t from-navy/90 via-navy/30 to-transparent";
+/** Reaches full navy at the bottom, not 90%, so the photo meets the card's navy
+ *  body on an invisible seam instead of a faint step. Used on the mobile/
+ *  top-of-card image only — the lg image sits beside the body, not above it,
+ *  so it does not need to resolve into anything. */
+const SCRIM = "bg-gradient-to-t from-navy via-navy/40 to-transparent";
 
 /**
  * Unfinished studies never render. The filter is here rather than in the data
@@ -17,13 +19,28 @@ const SCRIM = "bg-gradient-to-t from-navy/90 via-navy/30 to-transparent";
 const published = caseStudies.filter((study) => !study.placeholder);
 
 /**
- * Case studies as a horizontal scroll row rather than a grid: three studies do
- * not fill a three-column grid convincingly, and the row keeps its shape as the
- * list grows. Cards are a fixed width so the next one is always part-visible —
- * that overhang is what tells you the row scrolls.
+ * Full-width cards, two per row at lg. `results` is rendered per study, but
+ * only the lines that are actually written — both published studies still
+ * carry TODO placeholders in that field pending numbers from the account
+ * team, and those must not reach the page. A study with nothing left after
+ * that filter simply skips the Results block rather than showing an empty one.
+ */
+function finishedResults(results: string[]) {
+  return results.filter((line) => !/^todo\b/i.test(line.trim()));
+}
+
+/**
+ * Case studies as full-width cards, not a scroll row. A horizontal scroller
+ * made sense when studies were only ever going to be teasers a few lines long;
+ * elaborating the content the way this section now does needs the room a
+ * two-column grid gives it, and at two published studies neither wants for
+ * space with the full container width to work with.
  *
- * Links point at /insights/[slug], which is NOT BUILT YET — these 404 until it
- * is. Left live rather than inert so the missing route stays visible in testing.
+ * These cards are the case study — there is no detail page behind them, so
+ * they are <article>, not links. The /insights/[slug] route these used to
+ * point at was never built, so nothing is lost by dropping the link, and the
+ * `slug` field is now only an identity key. Because the whole card is the
+ * content, every field in the study is rendered here rather than teased.
  */
 export default function CaseStudyRow() {
   return (
@@ -34,47 +51,24 @@ export default function CaseStudyRow() {
           title="Work we have delivered"
           paragraph="Rollouts, refreshes, and migrations run against live infrastructure, where the network could not go down while we worked on it."
           center
+          accent
           width="640px"
         />
-      </div>
 
-      {/* The scroller bleeds one container-padding past the content box and
-          re-applies that padding inside itself: the first card still lines up
-          with the heading, and cards travel all the way to the viewport edge
-          instead of stopping short of it. */}
-      <div className="container">
-        {/* pt-2/pb-6 is headroom, not decoration: overflow-x makes the y axis
-            scrollable too, so the card's 2px hover lift and the reveal's 18px
-            travel both need somewhere to go or they flash a vertical scrollbar. */}
-        <div className="-mx-4 overflow-x-auto px-4 pt-2 pb-6 [scrollbar-width:thin]">
-          {/* Centred when the cards fit, scrollable when they do not.
-              `min-w-max` is what makes that safe: it holds the track at content
-              width, so `mx-auto` only has free space to centre with when there
-              genuinely is some, and the scroller overflows instead of the track.
-              Centring via `justify-center` alone is the trap — once the cards
-              exceed the viewport it pushes the first one past the scroll
-              container's start edge, where it cannot be scrolled back to.
-              Verified at 2 cards (centred at every width above 375px) and at 3
-              (centred at lg, scrolls below it). */}
-          <ul className="mx-auto flex min-w-max snap-x snap-mandatory justify-center gap-6">
-            {published.map((study, i) => (
-              <Reveal
-                as="li"
-                key={study.slug}
-                delay={Math.min(i, 3) * 0.08}
-                className="w-[280px] shrink-0 snap-start sm:w-[340px]"
-              >
-                <Link
-                  href={`/insights/${study.slug}`}
-                  className="ds-card group flex h-full flex-col overflow-hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-                >
-                  <div className="relative aspect-[16/10] overflow-hidden">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+          {published.map((study, i) => {
+            const results = finishedResults(study.results);
+
+            return (
+              <Reveal key={study.slug} delay={Math.min(i, 3) * 0.08} className="h-full">
+                <article className="ds-tile-dark flex h-full flex-col overflow-hidden lg:flex-row">
+                  <div className="relative aspect-[16/9] shrink-0 overflow-hidden lg:aspect-auto lg:w-[42%]">
                     <Image
                       src={study.thumbnail}
                       alt=""
                       fill
-                      sizes="(min-width: 575px) 340px, 280px"
-                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+                      sizes="(min-width: 992px) 42vw, 100vw"
+                      className="object-cover"
                     />
                     <div aria-hidden className={`absolute inset-0 ${SCRIM}`} />
                     <p className="absolute inset-x-0 bottom-0 p-4 text-[11px] font-semibold uppercase tracking-[0.08em] text-on-dark-muted">
@@ -82,38 +76,73 @@ export default function CaseStudyRow() {
                     </p>
                   </div>
 
-                  <div className="flex flex-1 flex-col p-6">
+                  <div className="flex flex-1 flex-col p-7 sm:p-8 lg:p-10">
                     {/* Both flags have to hold: `logo` is the asset, `logoUsable`
                         is the customer's permission to show it. Decorative —
                         the customer name is right underneath it in the h3. */}
                     {study.logoUsable && study.logo && (
-                      <img
-                        src={study.logo}
-                        alt=""
-                        className="mb-4 h-7 w-auto max-w-[130px] self-start object-contain object-left"
-                        draggable={false}
-                      />
+                      // Natural colours, not knocked to white. Both assets are
+                      // rasters embedded in SVG with dark artwork, so on the
+                      // navy card they need a light chip behind them to be
+                      // visible at all — the chip is what makes keeping the
+                      // original colours possible here.
+                      <span className="mb-5 inline-flex w-fit items-center rounded-lg bg-white px-3 py-2">
+                        <img
+                          src={study.logo}
+                          alt=""
+                          className="h-7 w-auto max-w-[130px] object-contain object-left"
+                          draggable={false}
+                        />
+                      </span>
                     )}
-                    <h3 className="text-lg font-bold leading-snug text-heading">
+                    <h3 className="text-xl font-bold leading-snug text-white sm:text-2xl">
                       {study.customer}
                     </h3>
-                    <p className="mt-2 text-xs font-semibold uppercase tracking-widest text-faint">
+                    <p className="mt-2 text-sm font-semibold text-on-dark-muted">
                       {study.delivered}
                     </p>
-                    <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">
-                      {study.problem}
-                    </p>
-                    <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-brand">
-                      Read the case study
-                      <span className="transition-transform duration-200 group-hover:translate-x-1 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0">
-                        <ArrowRightIcon size={16} />
-                      </span>
-                    </span>
+
+                    <div className="mt-6 space-y-5">
+                      <div>
+                        <p className="mb-1.5 text-[11px] font-semibold uppercase tracking-widest text-on-dark-muted/70">
+                          The Challenge
+                        </p>
+                        <p className="text-sm leading-relaxed text-on-dark-muted">
+                          {study.problem}
+                        </p>
+                      </div>
+                      <div>
+                        <p className="mb-1.5 text-[11px] font-semibold uppercase tracking-widest text-on-dark-muted/70">
+                          Our Approach
+                        </p>
+                        <p className="text-sm leading-relaxed text-on-dark-muted">
+                          {study.whatWeDid}
+                        </p>
+                      </div>
+
+                      {results.length > 0 && (
+                        <div>
+                          <p className="mb-1.5 text-[11px] font-semibold uppercase tracking-widest text-on-dark-muted/70">
+                            Results
+                          </p>
+                          <ul className="space-y-1.5">
+                            {results.map((line) => (
+                              <li key={line} className="flex items-start gap-2 text-sm text-white">
+                                <span className="mt-0.5 text-brand">
+                                  <CheckIcon size={14} strokeWidth={2.4} />
+                                </span>
+                                {line}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
                   </div>
-                </Link>
+                </article>
               </Reveal>
-            ))}
-          </ul>
+            );
+          })}
         </div>
       </div>
     </SectionShell>

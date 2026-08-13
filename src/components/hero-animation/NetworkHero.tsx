@@ -37,7 +37,9 @@ const DEFAULTS = {
   subhead:
     'We design, deploy and operate network, data centre, cloud and security infrastructure for telecom carriers, banks and government bodies.',
   credibility: 'Built to execute mission-critical infrastructure at national scale.',
-  proof: ['30+ years of combined leadership', '100M+ subscribers managed'],
+  // Only the two verified figures. "100M+ subscribers managed" was dropped
+  // along with the node count — see the note in Home/ClientMarquee.
+  proof: ['30+ years of combined expertise', '20+ partners'],
   primaryCta: { label: 'Start a conversation', href: '/contact' },
   secondaryCta: { label: 'See what we deliver', href: '/solutions/services' },
 };
@@ -54,9 +56,12 @@ export function NetworkHero({
   seed = 20260804,
 }: NetworkHeroProps) {
   return (
+    // No bottom padding: SectionShell sections below no longer carry their own
+    // top+bottom pair, so the next section's top padding is the only gap
+    // between the hero and what follows it. See SectionShell's `sizes` note.
     <section
       id="home"
-      className="relative overflow-hidden bg-transparent pb-20 pt-[120px] md:pb-28 md:pt-[150px] xl:pt-[170px]"
+      className="relative overflow-hidden bg-transparent pt-[120px] md:pt-[150px] xl:pt-[170px]"
     >
       <div className="relative z-10 mx-auto w-full max-w-[1600px] px-6 md:px-10 xl:px-16">
         {/* Not a 50/50 split: at lg an even split starves the copy column and

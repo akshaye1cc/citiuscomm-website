@@ -33,6 +33,7 @@
   --color-surface-2:     var(--ds-surface-2);
   --color-edge:          var(--ds-edge);
   --color-edge-2:        var(--ds-edge-2);
+  --color-dots:          var(--ds-dots);
   --color-fg:            var(--ds-fg);
   --color-heading:       var(--ds-heading);
   --color-muted:         var(--ds-muted);
@@ -98,16 +99,48 @@
   max-width: 1200px;
 }
 
-/* ---- Card ----
-   The one card recipe for the whole site. Canvas and surface are both
-   near-white, so a card can't rely on fill alone to separate from the page —
-   the hairline border plus e1 does the separating, and the lift to e2 on
-   hover is what signals interactivity. Components add their own padding. */
-@utility ds-card {
-  border-radius: 1rem;
+/* ---- Tile ----
+   THE surface primitive. Every card, panel, logo tile, and quote block on the
+   site is this one recipe — there is no second way to draw a raised surface.
+   Replaced ds-card and ds-panel, which were the same declarations twice.
+
+   Compose it:
+     ds-tile                 static surface on a light band
+     ds-tile ds-tile-link    the same, plus the hover lift that signals a link
+     ds-tile-dark            the dark-band variant, for navy and brand sections
+
+   Canvas and surface are both near-white, so a tile can't rely on fill alone to
+   separate from the page — the hairline plus e1 does the separating, and the
+   lift to e2 on hover is what signals interactivity. Components add padding. */
+@utility ds-tile {
+  border-radius: var(--ds-radius);
   border: 1px solid var(--color-edge);
   background-color: var(--color-surface);
   box-shadow: var(--shadow-e1);
+}
+
+/* Filled variants. These are cards that carry colour on a white page — not
+   cards sitting on a coloured band. That distinction is why both take a solid
+   fill and keep the elevation shadow: they are objects on the canvas, so they
+   cast like every other tile. An earlier ds-tile-dark was translucent white,
+   for use on top of a navy band; nothing stands on a navy band any more.
+
+   Text inside these must come from the on-dark tokens. */
+@utility ds-tile-dark {
+  border-radius: var(--ds-radius);
+  border: 1px solid var(--ds-navy-2);
+  background-color: var(--ds-navy);
+  box-shadow: var(--shadow-e1);
+}
+
+@utility ds-tile-brand {
+  border-radius: var(--ds-radius);
+  border: 1px solid color-mix(in oklab, var(--ds-brand) 70%, black);
+  background-color: var(--ds-brand);
+  box-shadow: var(--shadow-e1);
+}
+
+@utility ds-tile-link {
   transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
 
   &:hover {
@@ -117,12 +150,14 @@
   }
 }
 
-/* Static panel: same surface treatment, no hover affordance. */
-@utility ds-panel {
-  border-radius: 1rem;
-  border: 1px solid var(--color-edge);
-  background-color: var(--color-surface);
-  box-shadow: var(--shadow-e1);
+/* Hover on a filled tile: keep the lift and the shadow, but brighten the
+   hairline instead of tinting it brand — brand-on-brand is invisible, and
+   brand-on-navy is too dark a change to register. */
+@layer components {
+  .ds-tile-dark.ds-tile-link:hover,
+  .ds-tile-brand.ds-tile-link:hover {
+    border-color: rgba(255, 255, 255, 0.4);
+  }
 }
 
 /* ---- Tailwind v4 border-color compatibility ---- */
@@ -318,13 +353,22 @@
   background-image: radial-gradient(circle, currentColor 1px, transparent 1px);
   background-size: 26px 26px;
 }
-/* Density-shift accent: exactly half the step, so where a dense patch abuts the
-   base grid every base dot still lands on a dense-grid position and the two
-   read as one grid at two densities rather than two grids out of phase. */
-.ds-dots-dense {
-  background-image: radial-gradient(circle, currentColor 1px, transparent 1px);
-  background-size: 13px 13px;
+/* Horizontal edge fade for a marquee track.
+   A mask, not a pair of gradient overlays: overlays have to be painted in the
+   page's background colour, which means painting a solid strip over the dot
+   grid at both ends of the band. Masking fades the tiles themselves and leaves
+   whatever is behind them alone. */
+.ds-fade-x {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 6rem, #000 calc(100% - 6rem), transparent);
+  mask-image: linear-gradient(to right, transparent, #000 6rem, #000 calc(100% - 6rem), transparent);
 }
+@media (min-width: 768px) {
+  .ds-fade-x {
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 12rem, #000 calc(100% - 12rem), transparent);
+    mask-image: linear-gradient(to right, transparent, #000 12rem, #000 calc(100% - 12rem), transparent);
+  }
+}
+
 .ds-dots-fade {
   -webkit-mask-image: radial-gradient(ellipse 70% 65% at 50% 35%, black 30%, transparent 100%);
   mask-image: radial-gradient(ellipse 70% 65% at 50% 35%, black 30%, transparent 100%);
@@ -381,10 +425,10 @@
     display: none;
   }
   /* Keep the elevation change as the hover cue; drop only the movement. */
-  .ds-card {
+  .ds-tile-link {
     transition: box-shadow 200ms ease, border-color 200ms ease;
   }
-  .ds-card:hover {
+  .ds-tile-link:hover {
     transform: none;
   }
 }

@@ -68,7 +68,7 @@ const AboutSectionOne = () => (
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
                 {values.map(({ title, text }, i) => (
                   <Reveal key={title} delay={0.2 + i * 0.08}>
-                    <div className="ds-card ds-sheen group relative h-full overflow-hidden p-6">
+                    <div className="ds-tile ds-tile-link ds-sheen group relative h-full overflow-hidden p-6">
                       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                       <div className="relative">
                         <h4 className="mb-2 text-base font-bold text-fg">{title}</h4>
@@ -86,7 +86,7 @@ const AboutSectionOne = () => (
             <Reveal variant="right" className="relative mx-auto max-w-[500px] lg:mr-0">
               {/* Diagram and heritage share one panel so the block reads as a
                   single object rather than a visual plus a floating caption. */}
-              <div className="ds-panel overflow-hidden">
+              <div className="ds-tile overflow-hidden">
                 <CapabilityCluster />
                 <div className="border-t border-edge bg-canvas-subtle p-4 text-center">
                   <p className="text-sm font-semibold text-fg">Trusted Heritage</p>

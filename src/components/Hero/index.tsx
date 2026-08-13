@@ -95,7 +95,7 @@ const Hero = () => {
         {/* Panelled so the figures read as one proof block instead of four
             numbers floating on the bare background. */}
         <div className="mx-auto mt-16 max-w-[820px] pb-20 md:mt-24 md:pb-28 lg:pb-32">
-          <dl className="ds-panel grid grid-cols-2 divide-edge px-2 py-6 sm:grid-cols-4 sm:divide-x sm:px-4">
+          <dl className="ds-tile grid grid-cols-2 divide-edge px-2 py-6 sm:grid-cols-4 sm:divide-x sm:px-4">
             {stats.map(({ num, label }) => (
               <div key={label} className="px-4 py-3 text-center sm:py-0">
                 <dt className="text-2xl font-bold text-fg sm:text-3xl">

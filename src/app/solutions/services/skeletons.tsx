@@ -248,7 +248,7 @@ const SkeletonNOC = () => (
         transition={{ duration: 0.9, repeat: Infinity }}
       />
       <span className="text-[10px] font-semibold uppercase tracking-wider text-muted">
-        24×7 Active · 13,000+ Nodes
+        24×7 Active · Monitored
       </span>
     </div>
   </motion.div>

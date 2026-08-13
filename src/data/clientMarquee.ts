@@ -14,6 +14,14 @@ export type MarqueeClient = {
    * dead link.
    */
   url: string | null;
+  /**
+   * Multiplier on the logo's rendered max-height (1 = the default 4rem). Same
+   * device as HomePartner.logoScale: for marks that are square or near-square,
+   * which render short and narrow next to the wide wordmarks in this list even
+   * though every logo shares the same max-height. Not a fix for padding baked
+   * into the asset — re-crop the file for that instead.
+   */
+  logoScale?: number;
 };
 
 /**
@@ -36,16 +44,23 @@ const clientMarquee: MarqueeClient[] = [
   { name: "Ciena",         logoSlot: "/images/Partners/ciena.png",                   url: "https://www.ciena.com" },
   { name: "Sony",          logoSlot: "/images/Clients/sony.svg",                     url: "https://www.sony.com" },
   { name: "Discovery",     logoSlot: "/images/Clients/Discovery-Logo-Vector.svg-.png", url: "https://www.discovery.com" },
-  { name: "Vianet",        logoSlot: "/images/Clients/vianet.svg",                   url: "https://www.vianet.com.np" },
+  // Square and near-square marks. A 1:1 logo at the shared 4rem max-height is
+  // 64px wide; the wordmarks beside it run the full 208px of the tile's content
+  // width, so the squares read as a fraction of the size at the same nominal
+  // height. These scales bring them to ~118px, close to filling the tile's
+  // 120px content height. Ratios are from the assets themselves, so the two
+  // wider marks below take a lower multiplier and are capped by width instead.
+  { name: "Vianet",        logoSlot: "/images/Clients/vianet.svg",                   url: "https://www.vianet.com.np", logoScale: 1.85 },
   { name: "Subisu",        logoSlot: "/images/Clients/subisu.svg",                   url: "https://www.subisu.net.np" },
   { name: "Fastway",       logoSlot: "/images/Clients/fastway.svg",                  url: "https://www.fastway.in" },
-  { name: "Nepal Telecom", logoSlot: "/images/Clients/nepal telecom.svg",            url: "https://www.ntc.net.np" },
-  { name: "HPE",           logoSlot: "/images/Clients/HPE.svg",                      url: "https://www.hpe.com" },
-  { name: "Yes Bank",      logoSlot: "/images/Clients/yes bank.png",                 url: "https://www.yesbank.in" },
+  { name: "Nepal Telecom", logoSlot: "/images/Clients/nepal telecom.svg",            url: "https://www.ntc.net.np", logoScale: 1.85 },
+  { name: "HPE",           logoSlot: "/images/Clients/HPE.svg",                      url: "https://www.hpe.com", logoScale: 1.85 },
+  { name: "Yes Bank",      logoSlot: "/images/Clients/yes bank.png",                 url: "https://www.yesbank.in", logoScale: 1.85 },
   { name: "Kotak Bank",    logoSlot: "/images/Clients/kotak.png",                    url: "https://www.kotak.com" },
-  { name: "ICICI Bank",    logoSlot: "/images/Clients/icici.png",                    url: "https://www.icicibank.com" },
-  { name: "Siti",          logoSlot: "/images/Clients/siti digital.png",             url: "https://www.sitinetworks.com" },
-  { name: "EfficientIP",   logoSlot: "/images/Clients/efficient ip.svg",             url: "https://www.efficientip.com" },
+  { name: "ICICI Bank",    logoSlot: "/images/Clients/icici.png",                    url: "https://www.icicibank.com", logoScale: 1.85 },
+  { name: "Siti",          logoSlot: "/images/Clients/siti digital.png",             url: "https://www.sitinetworks.com", logoScale: 1.85 },
+  // 2:1, so width caps this one at ~104px tall whatever the multiplier says.
+  { name: "EfficientIP",   logoSlot: "/images/Clients/efficient ip.svg",             url: "https://www.efficientip.com", logoScale: 1.7 },
   { name: "TIBCO",         logoSlot: "/images/Clients/tibco.svg",                    url: "https://www.tibco.com" },
 ];
 

@@ -275,7 +275,7 @@ function Diagram({
         style={{ left: pct(core.x, view.w), top: pct(core.y, view.h) }}
       >
         <div
-          className={`ds-panel flex items-center justify-center rounded-2xl text-brand ${
+          className={`ds-tile flex items-center justify-center rounded-2xl text-brand ${
             isDesktop ? 'h-20 w-20' : 'h-16 w-16'
           }`}
         >
@@ -300,7 +300,7 @@ function Diagram({
                 onMouseLeave={() => setActive(null)}
                 onFocus={() => setActive(node.key)}
                 onBlur={() => setActive(null)}
-                className={`ds-card flex items-center justify-center text-brand outline-none focus-visible:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ${
+                className={`ds-tile ds-tile-link flex items-center justify-center text-brand outline-none focus-visible:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ${
                   isDesktop ? 'h-16 w-16' : 'h-14 w-14'
                 }`}
               >

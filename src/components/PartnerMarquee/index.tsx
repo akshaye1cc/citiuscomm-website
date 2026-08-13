@@ -57,7 +57,7 @@ export default function PartnerMarquee() {
                 aria-hidden={partner.copy > 0}
                 // Bordered tile on a tinted band: white fill plus the hairline
                 // is what separates each logo from the wash behind it.
-                className="mx-3 flex h-32 w-64 shrink-0 items-center justify-center rounded-2xl border border-edge bg-surface px-8 py-6 shadow-e1"
+                className="ds-tile mx-3 flex h-32 w-64 shrink-0 items-center justify-center px-8 py-6"
               >
                 <img
                   src={partner.logo}

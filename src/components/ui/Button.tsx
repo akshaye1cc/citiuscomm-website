@@ -11,6 +11,13 @@ const variants = {
      text and pass AA is to darken the orange to roughly #b85700, which is a
      visibly different colour from the brand orange. */
   cta:     "bg-cta text-white hover:bg-cta-hover",
+  /* Outlined counterpart to `cta`, for pairing a secondary action beside a solid
+     one without dropping a size. Orange-on-navy is 5.93:1, so the resting state
+     passes AA comfortably — better than the solid variant it sits next to. The
+     hover state fills to solid orange and inherits that variant's known 2.61:1
+     white-on-orange exception; it is a transient state of an already-accepted
+     colour, not a new one. Intended for dark bands. */
+  "cta-outline": "border border-cta bg-transparent text-cta hover:bg-cta hover:text-white",
   ghost:   "border border-edge bg-transparent text-fg hover:border-primary hover:text-brand",
   outline: "border border-primary bg-transparent text-brand hover:bg-primary hover:text-white",
   /* for use on dark navy sections regardless of theme */

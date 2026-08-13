@@ -4,7 +4,7 @@ const SingleFeature = ({ feature }: { feature: Feature }) => {
   const { icon, title, paragraph } = feature;
 
   return (
-    <div className="ds-card ds-sheen group relative h-full w-full overflow-hidden p-8">
+    <div className="ds-tile ds-tile-link ds-sheen group relative h-full w-full overflow-hidden p-8">
       <div className="relative">
         <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-brand-muted text-brand">
           {icon}

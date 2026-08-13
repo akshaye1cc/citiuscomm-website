@@ -97,7 +97,7 @@ const channels = [
 
 /* ─── Branch card ─────────────────────────────────────────── */
 const BranchCard = ({ office }: { office: (typeof branches)[0] }) => (
-  <div className="ds-card flex h-full flex-col justify-center gap-1 p-6">
+  <div className="ds-tile ds-tile-link flex h-full flex-col justify-center gap-1 p-6">
     <h3 className="text-lg font-bold leading-tight text-heading">{office.city}</h3>
     <p className="text-xs font-medium uppercase tracking-wider text-faint">{office.country}</p>
     <a
@@ -177,7 +177,7 @@ export default function Contact() {
 
           {/* Tier 1 — the one verified office, given the full width */}
           <Reveal variant="left">
-            <div className="ds-panel p-8">
+            <div className="ds-tile p-8">
               <div className="grid items-stretch gap-8 lg:grid-cols-2">
                 <div className="flex flex-col">
                   <div className="mb-6 flex items-center gap-4">
@@ -269,7 +269,7 @@ export default function Contact() {
                 <a
                   href={channel.href}
                   {...(channel.external && { target: "_blank", rel: "noopener noreferrer" })}
-                  className="ds-card group flex h-full flex-col items-center gap-3 px-6 py-10 text-center"
+                  className="ds-tile ds-tile-link group flex h-full flex-col items-center gap-3 px-6 py-10 text-center"
                 >
                   <span className="mb-1 flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-muted text-brand transition-transform duration-300 group-hover:scale-110 motion-reduce:transition-none motion-reduce:group-hover:scale-100">
                     {channel.icon}

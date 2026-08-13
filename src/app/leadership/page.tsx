@@ -28,22 +28,20 @@ const LeadershipPage = () => (
             </h1>
 
             <p className="mb-12 text-xl leading-relaxed text-muted">
-              30+ years of operator and enterprise leadership. From Ericsson to Reliance, we&apos;ve built, managed, and scaled networks that serve 100M+ subscribers worldwide.
+              30+ years of operator and enterprise leadership. From Ericsson to Reliance, we&apos;ve
+              built, managed, and scaled networks that carriers and enterprises run their business on.
             </p>
 
-            {/* Stats grid */}
-            <div className="grid grid-cols-3 gap-6 md:gap-8">
+            {/* Only the two verified figures — the subscriber count that used to
+                sit in this grid was never sourced. See Home/ClientMarquee. */}
+            <div className="grid grid-cols-2 gap-6 md:gap-8">
               <div>
                 <div className="text-3xl font-bold text-brand">30+</div>
-                <div className="mt-2 text-sm text-muted">Years combined</div>
+                <div className="mt-2 text-sm text-muted">Years of combined expertise</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-brand">7</div>
-                <div className="mt-2 text-sm text-muted">Executive leaders</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-brand">100M+</div>
-                <div className="mt-2 text-sm text-muted">Subscribers managed</div>
+                <div className="text-3xl font-bold text-brand">20+</div>
+                <div className="mt-2 text-sm text-muted">Partners</div>
               </div>
             </div>
           </div>

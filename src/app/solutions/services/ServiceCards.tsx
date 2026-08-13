@@ -33,7 +33,7 @@ export default function ServiceCards() {
           <Reveal key={pillar.slug} delay={i * 0.08}>
             <article
               id={pillar.slug}
-              className="ds-card scroll-mt-28 p-5 md:p-6"
+              className="ds-tile ds-tile-link scroll-mt-28 p-5 md:p-6"
             >
               <div className="flex flex-col gap-6 md:flex-row md:items-center md:gap-8">
                 {/* Media panel — own rounding + hairline so it reads as contained */}
