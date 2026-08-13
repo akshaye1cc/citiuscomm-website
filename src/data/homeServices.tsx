@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/icons";
 
 export interface HomeService {
-  /** Derived from the name. See the note below on where these anchors point. */
+  /** Also the anchor on /solutions/services. Must match the pillar slug. */
   slug: string;
   name: string;
   /** One to two sentences, rendered under the name. */
@@ -20,24 +20,10 @@ export interface HomeService {
 /**
  * The six services on the homepage row.
  *
- * Deliberately NOT `pillars` from solutions.tsx. That list drives the whole of
- * /solutions/services, which is to stay as it is for now, so the two lists are
- * separate on purpose rather than by accident. They will need reconciling once
- * the services page is rewritten to match — until then, editing one does not
- * change the other.
- *
- * ⚠ Electric Mobility and IoT & Industrial Automation have no equivalent
- * anywhere else on the site — their descriptions are freshly written for this
- * list rather than adapted from existing, reviewed copy, and should get the
- * same scrutiny as any other new claim before this ships. The other four
- * descriptions are adapted from the matching /solutions/services pillar.
- *
- * ⚠ The slugs below are derived from these names and do NOT match any section
- * on /solutions/services (which still uses data-center, ict-infrastructure,
- * cybersecurity, telecom-networks, cloud-engineering, noc-operations). Every
- * link in this row therefore lands at the top of that page rather than at a
- * matching section. Fix by adding these sections there, or by pointing each
- * entry at its nearest existing anchor.
+ * This file and `pillars` in solutions.tsx share the same six slugs, titles,
+ * and descriptions, and must be updated together: the row below deep-links to
+ * `/solutions/services#slug`, so a change in one file without the other breaks
+ * the link. solutions.tsx carries extra fields this list has no room for.
  */
 export const homeServices: HomeService[] = [
   {
@@ -51,7 +37,7 @@ export const homeServices: HomeService[] = [
     slug: "hyperscaler-data-center",
     name: "Hyperscaler & Data Center",
     description:
-      "Data center design, build, and modernization — compute, storage, and network fabric sourced through our OEM partnerships and delivered turnkey.",
+      "Data center design, build, and modernization. Compute, storage, and network fabric sourced through our OEM partnerships and delivered turnkey.",
     icon: <DataCenterIcon className="ds-draw" />,
   },
   {
@@ -65,7 +51,7 @@ export const homeServices: HomeService[] = [
     slug: "managed-services-noc",
     name: "Managed Services & NOC",
     description:
-      "Round-the-clock network operations, monitoring, and OSS/BSS integration — the operational backbone behind networks serving millions of subscribers.",
+      "Round-the-clock network operations, monitoring, and OSS/BSS integration. The operational backbone behind carrier and enterprise networks.",
     icon: <OpsIcon className="ds-draw" />,
   },
   {

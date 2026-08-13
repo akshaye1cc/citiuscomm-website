@@ -129,43 +129,56 @@ const SkeletonCyber = () => (
   </div>
 );
 
-/* ─── Skeleton: 5G / Telecom ─── */
-const SkeletonTelecom = () => (
+/* ─── Skeleton: Electric Mobility ───
+   Replaced the 5G/Telecom skeleton, whose practice was dropped from `pillars`.
+   A charge point filling, with the connector cable running to it. */
+const SkeletonEV = () => (
   <motion.div
     initial="initial"
     whileHover="hover"
     className="flex h-full w-full items-center justify-center overflow-hidden bg-canvas-muted p-4"
   >
     <div className="flex flex-col items-center gap-3">
-      <svg viewBox="0 0 120 90" className="h-auto w-44">
-        {/* Tower mast */}
-        <line x1="60" y1="80" x2="60" y2="32" stroke="var(--ds-brand)" strokeWidth="2" strokeLinecap="round" />
-        <line x1="52" y1="80" x2="68" y2="80" stroke="var(--ds-brand)" strokeWidth="2" strokeLinecap="round" />
-        {/* Signal arcs */}
-        {[18, 32, 48].map((r, i) => (
-          <motion.path
-            key={r}
-            d={`M ${60 - r},32 A ${r},${r} 0 0,1 ${60 + r},32`}
-            fill="none" stroke="var(--ds-brand)" strokeWidth="1.5" strokeLinecap="round"
-            initial={{ pathLength: 0, opacity: 0 }}
-            animate={{ pathLength: [0, 1, 1], opacity: [0, 0.85, 0.2] }}
-            transition={{ duration: 1.6, repeat: Infinity, delay: i * 0.45, repeatDelay: 0.4 }}
-          />
-        ))}
+      <svg viewBox="0 0 120 90" className="h-auto w-40">
+        {/* Charger body */}
+        <rect
+          x="38" y="16" width="34" height="58" rx="5"
+          fill="none" stroke="var(--ds-brand)" strokeWidth="2"
+        />
+        <line x1="34" y1="74" x2="76" y2="74" stroke="var(--ds-brand)" strokeWidth="2" strokeLinecap="round" />
+        {/* Charge level, filling bottom-up inside the body */}
+        <motion.rect
+          x="44" width="22" rx="2" fill="var(--ds-brand)" opacity="0.25"
+          animate={{ y: [64, 24], height: [4, 44] }}
+          transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
+        />
+        {/* Bolt on the faceplate */}
+        <motion.path
+          d="M 57,28 L 49,46 L 56,46 L 53,62 L 63,42 L 56,42 Z"
+          fill="var(--ds-brand)"
+          animate={{ opacity: [0.45, 1, 0.45] }}
+          transition={{ duration: 2.6, repeat: Infinity }}
+        />
+        {/* Connector cable */}
+        <motion.path
+          d="M 72,34 C 92,38 96,58 88,72"
+          fill="none" stroke="var(--ds-brand)" strokeWidth="1.5" strokeLinecap="round"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 1.8, repeat: Infinity, repeatDelay: 0.8, ease: "easeInOut" }}
+        />
       </svg>
       <div className="flex gap-2">
-        {["2G", "3G", "4G", "5G"].map((gen) => (
+        {["Survey", "Grid", "Install", "Live"].map((stage, i) => (
           <motion.span
-            key={gen}
+            key={stage}
             className={`rounded border px-1.5 py-0.5 text-[10px] font-bold ${
-              gen === "5G"
-                ? "border-primary/50 bg-brand-muted text-brand"
-                : "border-edge text-faint"
+              i === 3 ? "border-primary/50 bg-brand-muted text-brand" : "border-edge text-faint"
             }`}
-            animate={gen === "5G" ? { opacity: [0.6, 1, 0.6] } : {}}
+            animate={i === 3 ? { opacity: [0.6, 1, 0.6] } : {}}
             transition={{ duration: 2, repeat: Infinity }}
           >
-            {gen}
+            {stage}
           </motion.span>
         ))}
       </div>
@@ -173,30 +186,56 @@ const SkeletonTelecom = () => (
   </motion.div>
 );
 
-/* ─── Skeleton: Cloud Engineering ─── */
-const SkeletonCloud = () => (
+/* ─── Skeleton: IoT & Industrial Automation ───
+   Replaced the Cloud Engineering skeleton, whose practice was dropped from
+   `pillars`. Field sensors reporting in to a hub. */
+const SkeletonIoT = () => (
   <div className="relative flex h-full w-full flex-col items-center justify-center gap-3 overflow-hidden bg-canvas-muted p-4">
-    <div className="relative flex items-center justify-center">
-      <svg viewBox="0 0 100 65" className="h-auto w-28">
-        <motion.path
-          d="M 15,52 A 15,15 0 0,1 15,22 A 12,12 0 0,1 40,14 A 16,16 0 0,1 72,22 A 12,12 0 0,1 85,34 A 15,15 0 0,1 68,52 Z"
-          fill="none" stroke="var(--ds-brand)" strokeWidth="1.5" strokeLinejoin="round"
-          animate={{ strokeOpacity: [0.4, 0.9, 0.4] }}
-          transition={{ duration: 2.5, repeat: Infinity }}
-        />
-      </svg>
+    <svg viewBox="0 0 120 70" className="h-auto w-40">
+      {/* Hub */}
+      <rect
+        x="50" y="26" width="20" height="18" rx="3"
+        fill="none" stroke="var(--ds-brand)" strokeWidth="2"
+      />
+      {/* Sensor nodes, and the link each one reports over */}
+      {[
+        { x: 14, y: 12 },
+        { x: 14, y: 58 },
+        { x: 106, y: 12 },
+        { x: 106, y: 58 },
+      ].map((node, i) => (
+        <g key={`${node.x}-${node.y}`}>
+          <motion.line
+            x1={node.x} y1={node.y} x2="60" y2="35"
+            stroke="var(--ds-brand)" strokeWidth="1.2" strokeLinecap="round"
+            animate={{ strokeOpacity: [0.15, 0.7, 0.15] }}
+            transition={{ duration: 2.2, repeat: Infinity, delay: i * 0.35 }}
+          />
+          <motion.circle
+            cx={node.x} cy={node.y} r="4"
+            fill="var(--ds-brand)"
+            animate={{ opacity: [0.4, 1, 0.4] }}
+            transition={{ duration: 2.2, repeat: Infinity, delay: i * 0.35 }}
+          />
+        </g>
+      ))}
+      {/* Telemetry travelling in from one node at a time */}
       {[0, 1, 2, 3].map((i) => (
-        <motion.div
+        <motion.circle
           key={i}
-          className="absolute bottom-0 h-1.5 w-1.5 rounded-full bg-primary"
-          style={{ left: `${12 + i * 22}%` }}
-          animate={{ y: [0, -50], opacity: [0, 1, 0] }}
-          transition={{ duration: 1.6, repeat: Infinity, delay: i * 0.4 }}
+          r="2"
+          fill="var(--ds-brand)"
+          animate={{
+            cx: [[14, 14, 106, 106][i], 60],
+            cy: [[12, 58, 12, 58][i], 35],
+            opacity: [0, 1, 0],
+          }}
+          transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.5 }}
         />
       ))}
-    </div>
+    </svg>
     <div className="flex gap-2">
-      {["Private", "Hybrid", "Public"].map((t) => (
+      {["Sense", "Connect", "Predict"].map((t) => (
         <span key={t} className="rounded-full border border-edge px-2 py-0.5 text-[10px] text-muted">
           {t}
         </span>
@@ -254,12 +293,15 @@ const SkeletonNOC = () => (
   </motion.div>
 );
 
-/** Ordered to match `pillars` in src/data/solutions.tsx. */
+/**
+ * Ordered to match `pillars` in src/data/solutions.tsx, index for index.
+ * Reorder both together or every card gets the wrong animation.
+ */
 export const serviceSkeletons = [
-  SkeletonDataCenter,
-  SkeletonICT,
-  SkeletonCyber,
-  SkeletonTelecom,
-  SkeletonCloud,
-  SkeletonNOC,
+  SkeletonICT, // networking-fttx
+  SkeletonDataCenter, // hyperscaler-data-center
+  SkeletonCyber, // enterprise-cyber-security
+  SkeletonNOC, // managed-services-noc
+  SkeletonEV, // electric-mobility
+  SkeletonIoT, // iot-industrial-automation
 ];

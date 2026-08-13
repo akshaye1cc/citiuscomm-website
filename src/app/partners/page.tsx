@@ -119,7 +119,7 @@ export default function PartnersPage() {
             <SectionAccent className="mb-6" />
             <div className="mb-5">
               <Badge variant="brand" dot>
-                Our Products
+                Our Product Ecosystem
               </Badge>
             </div>
             <h2 className="mb-5 text-3xl font-bold leading-tight text-heading sm:text-4xl">
@@ -165,7 +165,7 @@ export default function PartnersPage() {
           <div className="mb-12 max-w-2xl">
             <div className="mb-5">
               <Badge variant="brand" dot>
-                The Ecosystem
+                Our Partner Ecosystem
               </Badge>
             </div>
             <h2 className="mb-5 text-3xl font-bold leading-tight text-heading sm:text-4xl">

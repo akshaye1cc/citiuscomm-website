@@ -3,32 +3,25 @@
 // would receive its exported array as a client-reference proxy rather than the array
 // itself, making every `serviceSkeletons[i]` undefined at render.
 import Reveal from "@/components/ui/Reveal";
-import {
-  CheckIcon,
-  DataCenterIcon,
-  NetworkIcon,
-  ShieldIcon,
-  AntennaIcon,
-  CloudIcon,
-  OpsIcon,
-} from "@/components/ui/icons";
+import { CheckIcon } from "@/components/ui/icons";
 import { pillars } from "@/data/solutions";
 import { serviceSkeletons } from "./skeletons";
-
-const icons = [DataCenterIcon, NetworkIcon, ShieldIcon, AntennaIcon, CloudIcon, OpsIcon];
 
 /**
  * The six practices as a single-column stack of full-width horizontal cards:
  * media panel left, copy right, identical orientation and media height on every
  * card. `id`/`scroll-mt-28` stay on each card so the /solutions/services#slug
- * deep links from the footer keep resolving.
+ * deep links from the homepage service row and the footer keep resolving.
+ *
+ * The icon comes from the pillar itself rather than a parallel array indexed by
+ * position. That array was a second list to keep in sync with solutions.tsx,
+ * and it silently mismatched the moment the practices were reordered.
  */
 export default function ServiceCards() {
   return (
     <div className="space-y-6 md:space-y-8">
       {pillars.map((pillar, i) => {
         const Skeleton = serviceSkeletons[i];
-        const Icon = icons[i];
         return (
           <Reveal key={pillar.slug} delay={i * 0.08}>
             <article
@@ -46,7 +39,11 @@ export default function ServiceCards() {
                 {/* Copy */}
                 <div className="min-w-0 flex-1">
                   <div className="mb-2 flex items-center gap-3">
-                    <Icon size={22} className="shrink-0 text-brand" />
+                    {/* The icons ship at size 28 from solutions.tsx; scaled down
+                        here in CSS so the layout box matches what is drawn. */}
+                    <span className="shrink-0 text-brand [&_svg]:h-[22px] [&_svg]:w-[22px]">
+                      {pillar.icon}
+                    </span>
                     <h3 className="text-xl font-bold leading-tight text-heading md:text-2xl">
                       {pillar.title}
                     </h3>
@@ -56,9 +53,11 @@ export default function ServiceCards() {
                     {pillar.tagline}
                   </p>
 
-                  <p className="mb-5 text-base leading-relaxed text-muted">
+                  <p className="mb-3 text-base leading-relaxed text-muted">
                     {pillar.description}
                   </p>
+
+                  <p className="mb-5 text-base leading-relaxed text-muted">{pillar.body}</p>
 
                   <ul className="grid grid-cols-1 gap-x-6 gap-y-2.5 sm:grid-cols-2">
                     {pillar.points.map((pt) => (

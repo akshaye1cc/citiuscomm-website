@@ -9,14 +9,20 @@ const companyLinks = [
   { label: "Contact Us", href: "/contact" },
 ];
 
-/* Practice links deep-link to their own card on the services page — the
-   fragments match the `slug` values in src/data/solutions.tsx. */
+/* Practice links deep-link to their own card on the services page. The
+   fragments must match `slug` values in src/data/solutions.tsx, which in turn
+   match src/data/homeServices.tsx — change a slug in one place and all three
+   have to move together.
+
+   "5G & vRAN" used to sit here. That practice was removed from `pillars`, so
+   the link had nowhere left to land and came out rather than pointing at the
+   top of the page. */
 const solutionLinks = [
-  { label: "Services",      href: "/solutions/services" },
-  { label: "Industries",    href: "/solutions/industries" },
-  { label: "5G & vRAN",     href: "/solutions/services#telecom-networks" },
-  { label: "Cybersecurity", href: "/solutions/services#cybersecurity" },
-  { label: "Data Centers",  href: "/solutions/services#data-center" },
+  { label: "Services",          href: "/solutions/services" },
+  { label: "Industries",        href: "/solutions/industries" },
+  { label: "Networking & FTTx", href: "/solutions/services#networking-fttx" },
+  { label: "Cyber Security",    href: "/solutions/services#enterprise-cyber-security" },
+  { label: "Data Centers",      href: "/solutions/services#hyperscaler-data-center" },
 ];
 
 const LinkedInIcon = () => (

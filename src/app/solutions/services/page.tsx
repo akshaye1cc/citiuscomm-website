@@ -6,7 +6,7 @@ import ServiceCards from "./ServiceCards";
 export const metadata = {
   title: "Services | Citiuscomm",
   description:
-    "Detailed capabilities across data center, ICT infrastructure, cybersecurity, 5G networks, cloud engineering, and NOC operations.",
+    "Detailed capabilities across networking and FTTx, hyperscaler and data center, enterprise cyber security, managed services and NOC, electric mobility, and IoT and industrial automation.",
 };
 
 const ServicesPage = () => (
